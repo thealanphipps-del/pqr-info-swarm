@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQR Wiki | Forensic Swarm Documentation</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="wiki-mode">
+    <div class="glow-bg"></div>
+    
+    <header class="wiki-header">
+        <div class="logo">PQR SG-DAO // RC-1</div>
+        <div class="header-tools">
+            <a href="/hud" class="btn-hud"><i class="fas fa-terminal"></i> Enter HUD</a>
+        </div>
+    </header>
+
+    <div class="wiki-container">
+        <aside class="wiki-sidebar">
+            <nav id="wiki-nav">
+                <div class="nav-section">Core Infrastructure</div>
+                <a href="#README" class="nav-item active" onclick="loadDoc('README')">Overview (RC-1)</a>
+                <a href="#ARCHITECTURE" class="nav-item" onclick="loadDoc('ARCHITECTURE')">Architecture</a>
+                
+                <div class="nav-section">Governance</div>
+                <a href="#GOVERNANCE" class="nav-item" onclick="loadDoc('GOVERNANCE')">Sticky Rules</a>
+                <a href="#HYPERDEVELOPMENT" class="nav-item" onclick="loadDoc('HYPERDEVELOPMENT')">Self-Healing</a>
+                
+                <div class="nav-section">Synthesis</div>
+                <a href="#METAPROGRAMMING" class="nav-item" onclick="loadDoc('METAPROGRAMMING')">Metaprogramming</a>
+                <a href="#SOVEREIGN_SCRIPT" class="nav-item" onclick="loadDoc('SOVEREIGN_SCRIPT')">Sovereign Script</a>
+                
+                <div class="nav-section">Developers</div>
+                <a href="#API_REFERENCE" class="nav-item" onclick="loadDoc('API_REFERENCE')">REST 2.0 Reference</a>
+            </nav>
+        </aside>
+
+        <main class="wiki-content" id="wiki-content">
+            <!-- Content will be injected here -->
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PQR Info Swarm Wiki. Part of the Sovereign Node Ecosystem.</p>
+    </footer>
+
+    <script>
+        async function loadDoc(name) {
+            try {
+                const response = await fetch(`/REST/2.0/docs/${name}`);
+                const markdown = await response.text();
+                document.getElementById('wiki-content').innerHTML = marked.parse(markdown);
+                
+                // Update active state
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                event.target.classList.add('active');
+            } catch (err) {
+                console.error("Failed to load doc:", err);
+            }
+        }
+
+        // Default load
+        loadDoc('README');
+
+        // Simple navigation handling for static sections
+        document.querySelectorAll('.nav-item').forEach(item => {
+            if(!item.onclick) {
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

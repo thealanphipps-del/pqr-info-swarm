@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQR SWARM HUD | Forensic Lineage Telemetry</title>
+    <link rel="stylesheet" href="hud.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="glow-overlay"></div>
+    
+    <header>
+        <div class="logo">PQR // SWARM HUD v1.0</div>
+        <div class="system-status">
+            <div class="status-item"><div class="dot active"></div> FABRIC: ONLINE</div>
+            <div class="status-item"><div class="dot active"></div> COUNCIL: 5/5 ACTIVE</div>
+            <div class="status-item" id="clock">00:00:00</div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Active Fabric Tickets</div>
+                <i class="fas fa-filter text-dim"></i>
+            </div>
+            <div class="card-stack" id="ticket-list">
+                <!-- Live Tickets -->
+            </div>
+        </aside>
+
+        <section class="center-view">
+            <div id="canvas-container">
+                <!-- Visual Lineage Tree Canvas -->
+                <canvas id="lineage-canvas"></canvas>
+            </div>
+            
+            <div class="hud-overlay">
+                <div class="telemetry-block">
+                    <div class="val" id="ticket-count">0</div>
+                    <div class="label">Total Memory Units</div>
+                </div>
+                <div class="telemetry-block" style="border-color: var(--accent-secondary);">
+                    <div class="val" id="healing-rate">94.2%</div>
+                    <div class="label">Self-Healing Efficiency</div>
+                </div>
+                <div class="telemetry-block" style="border-color: var(--accent-success);">
+                    <div class="val" id="evolution-level">v2.1.0</div>
+                    <div class="label">Swarm Mutation Level</div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="panel">
+            <div class="panel-header">
+                <div class="panel-title">Evolutionary Knowledge</div>
+                <i class="fas fa-brain text-dim"></i>
+            </div>
+            <div class="card-stack" id="knowledge-base">
+                <div class="ticket-card" style="border-left: 2px solid var(--accent-success);">
+                    <div class="ticket-id">RESOLVED BY COUNCIL-003</div>
+                    <div class="ticket-title">Optimization of State Vector Search</div>
+                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.5rem;">Implemented RAE pattern to bypass redundancy in Iteration 4-6.</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <div class="detail-view">
+                <div class="modal-header">
+                    <h2 id="modal-title">Ticket Detail</h2>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-main">
+                        <div class="field">
+                            <label>Ticket ID</label>
+                            <div class="val-mono" id="modal-id">---</div>
+                        </div>
+                        <div class="field">
+                            <label>Content / Intent</label>
+                            <textarea id="modal-content" rows="10" class="editable-area"></textarea>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label>Status</label>
+                                <select id="modal-status" class="editable-select">
+                                    <option value="PENDING">PENDING</option>
+                                    <option value="IN_PROGRESS">IN_PROGRESS</option>
+                                    <option value="COMPLETED">COMPLETED</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Creator Agent</label>
+                                <div id="modal-agent" class="val-static">---</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="updateTicket()">Commit Changes to Fabric</button>
+                    </div>
+                </div>
+            </div>
+            <div class="genealogy-view">
+                <div class="panel-title">Forensic Genealogy</div>
+                <div class="layer-stack" id="layer-stack">
+                    <div class="layer-item" data-layer="7"><span>7</span> SOVEREIGNTY (Evolution)</div>
+                    <div class="layer-item" data-layer="6"><span>6</span> GOVERNANCE (Rules)</div>
+                    <div class="layer-item" data-layer="5"><span>5</span> EXECUTION (Tools)</div>
+                    <div class="layer-item" data-layer="4"><span>4</span> COGNITION (Inference)</div>
+                    <div class="layer-item" data-layer="3"><span>3</span> SWARM (Consensus)</div>
+                    <div class="layer-item" data-layer="2"><span>2</span> FABRIC (Memory)</div>
+                    <div class="layer-item" data-layer="1"><span>1</span> GENESIS (Root)</div>
+                    <div class="layer-item" data-layer="0"><span>0</span> ABSOLUTE TRUTH</div>
+                </div>
+                <div id="audit-trail" class="audit-list">
+                    <!-- Audit trail items -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Canvas Animation
+        const canvas = document.getElementById('lineage-canvas');
+        const ctx = canvas.getContext('2d');
+        function resize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        window.onresize = resize;
+        resize();
+
+        let particles = [];
+        for(let i=0; i<30; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = 'rgba(0, 242, 255, 0.1)';
+            ctx.lineWidth = 1;
+            particles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fillStyle = '#00f2ff'; ctx.fill();
+                particles.slice(i+1).forEach(p2 => {
+                    let dx = p.x - p2.x; let dy = p.y - p2.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < 150) {
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                });
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+        // API Interactions
+        async function fetchTickets() {
+            try {
+                const response = await fetch('/REST/2.0/tickets');
+                const tickets = await response.json();
+                const list = document.getElementById('ticket-list');
+                list.innerHTML = '';
+                tickets.forEach(t => {
+                    const card = document.createElement('div');
+                    card.className = 'ticket-card';
+                    card.onclick = () => showTicket(t.id);
+                    card.innerHTML = `
+                        <div class="ticket-id">${t.id}</div>
+                        <div class="ticket-title">${t.creator_agent_id} | Layer ${t.layer_id}</div>
+                        <div class="ticket-meta">
+                            <span><i class="fas fa-clock"></i> ${new Date(t.created_at).toLocaleTimeString()}</span>
+                            <span class="tag ${t.status.toLowerCase()}">${t.status}</span>
+                        </div>
+                    `;
+                    list.appendChild(card);
+                });
+                document.getElementById('ticket-count').innerText = tickets.length;
+            } catch (err) { console.error(err); }
+        }
+
+        async function showTicket(id) {
+            const res = await fetch(`/REST/2.0/ticket/${id}`);
+            const data = await res.json();
+            document.getElementById('modal-id').innerText = data.id;
+            document.getElementById('modal-title').innerText = (data.intent && data.intent.title) || 'Untitled Ticket';
+            document.getElementById('modal-content').value = data.content || JSON.stringify(data.intent, null, 2);
+            document.getElementById('modal-status').value = data.status;
+            document.getElementById('modal-agent').innerText = data.creator;
+            
+            document.querySelectorAll('.layer-item').forEach(el => {
+                el.classList.remove('active');
+                if(el.dataset.layer == data.layer) el.classList.add('active');
+            });
+
+            const auditRes = await fetch(`/REST/2.0/ticket/${id}/audit`);
+            const auditData = await auditRes.json();
+            const auditList = document.getElementById('audit-trail');
+            auditList.innerHTML = '<div class="panel-title" style="margin-top:1rem">Audit Trail</div>';
+            (auditData.audit_trail || []).forEach(entry => {
+                const item = document.createElement('div');
+                item.className = 'audit-item';
+                item.innerHTML = `<span style="color:var(--accent-primary)">${entry.action}</span> by ${entry.agent_id} <br> <small>${new Date(entry.created_at).toLocaleString()}</small>`;
+                auditList.appendChild(item);
+            });
+            document.getElementById('ticket-modal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('ticket-modal').style.display = 'none'; }
+
+        async function updateTicket() {
+            const id = document.getElementById('modal-id').innerText;
+            const status = document.getElementById('modal-status').value;
+            await fetch(`/REST/2.0/ticket/${id}`, {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({Status: status})
+            });
+            closeModal();
+            fetchTickets();
+        }
+
+        setInterval(fetchTickets, 5000);
+        fetchTickets();
+        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString(); }, 1000);
+    </script>
+</body>
+</html>

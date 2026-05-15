@@ -1,0 +1,35 @@
+services:
+  db:
+    image: cockroachdb/cockroach:v23.1.13
+    command: start-single-node --insecure
+    ports:
+      - "5196:26257"   # IBP DB Port
+      - "8081:8080"    # DB Console
+    volumes:
+      - cockroach_data:/cockroach/cockroach-data
+
+  vault:
+    image: hashicorp/vault:1.13.3
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=pqr-vault-token
+      - VAULT_ADDR=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+
+  pqr-server:
+    build: .
+    ports:
+      - "3196:8196"    # PQR UI & API Port
+    environment:
+      - DATABASE_URL=postgresql://root@db:26257/antigravity?sslmode=disable
+      - PORT=8196
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_TOKEN=pqr-vault-token
+    depends_on:
+      - db
+      - vault
+
+volumes:
+  cockroach_data:

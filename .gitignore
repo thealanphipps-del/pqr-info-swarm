@@ -1,0 +1,20 @@
+# Binaries
+pqr-server
+*.exe
+*.test
+
+# Docker
+.docker/
+
+# Gemini System
+.gemini/
+brain/
+knowledge/
+
+# Dependencies
+vendor/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
