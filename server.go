@@ -17,7 +17,7 @@ import (
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
 
-const Version = "v1.04"
+const Version = "v1.05"
 
 type Server struct {
 	Service *service.SwarmService
@@ -490,11 +490,11 @@ func (s *Server) handleGemmaChat(c *gin.Context) {
 		ollamaReq := map[string]interface{}{
 			"model": m,
 			"messages": []map[string]interface{}{
-				{"role": "system", "content": contextText},
-				{"role": "user", "content": req.Message},
+				{"role": "user", "content": contextText + "\n\nUser Question: " + req.Message},
 			},
 			"stream": false,
 		}
+
 		body, _ := json.Marshal(ollamaReq)
 		
 		reqObj, _ := http.NewRequest("POST", gemmaURL+"/api/chat", bytes.NewBuffer(body))
