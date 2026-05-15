@@ -11,17 +11,18 @@
     <div class="glow-overlay"></div>
     
     <header>
-        <div class="logo">PQR-INFO-SWARM <span style="font-size: 0.6rem; vertical-align: middle; opacity: 0.5;">v1.05</span></div>
+        <div class="logo">PQR-INFO-SWARM <span style="font-size: 0.6rem; vertical-align: middle; opacity: 0.5;">v1.06</span></div>
         <div class="system-status">
             <div class="status-item"><div class="dot active"></div> FABRIC: ONLINE</div>
             <div class="status-item"><div class="dot active"></div> COUNCIL: 5/5 ACTIVE</div>
-            <div class="status-item"><div class="dot" id="gemma-dot"></div> GEMMA NODE: <span id="gemma-status">CHECKING...</span></div>
+            <div class="status-item"><div class="dot" id="gemma-dot"></div> OLLAMA: <span id="gemma-status">OFFLINE</span></div>
+            <div class="status-item"><div class="dot" id="lm-dot"></div> LM-STUDIO: <span id="lm-status">OFFLINE</span></div>
             <div class="status-item" id="clock">00:00:00</div>
         </div>
     </header>
 
     <main>
-        <aside class="panel">
+        <aside class="panel" style="z-index: 10; pointer-events: auto">
             <div class="panel-header">
                 <div class="panel-title">Active Fabric Tickets</div>
                 <button class="btn-icon" onclick="openCreateModal()"><i class="fas fa-plus"></i></button>
@@ -53,10 +54,13 @@
             </div>
         </section>
 
-        <aside class="panel">
+        <aside class="panel" style="z-index: 10; pointer-events: auto">
             <div class="panel-header">
                 <div class="panel-title">Gemma GPU Node Chat</div>
-                <i class="fas fa-robot text-dim"></i>
+                <select id="chat-engine" class="editable-select" style="width: auto; font-size: 0.6rem">
+                    <option value="gemma">Ollama (169)</option>
+                    <option value="lmstudio">LM Studio (Local)</option>
+                </select>
             </div>
             <div class="chat-container" id="gemma-chat">
                 <div class="audit-item text-dim">System: Connection established to 192.168.12.169</div>
@@ -325,28 +329,9 @@
             fetchTickets();
         }
 
-        async function checkGemma() {
-            try {
-                const res = await fetch('/REST/2.0/health/gemma');
-                const data = await res.json();
-                const dot = document.getElementById('gemma-dot');
-                const label = document.getElementById('gemma-status');
-                
-                label.innerText = data.status;
-                if(data.status === 'ONLINE') {
-                    dot.className = 'dot active';
-                    label.style.color = 'var(--accent-success)';
-                } else {
-                    dot.className = 'dot';
-                    label.style.color = 'var(--accent-error)';
-                }
-            } catch (err) {
-                console.error("Gemma check failed:", err);
-            }
-        }
-
         async function sendChat() {
             const msgInput = document.getElementById('chat-msg');
+            const engine = document.getElementById('chat-engine').value;
             const msg = msgInput.value;
             if(!msg) return;
             
@@ -355,19 +340,44 @@
             msgInput.value = '';
             chat.scrollTop = chat.scrollHeight;
 
+            const endpoint = engine === 'lmstudio' ? '/REST/2.0/chat/lmstudio' : '/REST/2.0/chat/gemma';
+
             try {
-                const res = await fetch('/REST/2.0/chat/gemma', {
+                const res = await fetch(endpoint, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({message: msg})
                 });
                 const data = await res.json();
-                chat.innerHTML += `<div class="audit-item"><span style="color:var(--accent-success)">Gemma:</span> ${data.response}</div>`;
+                chat.innerHTML += `<div class="audit-item"><span style="color:var(--accent-success)">${engine.toUpperCase()}:</span> ${data.response || data.error}</div>`;
                 chat.scrollTop = chat.scrollHeight;
             } catch (err) {
                 chat.innerHTML += `<div class="audit-item text-dim">Error: ${err.message}</div>`;
             }
         }
+
+        async function checkHealth() {
+            // Ollama
+            try {
+                const res = await fetch('/REST/2.0/health/gemma');
+                const data = await res.json();
+                const dot = document.getElementById('gemma-dot');
+                const label = document.getElementById('gemma-status');
+                label.innerText = data.status;
+                dot.className = data.status === 'ONLINE' ? 'dot active' : 'dot';
+            } catch(e) {}
+
+            // LM Studio
+            try {
+                const res = await fetch('/REST/2.0/health/lmstudio');
+                const data = await res.json();
+                const dot = document.getElementById('lm-dot');
+                const label = document.getElementById('lm-status');
+                label.innerText = data.status;
+                dot.className = data.status === 'ONLINE' ? 'dot active' : 'dot';
+            } catch(e) {}
+        }
+        setInterval(checkHealth, 5000);
 
         async function gemmaTicketing() {
             const lines = prompt("How many lines of chat output to ingest into the ticket?", "5");

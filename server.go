@@ -17,7 +17,7 @@ import (
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
 
-const Version = "v1.05"
+const Version = "v1.06"
 
 type Server struct {
 	Service *service.SwarmService
@@ -62,6 +62,8 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService) *Serv
 
 		// Chat & RAG
 		api.POST("/chat/gemma", s.handleGemmaChat)
+		api.POST("/chat/lmstudio", s.handleLMStudioChat)
+		api.GET("/health/lmstudio", s.handleLMStudioHealth)
 		
 		// Self-healing
 		api.POST("/healing/ticket", s.handleCreateHealingTicket)
@@ -583,6 +585,64 @@ func (s *Server) handleGemmaChat(c *gin.Context) {
 		"context":  contextText,
 	})
 }
+
+func (s *Server) handleLMStudioChat(c *gin.Context) {
+	var req struct {
+		Message string `json:"message" binding:"required"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	lmURL := "http://host.docker.internal:1234"
+
+	ollamaReq := map[string]interface{}{
+		"model": "gemma-2-9b-it",
+		"messages": []map[string]interface{}{
+			{"role": "user", "content": req.Message},
+		},
+		"stream": false,
+	}
+	body, _ := json.Marshal(ollamaReq)
+	
+	reqObj, _ := http.NewRequest("POST", lmURL+"/v1/chat/completions", bytes.NewBuffer(body))
+	reqObj.Header.Set("Content-Type", "application/json")
+	
+	client := &http.Client{Timeout: 30 * time.Second}
+	resp, err := client.Do(reqObj)
+	if err != nil {
+		c.JSON(http.StatusServiceUnavailable, gin.H{"error": "LM Studio offline", "details": err.Error()})
+		return
+	}
+	defer resp.Body.Close()
+
+	var result map[string]interface{}
+	json.NewDecoder(resp.Body).Decode(&result)
+	
+	var respText string
+	if choices, ok := result["choices"].([]interface{}); ok && len(choices) > 0 {
+		if choice, ok := choices[0].(map[string]interface{}); ok {
+			if msg, ok := choice["message"].(map[string]interface{}); ok {
+				respText, _ = msg["content"].(string)
+			}
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{"response": respText})
+}
+
+func (s *Server) handleLMStudioHealth(c *gin.Context) {
+	client := http.Client{Timeout: 1 * time.Second}
+	resp, err := client.Get("http://host.docker.internal:1234/v1/models")
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"status": "OFFLINE"})
+		return
+	}
+	defer resp.Body.Close()
+	c.JSON(http.StatusOK, gin.H{"status": "ONLINE"})
+}
+
 
 
 
