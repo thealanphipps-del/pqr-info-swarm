@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/thealanphipps-del/pqr/internal/domain"
@@ -20,6 +21,38 @@ func NewHealingService(repo domain.TicketRepository, svc *SwarmService) *Healing
 		svc:  svc,
 	}
 }
+
+// StartBackgroundWorker kicks off the autonomous healing loop
+func (h *HealingService) StartBackgroundWorker(ctx context.Context) {
+	ticker := time.NewTicker(15 * time.Second)
+	log.Println("⚡ PQR Background Healing Worker: ONLINE")
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case <-ticker.C:
+				h.processPendingTickets(ctx)
+			}
+		}
+	}()
+}
+
+func (h *HealingService) processPendingTickets(ctx context.Context) {
+	// Search for tickets in PENDING state that require healing (Layer 5-7)
+	tickets, err := h.repo.Search(ctx, map[string]interface{}{"status": "PENDING"})
+	if err != nil {
+		return
+	}
+	
+	for _, t := range tickets {
+		if t.LayerID >= 5 {
+			log.Printf("Autonomous Resolution: Found pending Layer %d ticket %s. Initiating healing loop...", t.LayerID, t.ID)
+			h.ProcessHealingLoop(ctx, t.ID)
+		}
+	}
+}
+
 
 // ProcessHealingLoop advances a ticket through the self-healing escalation levels
 func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.UUID) error {

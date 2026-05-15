@@ -82,6 +82,18 @@ func (s *SwarmService) UpdateTicket(ctx context.Context, id uuid.UUID, status st
 	return s.repo.Update(ctx, id, status, title)
 }
 
+func (s *SwarmService) UpdateExtended(ctx context.Context, id uuid.UUID, status, title, resolution, creator string) error {
+	// Cast repository to check for extended update support
+	if r, ok := s.repo.(interface {
+		UpdateExtended(context.Context, uuid.UUID, string, string, string, string) error
+	}); ok {
+		return r.UpdateExtended(ctx, id, status, title, resolution, creator)
+	}
+	// Fallback to basic update
+	return s.repo.Update(ctx, id, status, title)
+}
+
+
 func (s *SwarmService) GetTicketWithContent(ctx context.Context, id uuid.UUID) (*domain.FabricTicket, *domain.FabricContent, error) {
 	return s.repo.GetByID(ctx, id)
 }

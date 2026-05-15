@@ -10,7 +10,7 @@ import { Octokit } from "@octokit/rest";
 import * as fs from 'fs';
 import * as path from 'path';
 
-const PQR_API_URL = process.env.PQR_API_URL || 'http://localhost:8196/REST/2.0';
+const PQR_API_URL = process.env.PQR_API_URL || 'http://localhost:3196/REST/2.0';
 const VAULT_ADDR = process.env.VAULT_ADDR || 'http://localhost:8200';
 const VAULT_TOKEN = process.env.VAULT_TOKEN || 'pqr-vault-token';
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });

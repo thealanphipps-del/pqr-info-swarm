@@ -1,15 +1,23 @@
 package pqr
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"io"
+	"log"
 	"net/http"
 	"os"
+	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/thealanphipps-del/pqr/internal/domain"
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
+
+const Version = "v1.04"
 
 type Server struct {
 	Service *service.SwarmService
@@ -45,10 +53,15 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService) *Serv
 		
 		// Audit and relationships
 		api.GET("/ticket/:id/audit", s.handleGetAuditTrail)
+		api.GET("/ticket/:id/links", s.handleGetLinks)
 		api.POST("/ticket/:parentID/link/:childID", s.handleLinkTickets)
 		
-		// Database health check
+		// Health
 		api.GET("/health", s.handleHealth)
+		api.GET("/health/gemma", s.handleGemmaHealth)
+
+		// Chat & RAG
+		api.POST("/chat/gemma", s.handleGemmaChat)
 		
 		// Self-healing
 		api.POST("/healing/ticket", s.handleCreateHealingTicket)
@@ -146,8 +159,9 @@ func (s *Server) handleUpdateTicket(c *gin.Context) {
 	}
 
 	var req struct {
-		Status string `json:"Status"`
-		Title  string `json:"Title"`
+		Status  string `json:"Status"`
+		Title   string `json:"Title"`
+		Creator string `json:"Creator"`
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -155,7 +169,7 @@ func (s *Server) handleUpdateTicket(c *gin.Context) {
 		return
 	}
 
-	err = s.Service.UpdateTicket(c.Request.Context(), ticketID, req.Status, req.Title)
+	err = s.Service.UpdateExtended(c.Request.Context(), ticketID, req.Status, req.Title, "", req.Creator)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -299,8 +313,11 @@ func (s *Server) handleLinkTickets(c *gin.Context) {
 }
 
 func (s *Server) handleHealth(c *gin.Context) {
-	// Simple health check
-	c.JSON(http.StatusOK, gin.H{"status": "healthy", "service": "PQR-ticketing"})
+	c.JSON(http.StatusOK, gin.H{
+		"service": "PQR-ticketing",
+		"status":  "healthy",
+		"version": Version,
+	})
 }
 
 func (s *Server) handleInitSchema(c *gin.Context) {
@@ -394,3 +411,180 @@ func (s *Server) handleGetDoc(c *gin.Context) {
 
 	c.String(http.StatusOK, string(content))
 }
+
+func (s *Server) handleGemmaHealth(c *gin.Context) {
+	gemmaURL := os.Getenv("GEMMA_ENDPOINT")
+	if gemmaURL == "" {
+		gemmaURL = "http://192.168.12.169:11434"
+	}
+
+	client := http.Client{
+		Timeout: 2 * time.Second,
+	}
+
+	// Ollama responds to /api/tags or just /
+	resp, err := client.Get(gemmaURL + "/api/tags")
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"status": "OFFLINE", "error": err.Error()})
+		return
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK {
+		c.JSON(http.StatusOK, gin.H{"status": "ONLINE", "endpoint": gemmaURL})
+	} else {
+		c.JSON(http.StatusOK, gin.H{"status": "ERROR", "code": resp.StatusCode})
+	}
+}
+func (s *Server) handleGetLinks(c *gin.Context) {
+	idStr := c.Param("id")
+	ticketID, err := uuid.Parse(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid uuid"})
+		return
+	}
+
+	// For now we'll just return an empty list or fetch from DB if implemented
+	// In a real SG-DAO this would query the ticket_relationships table
+	c.JSON(http.StatusOK, gin.H{
+		"ticket_id": ticketID.String(),
+		"links":     []string{},
+	})
+}
+
+func (s *Server) handleGemmaChat(c *gin.Context) {
+	var req struct {
+		Message string `json:"message" binding:"required"`
+		Model   string `json:"model"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	gemmaURL := os.Getenv("GEMMA_ENDPOINT")
+	if gemmaURL == "" {
+		gemmaURL = "http://192.168.12.169:11434"
+	}
+
+	modelName := req.Model
+	if modelName == "" {
+		modelName = os.Getenv("GEMMA_MODEL")
+		if modelName == "" {
+			modelName = "gemma2:2b"
+		}
+	}
+
+	// 1. Retrieval Augmented Context (RAG)
+	contextTickets, _ := s.Service.GetRecentTickets(c.Request.Context(), 3)
+	contextText := "Sovereign Mesh Context:\n"
+	for _, t := range contextTickets {
+		contextText += fmt.Sprintf("- Ticket %s: status is %s\n", t.ID, t.Status)
+	}
+
+	prompt := fmt.Sprintf("%s\nUser: %s\nAssistant:", contextText, req.Message)
+	
+	log.Printf("[GEMMA] Requesting model %s with prompt length %d", modelName, len(prompt))
+
+	performRequest := func(m string) (map[string]interface{}, error) {
+		ollamaReq := map[string]interface{}{
+			"model": m,
+			"messages": []map[string]interface{}{
+				{"role": "system", "content": contextText},
+				{"role": "user", "content": req.Message},
+			},
+			"stream": false,
+		}
+		body, _ := json.Marshal(ollamaReq)
+		
+		reqObj, _ := http.NewRequest("POST", gemmaURL+"/api/chat", bytes.NewBuffer(body))
+		reqObj.Header.Set("Content-Type", "application/json")
+		reqObj.Header.Set("Accept", "application/json")
+		
+		client := &http.Client{Timeout: 30 * time.Second}
+		resp, err := client.Do(reqObj)
+		if err != nil {
+			return nil, err
+		}
+		defer resp.Body.Close()
+		
+		respBytes, _ := io.ReadAll(resp.Body)
+		log.Printf("[GEMMA] Raw Response: %s", string(respBytes))
+		
+		var result map[string]interface{}
+		json.Unmarshal(respBytes, &result)
+		return result, nil
+	}
+
+
+	result, err := performRequest(modelName)
+	if err != nil {
+		c.JSON(http.StatusServiceUnavailable, gin.H{"error": "Gemma offline", "details": err.Error()})
+		return
+	}
+
+	// Fallback logic
+	if errMsg, ok := result["error"].(string); ok && strings.Contains(errMsg, "not found") && modelName == "gemma2:2b" {
+		log.Printf("[GEMMA] Model %s not found, falling back to gemma2", modelName)
+		modelName = "gemma2"
+		result, err = performRequest(modelName)
+		if err != nil {
+			c.JSON(http.StatusServiceUnavailable, gin.H{"error": "Gemma offline during fallback"})
+			return
+		}
+	}
+
+	if errMsg, ok := result["error"].(string); ok {
+		log.Printf("[GEMMA] Error from node: %s", errMsg)
+		
+		// Create a ticket for the failure (Layer 4)
+		ticketContent := domain.FabricContent{
+			IntentBlob: map[string]interface{}{
+				"type":  "CHAT_FAILURE",
+				"query": req.Message,
+				"error": errMsg,
+				"model": modelName,
+			},
+			RawContent: []byte("ERROR: " + errMsg),
+		}
+		s.Service.CreateFabricTicket(c.Request.Context(), 4, "gemma-ai", ticketContent)
+
+		c.JSON(http.StatusOK, gin.H{"response": "ERROR: " + errMsg, "context": contextText})
+		return
+	}
+
+	// 3. Extract Chat Response
+	var respText string
+	if msg, ok := result["message"].(map[string]interface{}); ok {
+		if content, ok := msg["content"].(string); ok {
+			respText = content
+		}
+	}
+
+	if respText == "" {
+		log.Printf("[GEMMA] Empty response from node. Raw: %+v", result)
+		respText = "No response from model."
+	}
+
+	log.Printf("[GEMMA] Response received (%d bytes). Creating ticket...", len(respText))
+	
+	ticketContent := domain.FabricContent{
+		IntentBlob: map[string]interface{}{
+			"type":  "CHAT_VOLLEY",
+			"query": req.Message,
+			"model": modelName,
+		},
+		RawContent: []byte(respText),
+	}
+	s.Service.CreateFabricTicket(c.Request.Context(), 4, "gemma-ai", ticketContent)
+
+	c.JSON(http.StatusOK, gin.H{
+		"response": respText,
+		"context":  contextText,
+	})
+}
+
+
+
+
+

@@ -11,10 +11,11 @@
     <div class="glow-overlay"></div>
     
     <header>
-        <div class="logo">PQR // SWARM HUD v1.0</div>
+        <div class="logo">PQR-INFO-SWARM <span style="font-size: 0.6rem; vertical-align: middle; opacity: 0.5;">v1.04</span></div>
         <div class="system-status">
             <div class="status-item"><div class="dot active"></div> FABRIC: ONLINE</div>
             <div class="status-item"><div class="dot active"></div> COUNCIL: 5/5 ACTIVE</div>
+            <div class="status-item"><div class="dot" id="gemma-dot"></div> GEMMA NODE: <span id="gemma-status">CHECKING...</span></div>
             <div class="status-item" id="clock">00:00:00</div>
         </div>
     </header>
@@ -23,7 +24,7 @@
         <aside class="panel">
             <div class="panel-header">
                 <div class="panel-title">Active Fabric Tickets</div>
-                <i class="fas fa-filter text-dim"></i>
+                <button class="btn-icon" onclick="openCreateModal()"><i class="fas fa-plus"></i></button>
             </div>
             <div class="card-stack" id="ticket-list">
                 <!-- Live Tickets -->
@@ -54,21 +55,24 @@
 
         <aside class="panel">
             <div class="panel-header">
-                <div class="panel-title">Evolutionary Knowledge</div>
-                <i class="fas fa-brain text-dim"></i>
+                <div class="panel-title">Gemma GPU Node Chat</div>
+                <i class="fas fa-robot text-dim"></i>
             </div>
-            <div class="card-stack" id="knowledge-base">
-                <div class="ticket-card" style="border-left: 2px solid var(--accent-success);">
-                    <div class="ticket-id">RESOLVED BY COUNCIL-003</div>
-                    <div class="ticket-title">Optimization of State Vector Search</div>
-                    <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.5rem;">Implemented RAE pattern to bypass redundancy in Iteration 4-6.</p>
-                </div>
+            <div class="chat-container" id="gemma-chat">
+                <div class="audit-item text-dim">System: Connection established to 192.168.12.169</div>
             </div>
+            <div class="chat-input-row">
+                <input type="text" id="chat-msg" class="editable-area" style="height: auto" placeholder="Ask Gemma..." onkeyup="if(event.key==='Enter') sendChat()">
+                <button class="btn-icon" onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 1rem; font-size: 0.7rem; width: 100%" onclick="gemmaTicketing()">
+                <i class="fas fa-ticket-alt"></i> Gemma Ticketing
+            </button>
         </aside>
     </main>
 
-    <!-- Detail Modal -->
-    <div id="ticket-modal" class="modal">
+    <!-- Detail Modal (Moved to root for event clarity) -->
+    <div id="ticket-modal" class="modal" style="z-index: 9999">
         <div class="modal-content">
             <div class="detail-view">
                 <div class="modal-header">
@@ -99,6 +103,17 @@
                                 <div id="modal-agent" class="val-static">---</div>
                             </div>
                         </div>
+                        <div class="field">
+                            <label>Assigned Agent / Role</label>
+                            <input type="text" id="modal-reassign" class="editable-area" style="height: auto" placeholder="Enter Agent ID...">
+                        </div>
+                        <div class="field">
+                            <label>Lineage (Parent/Children)</label>
+                            <div id="modal-lineage" class="audit-list" style="margin-top:0">
+                                <!-- Lineage items -->
+                            </div>
+                        </div>
+
                         <button class="btn btn-primary" onclick="updateTicket()">Commit Changes to Fabric</button>
                     </div>
                 </div>
@@ -119,6 +134,34 @@
                     <!-- Audit trail items -->
                 </div>
             </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Ticket Modal -->
+    <div id="create-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px">
+            <div class="modal-header">
+                <h2>New Fabric Ticket</h2>
+                <button class="close-btn" onclick="closeCreateModal()">&times;</button>
+            </div>
+            <div class="field">
+                <label>Subject</label>
+                <input type="text" id="create-subject" class="editable-area" style="height: auto">
+            </div>
+            <div class="field">
+                <label>Layer</label>
+                <select id="create-layer" class="editable-select">
+                    <option value="2">2 - FABRIC (Default)</option>
+                    <option value="5">5 - EXECUTION (Healing)</option>
+                    <option value="7">7 - SOVEREIGNTY</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Content (URL/Error)</label>
+                <textarea id="create-content" rows="6" class="editable-area"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitTicket()">Commit New Ticket</button>
         </div>
     </div>
 
@@ -179,7 +222,7 @@
                         <div class="ticket-id">${t.id}</div>
                         <div class="ticket-title">${t.creator_agent_id} | Layer ${t.layer_id}</div>
                         <div class="ticket-meta">
-                            <span><i class="fas fa-clock"></i> ${new Date(t.created_at).toLocaleTimeString()}</span>
+                            <span><i class="fas fa-clock"></i> ${new Date(t.created_at).toUTCString().split(' ')[4]} (UTC)</span>
                             <span class="tag ${t.status.toLowerCase()}">${t.status}</span>
                         </div>
                     `;
@@ -190,30 +233,55 @@
         }
 
         async function showTicket(id) {
-            const res = await fetch(`/REST/2.0/ticket/${id}`);
-            const data = await res.json();
-            document.getElementById('modal-id').innerText = data.id;
-            document.getElementById('modal-title').innerText = (data.intent && data.intent.title) || 'Untitled Ticket';
-            document.getElementById('modal-content').value = data.content || JSON.stringify(data.intent, null, 2);
-            document.getElementById('modal-status').value = data.status;
-            document.getElementById('modal-agent').innerText = data.creator;
-            
-            document.querySelectorAll('.layer-item').forEach(el => {
-                el.classList.remove('active');
-                if(el.dataset.layer == data.layer) el.classList.add('active');
-            });
+            try {
+                const res = await fetch(`/REST/2.0/ticket/${id}`);
+                const data = await res.json();
+                
+                document.getElementById('modal-id').innerText = data.id;
+                document.getElementById('modal-title').innerText = data.intent?.subject || data.intent?.title || 'Untitled Ticket';
+                document.getElementById('modal-content').value = data.content || JSON.stringify(data.intent, null, 2);
+                document.getElementById('modal-status').value = data.status;
+                document.getElementById('modal-agent').innerText = data.creator;
+                document.getElementById('modal-reassign').value = data.creator;
+                
+                // Fetch Lineage
+                const auditRes = await fetch(`/REST/2.0/ticket/${id}/audit`);
+                const auditData = await auditRes.json();
+                
+                const linkRes = await fetch(`/REST/2.0/ticket/${id}/links`);
+                const linkData = await linkRes.json();
 
-            const auditRes = await fetch(`/REST/2.0/ticket/${id}/audit`);
-            const auditData = await auditRes.json();
-            const auditList = document.getElementById('audit-trail');
-            auditList.innerHTML = '<div class="panel-title" style="margin-top:1rem">Audit Trail</div>';
-            (auditData.audit_trail || []).forEach(entry => {
-                const item = document.createElement('div');
-                item.className = 'audit-item';
-                item.innerHTML = `<span style="color:var(--accent-primary)">${entry.action}</span> by ${entry.agent_id} <br> <small>${new Date(entry.created_at).toLocaleString()}</small>`;
-                auditList.appendChild(item);
-            });
-            document.getElementById('ticket-modal').style.display = 'flex';
+                // Show layer active state
+                document.querySelectorAll('.layer-item').forEach(el => {
+                    el.classList.remove('active');
+                    if(el.dataset.layer == data.layer) el.classList.add('active');
+                });
+
+                const auditList = document.getElementById('audit-trail');
+                auditList.innerHTML = '<div class="panel-title" style="margin-top:1rem">Audit Trail</div>';
+                (auditData.audit_trail || []).forEach(entry => {
+                    const item = document.createElement('div');
+                    item.className = 'audit-item';
+                    item.innerHTML = `<span style="color:var(--accent-primary)">${entry.action}</span> by ${entry.agent_id} <br> <small>${new Date(entry.created_at).toUTCString()}</small>`;
+                    auditList.appendChild(item);
+                });
+
+                const lineageList = document.getElementById('modal-lineage');
+                lineageList.innerHTML = '';
+                (linkData.links || []).length > 0 ? 
+                    linkData.links.forEach(link => {
+                        const item = document.createElement('div');
+                        item.className = 'audit-item';
+                        item.innerHTML = `<i class="fas fa-link"></i> ${link}`;
+                        lineageList.appendChild(item);
+                    }) : 
+                    lineageList.innerHTML = '<div class="audit-item text-dim">No links recorded</div>';
+
+                document.getElementById('ticket-modal').style.display = 'flex';
+
+            } catch (err) {
+                console.error("Failed to show ticket:", err);
+            }
         }
 
         function closeModal() { document.getElementById('ticket-modal').style.display = 'none'; }
@@ -221,18 +289,115 @@
         async function updateTicket() {
             const id = document.getElementById('modal-id').innerText;
             const status = document.getElementById('modal-status').value;
+            const creator = document.getElementById('modal-reassign').value;
+            
             await fetch(`/REST/2.0/ticket/${id}`, {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({Status: status})
+                body: JSON.stringify({
+                    Status: status,
+                    Creator: creator
+                })
             });
             closeModal();
             fetchTickets();
         }
 
+        function openCreateModal() { document.getElementById('create-modal').style.display = 'flex'; }
+        function closeCreateModal() { document.getElementById('create-modal').style.display = 'none'; }
+
+        async function submitTicket() {
+            const subject = document.getElementById('create-subject').value;
+            const layer = parseInt(document.getElementById('create-layer').value);
+            const content = document.getElementById('create-content').value;
+            
+            await fetch('/REST/2.0/ticket', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    Subject: subject,
+                    Layer: layer,
+                    Text: content,
+                    AgentID: 'rest-user'
+                })
+            });
+            closeCreateModal();
+            fetchTickets();
+        }
+
+        async function checkGemma() {
+            try {
+                const res = await fetch('/REST/2.0/health/gemma');
+                const data = await res.json();
+                const dot = document.getElementById('gemma-dot');
+                const label = document.getElementById('gemma-status');
+                
+                label.innerText = data.status;
+                if(data.status === 'ONLINE') {
+                    dot.className = 'dot active';
+                    label.style.color = 'var(--accent-success)';
+                } else {
+                    dot.className = 'dot';
+                    label.style.color = 'var(--accent-error)';
+                }
+            } catch (err) {
+                console.error("Gemma check failed:", err);
+            }
+        }
+
+        async function sendChat() {
+            const msgInput = document.getElementById('chat-msg');
+            const msg = msgInput.value;
+            if(!msg) return;
+            
+            const chat = document.getElementById('gemma-chat');
+            chat.innerHTML += `<div class="audit-item"><span style="color:var(--accent-secondary)">User:</span> ${msg}</div>`;
+            msgInput.value = '';
+            chat.scrollTop = chat.scrollHeight;
+
+            try {
+                const res = await fetch('/REST/2.0/chat/gemma', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({message: msg})
+                });
+                const data = await res.json();
+                chat.innerHTML += `<div class="audit-item"><span style="color:var(--accent-success)">Gemma:</span> ${data.response}</div>`;
+                chat.scrollTop = chat.scrollHeight;
+            } catch (err) {
+                chat.innerHTML += `<div class="audit-item text-dim">Error: ${err.message}</div>`;
+            }
+        }
+
+        async function gemmaTicketing() {
+            const lines = prompt("How many lines of chat output to ingest into the ticket?", "5");
+            if(!lines) return;
+            
+            const chat = document.getElementById('gemma-chat');
+            const items = chat.querySelectorAll('.audit-item');
+            let content = Array.from(items).slice(-parseInt(lines)).map(i => i.innerText).join('\n');
+
+            await fetch('/REST/2.0/ticket', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    Subject: "GEMMA GENERATED RESOLUTION",
+                    Layer: 2,
+                    Text: content,
+                    AgentID: 'gemma-ai'
+                })
+            });
+            fetchTickets();
+        }
+
         setInterval(fetchTickets, 5000);
+        setInterval(checkGemma, 10000);
         fetchTickets();
-        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString(); }, 1000);
+        checkGemma();
+        setInterval(() => { 
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toUTCString().split(' ')[4] + ' (UTC)'; 
+        }, 1000);
     </script>
 </body>
 </html>

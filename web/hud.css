@@ -102,6 +102,33 @@ main {
     gap: 1rem;
 }
 
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    color: var(--accent-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
 .ticket-card {
     background: var(--bg-panel);
     border: 1px solid var(--border);
@@ -155,7 +182,9 @@ main {
 #canvas-container {
     flex: 1;
     position: relative;
+    pointer-events: none;
 }
+
 
 .hud-overlay {
     position: absolute;

@@ -111,8 +111,16 @@ func (r *CockroachRepository) UpdateExtended(ctx context.Context, id uuid.UUID, 
 		}
 	}
 
+	if resolvedBy != "" && resolution == "" { // Using resolvedBy for reassignment if resolution is empty
+		_, err := r.db.ExecContext(ctx, `UPDATE tickets SET creator_agent_id = $1 WHERE ticket_id = $2`, resolvedBy, id)
+		if err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
+
 
 func (r *CockroachRepository) AddFailedAttempt(ctx context.Context, id uuid.UUID, attempt string) error {
 	_, err := r.db.ExecContext(ctx, `
@@ -353,3 +361,39 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 	}
 	return nil
 }
+
+func (r *CockroachRepository) Search(ctx context.Context, criteria map[string]interface{}) ([]domain.FabricTicket, error) {
+	query := `SELECT ticket_id, layer_id, creator_agent_id, status, created_at FROM tickets WHERE 1=1`
+	var args []interface{}
+	i := 1
+	for k, v := range criteria {
+		// Basic sanitization: check against allowed column names
+		allowedColumns := map[string]bool{"status": true, "layer_id": true, "creator_agent_id": true}
+		columnName := k
+		if k == "layer" { columnName = "layer_id" } // Map friendly name
+		
+		if allowedColumns[columnName] {
+			query += fmt.Sprintf(" AND %s = $%d", columnName, i)
+			args = append(args, v)
+			i++
+		}
+	}
+	query += " ORDER BY created_at DESC"
+
+	rows, err := r.db.QueryContext(ctx, query, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var tickets []domain.FabricTicket
+	for rows.Next() {
+		var t domain.FabricTicket
+		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.CreatedAt); err != nil {
+			return nil, err
+		}
+		tickets = append(tickets, t)
+	}
+	return tickets, nil
+}
+

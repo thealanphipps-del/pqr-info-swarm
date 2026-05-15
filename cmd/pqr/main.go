@@ -11,6 +11,10 @@ import (
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
 
+const (
+	Version = "v1.02"
+)
+
 func main() {
 	connStr := os.Getenv("DATABASE_URL")
 	if connStr == "" {
@@ -26,6 +30,9 @@ func main() {
 	// 2. Initialize Service Layer
 	swarmService := service.NewSwarmService(repo, repo)
 	healingService := service.NewHealingService(repo, swarmService)
+
+	// Start Background Healing Worker
+	healingService.StartBackgroundWorker(context.Background())
 
 	// 3. Initialize Schema with timeout
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)

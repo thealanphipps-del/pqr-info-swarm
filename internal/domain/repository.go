@@ -17,6 +17,7 @@ type TicketRepository interface {
 	AddAudit(ctx context.Context, entry AuditEntry) error
 	AddFailedAttempt(ctx context.Context, id uuid.UUID, attempt string) error
 	FindSimilarResolutions(ctx context.Context, vector []float64, limit int) ([]FabricTicket, error)
+	Search(ctx context.Context, criteria map[string]interface{}) ([]FabricTicket, error)
 }
 
 // AgentMemoryRepository defines the interface for agent-specific memory storage
