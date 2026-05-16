@@ -11,7 +11,7 @@
     <div class="glow-overlay"></div>
     
     <header>
-        <div class="logo">PQR-INFO-SWARM <span style="font-size: 0.6rem; vertical-align: middle; opacity: 0.5;">v1.06</span></div>
+        <div class="logo">PQR-INFO-SWARM <span style="font-size: 0.6rem; vertical-align: middle; opacity: 0.5;">v1.07</span></div>
         <div class="system-status">
             <div class="status-item"><div class="dot active"></div> FABRIC: ONLINE</div>
             <div class="status-item"><div class="dot active"></div> COUNCIL: 5/5 ACTIVE</div>
@@ -58,6 +58,7 @@
             <div class="panel-header">
                 <div class="panel-title">Gemma GPU Node Chat</div>
                 <select id="chat-engine" class="editable-select" style="width: auto; font-size: 0.6rem">
+                    <option value="swarm">Swarm Balanced</option>
                     <option value="gemma">Ollama (169)</option>
                     <option value="lmstudio">LM Studio (Local)</option>
                 </select>
@@ -65,6 +66,15 @@
             <div class="chat-container" id="gemma-chat">
                 <div class="audit-item text-dim">System: Connection established to 192.168.12.169</div>
             </div>
+            <!-- Token Quota Sentinel -->
+            <div id="token-quota-container" class="quota-container">
+                <div class="quota-label">TOKEN QUOTA</div>
+                <div class="quota-track">
+                    <div id="token-progress-bar" class="quota-fill" style="width: 0%"></div>
+                </div>
+                <div id="token-quota-text" class="quota-percent">0%</div>
+            </div>
+
             <div class="chat-input-row">
                 <input type="text" id="chat-msg" class="editable-area" style="height: auto" placeholder="Ask Gemma..." onkeyup="if(event.key==='Enter') sendChat()">
                 <button class="btn-icon" onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
@@ -340,7 +350,9 @@
             msgInput.value = '';
             chat.scrollTop = chat.scrollHeight;
 
-            const endpoint = engine === 'lmstudio' ? '/REST/2.0/chat/lmstudio' : '/REST/2.0/chat/gemma';
+            let endpoint = '/REST/2.0/chat/gemma';
+            if(engine === 'lmstudio') endpoint = '/REST/2.0/chat/lmstudio';
+            if(engine === 'swarm') endpoint = '/REST/2.0/chat/swarm';
 
             try {
                 const res = await fetch(endpoint, {
@@ -377,7 +389,26 @@
                 dot.className = data.status === 'ONLINE' ? 'dot active' : 'dot';
             } catch(e) {}
         }
+
+        async function updateTokenMetrics() {
+            try {
+                const res = await fetch('/REST/2.0/metrics/tokens');
+                const data = await res.json();
+                const bar = document.getElementById('token-progress-bar');
+                const text = document.getElementById('token-quota-text');
+                const percent = data.usage_percentage.toFixed(2);
+                bar.style.width = `${percent}%`;
+                text.innerText = `${percent}%`;
+
+                // Color shift for high usage
+                if(percent > 90) bar.style.background = 'linear-gradient(90deg, #ff4b2b, #ff416c)';
+                else if(percent > 75) bar.style.background = 'linear-gradient(90deg, #f7971e, #ffd200)';
+                else bar.style.background = 'linear-gradient(90deg, #00f2ff, #0066ff)';
+            } catch(e) {}
+        }
+
         setInterval(checkHealth, 5000);
+        setInterval(updateTokenMetrics, 5000);
 
         async function gemmaTicketing() {
             const lines = prompt("How many lines of chat output to ingest into the ticket?", "5");

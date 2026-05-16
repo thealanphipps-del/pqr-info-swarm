@@ -60,7 +60,7 @@ func (r *CockroachRepository) SeedTickets(ctx context.Context) error {
 		return nil // Already seeded
 	}
 
-	if err := r.Create(ctx, genesisTicket, genesisContent); err != nil {
+	if err := r.CreateTicket(ctx, genesisTicket, genesisContent); err != nil {
 		return fmt.Errorf("failed to create genesis ticket: %v", err)
 	}
 
@@ -79,7 +79,7 @@ func (r *CockroachRepository) SeedTickets(ctx context.Context) error {
 		RawContent: []byte("Initializing autonomous nodes and establishing P2P consensus mesh."),
 	}
 	
-	if err := r.Create(ctx, initTicket, initContent); err != nil {
+	if err := r.CreateTicket(ctx, initTicket, initContent); err != nil {
 		return fmt.Errorf("failed to create init ticket: %v", err)
 	}
 	r.Link(ctx, genesisID, initID, domain.RelEvolution)
@@ -109,7 +109,7 @@ func (r *CockroachRepository) SeedTickets(ctx context.Context) error {
 			IntentBlob: map[string]interface{}{"title": at.Title},
 			RawContent: []byte(at.Content),
 		}
-		if err := r.Create(ctx, t, c); err != nil {
+		if err := r.CreateTicket(ctx, t, c); err != nil {
 			return fmt.Errorf("failed to create active ticket %s: %v", at.Title, err)
 		}
 		r.Link(ctx, initID, tid, domain.RelEvolution)

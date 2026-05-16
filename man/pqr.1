@@ -1,0 +1,19 @@
+﻿.TH PQR 1 "2026-05-15" "v1.07" "PQR Sovereign Bridge"
+.SH NAME
+pqr \- Emergency management CLI for the PQR Sovereign Node
+.SH SYNOPSIS
+pqr [COMMAND] [PARAMS]
+.SH DESCRIPTION
+pqr is a WSL-native script that communicates with the PQR emergency bridge. It allows for out-of-band management of the swarm when the primary UI is unreachable.
+.SH COMMANDS
+.TP
+GET_SYSTEM_HEALTH
+Returns the status, version, and uptime of the node.
+.TP
+LIST_RECENT_TICKETS
+Retrieves the last 10 forensic tickets from the fabric.
+.TP
+TRIGGER_HEALING [ISSUE]
+Manually initiates a healing loop for a specified issue.
+.SH FILES
+~/.env - Contains the GEMINI_API_KEY for authentication.

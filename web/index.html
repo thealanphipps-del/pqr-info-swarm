@@ -3,77 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PQR Wiki | Forensic Swarm Documentation</title>
-    <link rel="stylesheet" href="index.css">
+    <title>PQR | The Sovereign Swarm Node</title>
+    <meta name="description" content="PQR is a self-healing, autonomous swarm governance node for the decentralized future.">
+    <link rel="stylesheet" href="static/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body class="wiki-mode">
+<body class="landing-page">
     <div class="glow-bg"></div>
     
-    <header class="wiki-header">
-        <div class="logo">PQR SG-DAO // RC-1</div>
-        <div class="header-tools">
-            <a href="/hud" class="btn-hud"><i class="fas fa-terminal"></i> Enter HUD</a>
+    <nav class="main-nav">
+        <div class="logo">PQR.INFO</div>
+        <div class="nav-links">
+            <a href="/wiki">Documentation</a>
+            <a href="/hud" class="btn-hud">Enter HUD</a>
+            <a href="/saml/sso" class="btn-login"><i class="fab fa-github"></i> GHE Login</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="SOVEREIGN SWARM">SOVEREIGN SWARM</h1>
+            <p class="hero-tagline">Autonomous Self-Healing Infrastructure for the SG-DAO.</p>
+            <div class="hero-actions">
+                <a href="/hud" class="btn-primary">Initialize Node</a>
+                <a href="/wiki" class="btn-secondary">Read the Wiki</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-core">
+                <img src="static/assets/hero.png" alt="Sovereign Core">
+            </div>
+            <div class="orbital-rings">
+                <div class="ring"></div>
+                <div class="ring"></div>
+            </div>
         </div>
     </header>
 
-    <div class="wiki-container">
-        <aside class="wiki-sidebar">
-            <nav id="wiki-nav">
-                <div class="nav-section">Core Infrastructure</div>
-                <a href="#README" class="nav-item active" onclick="loadDoc('README')">Overview (RC-1)</a>
-                <a href="#ARCHITECTURE" class="nav-item" onclick="loadDoc('ARCHITECTURE')">Architecture</a>
-                
-                <div class="nav-section">Governance</div>
-                <a href="#GOVERNANCE" class="nav-item" onclick="loadDoc('GOVERNANCE')">Sticky Rules</a>
-                <a href="#HYPERDEVELOPMENT" class="nav-item" onclick="loadDoc('HYPERDEVELOPMENT')">Self-Healing</a>
-                
-                <div class="nav-section">Synthesis</div>
-                <a href="#METAPROGRAMMING" class="nav-item" onclick="loadDoc('METAPROGRAMMING')">Metaprogramming</a>
-                <a href="#SOVEREIGN_SCRIPT" class="nav-item" onclick="loadDoc('SOVEREIGN_SCRIPT')">Sovereign Script</a>
-                
-                <div class="nav-section">Developers</div>
-                <a href="#API_REFERENCE" class="nav-item" onclick="loadDoc('API_REFERENCE')">REST 2.0 Reference</a>
-            </nav>
-        </aside>
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Forensic Integrity</h3>
+            <p>Every ticket in the Fabric is hashed and linked to a parent, ensuring a zero-divergence audit trail.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Self-Healing</h3>
+            <p>Layer 7 autonomous agents detect failures and trigger metaprogramming loops to self-mutate and resolve.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h3>Swarm Governance</h3>
+            <p>Powered by a 64-agent consensus mesh running the Seven Sticky Rules of the SG-DAO.</p>
+        </div>
+    </section>
 
-        <main class="wiki-content" id="wiki-content">
-            <!-- Content will be injected here -->
-        </main>
-    </div>
+    <section class="status-mesh">
+        <div class="mesh-info">
+            <h2>Current Mesh State</h2>
+            <!-- Token Quota Bar -->
+            <div id="token-quota-container" class="quota-container">
+                <div class="quota-label">TOKEN QUOTA</div>
+                <div class="quota-track">
+                    <div id="token-progress-bar" class="quota-fill" style="width: 0%"></div>
+                </div>
+                <div id="token-quota-text" class="quota-percent">0%</div>
+            </div>
+
+            <div class="input-area">
+                <div class="stat-item">
+                    <span class="stat-label">Version</span>
+                    <span class="stat-value">v1.07 RC-1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Sovereignty</span>
+                    <span class="stat-value">LEVEL 7</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Auth Provider</span>
+                    <span class="stat-value">SAML 2.0</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 PQR Info Swarm Wiki. Part of the Sovereign Node Ecosystem.</p>
+        <p>&copy; 2026 PQR Sovereign Node. Licensed under the SG-DAO Genesis Charter.</p>
+        <div class="footer-links">
+            <a href="https://github.com/thealanphipps-del/pqr">Source</a>
+            <a href="mailto:dao@pqr.info">dao@pqr.info</a>
+        </div>
     </footer>
 
     <script>
-        async function loadDoc(name) {
-            try {
-                const response = await fetch(`/REST/2.0/docs/${name}`);
-                const markdown = await response.text();
-                document.getElementById('wiki-content').innerHTML = marked.parse(markdown);
-                
-                // Update active state
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                event.target.classList.add('active');
-            } catch (err) {
-                console.error("Failed to load doc:", err);
-            }
-        }
-
-        // Default load
-        loadDoc('README');
-
-        // Simple navigation handling for static sections
-        document.querySelectorAll('.nav-item').forEach(item => {
-            if(!item.onclick) {
-                item.addEventListener('click', () => {
-                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                });
-            }
-        });
+        // Subtle parallax or interactions can go here
     </script>
 </body>
 </html>

@@ -43,7 +43,7 @@ func (s *SwarmService) CreateFabricTicket(ctx context.Context, layer int, agentI
 		Status:         "PENDING",
 	}
 
-	if err := s.repo.Create(ctx, ticket, &content); err != nil {
+	if err := s.repo.CreateTicket(ctx, ticket, &content); err != nil {
 		return uuid.Nil, err
 	}
 
@@ -112,6 +112,14 @@ func (s *SwarmService) GetAgentContext(ctx context.Context, agentID string, limi
 
 func (s *SwarmService) GetAuditTrail(ctx context.Context, id uuid.UUID) ([]domain.AuditEntry, error) {
 	return s.repo.GetAuditTrail(ctx, id)
+}
+
+func (s *SwarmService) IncrementMetric(ctx context.Context, key string, amount float64) error {
+	return s.repo.IncrementMetric(ctx, key, amount)
+}
+
+func (s *SwarmService) GetMetric(ctx context.Context, key string) (float64, float64, error) {
+	return s.repo.GetMetric(ctx, key)
 }
 
 func (s *SwarmService) InitSchema(ctx context.Context) error {

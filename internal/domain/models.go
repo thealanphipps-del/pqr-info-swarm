@@ -60,3 +60,12 @@ type AuditEntry struct {
 	NewValue  map[string]interface{} `json:"new_value,omitempty"`
 	CreatedAt time.Time              `json:"created_at"`
 }
+
+// User represents a human or system user for authentication
+type User struct {
+	ID          uuid.UUID `json:"id"`
+	Username    string    `json:"username"`
+	Email       string    `json:"email"`
+	DisplayName string    `json:"display_name"`
+	CreatedAt   time.Time `json:"created_at"`
+}

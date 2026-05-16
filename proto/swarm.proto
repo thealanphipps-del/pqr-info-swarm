@@ -1,0 +1,61 @@
+syntax = "proto3";
+package swarm;
+option go_package = "./internal/infrastructure/grpc";
+
+message SwarmPacket {
+    string sender_id = 1;      // 5alpha# shortcode
+    string target_id = 2;      // Target node or 'ALL'
+    string intent = 3;         // Command/Intent string
+    bytes payload = 4;         // Serialized data
+    int64 timestamp = 5;       // Unix nanos
+    string ticket_id = 6;      // Associated Fabric Ticket ID
+}
+
+service SwarmCommunication {
+    // Port 1111: Logged Consensus
+    rpc SendPacket(SwarmPacket) returns (SwarmPacket);
+    rpc StreamDeliberation(stream SwarmPacket) returns (stream SwarmPacket);
+    rpc ProvisionShortcode(ShortcodeRequest) returns (ShortcodeResponse);
+    rpc GetActiveShortcodes(Empty) returns (ShortcodeList);
+    
+    // Legacy AELLOK Compatibility
+    rpc ExecuteStrike(StrikeRequest) returns (StrikeResponse);
+    rpc SyncBlackhole(stream BlackholeUpdate) returns (stream BlackholeUpdate);
+}
+
+// Gossip Bus (Port 11111) defined conceptually as a zero-copy stream
+service NeuralGossip {
+    rpc StreamVitality(TelemetryRequest) returns (stream TelemetryData);
+    rpc MemoryPageSwap(stream MemoryPage) returns (stream MemoryPage);
+}
+
+message StrikeRequest {
+    string ticket_id = 1;
+    string logic_payload = 2;
+    bytes signature = 3;
+}
+
+message StrikeResponse {
+    int32 exit_code = 1;
+    string log_output = 2;
+    string proof_hash = 3;
+}
+
+message BlackholeUpdate {
+    bytes identifier_hash = 1;
+    bool is_revoked = 2;
+}
+
+message TelemetryRequest { string node_id = 1; }
+message TelemetryData { double vitality_score = 1; double slope = 2; }
+
+message MemoryPage {
+    string page_id = 1;
+    bytes data = 2;
+    uint64 offset = 3;
+}
+
+message ShortcodeRequest { string role = 1; }
+message ShortcodeResponse { string shortcode = 1; }
+message ShortcodeList { repeated string shortcodes = 1; }
+message Empty {}

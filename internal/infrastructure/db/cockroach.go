@@ -22,7 +22,22 @@ func NewCockroachRepository(connStr string) (*CockroachRepository, error) {
 	return &CockroachRepository{db: db}, nil
 }
 
-func (r *CockroachRepository) Create(ctx context.Context, t *domain.FabricTicket, c *domain.FabricContent) error {
+func (r *CockroachRepository) IncrementMetric(ctx context.Context, key string, amount float64) error {
+	_, err := r.db.ExecContext(ctx, `
+		UPDATE metrics 
+		SET value = value + $1, updated_at = CURRENT_TIMESTAMP 
+		WHERE key = $2
+	`, amount, key)
+	return err
+}
+
+func (r *CockroachRepository) GetMetric(ctx context.Context, key string) (float64, float64, error) {
+	var value, quota float64
+	err := r.db.QueryRowContext(ctx, "SELECT value, quota FROM metrics WHERE key = $1", key).Scan(&value, &quota)
+	return value, quota, err
+}
+
+func (r *CockroachRepository) CreateTicket(ctx context.Context, t *domain.FabricTicket, c *domain.FabricContent) error {
 	tx, err := r.db.BeginTx(ctx, nil)
 	if err != nil {
 		return err
@@ -285,6 +300,38 @@ func (r *CockroachRepository) AddAudit(ctx context.Context, entry domain.AuditEn
 	return err
 }
 
+func (r *CockroachRepository) CreateUser(ctx context.Context, u *domain.User) error {
+	_, err := r.db.ExecContext(ctx, `
+		INSERT INTO users (user_id, username, email, display_name)
+		VALUES ($1, $2, $3, $4)
+	`, u.ID, u.Username, u.Email, u.DisplayName)
+	return err
+}
+
+func (r *CockroachRepository) GetByUsername(ctx context.Context, username string) (*domain.User, error) {
+	var u domain.User
+	err := r.db.QueryRowContext(ctx, `
+		SELECT user_id, username, email, display_name, created_at
+		FROM users WHERE username = $1
+	`, username).Scan(&u.ID, &u.Username, &u.Email, &u.DisplayName, &u.CreatedAt)
+	if err != nil {
+		return nil, err
+	}
+	return &u, nil
+}
+
+func (r *CockroachRepository) GetByEmail(ctx context.Context, email string) (*domain.User, error) {
+	var u domain.User
+	err := r.db.QueryRowContext(ctx, `
+		SELECT user_id, username, email, display_name, created_at
+		FROM users WHERE email = $1
+	`, email).Scan(&u.ID, &u.Username, &u.Email, &u.DisplayName, &u.CreatedAt)
+	if err != nil {
+		return nil, err
+	}
+	return &u, nil
+}
+
 func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 	tables := []string{
 		`CREATE TABLE IF NOT EXISTS tickets (
@@ -307,6 +354,13 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 			role STRING NOT NULL,
 			level INT NOT NULL DEFAULT 0,
 			metadata JSONB,
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+		)`,
+		`CREATE TABLE IF NOT EXISTS users (
+			user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+			username STRING UNIQUE NOT NULL,
+			email STRING UNIQUE,
+			display_name STRING,
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE TABLE IF NOT EXISTS ticket_content (
@@ -352,6 +406,12 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 			INDEX idx_agent (agent_id),
 			INDEX idx_created (created_at DESC)
 		)`,
+		`CREATE TABLE IF NOT EXISTS metrics (
+			key STRING PRIMARY KEY,
+			value FLOAT8 NOT NULL,
+			quota FLOAT8 DEFAULT 1000000.0,
+			updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+		)`,
 	}
 
 	for _, table := range tables {
@@ -359,6 +419,10 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 			return err
 		}
 	}
+
+	// Seed metrics
+	_, _ = r.db.ExecContext(ctx, "INSERT INTO metrics (key, value, quota) VALUES ('tokens_used', 0.0, 1000000.0) ON CONFLICT DO NOTHING")
+	
 	return nil
 }
 

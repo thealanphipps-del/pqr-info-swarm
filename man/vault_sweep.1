@@ -1,0 +1,7 @@
+﻿.TH VAULT_SWEEP 1 "2026-05-15" "v1.0" "PQR Secret Hardening"
+.SH NAME
+vault_sweep \- Securely migrates local .env secrets into HashiCorp Vault
+.SH SYNOPSIS
+.\sweep_secrets.ps1
+.SH DESCRIPTION
+vault_sweep parses a local .env file and pushes all keys into the PQR Vault (secret/pqr). This is a critical step for hardening the Sovereign Node against local credential leakage.

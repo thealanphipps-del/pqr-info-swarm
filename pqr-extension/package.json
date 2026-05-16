@@ -27,6 +27,10 @@
       {
         "command": "pqr.setupVault",
         "title": "PQR: Setup Vault (Sweep .env)"
+      },
+      {
+        "command": "pqr.emergencyRepair",
+        "title": "PQR: Emergency Sovereign Repair"
       }
     ],
     "viewsContainers": {

@@ -4,32 +4,19 @@
 
 **New to the system?** Read in this order:
 
-1. **[DELIVERY_SUMMARY.md](DELIVERY_SUMMARY.md)** - 5 min overview
-   - What was built
-   - Quick start
-   - System stats
-
-2. **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Agent cheat sheet
-   - API quick examples
-   - Code templates (Go, Python, Node.js)
-   - Key concepts
-
-3. **[SETUP.md](SETUP.md)** - Get it running
-   - Step-by-step setup
-   - Windows/Linux instructions
-   - Troubleshooting
-
-4. **[README.md](README.md)** - Complete reference
-   - Full API documentation
-   - 70+ examples
-   - All features explained
+1. **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Sovereign Mesh Overview
+2. **[docs/IDENTITY_FABRIC.md](docs/IDENTITY_FABRIC.md)** - SAML & Cloudflare Security
+3. **[docs/EMERGENCY_BRIDGE.md](docs/EMERGENCY_BRIDGE.md)** - Gemini Break-Glass Protocol
+4. **[docs/SELF_HEALING_LOGIC.md](docs/SELF_HEALING_LOGIC.md)** - 11-Layer Healing Logic
 
 ## 📖 Documentation by Role
 
 ### For Operators/DevOps
 1. Start: [SETUP.md](SETUP.md) - Installation & configuration
 2. Verify: [VERIFICATION_CHECKLIST.md](VERIFICATION_CHECKLIST.md) - System check
-3. Monitor: [QUICK_REFERENCE.md](QUICK_REFERENCE.md#testing-windows-powershell) - Health endpoints
+3. Guard: [docs/SENTINEL_GUARDIAN.md](docs/SENTINEL_GUARDIAN.md) - Host-side watchdog
+4. Expand: [docs/MULTI_NODE_MESH.md](docs/MULTI_NODE_MESH.md) - Multi-node deployment
+5. Monitor: [QUICK_REFERENCE.md](QUICK_REFERENCE.md#testing-windows-powershell) - Health endpoints
 
 ### For Agent Developers
 1. Start: [AGENTS_READY.md](AGENTS_READY.md) - Agent deployment guide
@@ -119,22 +106,16 @@
 ## 🎯 Quick Start (2 Minutes)
 
 ```bash
-# 1. Start database
-cd C:\Users\drphi\cockroach-v23.1.13.windows-6.2-amd64
-.\cockroach.exe start-single-node --insecure
+# 1. Start Docker Desktop
+# 2. Launch the entire Sovereign Stack
+.\start_pqr.ps1
 
-# 2. Set environment
-$env:DATABASE_URL = "postgresql://root@localhost:26257/antigravity?sslmode=disable"
-
-# 3. Start server
-cd c:\Users\drphi\pqr-info-swarm\cmd\\pqr
-go build && .\pqr.exe
-
-# 4. Test in another terminal
-curl http://localhost:8080/REST/2.0/health
+# 3. Verify public connectivity
+curl https://pqr.info/REST/2.0/health
 ```
 
-Full setup: [SETUP.md](SETUP.md#quick-start)
+- [Agent Training Codex](docs/AGENT_TRAINING.md)
+- [Architecture](docs/ARCHITECTURE.md)
 
 ## 📊 System Components
 

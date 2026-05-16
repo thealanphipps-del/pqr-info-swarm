@@ -16,12 +16,8 @@ RUN go build -o pqr-server ./cmd/pqr/main.go
 # Final Stage
 FROM alpine:latest
 
-WORKDIR /root/
-
-# Install certificates for secure connections
+WORKDIR /app
 RUN apk --no-cache add ca-certificates
-
-# Copy the binary and web assets from builder
 COPY --from=builder /app/pqr-server .
 COPY --from=builder /app/web ./web
 COPY --from=builder /app/docs ./docs

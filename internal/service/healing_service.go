@@ -13,12 +13,14 @@ import (
 type HealingService struct {
 	repo domain.TicketRepository
 	svc  *SwarmService
+	ai   *AIService
 }
 
-func NewHealingService(repo domain.TicketRepository, svc *SwarmService) *HealingService {
+func NewHealingService(repo domain.TicketRepository, svc *SwarmService, ai *AIService) *HealingService {
 	return &HealingService{
 		repo: repo,
 		svc:  svc,
+		ai:   ai,
 	}
 }
 
@@ -91,14 +93,19 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 	if ticket.Status != "STALLED" {
 		log.Printf("Iteration %d: Escalating Ticket %s to Level %d using %s", ticket.Iteration, ticketID, ticket.EscalationLevel, model)
 		
+		// 1. Call the LLM to generate a resolution
+		resolution, err := h.callModel(ctx, model, content)
+		if err != nil {
+			log.Printf("Healing Error: Failed to call model %s: %v", model, err)
+			return err
+		}
+
+		// 2. Process the resolution (in a real system, this might involve code execution)
+		log.Printf("Healing Solution Generated: %s", resolution)
+
 		// Evolutionary Memory: Fetch previous failures and similar resolutions
 		failedAttempts := content.FailedAttempts
 		similar, _ := h.repo.FindSimilarResolutions(ctx, content.StateVector, 3)
-
-		log.Printf("Knowledge Base: Providing %d similar resolutions as evolutionary context.", len(similar))
-		if len(failedAttempts) > 0 {
-			log.Printf("Token Optimization: Passing %d failed attempts to avoid repetition.", len(failedAttempts))
-		}
 
 		// Record audit
 		entry := domain.AuditEntry{
@@ -144,4 +151,28 @@ func (h *HealingService) CreateHealingTicket(ctx context.Context, issue string, 
 
 	// Healing tickets start at Layer 5 (Operational)
 	return h.svc.CreateFabricTicket(ctx, 5, "monitor-001", content)
+}
+func (h *HealingService) callModel(ctx context.Context, modelName string, content *domain.FabricContent) (string, error) {
+	prompt := fmt.Sprintf("System: You are a PQR Healing Agent. Resolve the following issue.\nContext: %v\nIssue: %s\nResolution:", 
+		content.IntentBlob, string(content.RawContent))
+
+	resp, node, err := h.ai.QuerySwarm(ctx, prompt)
+	if err != nil {
+		return "", err
+	}
+	log.Printf("[HEALING-AGENT] Solution obtained from %s", node)
+	return resp, nil
+}
+
+// ExecuteDiagnostic uses the Swarm AI to analyze or execute a diagnostic command
+func (h *HealingService) ExecuteDiagnostic(ctx context.Context, cmd string) (string, error) {
+	prompt := fmt.Sprintf("System: You are a PQR Diagnostic Agent. Analyze and execute the following diagnostic command for the Sovereign Mesh.\nCommand: %s\nOutput:", cmd)
+	
+	log.Printf("[DIAGNOSTIC] Coaxing LM to process command: %s", cmd)
+	resp, engine, err := h.ai.QuerySwarm(ctx, prompt)
+	if err != nil {
+		return "", fmt.Errorf("diagnostic failure: %v", err)
+	}
+	
+	return fmt.Sprintf("[%s DIAGNOSTIC OUTPUT]\n%s", engine, resp), nil
 }

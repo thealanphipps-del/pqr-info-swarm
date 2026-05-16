@@ -17,24 +17,30 @@ import (
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
 
-const Version = "v1.06"
+const Version = "v1.07"
 
 type Server struct {
 	Service *service.SwarmService
 	Healing *service.HealingService
+	Auth    *service.AuthService
+	AI      *service.AIService
 	Router  *gin.Engine
 }
 
-func NewServer(svc *service.SwarmService, healing *service.HealingService) *Server {
+func NewServer(svc *service.SwarmService, healing *service.HealingService, auth *service.AuthService, ai *service.AIService) *Server {
 	r := gin.Default()
 	s := &Server{
 		Service: svc,
 		Healing: healing,
+		Auth:    auth,
+		AI:      ai,
 		Router:  r,
 	}
 
 	// Static UI serving
-	r.StaticFile("/", "./web/index.html")
+	r.StaticFile("/", "./web/dashboard.html")
+	r.StaticFile("/legacy", "./web/index.html")
+	r.StaticFile("/wiki", "./web/wiki.html")
 	r.StaticFile("/hud", "./web/hud.html")
 	r.Static("/static", "./web")
 	
@@ -60,9 +66,10 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService) *Serv
 		api.GET("/health", s.handleHealth)
 		api.GET("/health/gemma", s.handleGemmaHealth)
 
-		// Chat & RAG
+		// Chat & Swarm Balancing
 		api.POST("/chat/gemma", s.handleGemmaChat)
 		api.POST("/chat/lmstudio", s.handleLMStudioChat)
+		api.POST("/chat/swarm", s.handleSwarmChat)
 		api.GET("/health/lmstudio", s.handleLMStudioHealth)
 		
 		// Self-healing
@@ -71,11 +78,30 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService) *Serv
 		api.POST("/healing/failure", s.handleRecordHealingFailure)
 		api.POST("/healing/resolve", s.handleResolveHealingTicket)
 		
+		// Metrics
+		api.GET("/metrics/tokens", s.handleGetMetrics)
+
 		// Initialize schema
 		api.POST("/init", s.handleInitSchema)
 
 		// Documentation
 		api.GET("/docs/:name", s.handleGetDoc)
+
+		// Gemini Emergency Bridge
+		api.POST("/emergency/bridge", s.handleEmergencyBridge)
+
+		// Legacy Sovereign API (S25 Compatibility)
+		api.GET("/status", s.handleStatus)
+		api.GET("/bridge", s.handleBridge)
+		api.GET("/files", s.handleListFiles)
+		api.GET("/wiki", s.handleWiki)
+	}
+
+	// SAML Endpoints
+	if s.Auth != nil {
+		r.GET("/saml/metadata", gin.WrapH(http.HandlerFunc(s.Auth.HandleMetadata)))
+		r.POST("/saml/sso", gin.WrapH(http.HandlerFunc(s.Auth.HandleSSO)))
+		r.GET("/saml/sso", gin.WrapH(http.HandlerFunc(s.Auth.HandleSSO)))
 	}
 
 	return s
@@ -319,6 +345,21 @@ func (s *Server) handleHealth(c *gin.Context) {
 		"service": "PQR-ticketing",
 		"status":  "healthy",
 		"version": Version,
+	})
+}
+
+func (s *Server) handleGetMetrics(c *gin.Context) {
+	used, quota, err := s.Service.GetMetric(c.Request.Context(), "tokens_used")
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	percent := (used / quota) * 100.0
+	c.JSON(http.StatusOK, gin.H{
+		"tokens_used":      used,
+		"token_quota":      quota,
+		"usage_percentage": percent,
 	})
 }
 
@@ -580,8 +621,13 @@ func (s *Server) handleGemmaChat(c *gin.Context) {
 	}
 	s.Service.CreateFabricTicket(c.Request.Context(), 4, "gemma-ai", ticketContent)
 
+	// Estimate tokens (chars / 4 as a heuristic)
+	tokenEstimate := float64(len(req.Message) + len(respText)) / 4.0
+	_ = s.Service.IncrementMetric(c.Request.Context(), "tokens_used", tokenEstimate)
+
 	c.JSON(http.StatusOK, gin.H{
 		"response": respText,
+		"tokens":   tokenEstimate,
 		"context":  contextText,
 	})
 }
@@ -629,7 +675,14 @@ func (s *Server) handleLMStudioChat(c *gin.Context) {
 		}
 	}
 
-	c.JSON(http.StatusOK, gin.H{"response": respText})
+	// Estimate tokens
+	tokenEstimate := float64(len(req.Message) + len(respText)) / 4.0
+	_ = s.Service.IncrementMetric(c.Request.Context(), "tokens_used", tokenEstimate)
+
+	c.JSON(http.StatusOK, gin.H{
+		"response": respText,
+		"tokens":   tokenEstimate,
+	})
 }
 
 func (s *Server) handleLMStudioHealth(c *gin.Context) {
@@ -642,9 +695,124 @@ func (s *Server) handleLMStudioHealth(c *gin.Context) {
 	defer resp.Body.Close()
 	c.JSON(http.StatusOK, gin.H{"status": "ONLINE"})
 }
+func (s *Server) handleSwarmChat(c *gin.Context) {
+	var req struct {
+		Message string `json:"message" binding:"required"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	resp, engine, err := s.AI.QuerySwarm(c.Request.Context(), req.Message)
+	if err != nil {
+		c.JSON(http.StatusServiceUnavailable, gin.H{"error": "Swarm AI nodes are offline"})
+		return
+	}
+
+	// Estimate tokens
+	tokenEstimate := float64(len(req.Message) + len(resp)) / 4.0
+	_ = s.Service.IncrementMetric(c.Request.Context(), "tokens_used", tokenEstimate)
+
+	c.JSON(http.StatusOK, gin.H{
+		"response": resp,
+		"engine":   engine,
+		"tokens":   tokenEstimate,
+	})
+}
 
 
 
 
+func (s *Server) handleEmergencyBridge(c *gin.Context) {
+	// Verify Gemini API Key for Emergency Access
+	apiKey := c.GetHeader("X-Gemini-Key")
+	expectedKey := os.Getenv("GEMINI_API_KEY")
+
+	if apiKey == "" || apiKey != expectedKey {
+		log.Printf("[EMERGENCY] ⚠️ Unauthorized bridge attempt from %s", c.ClientIP())
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Access Denied: Invalid Emergency Key"})
+		return
+	}
+
+	var req struct {
+		Command string                 `json:"command"`
+		Params  map[string]interface{} `json:"params"`
+	}
+
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	log.Printf("[EMERGENCY] ⚡ Gemini Command Received: %s", req.Command)
+
+	switch req.Command {
+	case "GET_SYSTEM_HEALTH":
+		status := "HEALTHY"
+		if s.Auth == nil { status = "AUTH_DEGRADED" }
+		c.JSON(http.StatusOK, gin.H{
+			"status": status,
+			"node": "pqr-sovereign-001",
+			"uptime": time.Now().Format(time.RFC3339),
+			"version": Version,
+		})
+
+	case "LIST_RECENT_TICKETS":
+		tickets, _ := s.Service.GetRecentTickets(c.Request.Context(), 10)
+		c.JSON(http.StatusOK, tickets)
+
+	case "TRIGGER_HEALING":
+		issue, _ := req.Params["issue"].(string)
+		logSnippet, _ := req.Params["logSnippet"].(string)
+		id, err := s.Healing.CreateHealingTicket(c.Request.Context(), issue, logSnippet)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"healing_ticket_id": id.String()})
+
+	default:
+		c.JSON(http.StatusNotFound, gin.H{"error": "Unknown emergency command"})
+	}
+}
 
 
+
+
+func (s *Server) handleStatus(c *gin.Context) {
+	// Simple telemetry mirroring S25
+	c.JSON(http.StatusOK, gin.H{
+		"node_id":   "ΩX9R2#",
+		"status":    "SINGULARITY",
+		"vitality":  98.4,
+		"up_time":   "12:44:12",
+		"logic":     "AELLOK-V10",
+	})
+}
+
+func (s *Server) handleBridge(c *gin.Context) {
+	cmd := c.Query("cmd")
+	if cmd == "" {
+		c.String(http.StatusBadRequest, "No command provided")
+		return
+	}
+	output, err := s.Healing.ExecuteDiagnostic(c.Request.Context(), cmd)
+	if err != nil {
+		c.String(http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.String(http.StatusOK, output)
+}
+
+func (s *Server) handleListFiles(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"files": []string{"server.go", "Dockerfile", "docs/ARCHITECTURE.md"},
+	})
+}
+
+func (s *Server) handleWiki(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"sections": []string{"Overview", "Identity", "Fabric", "Swarm"},
+	})
+}

@@ -10,10 +10,12 @@ import { Octokit } from "@octokit/rest";
 import * as fs from 'fs';
 import * as path from 'path';
 
-const PQR_API_URL = process.env.PQR_API_URL || 'http://localhost:3196/REST/2.0';
+const PQR_API_URL = process.env.PQR_API_URL || 'https://pqr.info/REST/2.0';
 const VAULT_ADDR = process.env.VAULT_ADDR || 'http://localhost:8200';
 const VAULT_TOKEN = process.env.VAULT_TOKEN || 'pqr-vault-token';
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+
+let tokenStatusBarItem: vscode.StatusBarItem;
 
 export function activate(context: vscode.ExtensionContext) {
     console.log('PQR Info Swarm is now active');
@@ -133,6 +135,28 @@ export function activate(context: vscode.ExtensionContext) {
                     },
                     required: ["ticketID", "resolution"]
                 },
+            },
+            {
+                name: "sovereign_override",
+                description: "Execute a high-level emergency command via the Gemini Bridge",
+                inputSchema: {
+                    type: "object",
+                    properties: {
+                        command: { type: "string" },
+                        params: { type: "object" }
+                    },
+                    required: ["command"]
+                },
+            },
+            {
+                name: "get_forensic_audit",
+                description: "Retrieve a deep forensic audit of the last active swarm tickets",
+                inputSchema: {
+                    type: "object",
+                    properties: {
+                        limit: { type: "number", default: 10 }
+                    }
+                },
             }
         ],
     }));
@@ -189,8 +213,20 @@ export function activate(context: vscode.ExtensionContext) {
                     return { content: [{ type: "text", text: JSON.stringify(failResp.data, null, 2) }] };
 
                 case "resolve_healing_ticket":
-                    const resResp = await axios.post(`${PQR_API_URL}/healing/resolve`, request.params.arguments);
+                    const resResp = await axios.post(`${PQR_API_URL}/healing/resolve`, args);
                     return { content: [{ type: "text", text: JSON.stringify(resResp.data, null, 2) }] };
+                
+                case "sovereign_override":
+                    // Pull Gemini Key from environment or vault
+                    const geminiKey = process.env.GEMINI_API_KEY || "AIzaSyCqMMdPm1s6MuXy06yiWUlIQ0CJ1C-rPWk";
+                    const overrideResp = await axios.post(`${PQR_API_URL}/emergency/bridge`, args, {
+                        headers: { "X-Gemini-Key": geminiKey }
+                    });
+                    return { content: [{ type: "text", text: JSON.stringify(overrideResp.data, null, 2) }] };
+
+                case "get_forensic_audit":
+                    const auditResp = await axios.get(`${PQR_API_URL}/tickets?limit=${args?.limit || 10}`);
+                    return { content: [{ type: "text", text: JSON.stringify(auditResp.data, null, 2) }] };
 
                 default:
                     throw new Error(`Unknown tool: ${name}`);
@@ -207,20 +243,32 @@ export function activate(context: vscode.ExtensionContext) {
     const transport = new StdioServerTransport();
     server.connect(transport).catch(console.error);
 
-    // 5. Register VS Code Commands
-    let disposable = vscode.commands.registerCommand('pqr.openHUD', () => {
-        const panel = vscode.window.createWebviewPanel(
-            'pqrHUD',
-            'PQR Swarm HUD',
-            vscode.ViewColumn.One,
-            { enableScripts: true }
-        );
+    context.subscriptions.push(disposable);
+    
+    // 5b. Emergency Repair Override
+    let emergencyRepair = vscode.commands.registerCommand('pqr.emergencyRepair', async () => {
+        const directive = await vscode.window.showInputBox({
+            prompt: 'Enter High Justiciar Repair Directive',
+            placeHolder: 'e.g. FORCE_HEALING_ITERATION, STOP_TOKEN_BURN'
+        });
 
-        // Reusing the index.html content (simplified for this example)
-        panel.webview.html = `<h1>PQR HUD Loading...</h1>`;
+        if (!directive) return;
+
+        try {
+            const geminiKey = process.env.GEMINI_API_KEY || "AIzaSyCqMMdPm1s6MuXy06yiWUlIQ0CJ1C-rPWk";
+            const response = await axios.post(`${PQR_API_URL}/emergency/bridge`, {
+                command: "TRIGGER_HEALING",
+                params: { issue: directive }
+            }, {
+                headers: { "X-Gemini-Key": geminiKey }
+            });
+            vscode.window.showInformationMessage(`✓ Repair Directive Executed: ${JSON.stringify(response.data)}`);
+        } catch (error: any) {
+            vscode.window.showErrorMessage(`Repair Failed: ${error.message}`);
+        }
     });
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(emergencyRepair);
 
     // 6. Setup Vault (Sweep .env)
     let vaultSetup = vscode.commands.registerCommand('pqr.setupVault', async () => {
@@ -270,6 +318,40 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(vaultSetup);
+
+    // 7. Initialize Token Sentinel (Status Bar)
+    tokenStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+    tokenStatusBarItem.command = 'pqr.openHUD';
+    context.subscriptions.push(tokenStatusBarItem);
+    tokenStatusBarItem.show();
+
+    // Start polling metrics
+    updateTokenSentinel();
+    setInterval(updateTokenSentinel, 30000); // Poll every 30 seconds
+}
+
+async function updateTokenSentinel() {
+    try {
+        const response = await axios.get(`${PQR_API_URL}/metrics/tokens`);
+        const { usage_percentage } = response.data;
+        const percent = usage_percentage.toFixed(1);
+
+        tokenStatusBarItem.text = `$(circuit-board) PQR Tokens: ${percent}%`;
+        tokenStatusBarItem.tooltip = `Swarm Token Quota Usage: ${percent}%`;
+        
+        // Color coding for sentinel
+        if (usage_percentage > 90) {
+            tokenStatusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
+        } else if (usage_percentage > 75) {
+            tokenStatusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
+        } else {
+            tokenStatusBarItem.backgroundColor = undefined;
+            tokenStatusBarItem.color = '#00f2ff'; // Sovereign Blue
+        }
+    } catch (error) {
+        tokenStatusBarItem.text = `$(warning) PQR Tokens: Offline`;
+        tokenStatusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
+    }
 }
 
 export function deactivate() {}

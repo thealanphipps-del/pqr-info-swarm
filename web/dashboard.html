@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQR Sovereign Mesh Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <i data-lucide="layers"></i>
+            <span>PQR Swarm</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Board</span>
+            </a>
+            <a href="#" class="nav-item" id="nav-inbox">
+                <i data-lucide="inbox"></i>
+                <span>Inbox</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i data-lucide="users"></i>
+                <span>Agents</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i data-lucide="zap"></i>
+                <span>Runtimes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i data-lucide="code-2"></i>
+                <span>Skills</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer" style="padding: 1.5rem; border-top: 1px solid var(--card-border);">
+            <div style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 700;">Token Usage</div>
+            <div style="height: 6px; background: #eaecf4; border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
+                <div id="token-bar" style="height: 100%; width: 0%; background: var(--sidebar-active); transition: width 0.5s;"></div>
+            </div>
+            <div id="token-text" style="font-size: 0.7rem; color: var(--text-secondary);">0 / 0 used</div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">Sovereign Mesh > Issues</div>
+            <div class="topbar-actions">
+                <button class="btn" style="background:#eee;"><i data-lucide="filter" style="width:16px; display:inline; margin-right:5px;"></i> Filter</button>
+                <button class="btn btn-primary" id="btn-new-ticket">+ New Issue</button>
+            </div>
+        </header>
+
+        <section class="board">
+            <!-- Backlog -->
+            <div class="column" id="col-backlog">
+                <div class="column-header">
+                    <div class="column-title">
+                        <i data-lucide="circle" style="width:14px; color:var(--status-backlog);"></i>
+                        Backlog
+                        <span class="column-badge" id="count-backlog">0</span>
+                    </div>
+                </div>
+                <div class="card-list" id="list-backlog"></div>
+            </div>
+
+            <!-- Todo -->
+            <div class="column" id="col-todo">
+                <div class="column-header">
+                    <div class="column-title">
+                        <i data-lucide="circle" style="width:14px; color:var(--status-todo);"></i>
+                        Todo
+                        <span class="column-badge" id="count-todo">0</span>
+                    </div>
+                </div>
+                <div class="card-list" id="list-todo"></div>
+            </div>
+
+            <!-- In Progress -->
+            <div class="column" id="col-inprogress">
+                <div class="column-header">
+                    <div class="column-title">
+                        <i data-lucide="play-circle" style="width:14px; color:var(--status-inprogress);"></i>
+                        In Progress
+                        <span class="column-badge" id="count-inprogress">0</span>
+                    </div>
+                </div>
+                <div class="card-list" id="list-inprogress"></div>
+            </div>
+
+            <!-- In Review -->
+            <div class="column" id="col-inreview">
+                <div class="column-header">
+                    <div class="column-title">
+                        <i data-lucide="check-circle-2" style="width:14px; color:var(--status-inreview);"></i>
+                        In Review
+                        <span class="column-badge" id="count-inreview">0</span>
+                    </div>
+                </div>
+                <div class="card-list" id="list-inreview"></div>
+            </div>
+
+            <!-- Done -->
+            <div class="column" id="col-done">
+                <div class="column-header">
+                    <div class="column-title">
+                        <i data-lucide="check-circle" style="width:14px; color:var(--status-done);"></i>
+                        Done
+                        <span class="column-badge" id="count-done">0</span>
+                    </div>
+                </div>
+                <div class="card-list" id="list-done"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="modal-new-ticket">
+        <div class="modal">
+            <h2 style="margin-bottom:1.5rem;">Create New Issue</h2>
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <input type="text" id="input-subject" placeholder="Subject" style="padding:0.75rem; border:1px solid #ddd; border-radius:6px;">
+                <textarea id="input-content" placeholder="Description..." style="padding:0.75rem; border:1px solid #ddd; border-radius:6px; height:150px;"></textarea>
+                <div style="display:flex; gap:1rem;">
+                    <select id="input-priority" style="flex:1; padding:0.75rem; border:1px solid #ddd; border-radius:6px;">
+                        <option value="1">Low Priority</option>
+                        <option value="2" selected>Medium Priority</option>
+                        <option value="3">High Priority</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="btn-submit-ticket" style="padding:1rem;">Submit to Swarm</button>
+                <button class="btn" id="btn-cancel-ticket" style="background:transparent; color:#888;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

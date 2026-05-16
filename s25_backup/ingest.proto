@@ -1,0 +1,19 @@
+syntax = "proto3";
+package swarm.ingest;
+option go_package = "api/proto/ingest";
+
+service IngestionService {
+  rpc IngestCode (CodePayload) returns (IngestResponse);
+}
+
+message CodePayload {
+  string tsb_name = 1;
+  string agent_id = 2;
+  string code_content = 3;
+  int64 timestamp = 4;
+}
+
+message IngestResponse {
+  bool success = 1;
+  string message = 2;
+}

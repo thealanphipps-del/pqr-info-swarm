@@ -1,0 +1,13 @@
+syntax = "proto3";
+package gshell;
+option go_package = "./api/proto";
+
+service GShell {
+  rpc Execute(CommandRequest) returns (CommandResponse);
+  rpc StreamLogs(LogRequest) returns (stream LogEntry);
+}
+
+message CommandRequest { string line = 1; }
+message CommandResponse { int32 exit_code = 1; string output = 2; }
+message LogRequest { string node_id = 1; }
+message LogEntry { string message = 1; }
