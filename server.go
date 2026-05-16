@@ -17,7 +17,7 @@ import (
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
 
-const Version = "v1.07"
+const Version = "v1.08"
 
 type Server struct {
 	Service *service.SwarmService
