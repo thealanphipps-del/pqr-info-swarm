@@ -26,6 +26,7 @@ type FabricTicket struct {
 	EscalationLevel int       `json:"escalation_level"`
 	Resolution      string    `json:"resolution,omitempty"`
 	ResolvedBy      string    `json:"resolved_by,omitempty"`
+	AssignedTo      string    `json:"assigned_to,omitempty"`
 	CreatedAt       time.Time `json:"created_at"`
 	UpdatedAt       time.Time `json:"updated_at"`
 }

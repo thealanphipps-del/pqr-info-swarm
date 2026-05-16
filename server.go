@@ -197,6 +197,15 @@ func (s *Server) handleUpdateTicket(c *gin.Context) {
 		return
 	}
 
+	// Permission Check: Only creator or assigned agent can update
+	ticket, _, err := s.Service.GetTicketWithContent(c.Request.Context(), ticketID)
+	if err == nil {
+		if ticket.CreatorAgentID != req.Creator && ticket.AssignedTo != req.Creator {
+			c.JSON(http.StatusForbidden, gin.H{"error": "Access Denied: Ticket not assigned to agent"})
+			return
+		}
+	}
+
 	err = s.Service.UpdateExtended(c.Request.Context(), ticketID, req.Status, req.Title, "", req.Creator)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -212,7 +221,30 @@ func (s *Server) handleSearchTickets(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, tickets)
+
+	// Map to consistent format with content
+	var response []gin.H
+	for _, t := range tickets {
+		// Fetch full content for each ticket to show subject in UI
+		_, content, _ := s.Service.GetTicketWithContent(c.Request.Context(), t.ID)
+		
+		item := gin.H{
+			"id":         t.ID.String(),
+			"layer":      t.LayerID,
+			"creator":    t.CreatorAgentID,
+			"status":     t.Status,
+			"created_at": t.CreatedAt,
+			"assigned_to": t.AssignedTo,
+		}
+		
+		if content != nil {
+			item["intent"] = content.IntentBlob
+			item["content"] = string(content.RawContent)
+		}
+		
+		response = append(response, item)
+	}
+	c.JSON(http.StatusOK, response)
 }
 
 func (s *Server) Run(addr string) error {

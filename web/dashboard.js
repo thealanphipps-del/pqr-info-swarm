@@ -1,160 +1,196 @@
-// dashboard.js - PQR Swarm Dashboard Logic
-
+// dashboard.js - PQR Swarm Dashboard Logic v2.0
 const API_BASE = '/REST/2.0';
 
-document.addEventListener('DOMContentLoaded', () => {
-    fetchTickets();
-    fetchMetrics();
+let state = {
+    tickets: [],
+    metrics: { used: 0, quota: 1000000, percent: 0 },
+    view: 'board' // 'board' or 'lineage'
+};
+
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('PQR Dashboard v2.0 Initializing...');
+    
+    // Initialize Lucide icons
+    if (window.lucide) lucide.createIcons();
+
     setupEventListeners();
     
-    // Refresh every 10 seconds
-    setInterval(() => {
-        fetchTickets();
-        fetchMetrics();
-    }, 10000);
+    // Initial fetch
+    await refreshData();
+    
+    // Refresh loop
+    setInterval(refreshData, 5000);
 });
 
-async function fetchMetrics() {
+async function refreshData() {
     try {
-        const resp = await fetch(`${API_BASE}/metrics/tokens`);
-        const data = await resp.json();
-        
-        const bar = document.getElementById('token-bar');
-        const text = document.getElementById('token-text');
-        
-        const used = Math.round(data.tokens_used);
-        const quota = Math.round(data.token_quota);
-        const percent = data.usage_percentage || 0;
-        
-        bar.style.width = `${percent}%`;
-        text.innerText = `${used} / ${quota} used`;
+        const [ticketsResp, metricsResp] = await Promise.all([
+            fetch(`${API_BASE}/tickets`),
+            fetch(`${API_BASE}/metrics/tokens`)
+        ]);
+
+        if (ticketsResp.ok) {
+            state.tickets = await ticketsResp.json();
+            renderBoard();
+        }
+
+        if (metricsResp.ok) {
+            const data = await metricsResp.json();
+            state.metrics = {
+                used: data.tokens_used || 0,
+                quota: data.token_quota || 1000000,
+                percent: data.usage_percentage || 0
+            };
+            renderMetrics();
+        }
     } catch (err) {
-        console.error('Failed to fetch metrics:', err);
+        console.error('Data refresh failed:', err);
     }
 }
 
+function renderMetrics() {
+    const bar = document.getElementById('token-bar');
+    const text = document.getElementById('token-text');
+    if (bar) bar.style.width = `${state.metrics.percent}%`;
+    if (text) text.innerText = `${Math.round(state.metrics.used).toLocaleString()} / ${Math.round(state.metrics.quota).toLocaleString()} tokens`;
+}
+
 function setupEventListeners() {
+    // New Ticket Modal
     const newTicketBtn = document.getElementById('btn-new-ticket');
     const modal = document.getElementById('modal-new-ticket');
     const cancelBtn = document.getElementById('btn-cancel-ticket');
     const submitBtn = document.getElementById('btn-submit-ticket');
 
-    newTicketBtn.addEventListener('click', () => modal.style.display = 'flex');
-    cancelBtn.addEventListener('click', () => modal.style.display = 'none');
+    if (newTicketBtn) newTicketBtn.onclick = () => modal.style.display = 'flex';
+    if (cancelBtn) cancelBtn.onclick = () => modal.style.display = 'none';
     
-    submitBtn.addEventListener('click', async () => {
-        const subject = document.getElementById('input-subject').value;
-        const content = document.getElementById('input-content').value;
-        const priority = parseInt(document.getElementById('input-priority').value);
+    if (submitBtn) {
+        submitBtn.onclick = async () => {
+            const subject = document.getElementById('input-subject')?.value;
+            const content = document.getElementById('input-content')?.value;
+            const priority = parseInt(document.getElementById('input-priority')?.value || "2");
 
-        if (!subject) return alert('Subject is required');
+            if (!subject) return alert('Subject is required');
 
-        try {
-            const resp = await fetch(`${API_BASE}/ticket`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    Subject: subject,
-                    Text: content,
-                    Layer: priority + 1, // Mapping priority to layer
-                    Queue: 'General',
-                    AgentID: 'DASHBOARD-USER'
-                })
-            });
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Syncing...';
 
-            if (resp.ok) {
-                modal.style.display = 'none';
-                document.getElementById('input-subject').value = '';
-                document.getElementById('input-content').value = '';
-                fetchTickets();
+            try {
+                const resp = await fetch(`${API_BASE}/ticket`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        Subject: subject,
+                        Text: content,
+                        Layer: priority,
+                        Queue: 'General',
+                        AgentID: 'DASHBOARD-USER'
+                    })
+                });
+
+                if (resp.ok) {
+                    modal.style.display = 'none';
+                    document.getElementById('input-subject').value = '';
+                    document.getElementById('input-content').value = '';
+                    await refreshData();
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Submit to Swarm';
             }
-        } catch (err) {
-            console.error('Failed to create ticket:', err);
-        }
-    });
-}
-
-async function fetchTickets() {
-    try {
-        const resp = await fetch(`${API_BASE}/tickets`);
-        const tickets = await resp.json();
-        
-        renderBoard(tickets);
-    } catch (err) {
-        console.error('Failed to fetch tickets:', err);
+        };
     }
+
+    // View Switching
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.onclick = (e) => {
+            e.preventDefault();
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            // Logic for different views could go here
+        };
+    });
 }
 
-function renderBoard(tickets) {
+function renderBoard() {
     const columns = {
-        backlog: document.getElementById('list-backlog'),
-        todo: document.getElementById('list-todo'),
-        inprogress: document.getElementById('list-inprogress'),
-        inreview: document.getElementById('list-inreview'),
-        done: document.getElementById('list-done')
+        backlog: { el: document.getElementById('list-backlog'), count: document.getElementById('count-backlog'), tickets: [] },
+        todo: { el: document.getElementById('list-todo'), count: document.getElementById('count-todo'), tickets: [] },
+        inprogress: { el: document.getElementById('list-inprogress'), count: document.getElementById('count-inprogress'), tickets: [] },
+        inreview: { el: document.getElementById('list-inreview'), count: document.getElementById('count-inreview'), tickets: [] },
+        done: { el: document.getElementById('list-done'), count: document.getElementById('count-done'), tickets: [] }
     };
 
-    const counts = {
-        backlog: document.getElementById('count-backlog'),
-        todo: document.getElementById('count-todo'),
-        inprogress: document.getElementById('count-inprogress'),
-        inreview: document.getElementById('count-inreview'),
-        done: document.getElementById('count-done')
-    };
-
-    // Clear lists
-    Object.values(columns).forEach(col => col.innerHTML = '');
-    
-    const stats = { backlog: 0, todo: 0, inprogress: 0, inreview: 0, done: 0 };
-
-    tickets.forEach(ticket => {
+    // Distribute tickets
+    state.tickets.forEach(ticket => {
         const colKey = mapStatusToColumn(ticket.status);
-        if (columns[colKey]) {
-            const card = createTicketCard(ticket);
-            columns[colKey].appendChild(card);
-            stats[colKey]++;
-        }
+        if (columns[colKey]) columns[colKey].tickets.push(ticket);
     });
 
-    // Update counts
-    Object.keys(counts).forEach(key => counts[key].innerText = stats[key]);
+    // Render columns
+    Object.keys(columns).forEach(key => {
+        const col = columns[key];
+        if (!col.el) return;
+        
+        col.el.innerHTML = '';
+        col.count.innerText = col.tickets.length;
+        
+        col.tickets.forEach(ticket => {
+            col.el.appendChild(createTicketCard(ticket));
+        });
+    });
 }
 
 function mapStatusToColumn(status) {
-    switch (status) {
-        case 'COMPLETED': return 'done';
-        case 'PENDING': return 'todo';
-        case 'STALLED': return 'backlog';
-        case 'HEALING': return 'inprogress'; // hypothetical status
-        default: return 'todo';
-    }
+    if (!status) return 'todo';
+    const s = status.toUpperCase();
+    if (s === 'COMPLETED' || s === 'DONE') return 'done';
+    if (s === 'STALLED') return 'backlog';
+    if (s === 'IN_PROGRESS' || s === 'HEALING') return 'inprogress';
+    if (s === 'PENDING') return 'todo';
+    return 'todo';
 }
 
 function createTicketCard(ticket) {
     const card = document.createElement('div');
     card.className = 'ticket-card';
     
-    const priority = ticket.layer <= 2 ? 'Low' : (ticket.layer <= 4 ? 'Medium' : 'High');
+    const layer = ticket.layer || ticket.layer_id || 2;
+    const priority = layer >= 7 ? 'High' : (layer >= 4 ? 'Medium' : 'Low');
     const priorityClass = `priority-${priority.toLowerCase()}`;
     
-    // Shorten ID
-    const shortId = ticket.id.substring(0, 8);
-    
-    // Intent snippet or content
-    const subject = ticket.intent?.subject || ticket.subject || "Untitled Issue";
+    const shortId = (ticket.id || '0000').substring(0, 8);
+    const subject = ticket.intent?.subject || ticket.subject || "Untitled Sovereign Directive";
+    const creator = ticket.creator || ticket.creator_agent_id || "System";
+    const avatar = creator.substring(0, 1).toUpperCase();
     
     card.innerHTML = `
         <div class="ticket-id">PQR-${shortId}</div>
         <div class="ticket-subject">${subject}</div>
         <div class="ticket-footer">
-            <span class="priority-tag ${priorityClass}">${priority}</span>
-            <div class="agent-avatar" title="${ticket.creator}">${ticket.creator.substring(0,1).toUpperCase()}</div>
+            <span class="priority-tag ${priorityClass}">
+                <i data-lucide="bar-chart-2" style="width:10px;"></i>
+                ${priority}
+            </span>
+            <div class="agent-avatar" title="Creator: ${creator}">${avatar}</div>
         </div>
     `;
     
-    card.addEventListener('click', () => {
-        window.location.href = `/REST/2.0/ticket/${ticket.id}`; // For now just link to raw JSON or a detail view
-    });
+    if (window.lucide) {
+        setTimeout(() => lucide.createIcons({ props: { "stroke-width": 2 }, root: card }), 0);
+    }
+
+    card.onclick = () => openTicketDetail(ticket);
 
     return card;
+}
+
+function openTicketDetail(ticket) {
+    // For now, let's just log it or alert. 
+    // In a future update we can build a detailed modal.
+    console.log('Opening Ticket Detail:', ticket);
+    alert(`TICKET DETAIL\nID: ${ticket.id}\nStatus: ${ticket.status}\nLayer: ${ticket.layer_id}\n\nContent: ${ticket.content || 'N/A'}`);
 }

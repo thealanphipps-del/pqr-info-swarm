@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Octokit } from "@octokit/rest";
 import * as fs from 'fs';
 import * as path from 'path';
+import { GemmaViewProvider } from './gemmaViewProvider';
 
 const PQR_API_URL = process.env.PQR_API_URL || 'https://pqr.info/REST/2.0';
 const VAULT_ADDR = process.env.VAULT_ADDR || 'http://localhost:8200';
@@ -31,6 +32,12 @@ export function activate(context: vscode.ExtensionContext) {
                 tools: {},
             },
         }
+    );
+
+    // 1b. Register Gemma Interface
+    const gemmaProvider = new GemmaViewProvider(context.extensionUri, server);
+    context.subscriptions.push(
+        vscode.window.registerWebviewViewProvider(GemmaViewProvider.viewType, gemmaProvider)
     );
 
     // 2. Define MCP Tools
@@ -243,8 +250,6 @@ export function activate(context: vscode.ExtensionContext) {
     const transport = new StdioServerTransport();
     server.connect(transport).catch(console.error);
 
-    context.subscriptions.push(disposable);
-    
     // 5b. Emergency Repair Override
     let emergencyRepair = vscode.commands.registerCommand('pqr.emergencyRepair', async () => {
         const directive = await vscode.window.showInputBox({

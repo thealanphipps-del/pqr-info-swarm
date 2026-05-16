@@ -25,6 +25,7 @@ services:
 
   pqr-server:
     build: .
+    restart: always
     deploy:
       replicas: 3
     environment:
@@ -38,18 +39,30 @@ services:
     volumes:
       - ./certs:/app/certs
       - ./signals:/app/signals
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8196/REST/2.0/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
-      - db
-      - vault
+      db:
+        condition: service_healthy
+      vault:
+        condition: service_started
 
   gateway:
     image: nginx:alpine
+    restart: always
     ports:
-      - "3196:80"    # Balanced PQR UI & API Port
+      - "3196:80"    # Balanced PQR UI & API Port (HTTP)
+      - "443:443"    # Secure Mesh Port (HTTPS)
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./web:/usr/share/nginx/html:ro
     depends_on:
-      - pqr-server
+      pqr-server:
+        condition: service_started # Since deploy.replicas is used, we use service_started
 
   tunnel:
     image: cloudflare/cloudflared:latest

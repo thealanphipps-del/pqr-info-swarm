@@ -47,6 +47,11 @@
         {
           "id": "pqr.lineageView",
           "name": "Fabric Lineage"
+        },
+        {
+          "id": "pqr.gemmaChat",
+          "name": "Gemma Swarm Interface",
+          "type": "webview"
         }
       ]
     }

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PQR | The Sovereign Swarm Node</title>
-    <meta name="description" content="PQR is a self-healing, autonomous swarm governance node for the decentralized future.">
-    <link rel="stylesheet" href="static/index.css">
+    <title>PQR | The Sovereign Mesh</title>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="landing-page">
     <div class="glow-bg"></div>
@@ -14,89 +14,53 @@
     <nav class="main-nav">
         <div class="logo">PQR.INFO</div>
         <div class="nav-links">
-            <a href="/wiki">Documentation</a>
-            <a href="/hud" class="btn-hud">Enter HUD</a>
-            <a href="/saml/sso" class="btn-login"><i class="fab fa-github"></i> GHE Login</a>
+            <a href="/wiki.html">Manifesto</a>
+            <a href="/hud.html" class="btn-hud">Enter HUD</a>
+            <a href="#" class="btn-login"><i class="fab fa-github"></i> GHE Sync</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1 class="glitch" data-text="SOVEREIGN SWARM">SOVEREIGN SWARM</h1>
-            <p class="hero-tagline">Autonomous Self-Healing Infrastructure for the SG-DAO.</p>
+            <div class="badge">Mesh Node v1.08 Operational</div>
+            <h1 class="glitch">SOVEREIGN SWARM</h1>
+            <p class="hero-tagline">Autonomous self-healing ticketing fabric. Powered by Gemma Orchestration and Forensic Lineage.</p>
             <div class="hero-actions">
-                <a href="/hud" class="btn-primary">Initialize Node</a>
-                <a href="/wiki" class="btn-secondary">Read the Wiki</a>
+                <a href="/hud.html" class="btn-primary">Initialize Node</a>
+                <a href="/wiki.html" class="btn-secondary">View Core Protocol</a>
             </div>
         </div>
         <div class="hero-visual">
             <div class="floating-core">
-                <img src="static/assets/hero.png" alt="Sovereign Core">
-            </div>
-            <div class="orbital-rings">
-                <div class="ring"></div>
-                <div class="ring"></div>
+                <i data-lucide="shield" style="width: 200px; height: 200px; color: var(--accent-primary); opacity: 0.8;"></i>
             </div>
         </div>
     </header>
 
     <section class="features">
         <div class="feature-card">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Forensic Integrity</h3>
-            <p>Every ticket in the Fabric is hashed and linked to a parent, ensuring a zero-divergence audit trail.</p>
+            <i class="fas fa-fingerprint"></i>
+            <h3>Forensic Fabric</h3>
+            <p>Every decision is logged to an immutable genealogy tree, ensuring absolute traceability across the swarm.</p>
         </div>
         <div class="feature-card">
-            <i class="fas fa-bolt"></i>
-            <h3>Self-Healing</h3>
-            <p>Layer 7 autonomous agents detect failures and trigger metaprogramming loops to self-mutate and resolve.</p>
+            <i class="fas fa-heartbeat"></i>
+            <h3>Autonomous Healing</h3>
+            <p>Layer 7 agents detect and resolve failures through recursive metaprogramming loops.</p>
         </div>
         <div class="feature-card">
-            <i class="fas fa-users"></i>
-            <h3>Swarm Governance</h3>
-            <p>Powered by a 64-agent consensus mesh running the Seven Sticky Rules of the SG-DAO.</p>
-        </div>
-    </section>
-
-    <section class="status-mesh">
-        <div class="mesh-info">
-            <h2>Current Mesh State</h2>
-            <!-- Token Quota Bar -->
-            <div id="token-quota-container" class="quota-container">
-                <div class="quota-label">TOKEN QUOTA</div>
-                <div class="quota-track">
-                    <div id="token-progress-bar" class="quota-fill" style="width: 0%"></div>
-                </div>
-                <div id="token-quota-text" class="quota-percent">0%</div>
-            </div>
-
-            <div class="input-area">
-                <div class="stat-item">
-                    <span class="stat-label">Version</span>
-                    <span class="stat-value">v1.07 RC-1</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Sovereignty</span>
-                    <span class="stat-value">LEVEL 7</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Auth Provider</span>
-                    <span class="stat-value">SAML 2.0</span>
-                </div>
-            </div>
+            <i class="fas fa-network-wired"></i>
+            <h3>Distributed Brain</h3>
+            <p>Dual-node GPU resident orchestration across Yoga and Alienware clusters.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 PQR Sovereign Node. Licensed under the SG-DAO Genesis Charter.</p>
-        <div class="footer-links">
-            <a href="https://github.com/thealanphipps-del/pqr">Source</a>
-            <a href="mailto:dao@pqr.info">dao@pqr.info</a>
-        </div>
+        <p>&copy; 2026 PQR Sovereign Mesh. Authenticated via SG-DAO Genesis.</p>
     </footer>
 
     <script>
-        // Subtle parallax or interactions can go here
+        lucide.createIcons();
     </script>
 </body>
 </html>

@@ -45,9 +45,9 @@ func (r *CockroachRepository) CreateTicket(ctx context.Context, t *domain.Fabric
 	defer tx.Rollback()
 
 	_, err = tx.ExecContext(ctx, `
-		INSERT INTO tickets (ticket_id, layer_id, creator_agent_id, status, iteration, escalation_level)
-		VALUES ($1, $2, $3, $4, $5, $6)
-	`, t.ID, t.LayerID, t.CreatorAgentID, t.Status, t.Iteration, t.EscalationLevel)
+		INSERT INTO tickets (ticket_id, layer_id, creator_agent_id, status, iteration, escalation_level, assigned_to)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)
+	`, t.ID, t.LayerID, t.CreatorAgentID, t.Status, t.Iteration, t.EscalationLevel, t.AssignedTo)
 	if err != nil {
 		return err
 	}
@@ -71,12 +71,12 @@ func (r *CockroachRepository) GetByID(ctx context.Context, id uuid.UUID) (*domai
 	var failedAttemptsJSON []byte
 
 	err := r.db.QueryRowContext(ctx, `
-		SELECT t.ticket_id, t.layer_id, t.creator_agent_id, t.status, t.iteration, t.escalation_level, t.resolution, t.resolved_by, t.created_at,
+		SELECT t.ticket_id, t.layer_id, t.creator_agent_id, t.status, t.iteration, t.escalation_level, t.resolution, t.resolved_by, t.assigned_to, t.created_at,
 		       c.intent_blob, c.raw_content, c.consensus_score, c.summary_hash, c.payload_hash, c.failed_attempts
 		FROM tickets t
 		LEFT JOIN ticket_content c ON t.ticket_id = c.ticket_id
 		WHERE t.ticket_id = $1
-	`, id).Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.Iteration, &t.EscalationLevel, &t.Resolution, &t.ResolvedBy, &t.CreatedAt, 
+	`, id).Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.Iteration, &t.EscalationLevel, &t.Resolution, &t.ResolvedBy, &t.AssignedTo, &t.CreatedAt, 
 		&intentJSON, &c.RawContent, &c.ConsensusScore, &c.SummaryHash, &c.PayloadHash, &failedAttemptsJSON)
 
 	if err != nil {
@@ -182,7 +182,7 @@ func (r *CockroachRepository) Link(ctx context.Context, parentID, childID uuid.U
 
 func (r *CockroachRepository) ListRecent(ctx context.Context, limit int) ([]domain.FabricTicket, error) {
 	rows, err := r.db.QueryContext(ctx, `
-		SELECT ticket_id, layer_id, creator_agent_id, status, created_at 
+		SELECT ticket_id, layer_id, creator_agent_id, status, assigned_to, created_at 
 		FROM tickets ORDER BY created_at DESC LIMIT $1
 	`, limit)
 	if err != nil {
@@ -193,7 +193,7 @@ func (r *CockroachRepository) ListRecent(ctx context.Context, limit int) ([]doma
 	var tickets []domain.FabricTicket
 	for rows.Next() {
 		var t domain.FabricTicket
-		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.CreatedAt); err != nil {
+		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.AssignedTo, &t.CreatedAt); err != nil {
 			return nil, err
 		}
 		tickets = append(tickets, t)
@@ -232,7 +232,7 @@ func (r *CockroachRepository) Get(ctx context.Context, agentID string, ticketID 
 
 func (r *CockroachRepository) GetContext(ctx context.Context, agentID string, limit int) ([]domain.FabricTicket, error) {
 	rows, err := r.db.QueryContext(ctx, `
-		SELECT DISTINCT t.ticket_id, t.layer_id, t.creator_agent_id, t.status, t.created_at
+		SELECT DISTINCT t.ticket_id, t.layer_id, t.creator_agent_id, t.status, t.assigned_to, t.created_at, am.relevance_score
 		FROM tickets t
 		INNER JOIN agent_memory am ON t.ticket_id = am.ticket_id
 		WHERE am.agent_id = $1
@@ -248,7 +248,8 @@ func (r *CockroachRepository) GetContext(ctx context.Context, agentID string, li
 	var tickets []domain.FabricTicket
 	for rows.Next() {
 		var t domain.FabricTicket
-		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.CreatedAt); err != nil {
+		var score float64
+		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.AssignedTo, &t.CreatedAt, &score); err != nil {
 			return nil, err
 		}
 		tickets = append(tickets, t)

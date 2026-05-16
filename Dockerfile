@@ -17,7 +17,7 @@ RUN go build -o pqr-server ./cmd/pqr/main.go
 FROM alpine:latest
 
 WORKDIR /app
-RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add ca-certificates curl
 COPY --from=builder /app/pqr-server .
 COPY --from=builder /app/web ./web
 COPY --from=builder /app/docs ./docs

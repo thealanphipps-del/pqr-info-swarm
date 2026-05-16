@@ -8,7 +8,34 @@
     --text-main: #e0e0e0;
     --text-dim: #909090;
     --border: rgba(255, 255, 255, 0.08);
+    --card-bg: rgba(255, 255, 255, 0.03);
 }
+
+.badge {
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--accent-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--accent-primary)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 60px var(--accent-primary)); }
+}
+
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 

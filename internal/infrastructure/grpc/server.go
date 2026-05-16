@@ -34,12 +34,16 @@ func (s *SwarmServer) ExecuteRejoin(ctx context.Context, req *Empty) (*Shortcode
 }
 
 func NewSwarmServer(svc *service.SwarmService, healing *service.HealingService) *SwarmServer {
-	return &SwarmServer{
+	s := &SwarmServer{
 		Service:     svc,
 		Healing:     healing,
 		shortcodes:  make(map[string]string),
 		myShortcode: "ΩX9R2#", // Genesis Node Shortcode
 	}
+	// Activate Persistent Callsigns
+	s.shortcodes["GEMA2#"] = "INFERENCE"
+	log.Printf("[gRPC] Activated Persistent Callsign GEMA2# for gemma-4-e4b-2")
+	return s
 }
 
 func (s *SwarmServer) SendPacket(ctx context.Context, req *SwarmPacket) (*SwarmPacket, error) {
