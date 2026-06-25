@@ -94,7 +94,7 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 		log.Printf("Iteration %d: Escalating Ticket %s to Level %d using %s", ticket.Iteration, ticketID, ticket.EscalationLevel, model)
 		
 		// 1. Call the LLM to generate a resolution
-		resolution, err := h.callModel(ctx, model, content)
+		resolution, err := h.callModel(ctx, model, ticket.ID, content)
 		if err != nil {
 			log.Printf("Healing Error: Failed to call model %s: %v", model, err)
 			return err
@@ -152,9 +152,15 @@ func (h *HealingService) CreateHealingTicket(ctx context.Context, issue string, 
 	// Healing tickets start at Layer 5 (Operational)
 	return h.svc.CreateFabricTicket(ctx, 5, "monitor-001", content)
 }
-func (h *HealingService) callModel(ctx context.Context, modelName string, content *domain.FabricContent) (string, error) {
+func (h *HealingService) callModel(ctx context.Context, modelName string, ticketID uuid.UUID, content *domain.FabricContent) (string, error) {
+	contextData := content.IntentBlob
+	memory, err := h.svc.GetAgentMemory(ctx, "healing-service", ticketID, "context")
+	if err == nil && memory != nil {
+		contextData = memory
+	}
+
 	prompt := fmt.Sprintf("System: You are a PQR Healing Agent. Resolve the following issue.\nContext: %v\nIssue: %s\nResolution:", 
-		content.IntentBlob, string(content.RawContent))
+		contextData, string(content.RawContent))
 
 	resp, node, err := h.ai.QuerySwarm(ctx, prompt)
 	if err != nil {

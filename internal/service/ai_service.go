@@ -19,12 +19,12 @@ type AIService struct {
 func NewAIService() *AIService {
 	gemma := os.Getenv("GEMMA_ENDPOINT")
 	if gemma == "" {
-		gemma = "http://192.168.12.169:11434"
+		gemma = "http://127.0.0.1:1234"
 	}
 	
 	lm := os.Getenv("LMSTUDIO_ENDPOINT")
 	if lm == "" {
-		lm = "http://192.168.12.236:1234"
+		lm = "http://localhost:1234"
 	}
 
 	return &AIService{
@@ -35,16 +35,16 @@ func NewAIService() *AIService {
 
 // QuerySwarm attempts to resolve a query using the available AI mesh (Ollama -> LM Studio)
 func (a *AIService) QuerySwarm(ctx context.Context, prompt string) (string, string, error) {
-	// Try Primary (Ollama/Gemma)
-	resp, err := a.QueryGemma(ctx, "gemma2:2b", prompt)
+	// Try Primary (Ollama/Intel Vulkan)
+	resp, err := a.QueryGemma(ctx, "nemotron-mini:latest", prompt)
 	if err == nil && resp != "" {
-		return resp, "Ollama-169", nil
+		return resp, "Ollama-Intel", nil
 	}
 
-	// Fallback to Local (LM Studio)
-	resp, err = a.QueryLMStudio(ctx, "gemma-2-9b-it", prompt)
+	// Fallback to Local (LM Studio/Nvidia)
+	resp, err = a.QueryLMStudio(ctx, "google/gemma-4-e4b", prompt)
 	if err == nil && resp != "" {
-		return resp, "LM-Studio-Local", nil
+		return resp, "LM-Studio-Nvidia", nil
 	}
 
 	return "", "", fmt.Errorf("all AI nodes are offline")
@@ -76,7 +76,7 @@ func (a *AIService) QueryGemma(ctx context.Context, model, prompt string) (strin
 }
 
 func (a *AIService) QueryLMStudio(ctx context.Context, model, prompt string) (string, error) {
-	// Using LM Studio v1 REST API
+	// Using LM Studio v1 REST API (OpenAI compatible chat completions)
 	reqBody, _ := json.Marshal(map[string]interface{}{
 		"model": model,
 		"messages": []map[string]interface{}{
@@ -86,26 +86,28 @@ func (a *AIService) QueryLMStudio(ctx context.Context, model, prompt string) (st
 	})
 
 	client := &http.Client{Timeout: 60 * time.Second}
-	resp, err := client.Post(a.LMStudioURL+"/api/v1/chat", "application/json", bytes.NewBuffer(reqBody))
+	resp, err := client.Post(a.LMStudioURL+"/v1/chat/completions", "application/json", bytes.NewBuffer(reqBody))
 	if err != nil {
 		return "", err
 	}
 	defer resp.Body.Close()
 
-	// Parse the v1 API response
+	// Parse the OpenAI-compatible chat completions response
 	var result struct {
-		Message struct {
-			Content string `json:"content"`
-		} `json:"message"`
+		Choices []struct {
+			Message struct {
+				Content string `json:"content"`
+			} `json:"message"`
+		} `json:"choices"`
 	}
 	
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return "", fmt.Errorf("failed to decode v1 API response: %v", err)
 	}
 
-	if result.Message.Content == "" {
+	if len(result.Choices) == 0 || result.Choices[0].Message.Content == "" {
 		return "", fmt.Errorf("empty response from LM Studio v1 API")
 	}
 
-	return result.Message.Content, nil
+	return result.Choices[0].Message.Content, nil
 }

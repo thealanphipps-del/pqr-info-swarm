@@ -490,7 +490,7 @@ func (s *Server) handleGetDoc(c *gin.Context) {
 func (s *Server) handleGemmaHealth(c *gin.Context) {
 	gemmaURL := os.Getenv("GEMMA_ENDPOINT")
 	if gemmaURL == "" {
-		gemmaURL = "http://192.168.12.169:11434"
+		gemmaURL = "http://127.0.0.1:11435"
 	}
 
 	client := http.Client{
@@ -539,7 +539,7 @@ func (s *Server) handleGemmaChat(c *gin.Context) {
 
 	gemmaURL := os.Getenv("GEMMA_ENDPOINT")
 	if gemmaURL == "" {
-		gemmaURL = "http://192.168.12.169:11434"
+		gemmaURL = "http://127.0.0.1:11435"
 	}
 
 	modelName := req.Model
@@ -673,10 +673,13 @@ func (s *Server) handleLMStudioChat(c *gin.Context) {
 		return
 	}
 
-	lmURL := "http://host.docker.internal:1234"
+	lmURL := os.Getenv("LMSTUDIO_ENDPOINT")
+	if lmURL == "" {
+		lmURL = "http://localhost:1234"
+	}
 
 	ollamaReq := map[string]interface{}{
-		"model": "gemma-2-9b-it",
+		"model": "google/gemma-4-e4b",
 		"messages": []map[string]interface{}{
 			{"role": "user", "content": req.Message},
 		},
@@ -718,8 +721,12 @@ func (s *Server) handleLMStudioChat(c *gin.Context) {
 }
 
 func (s *Server) handleLMStudioHealth(c *gin.Context) {
+	lmURL := os.Getenv("LMSTUDIO_ENDPOINT")
+	if lmURL == "" {
+		lmURL = "http://localhost:1234"
+	}
 	client := http.Client{Timeout: 1 * time.Second}
-	resp, err := client.Get("http://host.docker.internal:1234/v1/models")
+	resp, err := client.Get(lmURL + "/v1/models")
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"status": "OFFLINE"})
 		return
