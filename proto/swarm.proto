@@ -1,6 +1,6 @@
 syntax = "proto3";
 package swarm;
-option go_package = "./internal/infrastructure/grpc";
+option go_package = "github.com/thealanphipps-del/pqr/proto;swarm";
 
 message SwarmPacket {
     string sender_id = 1;      // 5alpha# shortcode
@@ -21,6 +21,9 @@ service SwarmCommunication {
     // Legacy AELLOK Compatibility
     rpc ExecuteStrike(StrikeRequest) returns (StrikeResponse);
     rpc SyncBlackhole(stream BlackholeUpdate) returns (stream BlackholeUpdate);
+
+    // SWEN Execution Stream
+    rpc OpenExecutionStream(stream ExecutionRequest) returns (stream ExecutionResult);
 }
 
 // Gossip Bus (Port 11111) defined conceptually as a zero-copy stream
@@ -48,6 +51,20 @@ message BlackholeUpdate {
 
 message TelemetryRequest { string node_id = 1; }
 message TelemetryData { double vitality_score = 1; double slope = 2; }
+
+message ExecutionRequest {
+    string kind = 1;
+    string command = 2;
+    repeated string args = 3;
+    string target_os = 4;
+    string metadata_json = 5;
+}
+
+message ExecutionResult {
+    bool success = 1;
+    repeated string logs = 2;
+    string error = 3;
+}
 
 message MemoryPage {
     string page_id = 1;

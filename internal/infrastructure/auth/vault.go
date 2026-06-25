@@ -56,3 +56,12 @@ func (v *VaultSecretManager) GetSAMLKey(ctx context.Context) (keyPEM, certPEM []
 	data := secret.Data["data"].(map[string]interface{})
 	return []byte(data["private_key"].(string)), []byte(data["certificate"].(string)), nil
 }
+
+func (v *VaultSecretManager) VerifyIdentity(ctx context.Context) error {
+	// Look up the identity of the token to verify it's valid
+	_, err := v.client.Auth().Token().LookupSelf()
+	if err != nil {
+		return fmt.Errorf("token lookup failed: %w", err)
+	}
+	return nil
+}

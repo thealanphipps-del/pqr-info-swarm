@@ -2,9 +2,14 @@ package db
 
 import (
 	"context"
+	"crypto/sha256"
 	"database/sql"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"strings"
+	"time"
+	
 	"github.com/google/uuid"
 	"github.com/thealanphipps-del/pqr/internal/domain"
 	"github.com/lib/pq"
@@ -413,6 +418,39 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 			quota FLOAT8 DEFAULT 1000000.0,
 			updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		)`,
+		`CREATE TABLE IF NOT EXISTS error_solution_memory (
+			signature_hash STRING PRIMARY KEY,
+			error_context JSONB NOT NULL,
+			synthesized_fix JSONB NOT NULL,
+			success_rate DECIMAL DEFAULT 1.0,
+			discovered_by STRING NOT NULL,
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			last_applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			INDEX idx_success (success_rate DESC)
+		)`,
+		`CREATE TABLE IF NOT EXISTS error_solution_history (
+			signature_hash STRING NOT NULL,
+			snapshot_time TIMESTAMP NOT NULL,
+			error_context JSONB NOT NULL,
+			synthesized_fix JSONB NOT NULL,
+			success_rate FLOAT NOT NULL,
+			PRIMARY KEY (signature_hash, snapshot_time)
+		)`,
+		`CREATE TABLE IF NOT EXISTS action_journal (
+			id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+			timestamp TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+			action TEXT NOT NULL,
+			before BYTES NOT NULL,
+			after BYTES NOT NULL
+		)`,
+		`CREATE TABLE IF NOT EXISTS system_snapshots (
+			snapshot_time TIMESTAMPTZ PRIMARY KEY,
+			engine_state BYTES NOT NULL,
+			memory_state BYTES NOT NULL,
+			config_state BYTES NOT NULL,
+			proto_checksum TEXT NOT NULL,
+			created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+		)`,
 	}
 
 	for _, table := range tables {
@@ -462,3 +500,216 @@ func (r *CockroachRepository) Search(ctx context.Context, criteria map[string]in
 	return tickets, nil
 }
 
+
+// LogErrorSolution stores a failure + synthesized fix (or placeholder) for learning.
+func (c *CockroachRepository) LogErrorSolution(signature string, msg interface{}, res interface{}, execErr error) error {
+	ctx := context.Background()
+
+	errorCtx, _ := json.Marshal(map[string]interface{}{
+		"request": msg,
+		"result":  res,
+		"error":   errorToString(execErr),
+	})
+
+	synth := SynthesizeFixFromFailure(msg, res, execErr)
+	synthFix, _ := json.Marshal(synth.FixPayload)
+
+	// Snapshot old state before update
+	_, _ = c.db.ExecContext(ctx, `
+		INSERT INTO error_solution_history (signature_hash, snapshot_time, error_context, synthesized_fix, success_rate)
+		SELECT signature_hash, NOW(), error_context, synthesized_fix, success_rate 
+		FROM error_solution_memory WHERE signature_hash = $1
+	`, signature)
+
+	_, err := c.db.ExecContext(ctx, `
+INSERT INTO error_solution_memory (
+	signature_hash, error_context, synthesized_fix, success_rate, discovered_by, created_at, last_applied_at
+) VALUES ($1, $2, $3, $4, $5, $6, $7)
+ON CONFLICT (signature_hash) DO UPDATE SET
+	error_context = EXCLUDED.error_context,
+	synthesized_fix = EXCLUDED.synthesized_fix,
+	last_applied_at = EXCLUDED.last_applied_at;
+`,
+		signature,
+		errorCtx,
+		synthFix,
+		1.0,
+		"swend",
+		time.Now(),
+		time.Now(),
+	)
+
+	return err
+}
+
+func (c *CockroachRepository) RewindFix(signature string, ts time.Time) error {
+	ctx := context.Background()
+	_, err := c.db.ExecContext(ctx, `
+		WITH old AS (
+			SELECT error_context, synthesized_fix, success_rate 
+			FROM error_solution_history 
+			WHERE signature_hash = $1 AND snapshot_time <= $2 
+			ORDER BY snapshot_time DESC LIMIT 1
+		)
+		UPDATE error_solution_memory 
+		SET error_context = old.error_context,
+			synthesized_fix = old.synthesized_fix,
+			success_rate = old.success_rate
+		FROM old
+		WHERE error_solution_memory.signature_hash = $1
+	`, signature, ts)
+	return err
+}
+
+func (c *CockroachRepository) RewindAllFixes(ts time.Time) error {
+	ctx := context.Background()
+	// Rewind all fixes that have a history entry at or before ts
+	_, err := c.db.ExecContext(ctx, `
+		WITH old AS (
+			SELECT signature_hash, error_context, synthesized_fix, success_rate,
+			       ROW_NUMBER() OVER(PARTITION BY signature_hash ORDER BY snapshot_time DESC) as rn
+			FROM error_solution_history 
+			WHERE snapshot_time <= $1
+		)
+		UPDATE error_solution_memory 
+		SET error_context = old.error_context,
+			synthesized_fix = old.synthesized_fix,
+			success_rate = old.success_rate
+		FROM old
+		WHERE error_solution_memory.signature_hash = old.signature_hash AND old.rn = 1
+	`, ts)
+	return err
+}
+
+func SynthesizeFixFromFailure(msg interface{}, res interface{}, execErr error) domain.SynthesizedFix {
+	errStr := errorToString(execErr)
+
+	var logs []string
+	if r, ok := res.(interface{ GetLogs() []string }); ok {
+		logs = r.GetLogs()
+	}
+
+	combined := errStr
+	if len(logs) > 0 {
+		combined = combined + "\n" + strings.Join(logs, "\n")
+	}
+
+	payload := map[string]interface{}{}
+
+	if strings.Contains(combined, "You must log in to continue") ||
+		strings.Contains(combined, "not logged in") {
+		payload["prepend"] = "gcloud auth login &&"
+	}
+
+	if strings.Contains(combined, "command not found") ||
+		strings.Contains(combined, "is not recognized as an internal or external command") {
+		payload["prepend"] = "which"
+	}
+
+	if strings.Contains(combined, "permission denied") {
+		payload["prepend"] = "sudo"
+	}
+
+	if strings.Contains(combined, "emulator: ERROR") &&
+		strings.Contains(combined, "no AVDs found") {
+		payload["replace"] = "echo \"Please create an AVD via Android Studio first\""
+	}
+
+	return domain.SynthesizedFix{
+		FixPayload: payload,
+	}
+}
+
+func (c *CockroachRepository) QueryKnownFix(signature string) (domain.SynthesizedFix, bool) {
+	ctx := context.Background()
+	row := c.db.QueryRowContext(ctx, `
+SELECT synthesized_fix FROM error_solution_memory WHERE signature_hash = $1
+`, signature)
+
+	var raw []byte
+	if err := row.Scan(&raw); err != nil {
+		return domain.SynthesizedFix{}, false
+	}
+
+	var payload map[string]interface{}
+	_ = json.Unmarshal(raw, &payload)
+
+	return domain.SynthesizedFix{
+		SignatureHash: signature,
+		FixPayload:    payload,
+	}, true
+}
+
+func (c *CockroachRepository) ListTopFixes() ([]domain.ErrorSolutionRecord, error) {
+	ctx := context.Background()
+	rows, err := c.db.QueryContext(ctx, `
+SELECT signature_hash, success_rate FROM error_solution_memory
+ORDER BY success_rate DESC
+LIMIT 20
+`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var out []domain.ErrorSolutionRecord
+	for rows.Next() {
+		var rec domain.ErrorSolutionRecord
+		if err := rows.Scan(&rec.SignatureHash, &rec.SuccessRate); err != nil {
+			return nil, err
+		}
+		out = append(out, rec)
+	}
+	return out, nil
+}
+
+func (c *CockroachRepository) HashSignature(msg interface{}) string {
+	b, err := json.Marshal(msg)
+	if err != nil {
+		h := sha256.Sum256([]byte(err.Error()))
+		return hex.EncodeToString(h[:])
+	}
+
+	h := sha256.Sum256(b)
+	return hex.EncodeToString(h[:])
+}
+
+type SignatureInput struct {
+	Kind    string `json:"kind"`
+	Command string `json:"command"`
+	Os      string `json:"os"`
+}
+
+func (c *CockroachRepository) HashSignatureFromFields(kind, command, os string) string {
+	in := SignatureInput{
+		Kind:    kind,
+		Command: command,
+		Os:      os,
+	}
+	b, _ := json.Marshal(in)
+	h := sha256.Sum256(b)
+	return hex.EncodeToString(h[:])
+}
+
+func (c *CockroachRepository) UpdateSuccessRate(signature string, success bool) error {
+	delta := -0.1
+	if success {
+		delta = 0.1
+	}
+
+	_, err := c.db.Exec(`
+		UPDATE error_solution_memory
+		SET success_rate = success_rate + $1,
+			last_applied_at = NOW()
+		WHERE signature_hash = $2
+	`, delta, signature)
+
+	return err
+}
+
+func errorToString(err error) string {
+	if err == nil {
+		return ""
+	}
+	return err.Error()
+}

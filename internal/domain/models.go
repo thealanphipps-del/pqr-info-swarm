@@ -6,6 +6,36 @@ import (
 	"github.com/google/uuid"
 )
 
+type ErrorSolutionRecord struct {
+	SignatureHash string
+	SuccessRate   float64
+}
+
+type SynthesizedFix struct {
+	SignatureHash string
+	FixPayload    map[string]interface{}
+}
+
+func (f SynthesizedFix) ApplyToCommand(cmd string) string {
+	if f.FixPayload == nil {
+		return cmd
+	}
+
+	if rep, ok := f.FixPayload["replace"].(string); ok {
+		return rep
+	}
+
+	if pre, ok := f.FixPayload["prepend"].(string); ok {
+		return pre + " " + cmd
+	}
+
+	if app, ok := f.FixPayload["append"].(string); ok {
+		return cmd + " " + app
+	}
+
+	return cmd
+}
+
 // RelationshipType defines how two tickets are connected
 type RelationshipType string
 
