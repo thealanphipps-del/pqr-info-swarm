@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWEN Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --panel-bg: #1a1d24;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --accent-color: #38bdf8;
+            --success-color: #4ade80;
+            --danger-color: #f87171;
+            --warning-color: #facc15;
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: var(--panel-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr 2fr;
+            }
+            #timeline-container {
+                grid-column: span 2;
+            }
+        }
+
+        section {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--text-main);
+            font-size: 1.2rem;
+        }
+
+        /* Health Panel Styles */
+        .health-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .health-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .health-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .health-value {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .status-badge.healthy { background-color: rgba(74, 222, 128, 0.2); color: var(--success-color); }
+        .status-badge.error { background-color: rgba(248, 113, 113, 0.2); color: var(--danger-color); }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        td {
+            color: var(--text-main);
+        }
+        .code-snippet {
+            font-family: monospace;
+            background: #111;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: var(--warning-color);
+        }
+
+        /* Timeline Styles */
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 2px solid var(--panel-bg);
+        }
+        .timeline-item.snapshot::before { background: var(--success-color); }
+        .timeline-item.journal::before { background: var(--warning-color); }
+        .timeline-item.error_history::before { background: var(--danger-color); }
+        
+        .timeline-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        .timeline-content {
+            background: #111;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+        .timeline-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .timeline-badge.snapshot { background-color: rgba(74, 222, 128, 0.2); color: var(--success-color); }
+        .timeline-badge.journal { background-color: rgba(250, 204, 21, 0.2); color: var(--warning-color); }
+        .timeline-badge.error_history { background-color: rgba(248, 113, 113, 0.2); color: var(--danger-color); }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SWEN Dashboard</h1>
+        <span class="status-badge healthy" id="global-status">System Live</span>
+    </header>
+
+    <div class="container">
+        <section id="health">
+            <h2>Node Health</h2>
+            <div class="health-grid" id="health-grid">
+                <!-- Populated by JS -->
+                <div class="health-item"><span class="health-label">Loading...</span></div>
+            </div>
+        </section>
+
+        <section id="fixes">
+            <h2>Fix Memory</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Signature Hash</th>
+                            <th>Success Rate</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fixes-body">
+                        <!-- Populated by JS -->
+                        <tr><td colspan="3">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="timeline-container">
+            <h2>Goback Timeline</h2>
+            <ul class="timeline-list" id="timeline-list">
+                <!-- Populated by JS -->
+                <li class="timeline-item"><div class="timeline-content">Loading...</div></li>
+            </ul>
+        </section>
+
+        <section id="knowledge-base" style="grid-column: span 1;">
+            <h2>Knowledge Base</h2>
+            <div style="margin-bottom: 1rem; display:flex; gap:0.5rem;">
+                <input type="text" id="kb-search" placeholder="Search episodic memory..." style="flex:1; padding:0.5rem; border-radius:4px; border:1px solid var(--border-color); background:#111; color:var(--text-main);">
+                <button onclick="searchKnowledge()" style="padding:0.5rem 1rem; background:var(--accent-color); color:#fff; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Search</button>
+            </div>
+            <div style="overflow-y: auto; max-height: 400px;">
+                <table style="margin-top:0;">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Entry</th>
+                        </tr>
+                    </thead>
+                    <tbody id="knowledge-body">
+                        <!-- Populated by JS -->
+                        <tr><td colspan="2">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <footer>SWEN v1.0.0</footer>
+
+    <script>
+        function formatDate(dateStr) {
+            if (!dateStr || dateStr === "0001-01-01T00:00:00Z") return "N/A";
+            return new Date(dateStr).toLocaleString();
+        }
+
+        async function loadHealth() {
+            try {
+                const res = await fetch('/health');
+                const data = await res.json();
+                
+                const grid = document.getElementById('health-grid');
+                grid.innerHTML = `
+                    <div class="health-item">
+                        <span class="health-label">Status</span>
+                        <span class="health-value status-badge ${data.status === 'healthy' ? 'healthy' : 'error'}">${data.status}</span>
+                    </div>
+                    <div class="health-item">
+                        <span class="health-label">Genesis Present</span>
+                        <span class="health-value">${data.goback.genesis_present ? 'Yes' : 'No'}</span>
+                    </div>
+                    <div class="health-item">
+                        <span class="health-label">Last Snapshot</span>
+                        <span class="health-value">${formatDate(data.goback.last_snapshot)}</span>
+                    </div>
+                    <div class="health-item">
+                        <span class="health-label">Snapshot Count</span>
+                        <span class="health-value">${data.goback.snapshot_count}</span>
+                    </div>
+                    <div class="health-item">
+                        <span class="health-label">Last Journal Entry</span>
+                        <span class="health-value">${formatDate(data.goback.last_journal)}</span>
+                    </div>
+                    <div class="health-item">
+                        <span class="health-label">Journal Count</span>
+                        <span class="health-value">${data.goback.journal_count}</span>
+                    </div>
+                `;
+            } catch (err) {
+                console.error("Failed to load health", err);
+            }
+        }
+
+        async function loadFixes() {
+            try {
+                const res = await fetch('/fixes');
+                const data = await res.json();
+                
+                const tbody = document.getElementById('fixes-body');
+                if (!data || data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color: var(--text-muted)">No fixes recorded yet.</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = data.map(fix => `
+                    <tr>
+                        <td><span class="code-snippet">${fix.signature_hash ? fix.signature_hash.substring(0, 8) : 'N/A'}</span></td>
+                        <td>${(fix.success_rate * 100).toFixed(1)}%</td>
+                        <td><span class="code-snippet">View Payload</span></td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error("Failed to load fixes", err);
+            }
+        }
+
+        function renderKnowledge(data) {
+            const tbody = document.getElementById('knowledge-body');
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2" style="text-align:center; color: var(--text-muted)">No entries found.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = data.map(entry => {
+                const fileName = entry.Path.split('\\').pop().split('/').pop();
+                const snippet = entry.Content.substring(0, 100).replace(/</g, '&lt;').replace(/>/g, '&gt;') + '...';
+                return `
+                <tr>
+                    <td style="vertical-align:top;"><span class="timeline-badge" style="background:var(--border-color)">${entry.Source}</span></td>
+                    <td>
+                        <div style="font-weight:600; font-size:0.85rem; color:var(--accent-color); margin-bottom:0.25rem;" title="${entry.Path}">${fileName}</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);">${snippet}</div>
+                        <div style="font-size:0.75rem; margin-top:0.25rem;">${formatDate(entry.Timestamp)}</div>
+                    </td>
+                </tr>
+            `}).join('');
+        }
+
+        async function loadKnowledge() {
+            try {
+                const res = await fetch('/knowledge');
+                const data = await res.json();
+                renderKnowledge(data);
+            } catch (err) {
+                console.error("Failed to load knowledge", err);
+            }
+        }
+
+        async function searchKnowledge() {
+            const query = document.getElementById('kb-search').value;
+            if (!query) {
+                loadKnowledge();
+                return;
+            }
+            try {
+                const res = await fetch('/knowledge/search?q=' + encodeURIComponent(query));
+                const data = await res.json();
+                renderKnowledge(data);
+            } catch (err) {
+                console.error("Failed to search knowledge", err);
+            }
+        }
+
+        async function loadTimeline() {
+            try {
+                const res = await fetch('/timeline');
+                const data = await res.json();
+                
+                const list = document.getElementById('timeline-list');
+                if (!data || data.length === 0) {
+                    list.innerHTML = '<li class="timeline-item"><div class="timeline-content">No events recorded.</div></li>';
+                    return;
+                }
+
+                list.innerHTML = data.map(evt => {
+                    let details = '';
+                    if (evt.type === 'snapshot') {
+                        details = evt.data.is_genesis ? 'Genesis Snapshot Captured' : `Proto Checksum: ${evt.data.proto_checksum.substring(0,8)}...`;
+                        return `
+                            <li class="timeline-item ${evt.type}">
+                                <span class="timeline-time">${formatDate(evt.timestamp)}</span>
+                                <div class="timeline-content" style="cursor:pointer" onclick="toggleDiff('${evt.timestamp}', this)">
+                                    <span class="timeline-badge ${evt.type}">${evt.type.replace('_', ' ')}</span>
+                                    ${details}
+                                    <div class="diff-container" style="display:none; margin-top:1rem; border-top:1px solid #333; padding-top:1rem;"></div>
+                                </div>
+                            </li>
+                        `;
+                    } else {
+                        if (evt.type === 'journal') {
+                            details = `Action: ${evt.data.action}`;
+                        } else if (evt.type === 'error_history') {
+                            details = `Fix Applied for Signature: ${evt.data.signature.substring(0,8)}`;
+                        }
+
+                        return `
+                            <li class="timeline-item ${evt.type}">
+                                <span class="timeline-time">${formatDate(evt.timestamp)}</span>
+                                <div class="timeline-content">
+                                    <span class="timeline-badge ${evt.type}">${evt.type.replace('_', ' ')}</span>
+                                    ${details}
+                                </div>
+                            </li>
+                        `;
+                    }
+                }).join('');
+            } catch (err) {
+                console.error("Failed to load timeline", err);
+            }
+        }
+
+        async function toggleDiff(ts, el) {
+            const container = el.querySelector('.diff-container');
+            if (container.style.display === 'block') {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = 'block';
+            container.innerHTML = '<div style="color:var(--text-muted)">Loading diff...</div>';
+            
+            try {
+                const res = await fetch('/diff?ts=' + encodeURIComponent(ts));
+                const data = await res.json();
+                
+                let driftWarning = '';
+                const snapFp = data.snapshot_fingerprint;
+                const currFp = data.current_fingerprint;
+                
+                if (!snapFp) {
+                    driftWarning = '<div style="background:rgba(250,204,21,0.1); color:var(--warning-color); padding:0.5rem; border-radius:4px; margin-bottom:1rem;">⚠️ Unknown OS Drift (Snapshot predates OS Fingerprinting)</div>';
+                } else if (snapFp.windows_build !== currFp.windows_build || snapFp.wsl_kernel !== currFp.wsl_kernel) {
+                    driftWarning = `<div style="background:rgba(248,113,113,0.1); color:var(--danger-color); padding:0.5rem; border-radius:4px; margin-bottom:1rem;">
+                        ⚠️ OS Drift Detected!<br>
+                        Snapshot Windows: ${snapFp.windows_build}, Live Windows: ${currFp.windows_build}<br>
+                        Snapshot WSL: ${snapFp.wsl_kernel || 'N/A'}, Live WSL: ${currFp.wsl_kernel || 'N/A'}
+                    </div>`;
+                } else {
+                    driftWarning = '<div style="background:rgba(74,222,128,0.1); color:var(--success-color); padding:0.5rem; border-radius:4px; margin-bottom:1rem;">✅ No OS Drift Detected</div>';
+                }
+
+                container.innerHTML = `
+                    ${driftWarning}
+                    <div style="font-size:0.85rem">
+                        <div style="color:var(--accent-color); margin-bottom:0.25rem;">Engine State</div>
+                        <pre style="background:#000; padding:1rem; overflow-x:auto; color:var(--text-muted); border-radius:4px;">${JSON.stringify(data.engine_state, null, 2)}</pre>
+                        
+                        <div style="color:var(--accent-color); margin-bottom:0.25rem; margin-top:1rem;">Config State</div>
+                        <pre style="background:#000; padding:1rem; overflow-x:auto; color:var(--text-muted); border-radius:4px;">${JSON.stringify(data.config_state, null, 2)}</pre>
+                    </div>
+                    <button onclick="revertTo('${ts}', event)" style="margin-top:1rem; background:var(--danger-color); color:#fff; border:none; padding:0.5rem 1rem; border-radius:4px; cursor:pointer; font-weight:600;">Revert to this point</button>
+                `;
+            } catch (err) {
+                container.innerHTML = '<div style="color:var(--danger-color)">Error loading diff: ' + err.message + '</div>';
+            }
+        }
+
+        async function revertTo(ts, event) {
+            event.stopPropagation();
+            if (!confirm("Are you sure you want to revert SWEN to this snapshot? This will undo all changes made after this point.")) return;
+            
+            try {
+                const res = await fetch('/revert', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({timestamp: ts})
+                });
+                if (res.ok) {
+                    alert("Revert successful. Reloading timeline...");
+                    window.location.reload();
+                } else {
+                    const text = await res.text();
+                    alert("Revert failed: " + text);
+                }
+            } catch (err) {
+                alert("Error during revert: " + err.message);
+            }
+        }
+
+        window.onload = () => {
+            loadHealth();
+            loadFixes();
+            loadTimeline();
+            loadKnowledge();
+
+            document.getElementById('kb-search').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    searchKnowledge();
+                }
+            });
+        };
+    </script>
+</body>
+</html>

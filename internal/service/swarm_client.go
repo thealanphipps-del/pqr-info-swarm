@@ -44,10 +44,9 @@ func NewSwarmClient() *SwarmClient {
 		ctx,
 		addr,
 		grpc.WithTransportCredentials(insecure.NewCredentials()), // use insecure credentials for dev
-		grpc.WithBlock(),             // fail fast if unreachable
 	)
 	if err != nil {
-		log.Fatalf("failed to dial swarm gRPC at %s: %v", addr, err)
+		log.Printf("[WARNING] failed to dial swarm gRPC at %s: %v", addr, err)
 	}
 
 	client := pb.NewSwarmCommunicationClient(conn)

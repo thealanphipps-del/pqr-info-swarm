@@ -449,7 +449,18 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 			memory_state BYTES NOT NULL,
 			config_state BYTES NOT NULL,
 			proto_checksum TEXT NOT NULL,
-			created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+			created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+			is_genesis BOOLEAN DEFAULT FALSE,
+			host_fingerprint JSONB
+		)`,
+		`CREATE TABLE IF NOT EXISTS knowledge_journal (
+			id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+			timestamp TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+			source TEXT NOT NULL,
+			path TEXT NOT NULL,
+			content TEXT NOT NULL,
+			embedding JSONB,
+			tags TEXT[]
 		)`,
 	}
 
@@ -457,6 +468,11 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 		if _, err := r.db.ExecContext(ctx, table); err != nil {
 			return err
 		}
+	}
+
+	// Additive migration for existing DBs
+	if _, err := r.db.ExecContext(ctx, "ALTER TABLE system_snapshots ADD COLUMN IF NOT EXISTS host_fingerprint JSONB"); err != nil {
+		return err
 	}
 
 	// Seed metrics

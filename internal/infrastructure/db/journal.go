@@ -24,6 +24,96 @@ func (c *CockroachRepository) LogAction(ctx context.Context, action string, befo
 	return err
 }
 
+func (c *CockroachRepository) CreateGenesisSnapshot(ctx context.Context, engineBytes, memoryBytes, configBytes []byte, protoChecksum string, hostFingerprint []byte) error {
+	_, err := c.db.ExecContext(ctx, `
+		INSERT INTO system_snapshots (snapshot_time, engine_state, memory_state, config_state, proto_checksum, is_genesis, host_fingerprint)
+		VALUES ($1, $2, $3, $4, $5, TRUE, $6)
+	`, time.Now(), engineBytes, memoryBytes, configBytes, protoChecksum, hostFingerprint)
+	return err
+}
+
+type SystemSnapshotRecord struct {
+	Timestamp       time.Time
+	EngineState     []byte
+	MemoryState     []byte
+	ConfigState     []byte
+	ProtoChecksum   string
+	IsGenesis       bool
+	HostFingerprint []byte
+}
+
+type ErrorHistoryRecord struct {
+	SignatureHash  string
+	SnapshotTime   time.Time
+	ErrorContext   []byte
+	SynthesizedFix []byte
+	SuccessRate    float64
+}
+
+func (c *CockroachRepository) GetSnapshots(ctx context.Context) ([]SystemSnapshotRecord, error) {
+	rows, err := c.db.QueryContext(ctx, "SELECT snapshot_time, engine_state, memory_state, config_state, proto_checksum, is_genesis, host_fingerprint FROM system_snapshots ORDER BY snapshot_time DESC")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var out []SystemSnapshotRecord
+	for rows.Next() {
+		var r SystemSnapshotRecord
+		if err := rows.Scan(&r.Timestamp, &r.EngineState, &r.MemoryState, &r.ConfigState, &r.ProtoChecksum, &r.IsGenesis, &r.HostFingerprint); err != nil {
+			return nil, err
+		}
+		out = append(out, r)
+	}
+	return out, nil
+}
+
+func (c *CockroachRepository) GetSnapshot(ctx context.Context, ts time.Time) (*SystemSnapshotRecord, error) {
+	var r SystemSnapshotRecord
+	err := c.db.QueryRowContext(ctx, "SELECT snapshot_time, engine_state, memory_state, config_state, proto_checksum, is_genesis, host_fingerprint FROM system_snapshots WHERE snapshot_time = $1", ts).
+		Scan(&r.Timestamp, &r.EngineState, &r.MemoryState, &r.ConfigState, &r.ProtoChecksum, &r.IsGenesis, &r.HostFingerprint)
+	if err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
+func (c *CockroachRepository) GetJournal(ctx context.Context) ([]JournalEntry, error) {
+	rows, err := c.db.QueryContext(ctx, "SELECT id, timestamp, action, before, after FROM action_journal ORDER BY timestamp DESC")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var out []JournalEntry
+	for rows.Next() {
+		var r JournalEntry
+		if err := rows.Scan(&r.ID, &r.Timestamp, &r.Action, &r.Before, &r.After); err != nil {
+			return nil, err
+		}
+		out = append(out, r)
+	}
+	return out, nil
+}
+
+func (c *CockroachRepository) GetErrorHistory(ctx context.Context) ([]ErrorHistoryRecord, error) {
+	rows, err := c.db.QueryContext(ctx, "SELECT signature_hash, snapshot_time, error_context, synthesized_fix, success_rate FROM error_solution_history ORDER BY snapshot_time DESC")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var out []ErrorHistoryRecord
+	for rows.Next() {
+		var r ErrorHistoryRecord
+		if err := rows.Scan(&r.SignatureHash, &r.SnapshotTime, &r.ErrorContext, &r.SynthesizedFix, &r.SuccessRate); err != nil {
+			return nil, err
+		}
+		out = append(out, r)
+	}
+	return out, nil
+}
+
 func (c *CockroachRepository) UndoLast(ctx context.Context, applyFunc func(action string, state []byte) error) error {
 	var entry JournalEntry
 	err := c.db.QueryRowContext(ctx, `

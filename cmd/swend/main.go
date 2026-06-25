@@ -17,9 +17,15 @@ import (
 )
 
 func main() {
-	if len(os.Args) > 1 && os.Args[1] == "goback" {
-		handleGoback(os.Args[2:])
-		return
+	if len(os.Args) > 1 {
+		if os.Args[1] == "goback" {
+			handleGoback(os.Args[2:])
+			return
+		}
+		if os.Args[1] == "install" || os.Args[1] == "genesis" {
+			handleInstall()
+			return
+		}
 	}
 
 	log.Println("[swend] starting Swarm Execution Node...")
@@ -40,7 +46,7 @@ func main() {
 	}
 
 	if err := vaultClient.VerifyIdentity(context.Background()); err != nil {
-		log.Fatalf("vault identity verification failed: %v", err)
+		log.Printf("[WARNING] vault identity verification failed (proceeding without vault): %v", err)
 	}
 
 	// 2. Build capability manifest
@@ -55,15 +61,14 @@ func main() {
 		Capabilities: []string{"windows_execution", "wsl_execution", "gcp_ops", "emulator_control", "error_solution_learning"},
 	}
 
-	// 3. Register with swarm
 	swarmClient := service.NewSwarmClient()
 	agentInfo, err := swarmClient.Register(manifest)
 	if err != nil {
-		log.Fatalf("swarm registration failed: %v", err)
+		log.Printf("[WARNING] swarm registration failed (proceeding in local mode): %v", err)
+	} else {
+		log.Printf("[swend] registered as agent %s (shortcode %s)",
+			agentInfo.AgentID, agentInfo.Shortcode)
 	}
-
-	log.Printf("[swend] registered as agent %s (shortcode %s)",
-		agentInfo.AgentID, agentInfo.Shortcode)
 
 	// 4. Initialize execution engine
 	engine := execution.NewExecutionEngine()
@@ -82,6 +87,17 @@ func main() {
 	}
 
 	engine.Memory = memoryDB
+
+	// 5.5 Start Dashboard Service
+	gobackSvc := service.NewGobackService(memoryDB)
+	dashboard := service.NewDashboardService(memoryDB, gobackSvc)
+	dashboard.Start()
+	log.Println("[swend] Observability Dashboard started on http://127.0.0.1:7777")
+
+	// 5.7 Start Knowledge Ingestion
+	ingester := service.NewKnowledgeIngester(memoryDB)
+	ingester.Start(context.Background())
+	log.Println("[swend] Knowledge Base Ingestion started")
 
 	// 6. Start execution stream
 	go service.StartExecutionStream(swarmClient, engine, memoryDB)
@@ -160,4 +176,57 @@ func handleGoback(args []string) {
 	default:
 		fmt.Println("Usage: swend goback --to <timestamp> | --last | --chain <timestamp> | --fixes <timestamp>")
 	}
+}
+
+func handleInstall() {
+	log.Println("[swend] initializing Genesis Restore Point...")
+
+	connStr := os.Getenv("DATABASE_URL")
+	if connStr == "" {
+		connStr = "postgresql://root@localhost:26257/antigravity?sslmode=disable"
+	}
+	memoryDB, err := db.NewCockroachRepository(connStr)
+	if err != nil {
+		log.Fatalf("db connection failed: %v", err)
+	}
+
+	if err := memoryDB.InitSchema(context.Background()); err != nil {
+		log.Fatalf("db schema init failed: %v", err)
+	}
+
+	gb := service.NewGobackService(memoryDB)
+
+	hasWSL := false
+	if runtime.GOOS == "windows" {
+		hasWSL = true 
+	}
+
+	engineSnap := &service.EngineSnapshot{
+		OSName:           runtime.GOOS,
+		HasWSL:           hasWSL,
+		DefaultTimeout:   60,
+		EmulatorDefaults: map[string]string{"gpu_mode": "auto", "cold_boot": "false"},
+		VaultAddress:     os.Getenv("VAULT_ADDR"),
+		VaultRole:        "execution_node",
+	}
+
+	configSnap := &service.ConfigSnapshot{
+		NodeID:       "swen-node-1",
+		SwarmAddress: os.Getenv("PQR_SWARM_ADDR"),
+		CockroachDSN: connStr,
+		Env: map[string]string{
+			"VAULT_ADDR":     os.Getenv("VAULT_ADDR"),
+			"VAULT_TOKEN":    os.Getenv("VAULT_TOKEN"),
+			"SWARM_ENDPOINT": os.Getenv("PQR_SWARM_ADDR"),
+			"SWEN_NODE_ID":   "swen-node-1",
+			"ANDROID_HOME":   os.Getenv("ANDROID_HOME"),
+			"PATH":           os.Getenv("PATH"),
+		},
+	}
+
+	if err := gb.Genesis(engineSnap, configSnap, "proto/swarm.proto"); err != nil {
+		log.Fatalf("genesis failed: %v", err)
+	}
+
+	log.Println("[swend] installation complete. Genesis snapshot created.")
 }
