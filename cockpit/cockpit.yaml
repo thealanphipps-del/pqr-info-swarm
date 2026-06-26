@@ -1,0 +1,8 @@
+appName: "PQR Info Swarm"
+theme:
+  primary: "#ff1493"
+  secondary: "#00ff7f"
+  background: "#000000"
+backend:
+  swarmApiUrl: "http://127.0.0.1:8080/api/swarm"
+  ticketApiUrl: "http://127.0.0.1:8080/REST/2.0"

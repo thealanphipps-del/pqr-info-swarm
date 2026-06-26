@@ -8,12 +8,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sort"
 	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/thealanphipps-del/pqr/internal/domain"
+	"github.com/thealanphipps-del/pqr/internal/infrastructure/db"
 	"github.com/thealanphipps-del/pqr/internal/service"
 )
 
@@ -50,6 +52,7 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService, auth 
 		api.POST("/ticket", s.handleCreateTicket)
 		api.GET("/ticket/:id", s.handleGetTicket)
 		api.PUT("/ticket/:id", s.handleUpdateTicket)
+		api.POST("/ticket/:id/comment", s.handleCreateComment)
 		api.GET("/tickets", s.handleSearchTickets)
 		
 		// Agent memory operations
@@ -60,7 +63,7 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService, auth 
 		// Audit and relationships
 		api.GET("/ticket/:id/audit", s.handleGetAuditTrail)
 		api.GET("/ticket/:id/links", s.handleGetLinks)
-		api.POST("/ticket/:parentID/link/:childID", s.handleLinkTickets)
+		api.POST("/ticket/:id/link/:childID", s.handleLinkTickets)
 		
 		// Health
 		api.GET("/health", s.handleHealth)
@@ -71,6 +74,8 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService, auth 
 		api.POST("/chat/lmstudio", s.handleLMStudioChat)
 		api.POST("/chat/swarm", s.handleSwarmChat)
 		api.GET("/health/lmstudio", s.handleLMStudioHealth)
+		api.POST("/agent/:agentID/message", s.handleAgentMessage)
+		api.GET("/agent/:agentID/conversation", s.handleAgentConversation)
 		
 		// Self-healing
 		api.POST("/healing/ticket", s.handleCreateHealingTicket)
@@ -187,9 +192,12 @@ func (s *Server) handleUpdateTicket(c *gin.Context) {
 	}
 
 	var req struct {
-		Status  string `json:"Status"`
-		Title   string `json:"Title"`
-		Creator string `json:"Creator"`
+		Status     string `json:"Status"`
+		Title      string `json:"Title"`
+		Creator    string `json:"Creator"`
+		AssignedTo string `json:"AssignedTo"`
+		Priority   string `json:"Priority"`
+		Queue      string `json:"Queue"`
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -197,22 +205,54 @@ func (s *Server) handleUpdateTicket(c *gin.Context) {
 		return
 	}
 
-	// Permission Check: Only creator or assigned agent can update
+	// Permission Check: Only creator, assigned agent, or operator can update
 	ticket, _, err := s.Service.GetTicketWithContent(c.Request.Context(), ticketID)
 	if err == nil {
-		if ticket.CreatorAgentID != req.Creator && ticket.AssignedTo != req.Creator {
+		if req.Creator != "operator" && ticket.CreatorAgentID != req.Creator && ticket.AssignedTo != req.Creator {
 			c.JSON(http.StatusForbidden, gin.H{"error": "Access Denied: Ticket not assigned to agent"})
 			return
 		}
 	}
 
-	err = s.Service.UpdateExtended(c.Request.Context(), ticketID, req.Status, req.Title, "", req.Creator)
+	err = s.Service.UpdateExtended(c.Request.Context(), ticketID, req.Status, req.Title, "", req.Creator, req.AssignedTo, req.Priority, req.Queue)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": "updated"})
+}
+
+func (s *Server) handleCreateComment(c *gin.Context) {
+	idStr := c.Param("id")
+	ticketID, err := uuid.Parse(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid uuid"})
+		return
+	}
+
+	var req struct {
+		AgentID string `json:"AgentID"`
+		Comment string `json:"Comment"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	entry := domain.AuditEntry{
+		TicketID: ticketID,
+		AgentID:  req.AgentID,
+		Action:   "COMMENT",
+		NewValue: map[string]interface{}{"comment": req.Comment},
+	}
+
+	if err := s.Service.AddAudit(c.Request.Context(), entry); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "comment added"})
 }
 
 func (s *Server) handleSearchTickets(c *gin.Context) {
@@ -334,7 +374,7 @@ func (s *Server) handleGetAuditTrail(c *gin.Context) {
 }
 
 func (s *Server) handleLinkTickets(c *gin.Context) {
-	parentID := c.Param("parentID")
+	parentID := c.Param("id")
 	childID := c.Param("childID")
 	
 	var req struct {
@@ -854,4 +894,83 @@ func (s *Server) handleWiki(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"sections": []string{"Overview", "Identity", "Fabric", "Swarm"},
 	})
+}
+
+func (s *Server) handleAgentMessage(c *gin.Context) {
+	agentID := c.Param("agentID")
+	var req struct {
+		Sender  string `json:"sender"`
+		Message string `json:"message"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	repo := s.Service.GetRepo()
+	ckRepo, ok := repo.(*db.CockroachRepository)
+	if !ok {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "repository type mismatch"})
+		return
+	}
+
+	// 1. Insert operator message into database
+	tags := []string{"chat", agentID, req.Sender}
+	contentStr := fmt.Sprintf("%s: %s", req.Sender, req.Message)
+	err := ckRepo.InsertKnowledge(c.Request.Context(), "agent-chat", agentID, contentStr, tags)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	// 2. Query Swarm LLM acting as the target agent
+	agentResponsePrompt := fmt.Sprintf("System: You are Swarm Agent '%s'. A human operator has sent you a direct message. Answer concisely as this agent.\nOperator: %s\nResponse:", agentID, req.Message)
+	resp, node, err := s.AI.QuerySwarm(c.Request.Context(), agentResponsePrompt)
+	if err != nil {
+		resp = fmt.Sprintf("Agent %s: Node offline, query failed.", agentID)
+	} else {
+		resp = fmt.Sprintf("Agent %s (%s): %s", agentID, node, resp)
+	}
+
+	// 3. Save the agent's response to the conversation log
+	_ = ckRepo.InsertKnowledge(c.Request.Context(), "agent-chat", agentID, resp, []string{"chat", agentID, "agent"})
+
+	c.JSON(http.StatusOK, gin.H{
+		"response": resp,
+	})
+}
+
+func (s *Server) handleAgentConversation(c *gin.Context) {
+	agentID := c.Param("agentID")
+
+	repo := s.Service.GetRepo()
+	ckRepo, ok := repo.(*db.CockroachRepository)
+	if !ok {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "repository type mismatch"})
+		return
+	}
+
+	entries, err := ckRepo.SearchKnowledge(c.Request.Context(), agentID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	var chatLogs []map[string]interface{}
+	for _, entry := range entries {
+		if entry.Source == "agent-chat" {
+			chatLogs = append(chatLogs, map[string]interface{}{
+				"timestamp": entry.Timestamp,
+				"content":   entry.Content,
+				"tags":      entry.Tags,
+			})
+		}
+	}
+
+	// Sort chronologically (oldest to newest)
+	sort.Slice(chatLogs, func(i, j int) bool {
+		return chatLogs[i]["timestamp"].(time.Time).Before(chatLogs[j]["timestamp"].(time.Time))
+	})
+
+	c.JSON(http.StatusOK, chatLogs)
 }

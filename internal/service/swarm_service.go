@@ -22,6 +22,10 @@ func NewSwarmService(repo domain.TicketRepository, mem domain.AgentMemoryReposit
 	}
 }
 
+func (s *SwarmService) GetRepo() domain.TicketRepository {
+	return s.repo
+}
+
 func (s *SwarmService) CreateFabricTicket(ctx context.Context, layer int, agentID string, content domain.FabricContent) (uuid.UUID, error) {
 	summaryHash := sha256.Sum256([]byte(fmt.Sprintf("%v", content.IntentBlob)))
 	content.SummaryHash = hex.EncodeToString(summaryHash[:])
@@ -82,12 +86,12 @@ func (s *SwarmService) UpdateTicket(ctx context.Context, id uuid.UUID, status st
 	return s.repo.Update(ctx, id, status, title)
 }
 
-func (s *SwarmService) UpdateExtended(ctx context.Context, id uuid.UUID, status, title, resolution, creator string) error {
+func (s *SwarmService) UpdateExtended(ctx context.Context, id uuid.UUID, status, title, resolution, creator, assignedTo, priority, queue string) error {
 	// Cast repository to check for extended update support
 	if r, ok := s.repo.(interface {
-		UpdateExtended(context.Context, uuid.UUID, string, string, string, string) error
+		UpdateExtended(context.Context, uuid.UUID, string, string, string, string, string, string, string) error
 	}); ok {
-		return r.UpdateExtended(ctx, id, status, title, resolution, creator)
+		return r.UpdateExtended(ctx, id, status, title, resolution, creator, assignedTo, priority, queue)
 	}
 	// Fallback to basic update
 	return s.repo.Update(ctx, id, status, title)
@@ -128,4 +132,8 @@ func (s *SwarmService) InitSchema(ctx context.Context) error {
 		return r.InitSchema(ctx)
 	}
 	return nil
+}
+
+func (s *SwarmService) AddAudit(ctx context.Context, entry domain.AuditEntry) error {
+	return s.repo.AddAudit(ctx, entry)
 }

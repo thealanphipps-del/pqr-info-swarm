@@ -8,15 +8,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/thealanphipps-del/pqr/internal/domain"
 	"github.com/thealanphipps-del/pqr/internal/service"
+	"github.com/thealanphipps-del/pqr/proto"
 	"google.golang.org/grpc"
 )
 
 type SwarmServer struct {
-	UnimplementedSwarmCommunicationServer
-	UnimplementedNeuralGossipServer
+	proto.UnimplementedSwarmCommunicationServer
+	proto.UnimplementedNeuralGossipServer
 	
 	Service *service.SwarmService
 	Healing *service.HealingService
@@ -27,10 +27,10 @@ type SwarmServer struct {
 	myShortcode string
 }
 
-func (s *SwarmServer) ExecuteRejoin(ctx context.Context, req *Empty) (*ShortcodeResponse, error) {
+func (s *SwarmServer) ExecuteRejoin(ctx context.Context, req *proto.Empty) (*proto.ShortcodeResponse, error) {
 	log.Printf("[gRPC] Processing SWARM_REJOIN_v1 signal for %s", s.myShortcode)
 	// Zero-alloc context sync logic would be triggered here
-	return &ShortcodeResponse{Shortcode: s.myShortcode}, nil
+	return &proto.ShortcodeResponse{Shortcode: s.myShortcode}, nil
 }
 
 func NewSwarmServer(svc *service.SwarmService, healing *service.HealingService) *SwarmServer {
@@ -46,7 +46,7 @@ func NewSwarmServer(svc *service.SwarmService, healing *service.HealingService) 
 	return s
 }
 
-func (s *SwarmServer) SendPacket(ctx context.Context, req *SwarmPacket) (*SwarmPacket, error) {
+func (s *SwarmServer) SendPacket(ctx context.Context, req *proto.SwarmPacket) (*proto.SwarmPacket, error) {
 	log.Printf("[gRPC] Received Packet from %s: %s", req.SenderId, req.Intent)
 	
 	// Write to Ticketing Fabric for Logged Consensus
@@ -69,7 +69,7 @@ func (s *SwarmServer) SendPacket(ctx context.Context, req *SwarmPacket) (*SwarmP
 	return req, nil
 }
 
-func (s *SwarmServer) ProvisionShortcode(ctx context.Context, req *ShortcodeRequest) (*ShortcodeResponse, error) {
+func (s *SwarmServer) ProvisionShortcode(ctx context.Context, req *proto.ShortcodeRequest) (*proto.ShortcodeResponse, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	
@@ -85,10 +85,10 @@ func (s *SwarmServer) ProvisionShortcode(ctx context.Context, req *ShortcodeRequ
 	s.shortcodes[newCode] = req.Role
 	log.Printf("[gRPC] Provisioned Shortcode %s for Role %s", newCode, req.Role)
 	
-	return &ShortcodeResponse{Shortcode: newCode}, nil
+	return &proto.ShortcodeResponse{Shortcode: newCode}, nil
 }
 
-func (s *SwarmServer) GetActiveShortcodes(ctx context.Context, req *Empty) (*ShortcodeList, error) {
+func (s *SwarmServer) GetActiveShortcodes(ctx context.Context, req *proto.Empty) (*proto.ShortcodeList, error) {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 	
@@ -97,7 +97,7 @@ func (s *SwarmServer) GetActiveShortcodes(ctx context.Context, req *Empty) (*Sho
 		codes = append(codes, c)
 	}
 	
-	return &ShortcodeList{Shortcodes: codes}, nil
+	return &proto.ShortcodeList{Shortcodes: codes}, nil
 }
 
 func (s *SwarmServer) generateShortcode() string {
@@ -119,7 +119,7 @@ func (s *SwarmServer) StartServers() {
 			log.Fatalf("failed to listen on 1111: %v", err)
 		}
 		gs := grpc.NewServer()
-		RegisterSwarmCommunicationServer(gs, s)
+		proto.RegisterSwarmCommunicationServer(gs, s)
 		log.Printf("🛰️ gRPC Logged Consensus Bridge ONLINE on :1111")
 		if err := gs.Serve(lis); err != nil {
 			log.Fatalf("failed to serve on 1111: %v", err)
@@ -133,7 +133,7 @@ func (s *SwarmServer) StartServers() {
 			log.Fatalf("failed to listen on 11111: %v", err)
 		}
 		gs := grpc.NewServer()
-		RegisterNeuralGossipServer(gs, s)
+		proto.RegisterNeuralGossipServer(gs, s)
 		log.Printf("🧠 Neural Gossip Memory Bus ONLINE on :11111")
 		if err := gs.Serve(lis); err != nil {
 			log.Fatalf("failed to serve on 11111: %v", err)

@@ -129,8 +129,8 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 // MarkResolved finalizes a ticket and adds it to the evolutionary knowledge base
 func (h *HealingService) MarkResolved(ctx context.Context, ticketID uuid.UUID, resolution string, agentID string) error {
 	return h.repo.(interface {
-		UpdateExtended(context.Context, uuid.UUID, string, string, string, string) error
-	}).UpdateExtended(ctx, ticketID, "COMPLETED", "", resolution, agentID)
+		UpdateExtended(context.Context, uuid.UUID, string, string, string, string, string, string, string) error
+	}).UpdateExtended(ctx, ticketID, "COMPLETED", "", resolution, agentID, "", "", "")
 }
 
 // RecordFailure logs a failed attempt to avoid repetition in higher tiers

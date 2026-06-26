@@ -211,6 +211,90 @@ func (c *Client) UpdateTicket(ctx context.Context, ticketID string, status strin
 	return nil
 }
 
+// UpdateTicketExtended updates a ticket with all details
+func (c *Client) UpdateTicketExtended(ctx context.Context, ticketID string, status string, title string, creator string, assignedTo string, priority string, queue string) error {
+	payload := map[string]interface{}{
+		"Status":     status,
+		"Title":      title,
+		"Creator":    creator,
+		"AssignedTo": assignedTo,
+		"Priority":   priority,
+		"Queue":      queue,
+	}
+
+	data, _ := json.Marshal(payload)
+	req, _ := http.NewRequestWithContext(ctx, "PUT",
+		fmt.Sprintf("%s/REST/2.0/ticket/%s", c.BaseURL, ticketID),
+		bytes.NewReader(data))
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := c.Client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("failed to update ticket extended: %s", string(body))
+	}
+
+	return nil
+}
+
+// ListTickets retrieves the recent list of tickets
+func (c *Client) ListTickets(ctx context.Context) ([]map[string]interface{}, error) {
+	req, _ := http.NewRequestWithContext(ctx, "GET",
+		fmt.Sprintf("%s/REST/2.0/tickets", c.BaseURL),
+		nil)
+
+	resp, err := c.Client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("failed to list tickets: %s", string(body))
+	}
+
+	var tickets []map[string]interface{}
+	if err := json.NewDecoder(resp.Body).Decode(&tickets); err != nil {
+		return nil, err
+	}
+
+	return tickets, nil
+}
+
+// CommentTicket adds a comment to a ticket
+func (c *Client) CommentTicket(ctx context.Context, ticketID string, agentID string, comment string) error {
+	payload := map[string]interface{}{
+		"AgentID": agentID,
+		"Comment": comment,
+	}
+
+	data, _ := json.Marshal(payload)
+	req, _ := http.NewRequestWithContext(ctx, "POST",
+		fmt.Sprintf("%s/REST/2.0/ticket/%s/comment", c.BaseURL, ticketID),
+		bytes.NewReader(data))
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := c.Client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("failed to comment ticket: %s", string(body))
+	}
+
+	return nil
+}
+
+
 // GetAuditTrail retrieves the audit trail for a ticket
 func (c *Client) GetAuditTrail(ctx context.Context, ticketID string) ([]map[string]interface{}, error) {
 	req, _ := http.NewRequestWithContext(ctx, "GET",

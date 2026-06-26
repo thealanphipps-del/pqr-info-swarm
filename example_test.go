@@ -4,11 +4,12 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"testing"
 	"time"
 )
 
-// ExampleAgentUsage demonstrates how agents use the ticketing system for memory
-func ExampleAgentUsage() {
+// TestExampleAgentUsage demonstrates how agents use the ticketing system for memory
+func TestExampleAgentUsage(t *testing.T) {
 	// Initialize client
 	client := NewClient("http://localhost:8080")
 	agentID := "processing-agent-001"
@@ -125,8 +126,8 @@ func ExampleAgentUsage() {
 	fmt.Println("\n✓ Example complete - Agent memory system working!")
 }
 
-// ExampleMultiAgentCoordination shows agents coordinating through linked tickets
-func ExampleMultiAgentCoordination() {
+// TestExampleMultiAgentCoordination shows agents coordinating through linked tickets
+func TestExampleMultiAgentCoordination(t *testing.T) {
 	client := NewClient("http://localhost:8080")
 	ctx := context.Background()
 

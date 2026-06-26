@@ -102,10 +102,16 @@ func (r *CockroachRepository) GetByID(ctx context.Context, id uuid.UUID) (*domai
 func (r *CockroachRepository) Update(ctx context.Context, id uuid.UUID, status string, title string) error {
 	// We'll expand this to handle Resolution if status is COMPLETED
 	// But for now let's just make it generic
-	return r.UpdateExtended(ctx, id, status, title, "", "")
+	return r.UpdateExtended(ctx, id, status, title, "", "", "", "", "")
 }
 
-func (r *CockroachRepository) UpdateExtended(ctx context.Context, id uuid.UUID, status string, title string, resolution string, resolvedBy string) error {
+func (r *CockroachRepository) UpdateIteration(ctx context.Context, id uuid.UUID, iteration int, escalation int, status string) error {
+	_, err := r.db.ExecContext(ctx, `UPDATE tickets SET iteration = $1, escalation_level = $2, status = $3, updated_at = CURRENT_TIMESTAMP WHERE ticket_id = $4`, iteration, escalation, status, id)
+	return err
+}
+
+func (r *CockroachRepository) UpdateExtended(ctx context.Context, id uuid.UUID, status string, title string, 
+resolution string, resolvedBy string, assignedTo string, priority string, queue string) error {
 	if status != "" {
 		_, err := r.db.ExecContext(ctx, `UPDATE tickets SET status = $1 WHERE ticket_id = $2`, status, id)
 		if err != nil {
@@ -133,6 +139,35 @@ func (r *CockroachRepository) UpdateExtended(ctx context.Context, id uuid.UUID, 
 
 	if resolvedBy != "" && resolution == "" { // Using resolvedBy for reassignment if resolution is empty
 		_, err := r.db.ExecContext(ctx, `UPDATE tickets SET creator_agent_id = $1 WHERE ticket_id = $2`, resolvedBy, id)
+		if err != nil {
+			return err
+		}
+	}
+
+	if assignedTo != "" {
+		_, err := r.db.ExecContext(ctx, `UPDATE tickets SET assigned_to = $1 WHERE ticket_id = $2`, assignedTo, id)
+		if err != nil {
+			return err
+		}
+	}
+
+	if priority != "" {
+		_, err := r.db.ExecContext(ctx, `
+			UPDATE ticket_content 
+			SET intent_blob = intent_blob || jsonb_build_object('priority', $1::STRING)
+			WHERE ticket_id = $2
+		`, priority, id)
+		if err != nil {
+			return err
+		}
+	}
+
+	if queue != "" {
+		_, err := r.db.ExecContext(ctx, `
+			UPDATE ticket_content 
+			SET intent_blob = intent_blob || jsonb_build_object('queue', $1::STRING)
+			WHERE ticket_id = $2
+		`, queue, id)
 		if err != nil {
 			return err
 		}
@@ -349,6 +384,7 @@ func (r *CockroachRepository) InitSchema(ctx context.Context) error {
 			escalation_level INT NOT NULL DEFAULT 0,
 			resolution STRING,
 			resolved_by STRING,
+			assigned_to STRING,
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			INDEX idx_status (status),
