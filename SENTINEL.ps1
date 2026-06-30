@@ -31,6 +31,10 @@ Write-Log "--------------------------------------------------------" -Color Cyan
 
 Set-Location $projectDir
 
+$consecutiveFailures = 0
+$lastRecoverySecs = 0
+$recoveryCooldownSecs = 300 # 5 minutes cooldown between recovery attempts
+
 while ($true) {
     # 1. Check Docker Engine Status
     $dockerCheck = docker info 2>$null
@@ -46,18 +50,26 @@ while ($true) {
     try {
         $response = Invoke-RestMethod -Uri $healthUrl -Method Get -TimeoutSec 5
         if ($response.status -eq "healthy") {
-            # Sub-heartbeat: We could check which replica served this if we added a header
+            $consecutiveFailures = 0
         } else {
             Write-Log "WARNING: PQR Mesh reported DEGRADED status: $($response.status)" -Color Yellow
+            $consecutiveFailures++
         }
     } catch {
-        Write-Log "ALERT: PQR Mesh is UNREACHABLE (HTTP Timeout/Error)." -Color Red
-        Write-Log "Attempting recovery of Gateway and Server Cluster..." -Color Cyan
+        $consecutiveFailures++
+        Write-Log "ALERT: PQR Mesh is UNREACHABLE (HTTP Timeout/Error). Consecutive Failures: $consecutiveFailures" -Color Red
         
-        # Re-lift the gateway and servers
-        docker-compose up -d gateway pqr-server
-        
-        Start-Sleep -Seconds 20 # Allow cluster to synchronize
+        if ($consecutiveFailures -ge 3) {
+            $currentSecs = [DateTimeOffset]::Now.ToUnixTimeSeconds()
+            if (($currentSecs - $lastRecoverySecs) -lt $recoveryCooldownSecs) {
+                Write-Log "RECOVERY SKIPPED: Cooldown active. Last recovery attempt was less than $($recoveryCooldownSecs)s ago." -Color Yellow
+            } else {
+                Write-Log "Attempting recovery of Gateway and Server Cluster..." -Color Cyan
+                docker-compose up -d gateway pqr-server
+                $lastRecoverySecs = $currentSecs
+                Start-Sleep -Seconds 20 # Allow cluster to synchronize
+            }
+        }
     }
 
     # 3. Check for Agent-Driven Signals

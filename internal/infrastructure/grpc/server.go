@@ -8,7 +8,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/thealanphipps-del/pqr/internal/domain"
 	"github.com/thealanphipps-del/pqr/internal/service"
 	"google.golang.org/grpc"

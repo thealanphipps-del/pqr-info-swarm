@@ -16,6 +16,7 @@ type MonitoringService struct {
 	healing *HealingService
 	auth    *AuthService
 	domain  string
+	tunnel  *TunnelAgent
 }
 
 func NewMonitoringService(healing *HealingService, auth *AuthService, domainName string) *MonitoringService {
@@ -23,6 +24,7 @@ func NewMonitoringService(healing *HealingService, auth *AuthService, domainName
 		healing: healing,
 		auth:    auth,
 		domain:  domainName,
+		tunnel:  NewTunnelAgent(),
 	}
 }
 
@@ -60,15 +62,12 @@ func (m *MonitoringService) consultGeminiStrategic(ctx context.Context) {
 }
 
 func (m *MonitoringService) checkCertExpiration(ctx context.Context) {
-	if m.auth == nil || m.auth.IDP == nil {
+	if m.auth == nil || m.auth.Agent == nil {
 		return
 	}
 
-	cert := m.auth.IDP.IDP.Certificate
-	daysUntilExpiry := int(time.Until(cert.NotAfter).Hours() / 24)
-
-	if daysUntilExpiry < 7 {
-		m.triggerHealing(ctx, "SAML_CERT_EXPIRING", fmt.Sprintf("SAML Certificate expires in %d days. Initiation autonomous rotation.", daysUntilExpiry))
+	if drifted, reason := m.auth.Agent.DetectDrift(); drifted {
+		m.triggerHealing(ctx, "SAML_CERT_EXPIRING", fmt.Sprintf("SAML Drift detected: %s. Initiating autonomous rotation.", reason))
 	}
 }
 
@@ -96,6 +95,15 @@ func (m *MonitoringService) checkSAMLHealth(ctx context.Context) {
 
 	resp, err := client.Do(req)
 	if err != nil {
+		log.Printf("[MONITOR] Failed to reach SAML metadata: %v. Activating TryCloudflare failover tunnel...", err)
+		if m.tunnel != nil {
+			_ = m.tunnel.StartFailoverTunnel(ctx)
+			// Wait brief moment for quick tunnel initialization
+			time.Sleep(2 * time.Second)
+			if fURL := m.tunnel.GetFailoverURL(); fURL != "" {
+				log.Printf("[MONITOR] Failover Tunnel ACTIVE: %s/saml/metadata", fURL)
+			}
+		}
 		m.triggerHealing(ctx, "SAML_CONNECTIVITY_FAILURE", fmt.Sprintf("Failed to reach SAML metadata: %v", err))
 		return
 	}

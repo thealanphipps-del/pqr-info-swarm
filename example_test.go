@@ -122,6 +122,25 @@ func ExampleAgentUsage() {
 	}
 	fmt.Printf("✓ Agent context: %d tickets available\n", len(allMemories))
 
+	// 10. Demonstrate state resumption
+	// Create an incomplete ticket to simulate an interrupted task
+	crashTicketID, _ := client.CreateTicket(ctx, "Crash Test", "testing", "Task that will be interrupted", agentID, nil)
+	client.StoreMemory(ctx, agentID, crashTicketID, "context", map[string]interface{}{
+		"step": 2,
+		"last_processed_id": 42,
+	}, 1.0)
+	
+	// Simulated crash and restart with a new session
+	newSession := NewAgentSession("http://localhost:8080", agentID)
+	resumedTicket, state, err := newSession.Resume(ctx)
+	if err == nil {
+		fmt.Printf("✓ Resumed agent state! Ticket: %s\n", resumedTicket)
+		if step, ok := state["step"].(float64); ok {
+			fmt.Printf("  Resuming from step: %v\n", step)
+		}
+		client.UpdateTicket(ctx, resumedTicket, "COMPLETED", "Resumed and finished")
+	}
+
 	fmt.Println("\n✓ Example complete - Agent memory system working!")
 }
 
@@ -131,48 +150,64 @@ func ExampleMultiAgentCoordination() {
 	ctx := context.Background()
 
 	// Agent A creates analysis ticket
-	analysisID, _ := client.CreateTicket(ctx,
+	analysisID, err := client.CreateTicket(ctx,
 		"Data Analysis",
 		"analytics",
 		"Analyze processed data",
 		"analysis-agent-001",
 		map[string]interface{}{"type": "statistical"},
 	)
+	if err != nil {
+		log.Fatal("Failed to create analysis ticket:", err)
+	}
 	fmt.Printf("Analysis Agent created: %s\n", analysisID)
 
 	// Agent A stores its analysis plan
-	client.StoreMemory(ctx, "analysis-agent-001", analysisID, "context",
+	err = client.StoreMemory(ctx, "analysis-agent-001", analysisID, "context",
 		map[string]interface{}{
-			"methods":   []string{"mean", "median", "stddev"},
-			"datasets":  1,
-			"results":   0,
+			"methods":  []string{"mean", "median", "stddev"},
+			"datasets": 1,
+			"results":  0,
 		},
 		1.0,
 	)
+	if err != nil {
+		log.Fatal("Failed to store memory:", err)
+	}
 
 	// Agent B creates report ticket
-	reportID, _ := client.CreateTicket(ctx,
+	reportID, err := client.CreateTicket(ctx,
 		"Generate Report",
 		"reporting",
 		"Create final report from analysis",
 		"reporting-agent-001",
 		map[string]interface{}{"type": "business_report"},
 	)
+	if err != nil {
+		log.Fatal("Failed to create report ticket:", err)
+	}
 	fmt.Printf("Reporting Agent created: %s\n", reportID)
 
 	// Agent B links its work to Agent A's analysis
-	client.LinkTickets(ctx, analysisID, reportID, "CONSEQUENCE", "reporting-agent-001")
+	err = client.LinkTickets(ctx, analysisID, reportID, "CONSEQUENCE", "reporting-agent-001")
+	if err != nil {
+		log.Fatal("Failed to link tickets:", err)
+	}
 	fmt.Println("✓ Linked analysis → report")
 
 	// Agent A can see Agent B's dependent work
-	ticket, _ := client.GetTicket(ctx, analysisID)
+	ticket, err := client.GetTicket(ctx, analysisID)
+	if err != nil {
+		log.Fatal("Failed to get ticket:", err)
+	}
 	fmt.Printf("Analysis ticket status: %s\n", ticket["status"])
 
 	// Both agents can track the relationship
-	audit, _ := client.GetAuditTrail(ctx, analysisID)
+	audit, err := client.GetAuditTrail(ctx, analysisID)
+	if err != nil {
+		log.Fatal("Failed to get audit trail:", err)
+	}
 	fmt.Printf("Analysis has %d audit entries\n", len(audit))
 
 	fmt.Println("✓ Multi-agent coordination working!")
 }
-
-

@@ -9,6 +9,7 @@
 3. **[docs/EMERGENCY_BRIDGE.md](docs/EMERGENCY_BRIDGE.md)** - Gemini Break-Glass Protocol
 4. **[docs/SELF_HEALING_LOGIC.md](docs/SELF_HEALING_LOGIC.md)** - 11-Layer Healing Logic
 
+
 ## 📖 Documentation by Role
 
 ### For Operators/DevOps
@@ -17,6 +18,12 @@
 3. Guard: [docs/SENTINEL_GUARDIAN.md](docs/SENTINEL_GUARDIAN.md) - Host-side watchdog
 4. Expand: [docs/MULTI_NODE_MESH.md](docs/MULTI_NODE_MESH.md) - Multi-node deployment
 5. Monitor: [QUICK_REFERENCE.md](QUICK_REFERENCE.md#testing-windows-powershell) - Health endpoints
+
+### For Web/UI Operators
+1. Start: [docs/WEB_DASHBOARD.md](docs/WEB_DASHBOARD.md) - web dashboard usage
+2. HUD: [docs/WEB_HUD.md](docs/WEB_HUD.md) - HUD overlay usage
+3. Wiki: [docs/WEB_WIKI.md](docs/WEB_WIKI.md) - wiki/help page usage
+
 
 ### For Agent Developers
 1. Start: [AGENTS_READY.md](AGENTS_READY.md) - Agent deployment guide
@@ -240,5 +247,3 @@ c:\Users\drphi\pqr-info-swarm\
 **Ready**: For immediate deployment
 
 **Start with**: Pick your role above and follow the recommended reading order!
-
-

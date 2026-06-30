@@ -18,7 +18,7 @@ services:
     ports:
       - "8200:8200"
     environment:
-      - VAULT_DEV_ROOT_TOKEN_ID=pqr-vault-token
+      - VAULT_DEV_ROOT_TOKEN_ID=${VAULT_ROOT_TOKEN:-pqr-vault-token}
       - VAULT_ADDR=http://0.0.0.0:8200
     cap_add:
       - IPC_LOCK
@@ -29,13 +29,13 @@ services:
     deploy:
       replicas: 3
     environment:
-      - DATABASE_URL=postgresql://root@db:26257/antigravity?sslmode=disable
+      - DATABASE_URL=${DATABASE_URL:-postgresql://root@db:26257/antigravity?sslmode=disable}
       - PORT=8196
       - VAULT_ADDR=http://vault:8200
-      - VAULT_TOKEN=pqr-vault-token
-      - GEMINI_API_KEY=AIzaSyCqMMdPm1s6MuXy06yiWUlIQ0CJ1C-rPWk
-      - CF_ACCESS_CLIENT_ID=c98ca7026f54305b05cd24975a3ce6d2.access
-      - CF_ACCESS_CLIENT_SECRET=ebf3177d992adb0c3db7b088fb5b9e3d83e96649fb9bc5b86a25301af5c8e744
+      - VAULT_TOKEN=${VAULT_ROOT_TOKEN:-pqr-vault-token}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CF_ACCESS_CLIENT_ID=${CF_ACCESS_CLIENT_ID}
+      - CF_ACCESS_CLIENT_SECRET=${CF_ACCESS_CLIENT_SECRET}
     volumes:
       - ./certs:/app/certs
       - ./signals:/app/signals
@@ -66,7 +66,7 @@ services:
 
   tunnel:
     image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --token eyJhIjoiYzA3Y2NjYTM3ZDMyN2Y3Nzk5NjcxZDIzMDhmODBiZWIiLCJ0IjoiNzUzMDQ5NzAtMWZhMC00Y2Q0LTg1M2QtOGUzZGQyM2NjOGU0IiwicyI6IlpqTTFNRFkzTUdZdE9ESTFZaTAwT1RNM0xXRmtORFl0Wm1Fd01UQXdOR1l3T1dVeiJ9
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
     restart: always
     depends_on:
       - gateway

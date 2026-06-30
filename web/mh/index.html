@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Marshall Islands Sovereign Mesh - Live Deployment Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ocean: { 900: '#0a1628', 800: '#0d1d35', 700: '#112542', 600: '#15304f', 500: '#1a3d5c' },
+              mesh: { blue: '#00d4ff', amber: '#f59e0b', green: '#10b981', red: '#ef4444', purple: '#a855f7', gold: '#fbbf24' },
+              panel: { bg: 'rgba(13,29,53,0.85)', border: 'rgba(0,212,255,0.15)' }
+            },
+            fontFamily: {
+              mono: ['"JetBrains Mono"', 'monospace'],
+              sans: ['Inter', 'sans-serif'],
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ocean-bg: #0a1628;
+        --mesh-blue: #00d4ff;
+        --mesh-amber: #f59e0b;
+        --mesh-green: #10b981;
+        --mesh-red: #ef4444;
+        --mesh-purple: #a855f7;
+        --panel-bg: rgba(13,29,53,0.85);
+        --panel-border: rgba(0,212,255,0.15);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; padding: 0;
+        background: var(--ocean-bg);
+        color: #e0f0ff;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+        height: 100vh;
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .glass-panel {
+        background: var(--panel-bg);
+        border: 1px solid var(--panel-border);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      @keyframes pulse-glow {
+        0%, 100% { filter: drop-shadow(0 0 4px currentColor); opacity: 1; }
+        50% { filter: drop-shadow(0 0 12px currentColor); opacity: 0.85; }
+      }
+      @keyframes pulse-node {
+        0%, 100% { r: 6; opacity: 1; }
+        50% { r: 8; opacity: 0.7; }
+      }
+      @keyframes pulse-capital {
+        0%, 100% { r: 10; opacity: 1; }
+        50% { r: 14; opacity: 0.6; }
+      }
+      @keyframes dash-flow {
+        to { stroke-dashoffset: -20; }
+      }
+      @keyframes vortex-spin {
+        0% { transform: rotate(0deg) scale(0.5); opacity: 1; }
+        100% { transform: rotate(720deg) scale(2.5); opacity: 0; }
+      }
+      @keyframes particle-travel {
+        0% { offset-distance: 0%; opacity: 1; }
+        100% { offset-distance: 100%; opacity: 0; }
+      }
+      @keyframes flash-bright {
+        0% { opacity: 0; }
+        20% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      @keyframes count-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+      @keyframes blink-dot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      @keyframes drift-vessel {
+        0%, 100% { transform: translate(0, 0); }
+        25% { transform: translate(3px, -2px); }
+        50% { transform: translate(-2px, 3px); }
+        75% { transform: translate(2px, 1px); }
+      }
+      @keyframes storm-overlay {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.35; }
+      }
+      .dash-animated {
+        stroke-dasharray: 6 4;
+        animation: dash-flow 1s linear infinite;
+      }
+      .node-online { fill: var(--mesh-green); }
+      .node-syncing { fill: var(--mesh-amber); }
+      .node-offline { fill: var(--mesh-red); }
+      .node-pulse { animation: pulse-node 2s ease-in-out infinite; }
+      .capital-pulse { animation: pulse-capital 2s ease-in-out infinite; }
+      .vessel-drift { animation: drift-vessel 8s ease-in-out infinite; }
+      .blink { animation: blink-dot 1.5s ease-in-out infinite; }
+      .event-log { scrollbar-width: thin; scrollbar-color: rgba(0,212,255,0.3) transparent; }
+      .event-log::-webkit-scrollbar { width: 4px; }
+      .event-log::-webkit-scrollbar-track { background: transparent; }
+      .event-log::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 2px; }
+      .tooltip-box {
+        position: absolute;
+        background: rgba(10,22,40,0.95);
+        border: 1px solid rgba(0,212,255,0.4);
+        border-radius: 8px;
+        padding: 12px 16px;
+        pointer-events: none;
+        z-index: 100;
+        min-width: 240px;
+        backdrop-filter: blur(12px);
+        font-size: 12px;
+        display: none;
+      }
+      .ctrl-btn {
+        background: rgba(0,212,255,0.1);
+        border: 1px solid rgba(0,212,255,0.3);
+        color: #00d4ff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        width: 100%;
+        text-align: center;
+      }
+      .ctrl-btn:hover { background: rgba(0,212,255,0.25); border-color: rgba(0,212,255,0.6); }
+      .ctrl-btn.danger { color: #ef4444; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.1); }
+      .ctrl-btn.danger:hover { background: rgba(239,68,68,0.25); border-color: rgba(239,68,68,0.6); }
+      .ctrl-btn.warning { color: #f59e0b; border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.1); }
+      .ctrl-btn.warning:hover { background: rgba(245,158,11,0.25); border-color: rgba(245,158,11,0.6); }
+      .ctrl-btn.success { color: #10b981; border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.1); }
+      .ctrl-btn.success:hover { background: rgba(16,185,129,0.25); border-color: rgba(16,185,129,0.6); }
+      .stat-value { font-variant-numeric: tabular-nums; }
+      .badge {
+        display: inline-block;
+        padding: 1px 6px;
+        border-radius: 3px;
+        font-size: 9px;
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .badge-catch { background: rgba(16,185,129,0.2); color: #10b981; }
+      .badge-merge { background: rgba(0,212,255,0.2); color: #00d4ff; }
+      .badge-partition { background: rgba(239,68,68,0.2); color: #ef4444; }
+      .badge-sync { background: rgba(245,158,11,0.2); color: #f59e0b; }
+      .badge-benefit { background: rgba(168,85,247,0.2); color: #a855f7; }
+      .badge-vessel { background: rgba(251,191,36,0.2); color: #fbbf24; }
+      .badge-cyclone { background: rgba(239,68,68,0.3); color: #ef4444; }
+      .badge-deploy { background: rgba(0,212,255,0.2); color: #00d4ff; }
+      .storm-warning {
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(239,68,68,0.08);
+        pointer-events: none;
+        z-index: 50;
+        animation: storm-overlay 1s ease-in-out infinite;
+        display: none;
+      }
+      .mobile-overlay { display: none; }
+      @media (max-width: 1023px) {
+        .mobile-overlay {
+          display: flex;
+          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+          background: #0a1628;
+          z-index: 200;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 2rem;
+        }
+      }
+    </style>
+</head>
+<body data-id="0" class="grid-bg">
+    <app-icon data-id="1" hidden data-icon="radio-tower" data-palette="Blue"></app-icon>
+
+    <div data-id="2" class="mobile-overlay">
+        <i data-id="3" data-lucide="monitor" class="w-12 h-12 text-mesh-blue mb-4"></i>
+        <h2 data-id="4" class="text-xl font-bold text-white mb-2">Desktop Display Required</h2>
+        <p data-id="5" class="text-sm text-blue-300/70 max-w-xs">The Sovereign Mesh Operations Center requires a minimum viewport of 1024px for optimal monitoring. Please use a desktop or laptop display.</p>
+    </div>
+
+    <div data-id="6" id="storm-overlay-el" class="storm-warning"></div>
+
+    <div data-id="7" id="tooltip-box" class="tooltip-box"></div>
+
+    <!-- HEADER BAR -->
+    <header data-id="8" id="header-bar" class="glass-panel flex items-center justify-between px-4 py-2 border-b border-panel-border" style="height:44px;">
+        <div data-id="9" class="flex items-center gap-3">
+            <i data-id="10" data-lucide="radio-tower" class="w-5 h-5 text-mesh-blue"></i>
+            <span data-id="11" class="font-mono text-xs font-bold tracking-widest text-mesh-blue uppercase">Sovereign Field Theory Hyperledger</span>
+            <span data-id="12" class="text-[10px] text-blue-400/50 font-mono ml-2">v2.7.1-NBEP</span>
+        </div>
+        <div data-id="13" class="flex items-center gap-4">
+            <span data-id="14" class="font-mono text-xs text-blue-300/60" id="live-clock">--:--:--</span>
+            <span data-id="15" class="font-mono text-[10px] text-blue-300/40">CDT</span>
+            <span data-id="16" class="flex items-center gap-1.5">
+                <span data-id="17" class="w-2 h-2 rounded-full bg-mesh-green blink inline-block"></span>
+                <span data-id="18" class="font-mono text-[10px] text-mesh-green uppercase tracking-wider">Live</span>
+            </span>
+        </div>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div data-id="19" class="flex" style="height: calc(100vh - 44px - 32px);">
+
+        <!-- LEFT PANEL -->
+        <aside data-id="20" id="left-panel" class="glass-panel flex flex-col border-r border-panel-border" style="width:250px; min-width:250px;">
+            <div data-id="21" class="p-4 border-b border-panel-border">
+                <h2 data-id="22" class="font-mono text-[10px] font-bold tracking-[0.2em] text-mesh-blue uppercase mb-4 flex items-center gap-2">
+                    <i data-id="23" data-lucide="activity" class="w-3.5 h-3.5"></i>
+                    Sovereign Mesh Status
+                </h2>
+                <div data-id="24" class="space-y-3">
+                    <div data-id="25" class="flex justify-between items-baseline">
+                        <span data-id="26" class="text-[10px] text-blue-300/60 uppercase tracking-wider font-mono">Active COB Nodes</span>
+                        <span data-id="27" class="font-mono text-sm font-bold text-mesh-blue stat-value" id="stat-nodes">0</span>
+                    </div>
+                    <div data-id="28" class="flex justify-between items-baseline">
+                        <span data-id="29" class="text-[10px] text-blue-300/60 uppercase tracking-wider font-mono">Transactions Today</span>
+                        <span data-id="30" class="font-mono text-sm font-bold text-mesh-green stat-value" id="stat-tx">0</span>
+                    </div>
+                    <div data-id="31" class="flex justify-between items-baseline">
+                        <span data-id="32" class="text-[10px] text-blue-300/60 uppercase tracking-wider font-mono">Slingshot Merges</span>
+                        <span data-id="33" class="font-mono text-sm font-bold text-mesh-blue stat-value" id="stat-merges">0</span>
+                    </div>
+                    <div data-id="34" class="mt-3 p-2 rounded-md" style="background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.1);">
+                        <div data-id="35" class="text-[9px] text-blue-300/50 uppercase tracking-wider font-mono mb-1">Global PQR-273 Tip</div>
+                        <div data-id="36" class="font-mono text-[11px] font-bold text-mesh-blue break-all stat-value" id="stat-pqr">___________________________</div>
+                    </div>
+                    <div data-id="37" class="flex justify-between items-baseline">
+                        <span data-id="38" class="text-[10px] text-blue-300/60 uppercase tracking-wider font-mono">Iron Floor Value</span>
+                        <span data-id="39" class="font-mono text-sm font-bold text-mesh-gold stat-value" id="stat-iron">$0</span>
+                    </div>
+                    <div data-id="40" class="flex justify-between items-baseline">
+                        <span data-id="41" class="text-[10px] text-blue-300/60 uppercase tracking-wider font-mono">Vitality Slope Yield</span>
+                        <span data-id="42" class="font-mono text-sm font-bold text-mesh-green stat-value" id="stat-yield">0.00%</span>
+                    </div>
+                </div>
+            </div>
+            <div data-id="43" class="p-4">
+                <h3 data-id="44" class="font-mono text-[10px] font-bold tracking-[0.2em] text-blue-300/50 uppercase mb-3">Node Legend</h3>
+                <div data-id="45" class="space-y-2">
+                    <div data-id="46" class="flex items-center gap-2">
+                        <span data-id="47" class="w-2.5 h-2.5 rounded-full bg-mesh-green inline-block"></span>
+                        <span data-id="48" class="text-xs text-blue-200/80 font-mono">Online</span>
+                        <span data-id="49" class="ml-auto text-xs font-mono text-mesh-green font-bold" id="legend-online">47</span>
+                    </div>
+                    <div data-id="50" class="flex items-center gap-2">
+                        <span data-id="51" class="w-2.5 h-2.5 rounded-full bg-mesh-amber inline-block"></span>
+                        <span data-id="52" class="text-xs text-blue-200/80 font-mono">Syncing</span>
+                        <span data-id="53" class="ml-auto text-xs font-mono text-mesh-amber font-bold" id="legend-syncing">3</span>
+                    </div>
+                    <div data-id="54" class="flex items-center gap-2">
+                        <span data-id="55" class="w-2.5 h-2.5 rounded-full bg-mesh-red inline-block"></span>
+                        <span data-id="56" class="text-xs text-blue-200/80 font-mono">Offline</span>
+                        <span data-id="57" class="ml-auto text-xs font-mono text-mesh-red font-bold" id="legend-offline">2</span>
+                    </div>
+                    <div data-id="58" class="flex items-center gap-2">
+                        <span data-id="59" class="text-[11px] leading-none">⛵</span>
+                        <span data-id="60" class="text-xs text-blue-200/80 font-mono">Vessel</span>
+                        <span data-id="61" class="ml-auto text-xs font-mono text-mesh-gold font-bold" id="legend-vessel">12</span>
+                    </div>
+                </div>
+            </div>
+            <div data-id="62" class="mt-auto p-4 border-t border-panel-border">
+                <div data-id="63" class="text-[9px] text-blue-300/30 font-mono uppercase tracking-wider text-center">Operator: Alan</div>
+                <div data-id="64" class="text-[9px] text-blue-300/30 font-mono uppercase tracking-wider text-center mt-1">Garland, TX • Remote</div>
+            </div>
+        </aside>
+
+        <!-- CENTER MAP PANEL -->
+        <main data-id="65" id="center-panel" class="flex-1 relative overflow-hidden">
+            <svg data-id="66" id="mesh-map" class="w-full h-full" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+                <defs data-id="67">
+                    <radialGradient data-id="68" id="node-glow-green" cx="50%" cy="50%" r="50%">
+                        <stop data-id="69" offset="0%" stop-color="#10b981" stop-opacity="0.6"/>
+                        <stop data-id="70" offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient data-id="71" id="node-glow-blue" cx="50%" cy="50%" r="50%">
+                        <stop data-id="72" offset="0%" stop-color="#00d4ff" stop-opacity="0.6"/>
+                        <stop data-id="73" offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient data-id="74" id="node-glow-amber" cx="50%" cy="50%" r="50%">
+                        <stop data-id="75" offset="0%" stop-color="#f59e0b" stop-opacity="0.6"/>
+                        <stop data-id="76" offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient data-id="77" id="node-glow-red" cx="50%" cy="50%" r="50%">
+                        <stop data-id="78" offset="0%" stop-color="#ef4444" stop-opacity="0.6"/>
+                        <stop data-id="79" offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient data-id="80" id="capital-glow" cx="50%" cy="50%" r="50%">
+                        <stop data-id="81" offset="0%" stop-color="#fbbf24" stop-opacity="0.8"/>
+                        <stop data-id="82" offset="50%" stop-color="#fbbf24" stop-opacity="0.2"/>
+                        <stop data-id="83" offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+                    </radialGradient>
+                    <radialGradient data-id="84" id="kwajalein-glow" cx="50%" cy="50%" r="50%">
+                        <stop data-id="85" offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/>
+                        <stop data-id="86" offset="50%" stop-color="#00d4ff" stop-opacity="0.2"/>
+                        <stop data-id="87" offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+                    </radialGradient>
+                    <filter data-id="88" id="glow-filter">
+                        <feGaussianBlur data-id="89" stdDeviation="2" result="blur"/>
+                        <feMerge data-id="90"><feMergeNode data-id="91" in="blur"/><feMergeNode data-id="92" in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter data-id="93" id="vortex-blur">
+                        <feGaussianBlur data-id="94" stdDeviation="3"/>
+                    </filter>
+                </defs>
+
+                <!-- Ocean depth gradients -->
+                <rect data-id="95" width="800" height="600" fill="url(#ocean-depth)" opacity="0"/>
+
+                <!-- Chain labels -->
+                <text data-id="96" x="560" y="35" fill="rgba(0,212,255,0.25)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing="3">RATAK CHAIN</text>
+                <text data-id="97" x="180" y="35" fill="rgba(0,212,255,0.25)" font-family="JetBrains Mono" font-size="9" font-weight="600" letter-spacing="3">RALIK CHAIN</text>
+
+                <!-- Connection lines group -->
+                <g data-id="98" id="connections-group"></g>
+
+                <!-- Vessel group -->
+                <g data-id="99" id="vessels-group"></g>
+
+                <!-- Vortex animation group -->
+                <g data-id="100" id="vortex-group"></g>
+
+                <!-- Particle animation group -->
+                <g data-id="101" id="particles-group"></g>
+
+                <!-- Node group -->
+                <g data-id="102" id="nodes-group"></g>
+
+                <!-- Cloudflare uplink -->
+                <line data-id="103" x1="620" y1="370" x2="760" y2="50" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" class="dash-animated" id="uplink-line"/>
+                <rect data-id="104" x="700" y="28" width="90" height="28" rx="4" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+                <text data-id="105" x="745" y="41" fill="#00d4ff" font-family="JetBrains Mono" font-size="7" font-weight="600" text-anchor="middle" letter-spacing="0.5">CLOUDFLARE</text>
+                <text data-id="106" x="745" y="50" fill="rgba(0,212,255,0.5)" font-family="JetBrains Mono" font-size="6" text-anchor="middle">GLOBAL MESH</text>
+            </svg>
+
+            <!-- Map overlay labels -->
+            <div data-id="107" class="absolute top-3 left-3 font-mono text-[10px] text-blue-400/40 uppercase tracking-widest">
+                Republic of the Marshall Islands • Sovereign Mesh Topology
+            </div>
+        </main>
+
+        <!-- RIGHT PANEL -->
+        <aside data-id="108" id="right-panel" class="glass-panel flex flex-col border-l border-panel-border" style="width:280px; min-width:280px;">
+            <div data-id="109" class="p-4 border-b border-panel-border flex-1 overflow-hidden flex flex-col">
+                <h2 data-id="110" class="font-mono text-[10px] font-bold tracking-[0.2em] text-mesh-blue uppercase mb-3 flex items-center gap-2">
+                    <i data-id="111" data-lucide="scroll-text" class="w-3.5 h-3.5"></i>
+                    Live Events
+                </h2>
+                <div data-id="112" id="event-log" class="event-log flex-1 overflow-y-auto space-y-2 pr-1">
+                    <div data-id="113" class="text-center text-[10px] text-blue-300/30 font-mono py-8">Initializing event stream...</div>
+                </div>
+            </div>
+            <div data-id="114" class="p-4 border-t border-panel-border">
+                <h3 data-id="115" class="font-mono text-[10px] font-bold tracking-[0.2em] text-blue-300/50 uppercase mb-3 flex items-center gap-2">
+                    <i data-id="116" data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+                    Simulation Controls
+                </h3>
+                <div data-id="117" class="space-y-2">
+                    <button data-id="118" id="btn-cyclone" class="ctrl-btn danger">
+                        <i data-id="119" data-lucide="cloud-lightning" class="w-3 h-3 inline-block mr-1" style="vertical-align:-2px;"></i>
+                        Trigger Cyclone
+                    </button>
+                    <button data-id="120" id="btn-deploy" class="ctrl-btn">
+                        <i data-id="121" data-lucide="plus-circle" class="w-3 h-3 inline-block mr-1" style="vertical-align:-2px;"></i>
+                        Deploy COB Device
+                    </button>
+                    <button data-id="122" id="btn-partition" class="ctrl-btn warning">
+                        <i data-id="123" data-lucide="unplug" class="w-3 h-3 inline-block mr-1" style="vertical-align:-2px;"></i>
+                        Force Partition
+                    </button>
+                    <button data-id="124" id="btn-sync-all" class="ctrl-btn success">
+                        <i data-id="125" data-lucide="refresh-cw" class="w-3 h-3 inline-block mr-1" style="vertical-align:-2px;"></i>
+                        Slingshot Sync All
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- BOTTOM STATUS BAR -->
+    <footer data-id="126" id="status-bar" class="glass-panel flex items-center justify-between px-4 border-t border-panel-border" style="height:32px;">
+        <div data-id="127" class="flex items-center gap-2 overflow-hidden">
+            <span data-id="128" class="font-mono text-[9px] text-blue-300/50 tracking-wider whitespace-nowrap">
+                RMI SOVEREIGN MESH DAO • MAJURO HUB • MARSHALL ISLANDS DAO ACT 2022 • NBEP-1.0 LICENSE • NEW YORK CONVENTION ENFORCEMENT ACTIVE
+            </span>
+        </div>
+        <div data-id="129" class="flex items-center gap-3 shrink-0">
+            <span data-id="130" class="flex items-center gap-1.5">
+                <span data-id="131" class="w-1.5 h-1.5 rounded-full bg-mesh-green blink inline-block"></span>
+                <span data-id="132" class="font-mono text-[9px] text-mesh-green uppercase tracking-wider">All Systems Nominal</span>
+            </span>
+            <span data-id="133" class="text-[9px] text-blue-300/30 font-mono">Made by Copilot</span>
+        </div>
+    </footer>
+
+    <!-- Node detail panel (shown on click) -->
+    <div data-id="134" id="node-detail-panel" class="absolute glass-panel rounded-lg p-4 z-50" style="display:none; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; border: 1px solid rgba(0,212,255,0.3);">
+        <div data-id="135" class="flex items-center justify-between mb-3">
+            <h3 data-id="136" class="font-mono text-sm font-bold text-mesh-blue" id="detail-name">--</h3>
+            <button data-id="137" id="detail-close" class="text-blue-300/50 hover:text-white transition-colors">
+                <i data-id="138" data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+        <div data-id="139" class="space-y-2 text-xs font-mono">
+            <div data-id="140" class="flex justify-between"><span data-id="141" class="text-blue-300/50">Status</span><span data-id="142" id="detail-status" class="font-bold">--</span></div>
+            <div data-id="143" class="flex justify-between"><span data-id="144" class="text-blue-300/50">Chain</span><span data-id="145" id="detail-chain" class="text-blue-200">--</span></div>
+            <div data-id="146" class="flex justify-between"><span data-id="147" class="text-blue-300/50">Tier</span><span data-id="148" id="detail-tier" class="text-blue-200">--</span></div>
+            <div data-id="149" class="flex justify-between"><span data-id="150" class="text-blue-300/50">COB Devices</span><span data-id="151" id="detail-cob" class="text-blue-200">--</span></div>
+            <div data-id="152" class="flex justify-between"><span data-id="153" class="text-blue-300/50">Recent TX</span><span data-id="154" id="detail-tx" class="text-mesh-green">--</span></div>
+            <div data-id="155" class="flex justify-between"><span data-id="156" class="text-blue-300/50">Last Merge</span><span data-id="157" id="detail-merge" class="text-blue-200">--</span></div>
+            <div data-id="158" class="mt-2 p-2 rounded" style="background:rgba(0,212,255,0.06);">
+                <div data-id="159" class="text-[9px] text-blue-300/40 uppercase tracking-wider mb-1">Local PQR-273 Hash</div>
+                <div data-id="160" class="text-[10px] text-mesh-blue break-all" id="detail-hash">--</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ============================================================
+    // DATA: Atoll definitions
+    // ============================================================
+    const ALPHA27 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_';
+    function genPQR() {
+        let s = '';
+        for (let i = 0; i < 27; i++) s += ALPHA27[Math.floor(Math.random() * 27)];
+        return s;
+    }
+    function genTimestamp() {
+        const d = new Date();
+        return d.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    // Ratak Chain (eastern) - positioned on right side of map
+    const ratakChain = [
+        { name: 'Bokak', x: 560, y: 55, tier: 1 },
+        { name: 'Bikar', x: 590, y: 85, tier: 1 },
+        { name: 'Utirik', x: 610, y: 120, tier: 1 },
+        { name: 'Taka', x: 585, y: 155, tier: 1 },
+        { name: 'Ailuk', x: 620, y: 180, tier: 1 },
+        { name: 'Jemo', x: 645, y: 210, tier: 1 },
+        { name: 'Likiep', x: 605, y: 240, tier: 1 },
+        { name: 'Wotje', x: 580, y: 275, tier: 2 },
+        { name: 'Erikub', x: 610, y: 305, tier: 1 },
+        { name: 'Maloelap', x: 635, y: 330, tier: 1 },
+        { name: 'Aur', x: 615, y: 360, tier: 1 },
+        { name: 'Majuro', x: 600, y: 400, tier: 3, isCapital: true },
+        { name: 'Arno', x: 630, y: 435, tier: 1 },
+        { name: 'Mili', x: 610, y: 470, tier: 1 },
+    ];
+
+    // Ralik Chain (western) - positioned on left side of map
+    const ralikChain = [
+        { name: 'Ujelang', x: 140, y: 110, tier: 1 },
+        { name: 'Enewetak', x: 175, y: 80, tier: 1 },
+        { name: 'Rongerik', x: 250, y: 110, tier: 1 },
+        { name: 'Rongelap', x: 280, y: 140, tier: 1 },
+        { name: 'Ailinginae', x: 305, y: 165, tier: 1 },
+        { name: 'Bikini', x: 235, y: 145, tier: 1 },
+        { name: 'Wotho', x: 310, y: 200, tier: 1 },
+        { name: 'Ujae', x: 335, y: 235, tier: 1 },
+        { name: 'Lae', x: 320, y: 265, tier: 1 },
+        { name: 'Kwajalein', x: 370, y: 300, tier: 2, isMilitary: true },
+        { name: 'Lib', x: 355, y: 335, tier: 1 },
+        { name: 'Namu', x: 380, y: 360, tier: 1 },
+        { name: 'Jabwot', x: 405, y: 380, tier: 1 },
+        { name: 'Ailinglaplap', x: 420, y: 410, tier: 1 },
+        { name: 'Jaluit', x: 440, y: 445, tier: 2 },
+        { name: 'Kili', x: 465, y: 475, tier: 1 },
+        { name: 'Namdrik', x: 475, y: 505, tier: 1 },
+    ];
+
+    const allAtolls = [];
+    ratakChain.forEach(a => allAtolls.push({ ...a, chain: 'Ratak', status: 'online', hash: genPQR(), cob: Math.floor(Math.random() * 8) + 1, recentTx: Math.floor(Math.random() * 50) + 5, lastMerge: genTimestamp() }));
+    ralikChain.forEach(a => allAtolls.push({ ...a, chain: 'Ralik', status: 'online', hash: genPQR(), cob: Math.floor(Math.random() * 8) + 1, recentTx: Math.floor(Math.random() * 50) + 5, lastMerge: genTimestamp() }));
+
+    // Set some initial syncing/offline
+    allAtolls.find(a => a.name === 'Bikini').status = 'syncing';
+    allAtolls.find(a => a.name === 'Jemo').status = 'syncing';
+    allAtolls.find(a => a.name === 'Erikub').status = 'syncing';
+    allAtolls.find(a => a.name === 'Bokak').status = 'offline';
+    allAtolls.find(a => a.name === 'Ujelang').status = 'offline';
+
+    // Vessels
+    const vessels = [];
+    for (let i = 0; i < 12; i++) {
+        vessels.push({
+            id: 'V-' + (i + 1).toString().padStart(3, '0'),
+            x: 200 + Math.random() * 400,
+            y: 80 + Math.random() * 430,
+            dx: (Math.random() - 0.5) * 0.3,
+            dy: (Math.random() - 0.5) * 0.3,
+        });
+    }
+
+    // Connections: connect consecutive atolls in each chain + cross-chain links
+    const connections = [];
+    for (let i = 0; i < ratakChain.length - 1; i++) {
+        connections.push([ratakChain[i].name, ratakChain[i + 1].name]);
+    }
+    for (let i = 0; i < ralikChain.length - 1; i++) {
+        connections.push([ralikChain[i].name, ralikChain[i + 1].name]);
+    }
+    // Cross-chain
+    connections.push(['Kwajalein', 'Wotje']);
+    connections.push(['Kwajalein', 'Majuro']);
+    connections.push(['Majuro', 'Jaluit']);
+    connections.push(['Majuro', 'Ailinglaplap']);
+    connections.push(['Wotje', 'Ujae']);
+    connections.push(['Enewetak', 'Utirik']);
+    connections.push(['Rongelap', 'Ailuk']);
+
+    // ============================================================
+    // RENDER
+    // ============================================================
+    const svg = document.getElementById('mesh-map');
+    const nodesGroup = document.getElementById('nodes-group');
+    const connectionsGroup = document.getElementById('connections-group');
+    const vesselsGroup = document.getElementById('vessels-group');
+    const vortexGroup = document.getElementById('vortex-group');
+    const particlesGroup = document.getElementById('particles-group');
+
+    function getNodeColor(status) {
+        if (status === 'online') return '#10b981';
+        if (status === 'syncing') return '#f59e0b';
+        return '#ef4444';
+    }
+    function getGlowId(status) {
+        if (status === 'online') return 'node-glow-green';
+        if (status === 'syncing') return 'node-glow-amber';
+        return 'node-glow-red';
+    }
+
+    function renderConnections() {
+        connectionsGroup.innerHTML = '';
+        connections.forEach(([nameA, nameB]) => {
+            const a = allAtolls.find(n => n.name === nameA);
+            const b = allAtolls.find(n => n.name === nameB);
+            if (!a || !b) return;
+            const bothOnline = a.status !== 'offline' && b.status !== 'offline';
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', a.x);
+            line.setAttribute('y1', a.y);
+            line.setAttribute('x2', b.x);
+            line.setAttribute('y2', b.y);
+            line.setAttribute('stroke', bothOnline ? 'rgba(0,212,255,0.2)' : 'rgba(239,68,68,0.1)');
+            line.setAttribute('stroke-width', bothOnline ? '1' : '0.5');
+            if (bothOnline) line.classList.add('dash-animated');
+            else { line.setAttribute('stroke-dasharray', '2 6'); }
+            connectionsGroup.appendChild(line);
+        });
+    }
+
+    function renderNodes() {
+        nodesGroup.innerHTML = '';
+        allAtolls.forEach((atoll, idx) => {
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('data-atoll', idx);
+            g.style.cursor = 'pointer';
+
+            // Glow
+            const glowR = atoll.isCapital ? 30 : atoll.isMilitary ? 24 : 16;
+            const glow = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            glow.setAttribute('cx', atoll.x);
+            glow.setAttribute('cy', atoll.y);
+            glow.setAttribute('r', glowR);
+            if (atoll.isCapital) glow.setAttribute('fill', 'url(#capital-glow)');
+            else if (atoll.isMilitary) glow.setAttribute('fill', 'url(#kwajalein-glow)');
+            else glow.setAttribute('fill', `url(#${getGlowId(atoll.status)})`);
+            g.appendChild(glow);
+
+            // Node circle
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', atoll.x);
+            circle.setAttribute('cy', atoll.y);
+            const r = atoll.isCapital ? 8 : atoll.isMilitary ? 7 : atoll.tier === 2 ? 5 : 4;
+            circle.setAttribute('r', r);
+            if (atoll.isCapital) { circle.setAttribute('fill', '#fbbf24'); circle.classList.add('capital-pulse'); }
+            else if (atoll.isMilitary) { circle.setAttribute('fill', '#00d4ff'); circle.classList.add('capital-pulse'); }
+            else { circle.setAttribute('fill', getNodeColor(atoll.status)); circle.classList.add('node-pulse'); }
+            circle.setAttribute('filter', 'url(#glow-filter)');
+            g.appendChild(circle);
+
+            // Label
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', atoll.x);
+            text.setAttribute('y', atoll.y + (atoll.isCapital || atoll.isMilitary ? 18 : 14));
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('fill', atoll.isCapital ? 'rgba(251,191,36,0.8)' : atoll.isMilitary ? 'rgba(0,212,255,0.8)' : 'rgba(200,220,255,0.5)');
+            text.setAttribute('font-family', 'JetBrains Mono');
+            text.setAttribute('font-size', atoll.isCapital || atoll.isMilitary ? '8' : '7');
+            text.setAttribute('font-weight', atoll.isCapital || atoll.isMilitary ? '700' : '400');
+            text.textContent = atoll.name.toUpperCase();
+            g.appendChild(text);
+
+            if (atoll.isCapital) {
+                const badge = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                badge.setAttribute('x', atoll.x);
+                badge.setAttribute('y', atoll.y + 27);
+                badge.setAttribute('text-anchor', 'middle');
+                badge.setAttribute('fill', 'rgba(251,191,36,0.4)');
+                badge.setAttribute('font-family', 'JetBrains Mono');
+                badge.setAttribute('font-size', '5');
+                badge.textContent = 'CAPITAL • T3 HUB';
+                g.appendChild(badge);
+            }
+            if (atoll.isMilitary) {
+                const badge = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                badge.setAttribute('x', atoll.x);
+                badge.setAttribute('y', atoll.y + 27);
+                badge.setAttribute('text-anchor', 'middle');
+                badge.setAttribute('fill', 'rgba(0,212,255,0.4)');
+                badge.setAttribute('font-family', 'JetBrains Mono');
+                badge.setAttribute('font-size', '5');
+                badge.textContent = 'US MIL • T2 RELAY';
+                g.appendChild(badge);
+            }
+
+            nodesGroup.appendChild(g);
+        });
+    }
+
+    function renderVessels() {
+        vesselsGroup.innerHTML = '';
+        vessels.forEach(v => {
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.classList.add('vessel-drift');
+            g.setAttribute('data-vessel', v.id);
+            // Triangle pointing up
+            const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+            const pts = `${v.x},${v.y - 4} ${v.x - 3},${v.y + 3} ${v.x + 3},${v.y + 3}`;
+            poly.setAttribute('points', pts);
+            poly.setAttribute('fill', 'rgba(251,191,36,0.6)');
+            poly.setAttribute('stroke', 'rgba(251,191,36,0.3)');
+            poly.setAttribute('stroke-width', '0.5');
+            g.appendChild(poly);
+            vesselsGroup.appendChild(g);
+        });
+    }
+
+    renderConnections();
+    renderNodes();
+    renderVessels();
+
+    // ============================================================
+    // TOOLTIP
+    // ============================================================
+    const tooltipBox = document.getElementById('tooltip-box');
+    const mapEl = document.getElementById('center-panel');
+
+    mapEl.addEventListener('mousemove', (e) => {
+        const target = e.target.closest('[data-atoll]');
+        if (target) {
+            const idx = parseInt(target.dataset.atoll);
+            const atoll = allAtolls[idx];
+            const statusColor = atoll.status === 'online' ? '#10b981' : atoll.status === 'syncing' ? '#f59e0b' : '#ef4444';
+            tooltipBox.innerHTML = `
+                <div style="font-size:13px;font-weight:700;color:${atoll.isCapital ? '#fbbf24' : '#00d4ff'};margin-bottom:6px;font-family:JetBrains Mono;">${atoll.name.toUpperCase()}</div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:rgba(150,180,220,0.6)">Status</span><span style="color:${statusColor};font-weight:600;text-transform:uppercase">${atoll.status}</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:rgba(150,180,220,0.6)">Chain</span><span>${atoll.chain}</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:rgba(150,180,220,0.6)">COB Devices</span><span>${atoll.cob}</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="color:rgba(150,180,220,0.6)">Recent TX</span><span style="color:#10b981">${atoll.recentTx}</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:rgba(150,180,220,0.6)">Last Merge</span><span>${atoll.lastMerge}</span></div>
+                <div style="background:rgba(0,212,255,0.06);padding:4px 6px;border-radius:4px;">
+                    <div style="font-size:8px;color:rgba(150,180,220,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Local PQR-273</div>
+                    <div style="font-size:9px;color:#00d4ff;word-break:break-all;font-family:JetBrains Mono">${atoll.hash}</div>
+                </div>
+            `;
+            tooltipBox.style.display = 'block';
+            let tx = e.clientX + 16;
+            let ty = e.clientY - 10;
+            if (tx + 260 > window.innerWidth) tx = e.clientX - 260;
+            if (ty + 200 > window.innerHeight) ty = e.clientY - 200;
+            tooltipBox.style.left = tx + 'px';
+            tooltipBox.style.top = ty + 'px';
+        } else {
+            tooltipBox.style.display = 'none';
+        }
+    });
+
+    mapEl.addEventListener('mouseleave', () => { tooltipBox.style.display = 'none'; });
+
+    // ============================================================
+    // NODE DETAIL PANEL (click)
+    // ============================================================
+    const detailPanel = document.getElementById('node-detail-panel');
+    mapEl.addEventListener('click', (e) => {
+        const target = e.target.closest('[data-atoll]');
+        if (target) {
+            const idx = parseInt(target.dataset.atoll);
+            const atoll = allAtolls[idx];
+            const statusColor = atoll.status === 'online' ? '#10b981' : atoll.status === 'syncing' ? '#f59e0b' : '#ef4444';
+            document.getElementById('detail-name').textContent = atoll.name.toUpperCase() + (atoll.isCapital ? ' ★' : atoll.isMilitary ? ' ⬡' : '');
+            document.getElementById('detail-status').textContent = atoll.status.toUpperCase();
+            document.getElementById('detail-status').style.color = statusColor;
+            document.getElementById('detail-chain').textContent = atoll.chain + ' Chain';
+            document.getElementById('detail-tier').textContent = 'Tier ' + atoll.tier + (atoll.isCapital ? ' (Capital Hub)' : atoll.isMilitary ? ' (Military Relay)' : '');
+            document.getElementById('detail-cob').textContent = atoll.cob;
+            document.getElementById('detail-tx').textContent = atoll.recentTx;
+            document.getElementById('detail-merge').textContent = atoll.lastMerge;
+            document.getElementById('detail-hash').textContent = atoll.hash;
+            detailPanel.style.display = 'block';
+            tooltipBox.style.display = 'none';
+        }
+    });
+    document.getElementById('detail-close').addEventListener('click', () => { detailPanel.style.display = 'none'; });
+
+    // ============================================================
+    // STATS: Animated counters
+    // ============================================================
+    let statNodes = 0, statTx = 0, statMerges = 0;
+    let ironFloor = 2_340_000;
+    let vitalityYield = 4.27;
+
+    function animateValue(el, start, end, duration, prefix = '', suffix = '') {
+        const startTime = performance.now();
+        function tick(now) {
+            const p = Math.min((now - startTime) / duration, 1);
+            const val = Math.round(start + (end - start) * p);
+            el.textContent = prefix + val.toLocaleString() + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    // Initial count-up
+    setTimeout(() => animateValue(document.getElementById('stat-nodes'), 0, 47, 2000), 500);
+    setTimeout(() => animateValue(document.getElementById('stat-tx'), 0, 1247, 2500), 800);
+    setTimeout(() => animateValue(document.getElementById('stat-merges'), 0, 89, 2000), 1000);
+    setTimeout(() => animateValue(document.getElementById('stat-iron'), 0, ironFloor, 2500, '$'), 600);
+    setTimeout(() => {
+        const el = document.getElementById('stat-yield');
+        const startTime = performance.now();
+        function tick(now) {
+            const p = Math.min((now - startTime) / 2000, 1);
+            el.textContent = (vitalityYield * p).toFixed(2) + '%';
+            if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }, 900);
+
+    statNodes = 47; statTx = 1247; statMerges = 89;
+    document.getElementById('stat-pqr').textContent = genPQR();
+
+    // Slowly rising iron floor & yield
+    setInterval(() => {
+        ironFloor += Math.floor(Math.random() * 500) + 100;
+        document.getElementById('stat-iron').textContent = '$' + ironFloor.toLocaleString();
+    }, 8000);
+    setInterval(() => {
+        vitalityYield += (Math.random() * 0.02);
+        document.getElementById('stat-yield').textContent = vitalityYield.toFixed(2) + '%';
+    }, 12000);
+
+    // Increment transactions
+    setInterval(() => {
+        statTx += Math.floor(Math.random() * 5) + 1;
+        document.getElementById('stat-tx').textContent = statTx.toLocaleString();
+    }, 3000);
+
+    // ============================================================
+    // LIVE CLOCK
+    // ============================================================
+    function updateClock() {
+        document.getElementById('live-clock').textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        requestAnimationFrame(updateClock);
+    }
+    updateClock();
+
+    // ============================================================
+    // UPDATE LEGEND
+    // ============================================================
+    function updateLegend() {
+        const online = allAtolls.filter(a => a.status === 'online').length;
+        const syncing = allAtolls.filter(a => a.status === 'syncing').length;
+        const offline = allAtolls.filter(a => a.status === 'offline').length;
+        document.getElementById('legend-online').textContent = online;
+        document.getElementById('legend-syncing').textContent = syncing;
+        document.getElementById('legend-offline').textContent = offline;
+        document.getElementById('stat-nodes').textContent = online;
+    }
+
+    // ============================================================
+    // EVENT LOG
+    // ============================================================
+    const eventLog = document.getElementById('event-log');
+    let eventCount = 0;
+
+    function addEvent(type, description, hash) {
+        if (eventCount === 0) eventLog.innerHTML = '';
+        eventCount++;
+        const div = document.createElement('div');
+        div.className = 'p-2 rounded-md transition-all duration-300';
+        div.style.background = 'rgba(0,212,255,0.04)';
+        div.style.borderLeft = '2px solid ' + ({
+            CATCH: '#10b981', MERGE: '#00d4ff', PARTITION: '#ef4444',
+            SYNC: '#f59e0b', BENEFIT: '#a855f7', VESSEL: '#fbbf24',
+            CYCLONE: '#ef4444', DEPLOY: '#00d4ff'
+        }[type] || '#00d4ff');
+
+        const hashSnippet = hash ? hash.substring(0, 8) + '...' : '';
+        div.innerHTML = `
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span style="font-family:JetBrains Mono;font-size:9px;color:rgba(150,180,220,0.4)">${genTimestamp()}</span>
+                <span class="badge badge-${type.toLowerCase()}">${type}</span>
+            </div>
+            <div style="font-size:11px;color:rgba(200,220,255,0.8);font-family:JetBrains Mono;">${description}</div>
+            ${hashSnippet ? `<div style="font-size:9px;color:rgba(0,212,255,0.5);font-family:JetBrains Mono;margin-top:2px;">PQR: ${hashSnippet}</div>` : ''}
+        `;
+        eventLog.prepend(div);
+        // Keep max 50 events
+        while (eventLog.children.length > 50) eventLog.removeChild(eventLog.lastChild);
+    }
+
+    // ============================================================
+    // PARTICLE ANIMATION
+    // ============================================================
+    function createParticle(x1, y1, x2, y2, color, duration = 1500) {
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('r', '3');
+        circle.setAttribute('fill', color);
+        circle.setAttribute('filter', 'url(#glow-filter)');
+        particlesGroup.appendChild(circle);
+
+        const startTime = performance.now();
+        function animate(now) {
+            const p = Math.min((now - startTime) / duration, 1);
+            const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+            circle.setAttribute('cx', x1 + (x2 - x1) * ease);
+            circle.setAttribute('cy', y1 + (y2 - y1) * ease);
+            circle.setAttribute('opacity', 1 - p * 0.5);
+            circle.setAttribute('r', 3 - p * 1.5);
+            if (p < 1) requestAnimationFrame(animate);
+            else particlesGroup.removeChild(circle);
+        }
+        requestAnimationFrame(animate);
+    }
+
+    // ============================================================
+    // VORTEX (Slingshot Merge) ANIMATION
+    // ============================================================
+    function createVortex(x, y) {
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        vortexGroup.appendChild(g);
+
+        // Spiral rings
+        for (let i = 0; i < 4; i++) {
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', y);
+            circle.setAttribute('r', 5 + i * 4);
+            circle.setAttribute('fill', 'none');
+            circle.setAttribute('stroke', '#00d4ff');
+            circle.setAttribute('stroke-width', '1.5');
+            circle.setAttribute('opacity', '0.6');
+            g.appendChild(circle);
+
+            const startTime = performance.now() + i * 100;
+            function animate(now) {
+                const elapsed = now - startTime;
+                if (elapsed < 0) { requestAnimationFrame(animate); return; }
+                const p = Math.min(elapsed / 1200, 1);
+                const scale = 1 - p;
+                const rot = p * 720;
+                circle.setAttribute('r', (5 + i * 4) * (1 - p * 0.8));
+                circle.setAttribute('opacity', 0.6 * (1 - p));
+                circle.setAttribute('stroke-dasharray', `${(1 - p) * 20} ${p * 10}`);
+                if (p < 1) requestAnimationFrame(animate);
+                else { if (g.parentNode) vortexGroup.removeChild(g); }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Converging particles
+        for (let j = 0; j < 8; j++) {
+            const angle = (j / 8) * Math.PI * 2;
+            const dist = 30 + Math.random() * 20;
+            const px = x + Math.cos(angle) * dist;
+            const py = y + Math.sin(angle) * dist;
+            setTimeout(() => createParticle(px, py, x, y, '#00d4ff', 800), j * 80);
+        }
+
+        // Flash
+        setTimeout(() => {
+            const flash = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            flash.setAttribute('cx', x);
+            flash.setAttribute('cy', y);
+            flash.setAttribute('r', '20');
+            flash.setAttribute('fill', 'white');
+            flash.setAttribute('opacity', '0');
+            particlesGroup.appendChild(flash);
+            const st = performance.now();
+            function anim(now) {
+                const p = Math.min((now - st) / 400, 1);
+                flash.setAttribute('opacity', p < 0.2 ? p * 5 : (1 - p) * 1.25);
+                flash.setAttribute('r', 20 + p * 15);
+                if (p < 1) requestAnimationFrame(anim);
+                else particlesGroup.removeChild(flash);
+            }
+            requestAnimationFrame(anim);
+        }, 800);
+    }
+
+    // ============================================================
+    // SIMULATION EVENTS
+    // ============================================================
+    function getOnlineAtolls() { return allAtolls.filter(a => a.status === 'online' && !a.isCapital && !a.isMilitary); }
+    function getOfflineAtolls() { return allAtolls.filter(a => a.status === 'offline' || a.status === 'syncing'); }
+    function nearestAtoll(x, y) {
+        let best = null, bestDist = Infinity;
+        allAtolls.forEach(a => {
+            if (a.status === 'offline') return;
+            const d = Math.hypot(a.x - x, a.y - y);
+            if (d < bestDist) { bestDist = d; best = a; }
+        });
+        return best;
+    }
+
+    function triggerRandomEvent() {
+        const roll = Math.random();
+
+        if (roll < 0.25) {
+            // Fishing vessel catch
+            const v = vessels[Math.floor(Math.random() * vessels.length)];
+            const nearest = nearestAtoll(v.x, v.y);
+            if (nearest) {
+                createParticle(v.x, v.y, nearest.x, nearest.y, '#10b981', 1200);
+                nearest.recentTx += 1;
+                statTx++;
+                document.getElementById('stat-tx').textContent = statTx.toLocaleString();
+                addEvent('CATCH', `Vessel ${v.id} → ${nearest.name}: catch logged`, genPQR());
+            }
+        } else if (roll < 0.40) {
+            // Atoll goes offline
+            const online = getOnlineAtolls();
+            if (online.length > 5) {
+                const target = online[Math.floor(Math.random() * online.length)];
+                target.status = 'offline';
+                renderNodes(); renderConnections(); updateLegend();
+                addEvent('PARTITION', `${target.name} connectivity lost — offline mode`, null);
+            }
+        } else if (roll < 0.60) {
+            // Offline atoll reconnects via Slingshot
+            const offline = getOfflineAtolls();
+            if (offline.length > 0) {
+                const target = offline[Math.floor(Math.random() * offline.length)];
+                target.status = 'syncing';
+                renderNodes(); renderConnections(); updateLegend();
+                addEvent('SYNC', `${target.name} reconnecting...`, null);
+                setTimeout(() => {
+                    target.status = 'online';
+                    target.hash = genPQR();
+                    target.lastMerge = genTimestamp();
+                    statMerges++;
+                    document.getElementById('stat-merges').textContent = statMerges;
+                    createVortex(target.x, target.y);
+                    renderNodes(); renderConnections(); updateLegend();
+                    document.getElementById('stat-pqr').textContent = genPQR();
+                    addEvent('MERGE', `Slingshot merge complete: ${target.name}`, target.hash);
+                }, 2500);
+            }
+        } else if (roll < 0.75) {
+            // PQR-273 hash update
+            const newHash = genPQR();
+            document.getElementById('stat-pqr').textContent = newHash;
+            addEvent('SYNC', `Global PQR-273 tip updated`, newHash);
+        } else if (roll < 0.90) {
+            // Government benefit transaction
+            const majuro = allAtolls.find(a => a.isCapital);
+            const outer = getOnlineAtolls().filter(a => !a.isCapital && !a.isMilitary);
+            if (outer.length > 0 && majuro) {
+                const target = outer[Math.floor(Math.random() * outer.length)];
+                createParticle(majuro.x, majuro.y, target.x, target.y, '#a855f7', 1800);
+                target.recentTx += 1;
+                statTx++;
+                document.getElementById('stat-tx').textContent = statTx.toLocaleString();
+                addEvent('BENEFIT', `Gov benefit: Majuro → ${target.name}`, genPQR());
+            }
+        } else {
+            // Vessel movement event
+            const v = vessels[Math.floor(Math.random() * vessels.length)];
+            const nearest = nearestAtoll(v.x, v.y);
+            if (nearest) {
+                addEvent('VESSEL', `${v.id} docking at ${nearest.name} — sync initiated`, null);
+                createParticle(v.x, v.y, nearest.x, nearest.y, '#fbbf24', 1000);
+            }
+        }
+    }
+
+    // Run simulation events every 3-5 seconds
+    function scheduleEvent() {
+        const delay = 3000 + Math.random() * 2000;
+        setTimeout(() => {
+            triggerRandomEvent();
+            scheduleEvent();
+        }, delay);
+    }
+    setTimeout(scheduleEvent, 2000);
+
+    // Vessel drift
+    setInterval(() => {
+        vessels.forEach(v => {
+            v.x += v.dx + (Math.random() - 0.5) * 0.5;
+            v.y += v.dy + (Math.random() - 0.5) * 0.5;
+            // Bounds
+            v.x = Math.max(120, Math.min(680, v.x));
+            v.y = Math.max(60, Math.min(530, v.y));
+        });
+        renderVessels();
+    }, 2000);
+
+    // ============================================================
+    // CONTROL BUTTONS
+    // ============================================================
+    document.getElementById('btn-cyclone').addEventListener('click', () => {
+        const stormOverlay = document.getElementById('storm-overlay-el');
+        stormOverlay.style.display = 'block';
+        addEvent('CYCLONE', '⚠ TROPICAL CYCLONE WARNING — Multiple partitions expected', null);
+
+        const online = getOnlineAtolls();
+        const victims = [];
+        for (let i = 0; i < Math.min(5, online.length); i++) {
+            const idx = Math.floor(Math.random() * online.length);
+            const victim = online.splice(idx, 1)[0];
+            victims.push(victim);
+        }
+        victims.forEach(v => {
+            v.status = 'offline';
+            addEvent('PARTITION', `CYCLONE: ${v.name} offline`, null);
+        });
+        renderNodes(); renderConnections(); updateLegend();
+
+        // Gradually reconnect
+        victims.forEach((v, i) => {
+            setTimeout(() => {
+                v.status = 'syncing';
+                renderNodes(); renderConnections(); updateLegend();
+                addEvent('SYNC', `Post-cyclone: ${v.name} reconnecting...`, null);
+                setTimeout(() => {
+                    v.status = 'online';
+                    v.hash = genPQR();
+                    v.lastMerge = genTimestamp();
+                    statMerges++;
+                    document.getElementById('stat-merges').textContent = statMerges;
+                    createVortex(v.x, v.y);
+                    renderNodes(); renderConnections(); updateLegend();
+                    addEvent('MERGE', `Post-cyclone merge: ${v.name}`, v.hash);
+                    if (i === victims.length - 1) {
+                        stormOverlay.style.display = 'none';
+                        addEvent('SYNC', 'Cyclone passed — all nodes recovered', genPQR());
+                    }
+                }, 2500);
+            }, (i + 1) * 3000);
+        });
+    });
+
+    document.getElementById('btn-deploy').addEventListener('click', () => {
+        const newName = 'COB-' + Math.floor(Math.random() * 900 + 100);
+        const x = 200 + Math.random() * 400;
+        const y = 100 + Math.random() * 380;
+        allAtolls.push({
+            name: newName, x, y, tier: 1, chain: Math.random() > 0.5 ? 'Ratak' : 'Ralik',
+            status: 'online', hash: genPQR(), cob: 1, recentTx: 0, lastMerge: genTimestamp()
+        });
+        // Connect to nearest
+        const nearest = nearestAtoll(x, y);
+        if (nearest) connections.push([newName, nearest.name]);
+
+        // Burst animation
+        for (let i = 0; i < 6; i++) {
+            const angle = (i / 6) * Math.PI * 2;
+            setTimeout(() => {
+                createParticle(x, y, x + Math.cos(angle) * 30, y + Math.sin(angle) * 30, '#00d4ff', 600);
+            }, i * 50);
+        }
+
+        renderNodes(); renderConnections(); updateLegend();
+        addEvent('DEPLOY', `New COB device deployed: ${newName}`, genPQR());
+    });
+
+    document.getElementById('btn-partition').addEventListener('click', () => {
+        const online = getOnlineAtolls();
+        if (online.length > 0) {
+            const target = online[Math.floor(Math.random() * online.length)];
+            target.status = 'offline';
+            renderNodes(); renderConnections(); updateLegend();
+            addEvent('PARTITION', `Forced partition: ${target.name} disconnected`, null);
+        }
+    });
+
+    document.getElementById('btn-sync-all').addEventListener('click', () => {
+        const offline = allAtolls.filter(a => a.status === 'offline' || a.status === 'syncing');
+        if (offline.length === 0) {
+            addEvent('SYNC', 'All nodes already online — no sync needed', null);
+            return;
+        }
+        addEvent('SYNC', `SLINGSHOT SYNC ALL — ${offline.length} nodes reconnecting`, null);
+        offline.forEach((a, i) => {
+            setTimeout(() => {
+                a.status = 'online';
+                a.hash = genPQR();
+                a.lastMerge = genTimestamp();
+                statMerges++;
+                document.getElementById('stat-merges').textContent = statMerges;
+                createVortex(a.x, a.y);
+                renderNodes(); renderConnections(); updateLegend();
+                addEvent('MERGE', `Slingshot merge: ${a.name}`, a.hash);
+            }, i * 600);
+        });
+        setTimeout(() => {
+            document.getElementById('stat-pqr').textContent = genPQR();
+        }, offline.length * 600 + 500);
+    });
+
+    // ============================================================
+    // INIT ICONS
+    // ============================================================
+    lucide.createIcons();
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"377a0f16838646cfa758f38bc8cdba43","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+

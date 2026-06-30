@@ -1,66 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PQR | The Sovereign Mesh</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triple Helix HUD • Twisted 3D</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body class="landing-page">
-    <div class="glow-bg"></div>
-    
-    <nav class="main-nav">
-        <div class="logo">PQR.INFO</div>
-        <div class="nav-links">
-            <a href="/wiki.html">Manifesto</a>
-            <a href="/hud.html" class="btn-hud">Enter HUD</a>
-            <a href="#" class="btn-login"><i class="fab fa-github"></i> GHE Sync</a>
+<body>
+    <div class="container">
+        <canvas id="hudCanvas"></canvas>
+        <div class="controls">
+            <input id="selfAddr" placeholder="Your address" />
+            <input id="peerAddr" placeholder="Peer address (optional)" />
+            <button id="updateBtn">Update</button>
         </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <div class="badge">Mesh Node v1.08 Operational</div>
-            <h1 class="glitch">SOVEREIGN SWARM</h1>
-            <p class="hero-tagline">Autonomous self-healing ticketing fabric. Powered by Gemma Orchestration and Forensic Lineage.</p>
-            <div class="hero-actions">
-                <a href="/hud.html" class="btn-primary">Initialize Node</a>
-                <a href="/wiki.html" class="btn-secondary">View Core Protocol</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="floating-core">
-                <i data-lucide="shield" style="width: 200px; height: 200px; color: var(--accent-primary); opacity: 0.8;"></i>
-            </div>
-        </div>
-    </header>
-
-    <section class="features">
-        <div class="feature-card">
-            <i class="fas fa-fingerprint"></i>
-            <h3>Forensic Fabric</h3>
-            <p>Every decision is logged to an immutable genealogy tree, ensuring absolute traceability across the swarm.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-heartbeat"></i>
-            <h3>Autonomous Healing</h3>
-            <p>Layer 7 agents detect and resolve failures through recursive metaprogramming loops.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-network-wired"></i>
-            <h3>Distributed Brain</h3>
-            <p>Dual-node GPU resident orchestration across Yoga and Alienware clusters.</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 PQR Sovereign Mesh. Authenticated via SG-DAO Genesis.</p>
-    </footer>
-
-    <script>
-        lucide.createIcons();
-    </script>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -15,8 +15,9 @@ import (
 
 // AuthService handles SAML Identity Provider (IdP) logic
 type AuthService struct {
-	IDP  *samlidp.Server
-	repo domain.UserRepository
+	IDP   *samlidp.Server
+	repo  domain.UserRepository
+	Agent *SAMLAgent
 }
 
 // NewAuthService creates a new SAML IdP service
@@ -39,14 +40,29 @@ func NewAuthService(repo domain.UserRepository, baseURL string, key *rsa.Private
 	idpServer.IDP.MetadataURL = *u
 	idpServer.IDP.MetadataURL.Path = "/saml/metadata"
 
-	return &AuthService{
+	authService := &AuthService{
 		IDP:  idpServer,
 		repo: repo,
-	}, nil
+	}
+
+	authService.Agent = NewSAMLAgent(authService)
+	_ = authService.Agent.LoadFromDisk()
+	authService.Agent.UpdateCertIndex(cert)
+	_ = authService.Agent.SaveToDisk()
+
+	return authService, nil
 }
 
-// HandleMetadata serves the SAML IdP metadata
+// HandleMetadata serves the SAML IdP metadata using cached XML in SAMLAgent
 func (s *AuthService) HandleMetadata(w http.ResponseWriter, r *http.Request) {
+	if s.Agent != nil {
+		meta, err := s.Agent.GetMetadata()
+		if err == nil {
+			w.Header().Set("Content-Type", "application/xml")
+			w.Write([]byte(meta))
+			return
+		}
+	}
 	s.IDP.ServeHTTP(w, r)
 }
 
@@ -60,6 +76,15 @@ func (s *AuthService) AddUser(username, password, email, displayName string) err
 	// In a real implementation, this would sync with the database
 	// For now, we'll add it to the IdP's internal store if it's using one, 
 	// or just rely on the database during the actual login flow.
+	user := samlidp.User{
+		Name:       username,
+		Groups:     []string{"users"},
+		Email:      email,
+		CommonName: displayName,
+	}
+	if store, ok := s.IDP.Store.(*samlidp.MemoryStore); ok {
+		return store.Put("/users/"+username, user)
+	}
 	return nil
 }
 
@@ -79,8 +104,10 @@ func (s *AuthService) RotateCertificates(ctx context.Context, commonName string)
 	s.IDP.IDP.Key = privKey
 	s.IDP.IDP.Certificate = cert
 	
-	// Re-initialize the IdP handler to pick up new certs
-	// Note: samlidp.Server.Handler() creates a new handler each time
+	if s.Agent != nil {
+		s.Agent.UpdateCertIndex(cert)
+		_ = s.Agent.SaveToDisk()
+	}
 	
 	return privKey, cert, nil
 }

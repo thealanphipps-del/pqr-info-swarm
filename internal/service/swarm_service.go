@@ -65,6 +65,16 @@ func (s *SwarmService) LinkTicketsWithAudit(ctx context.Context, parentID, child
 	return s.repo.AddAudit(ctx, entry)
 }
 
+func (s *SwarmService) GetTicketLinks(ctx context.Context, id uuid.UUID) ([]string, error) {
+	// Cast repository to check for extended link fetching support
+	if r, ok := s.repo.(interface {
+		GetLinks(context.Context, uuid.UUID) ([]string, error)
+	}); ok {
+		return r.GetLinks(ctx, id)
+	}
+	return []string{}, nil
+}
+
 func (s *SwarmService) GenerateStateVector(content []byte) []float64 {
 	h := sha256.Sum256(content)
 	vec := make([]float64, 8)

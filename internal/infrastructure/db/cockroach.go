@@ -69,6 +69,10 @@ func (r *CockroachRepository) GetByID(ctx context.Context, id uuid.UUID) (*domai
 	var c domain.FabricContent
 	var intentJSON []byte
 	var failedAttemptsJSON []byte
+	var rawContent []byte
+	var consensusScore sql.NullFloat64
+	var summaryHash, payloadHash sql.NullString
+	var resolutionNull, resolvedByNull, assignedToNull sql.NullString
 
 	err := r.db.QueryRowContext(ctx, `
 		SELECT t.ticket_id, t.layer_id, t.creator_agent_id, t.status, t.iteration, t.escalation_level, t.resolution, t.resolved_by, t.assigned_to, t.created_at,
@@ -76,11 +80,24 @@ func (r *CockroachRepository) GetByID(ctx context.Context, id uuid.UUID) (*domai
 		FROM tickets t
 		LEFT JOIN ticket_content c ON t.ticket_id = c.ticket_id
 		WHERE t.ticket_id = $1
-	`, id).Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.Iteration, &t.EscalationLevel, &t.Resolution, &t.ResolvedBy, &t.AssignedTo, &t.CreatedAt, 
-		&intentJSON, &c.RawContent, &c.ConsensusScore, &c.SummaryHash, &c.PayloadHash, &failedAttemptsJSON)
+	`, id).Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.Iteration, &t.EscalationLevel, &resolutionNull, &resolvedByNull, &assignedToNull, &t.CreatedAt, 
+		&intentJSON, &rawContent, &consensusScore, &summaryHash, &payloadHash, &failedAttemptsJSON)
 
 	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, nil, fmt.Errorf("ticket not found")
+		}
 		return nil, nil, err
+	}
+
+	if resolutionNull.Valid {
+		t.Resolution = resolutionNull.String
+	}
+	if resolvedByNull.Valid {
+		t.ResolvedBy = resolvedByNull.String
+	}
+	if assignedToNull.Valid {
+		t.AssignedTo = assignedToNull.String
 	}
 
 	if intentJSON != nil {
@@ -89,7 +106,18 @@ func (r *CockroachRepository) GetByID(ctx context.Context, id uuid.UUID) (*domai
 	if failedAttemptsJSON != nil {
 		json.Unmarshal(failedAttemptsJSON, &c.FailedAttempts)
 	}
+	
 	c.TicketID = t.ID
+	c.RawContent = rawContent
+	if consensusScore.Valid {
+		c.ConsensusScore = consensusScore.Float64
+	}
+	if summaryHash.Valid {
+		c.SummaryHash = summaryHash.String
+	}
+	if payloadHash.Valid {
+		c.PayloadHash = payloadHash.String
+	}
 
 	return &t, &c, nil
 }
@@ -193,8 +221,12 @@ func (r *CockroachRepository) ListRecent(ctx context.Context, limit int) ([]doma
 	var tickets []domain.FabricTicket
 	for rows.Next() {
 		var t domain.FabricTicket
-		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.AssignedTo, &t.CreatedAt); err != nil {
+		var assignedToNull sql.NullString
+		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &assignedToNull, &t.CreatedAt); err != nil {
 			return nil, err
+		}
+		if assignedToNull.Valid {
+			t.AssignedTo = assignedToNull.String
 		}
 		tickets = append(tickets, t)
 	}
@@ -249,8 +281,12 @@ func (r *CockroachRepository) GetContext(ctx context.Context, agentID string, li
 	for rows.Next() {
 		var t domain.FabricTicket
 		var score float64
-		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &t.AssignedTo, &t.CreatedAt, &score); err != nil {
+		var assignedToNull sql.NullString
+		if err := rows.Scan(&t.ID, &t.LayerID, &t.CreatorAgentID, &t.Status, &assignedToNull, &t.CreatedAt, &score); err != nil {
 			return nil, err
+		}
+		if assignedToNull.Valid {
+			t.AssignedTo = assignedToNull.String
 		}
 		tickets = append(tickets, t)
 	}
@@ -431,13 +467,18 @@ func (r *CockroachRepository) Search(ctx context.Context, criteria map[string]in
 	query := `SELECT ticket_id, layer_id, creator_agent_id, status, created_at FROM tickets WHERE 1=1`
 	var args []interface{}
 	i := 1
+
+	// Whitelist for allowed filter columns to prevent SQL injection
+	allowedColumns := map[string]string{
+		"status":           "status",
+		"layer":            "layer_id",
+		"layer_id":         "layer_id",
+		"creator_agent_id": "creator_agent_id",
+		"assigned_to":      "assigned_to",
+	}
+
 	for k, v := range criteria {
-		// Basic sanitization: check against allowed column names
-		allowedColumns := map[string]bool{"status": true, "layer_id": true, "creator_agent_id": true}
-		columnName := k
-		if k == "layer" { columnName = "layer_id" } // Map friendly name
-		
-		if allowedColumns[columnName] {
+		if columnName, ok := allowedColumns[k]; ok {
 			query += fmt.Sprintf(" AND %s = $%d", columnName, i)
 			args = append(args, v)
 			i++
@@ -461,4 +502,10 @@ func (r *CockroachRepository) Search(ctx context.Context, criteria map[string]in
 	}
 	return tickets, nil
 }
+
+func (r *CockroachRepository) UpdateEscalation(ctx context.Context, id uuid.UUID, iteration int, level int) error {
+	_, err := r.db.ExecContext(ctx, `UPDATE tickets SET iteration = $1, escalation_level = $2 WHERE ticket_id = $3`, iteration, level, id)
+	return err
+}
+
 

@@ -309,6 +309,37 @@ Solutions:
   4. Use CockroachDB monitoring: admin console at http://localhost:8080
 ```
 
+## Observability Stack & Agent Telemetry
+
+The Sovereign Observability and Agent telemetry stack integrates OpenTelemetry (OTEL), Prometheus, Loki, and Grafana (running inside WSL or Linux) with Windows 11 administrative daemons.
+
+### Installation
+
+For Windows + WSL systems, run the PowerShell installer:
+```powershell
+# From Windows, runs WSL bootstrap and registers the administrative companion service
+powershell.exe -ExecutionPolicy Bypass -File /home/aellok/sovereign_mesh/observability/agy-install.ps1
+```
+
+For Linux-only hosts, run the bootstrap script directly in your terminal:
+```bash
+bash /home/aellok/sovereign_mesh/observability/bootstrap-observability.sh
+```
+
+This installs Loki, Prometheus, Grafana, and the OTEL Collector, and registers them as systemd units.
+
+### Components Reference
+
+All components are configured in `/home/aellok/sovereign_mesh/observability/`:
+
+- **`telemetry.js`**: Integrates OpenTelemetry NodeSDK to auto-instrument client calls and logs via Pino.
+- **`heartbeat.js`**: Periodic (5s) status loop reporting system resource health, CPU/Memory, and active tickets to SWEND.
+- **`agent.js` & `personality-agent.js`**: Autonomous agent templates. Incorporates agent persona profiles (e.g. `mesh-node-03.persona.json`) to dynamically guide task decomposition logic.
+- **`antigravity-field-dashboard.json`**: Grafana visualizer tracking global field stress, average memory curvature, lineage density, and node health.
+- **`gemma-orchestrator-prompts/`**: Prompt configuration pack defining core orchestration constraints, tool use policy, and review rules.
+
+---
+
 ## Production Deployment
 
 ### Docker Deployment

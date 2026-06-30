@@ -1,0 +1,7 @@
+{
+  "sha256": "d7d1f57464b871812757005918d177f3bdcdfe471810747d92dd60ea16a18702",
+  "expiration": "2041-05-11T18:49:00Z",
+  "rotation_window_days": 7,
+  "vault_version": 1,
+  "in_memory_pointer": "0x34edf7f0008"
+}

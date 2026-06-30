@@ -78,7 +78,7 @@ Write-Host
 
 # 5. Retrieve Memory
 Write-Host "5. Retrieving Agent Memory..." -ForegroundColor Cyan
-$retrieved = Invoke-TicketAPI -Method GET -Endpoint "/agent/$AgentId/memory/$ticketId?type=context"
+$retrieved = Invoke-TicketAPI -Method GET -Endpoint "/agent/$AgentId/memory/${ticketId}?type=context"
 $retrieved | ConvertTo-Json | Write-Host
 Write-Host
 

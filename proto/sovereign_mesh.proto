@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package sovereign.mesh.v1;
+
+option go_package = "github.com/thealanphipps-del/pqr/proto/v1;meshv1";
+option java_multiple_files = true;
+option java_package = "info.pqr.sovereign.mesh.v1";
+
+import "google/protobuf/timestamp.proto";
+
+// Sovereign OS Substrate 27 Runlevel
+enum Runlevel {
+  RUNLEVEL_UNSPECIFIED = 0;
+  RUNLEVEL_1_CORE_KERNEL = 1;
+  RUNLEVEL_5_LOCAL_INFRASTRUCTURE = 5;
+  RUNLEVEL_10_COGNITIVE_MESH = 10;
+  RUNLEVEL_20_IDENTITY_FABRIC = 20;
+  RUNLEVEL_27_GLOBAL_DISTRIBUTED_MESH = 27; // Android native Sovereign OS Mesh
+}
+
+// Nate 5D Identity Dimensions
+message Nate5DIdentity {
+  string sovereign_id = 1;       // D1: Cryptographic Self-Sovereign Identity (DID)
+  string biological_signature = 2; // D2: Biometric/Hardware Silicon Anchor
+  string temporal_sequence = 3;    // D3: Ephemeral Time-Bound Session Key
+  string spatial_coordinates = 4; // D4: Geo-location Grid Coordinates
+  string cognitive_attestation = 5; // D5: Swarm-derived trust score & belief verification
+}
+
+// Lineage-verified Envelope
+message Envelope {
+  string envelope_id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Runlevel runlevel = 3;
+  Nate5DIdentity identity = 4;
+  string event_type = 5;
+  bytes payload = 6;
+  string parent_envelope_id = 7;
+  string signature = 8;
+}
+
+// SAML & Cloudflare Identity Status
+message SAMLStatus {
+  bool enabled = 1;
+  string metadata_url = 2;
+  string sso_url = 3;
+  string cert_sha256 = 4;
+  google.protobuf.Timestamp cert_expiration = 5;
+  bool is_drifted = 6;
+  string drift_reason = 7;
+  bool cloudflare_bypass_active = 8;
+}
+
+// Mesh Node Network Topology
+message NetworkTopology {
+  string node_id = 1;
+  string runlevel_state = 2;
+  string trycloudflare_failover_url = 3;
+  repeated string active_peers = 4;
+  map<string, string> system_metrics = 5;
+}
+
+// Sovereign Event State Bus Service
+service SovereignEventBusService {
+  // Bidirectional stream for real-time state sync across handset and node daemon
+  rpc StreamEnvelopes(stream Envelope) returns (stream Envelope);
+  
+  // Direct state queries
+  rpc GetSAMLStatus(GetSAMLStatusRequest) returns (SAMLStatus);
+  rpc GetNetworkTopology(GetNetworkTopologyRequest) returns (NetworkTopology);
+}
+
+message GetSAMLStatusRequest {}
+message GetNetworkTopologyRequest {}
