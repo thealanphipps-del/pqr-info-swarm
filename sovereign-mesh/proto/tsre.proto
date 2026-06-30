@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package tsre;
+option go_package = "github.com/pqr-info/sovereign-mesh/proto";
+
+// QStateMutation represents a live mix adjustment from the Slingshot MIDI UI
+message QStateMutation {
+    // The sequence ID being modified in the Scatter Platter
+    string sequence_id = 1;
+    
+    // The 5D Coordinate Vector [x1, x2, x3, x4, x5]
+    repeated float coordinate_vector = 2;
+    
+    // The MIDI Control Change (CC) or Note value intercepted from the UI
+    int32 midi_cc_value = 3;
+    
+    // The epoch timestamp when the Human-in-the-Loop replay was authorized
+    int64 hitl_replay_timestamp = 4;
+    
+    // Cryptographic hash of the reactor's entropy state during the transcode
+    string reactor_entropy_hash = 5;
+    
+    // The type of mutation (e.g., SYNC_EQ, CRDT_RESOLVE, CACHE_OFFLOAD)
+    string mutation_type = 6;
+}
+
+// QStateBatch is a discreet "Quantum Epoch" buffering multiple mutations
+message QStateBatch {
+    string epoch_id = 1;
+    int64 window_start_ms = 2;
+    int64 window_end_ms = 3;
+    repeated QStateMutation mutations = 4;
+}

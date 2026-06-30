@@ -8,7 +8,7 @@ protoc -I. \
     --go_opt=paths=source_relative \
     --go-grpc_out=. \
     --go-grpc_opt=paths=source_relative \
-    sync.proto mesh_proto.proto
+    sync.proto mesh_proto.proto tsre.proto
 popd > /dev/null
 
 # Removed legacy nested path hack - Go workspace uses source_relative
@@ -25,6 +25,6 @@ $PYTHON_BIN -m grpc_tools.protoc \
     -Iproto \
     --python_out=grpc_node \
     --grpc_python_out=grpc_node \
-    proto/sync.proto proto/mesh_proto.proto
+    proto/sync.proto proto/mesh_proto.proto proto/tsre.proto
 
 echo -e "\033[92m[PROTO] Compilation successful!\033[0m"
