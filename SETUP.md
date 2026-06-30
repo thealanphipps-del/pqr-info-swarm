@@ -318,19 +318,19 @@ The Sovereign Observability and Agent telemetry stack integrates OpenTelemetry (
 For Windows + WSL systems, run the PowerShell installer:
 ```powershell
 # From Windows, runs WSL bootstrap and registers the administrative companion service
-powershell.exe -ExecutionPolicy Bypass -File /home/aellok/sovereign_mesh/observability/agy-install.ps1
+powershell.exe -ExecutionPolicy Bypass -File /home/aellok/sovereign-mesh/observability/agy-install.ps1
 ```
 
 For Linux-only hosts, run the bootstrap script directly in your terminal:
 ```bash
-bash /home/aellok/sovereign_mesh/observability/bootstrap-observability.sh
+bash /home/aellok/sovereign-mesh/observability/bootstrap-observability.sh
 ```
 
 This installs Loki, Prometheus, Grafana, and the OTEL Collector, and registers them as systemd units.
 
 ### Components Reference
 
-All components are configured in `/home/aellok/sovereign_mesh/observability/`:
+All components are configured in `/home/aellok/sovereign-mesh/observability/`:
 
 - **`telemetry.js`**: Integrates OpenTelemetry NodeSDK to auto-instrument client calls and logs via Pino.
 - **`heartbeat.js`**: Periodic (5s) status loop reporting system resource health, CPU/Memory, and active tickets to SWEND.

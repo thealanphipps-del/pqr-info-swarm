@@ -8,7 +8,7 @@ import sqlite3
 import hashlib
 
 # Configuration
-DB_PATH = "/home/aellok/sovereign_mesh/agent_pedigree.db"
+DB_PATH = "/home/aellok/sovereign-mesh/agent_pedigree.db"
 BIND_HOST = "127.0.0.3"
 PQR_BUS_PORT = 11111      # agent protocol
 SRRP_PORT = 11112         # SRRP transport tunnels
