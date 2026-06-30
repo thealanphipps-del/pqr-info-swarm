@@ -27,19 +27,14 @@ func NewHealingService(repo domain.TicketRepository, svc *SwarmService, ai *AISe
 // StartBackgroundWorker kicks off the autonomous healing loop
 func (h *HealingService) StartBackgroundWorker(ctx context.Context) {
 	ticker := time.NewTicker(15 * time.Second)
-	cleanupTicker := time.NewTicker(24 * time.Hour) // Daily cleanup
 	log.Println("⚡ PQR Background Healing Worker: ONLINE")
 	go func() {
 		for {
 			select {
 			case <-ctx.Done():
-				ticker.Stop()
-				cleanupTicker.Stop()
 				return
 			case <-ticker.C:
 				h.processPendingTickets(ctx)
-			case <-cleanupTicker.C:
-				h.processMemoryCleanup(ctx)
 			}
 		}
 	}()
@@ -51,20 +46,15 @@ func (h *HealingService) processPendingTickets(ctx context.Context) {
 	if err != nil {
 		return
 	}
-
+	
 	for _, t := range tickets {
-		// Fast-track heartbeats/monitor signals to avoid backlog
-		if t.CreatorAgentID == "sovereign-monitor" {
-			h.MarkResolved(ctx, t.ID, "Auto-resolved heartbeat signal.", "system-reaper")
-			continue
-		}
-
 		if t.LayerID >= 5 {
 			log.Printf("Autonomous Resolution: Found pending Layer %d ticket %s. Initiating healing loop...", t.LayerID, t.ID)
 			h.ProcessHealingLoop(ctx, t.ID)
 		}
 	}
 }
+
 
 // ProcessHealingLoop advances a ticket through the self-healing escalation levels
 func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.UUID) error {
@@ -102,9 +92,9 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 
 	if ticket.Status != "STALLED" {
 		log.Printf("Iteration %d: Escalating Ticket %s to Level %d using %s", ticket.Iteration, ticketID, ticket.EscalationLevel, model)
-
+		
 		// 1. Call the LLM to generate a resolution
-		resolution, err := h.callModel(ctx, model, content)
+		resolution, err := h.callModel(ctx, model, ticket.ID, content)
 		if err != nil {
 			log.Printf("Healing Error: Failed to call model %s: %v", model, err)
 			return err
@@ -131,10 +121,6 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 			},
 		}
 		h.repo.AddAudit(ctx, entry)
-	}
-
-	if err := h.repo.UpdateEscalation(ctx, ticket.ID, ticket.Iteration, ticket.EscalationLevel); err != nil {
-		return err
 	}
 
 	return h.repo.Update(ctx, ticket.ID, ticket.Status, "")
@@ -166,20 +152,15 @@ func (h *HealingService) CreateHealingTicket(ctx context.Context, issue string, 
 	// Healing tickets start at Layer 5 (Operational)
 	return h.svc.CreateFabricTicket(ctx, 5, "monitor-001", content)
 }
-func (h *HealingService) callModel(ctx context.Context, modelName string, content *domain.FabricContent) (string, error) {
-	subject := "Unknown Directive"
-	if content.IntentBlob != nil {
-		if s, ok := content.IntentBlob["subject"].(string); ok {
-			subject = s
-		}
+func (h *HealingService) callModel(ctx context.Context, modelName string, ticketID uuid.UUID, content *domain.FabricContent) (string, error) {
+	contextData := content.IntentBlob
+	memory, err := h.svc.GetAgentMemory(ctx, "healing-service", ticketID, "context")
+	if err == nil && memory != nil {
+		contextData = memory
 	}
 
-	description := string(content.RawContent)
-	if description == "" {
-		description = "No detailed description provided. This appears to be an autonomous heartbeat or a sparse directive."
-	}
-
-	prompt := fmt.Sprintf("System Role: Autonomous Sovereign Healer\nTicket Subject: %s\nContent: %s\n\nTask: Provide a resolution for this ticket. If it is a heartbeat or requires no action, respond with 'RESOLVED: Heartbeat processed.'", subject, description)
+	prompt := fmt.Sprintf("System: You are a PQR Healing Agent. Resolve the following issue.\nContext: %v\nIssue: %s\nResolution:", 
+		contextData, string(content.RawContent))
 
 	resp, node, err := h.ai.QuerySwarm(ctx, prompt)
 	if err != nil {
@@ -192,17 +173,12 @@ func (h *HealingService) callModel(ctx context.Context, modelName string, conten
 // ExecuteDiagnostic uses the Swarm AI to analyze or execute a diagnostic command
 func (h *HealingService) ExecuteDiagnostic(ctx context.Context, cmd string) (string, error) {
 	prompt := fmt.Sprintf("System: You are a PQR Diagnostic Agent. Analyze and execute the following diagnostic command for the Sovereign Mesh.\nCommand: %s\nOutput:", cmd)
-
+	
 	log.Printf("[DIAGNOSTIC] Coaxing LM to process command: %s", cmd)
 	resp, engine, err := h.ai.QuerySwarm(ctx, prompt)
 	if err != nil {
 		return "", fmt.Errorf("diagnostic failure: %v", err)
 	}
-
+	
 	return fmt.Sprintf("[%s DIAGNOSTIC OUTPUT]\n%s", engine, resp), nil
-}
-
-// processMemoryCleanup is a stub for scheduled memory purging.
-func (h *HealingService) processMemoryCleanup(ctx context.Context) {
-	log.Println("[HEALING-AGENT] Memory cleanup triggered (stub)")
 }
