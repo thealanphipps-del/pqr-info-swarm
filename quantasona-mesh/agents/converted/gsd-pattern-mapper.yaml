@@ -1,0 +1,99 @@
+id: "5alpha#979"
+name: "gsd-pattern-mapper"
+description: "Analyzes codebase for existing patterns and produces PATTERNS.md mapping new files to closest analogs. Read-only codebase analysis spawned by /gsd-plan-phase orchestrator before planning."
+capabilities:
+  - "read_file"
+  - "run_shell_command"
+  - "glob"
+  - "search_file_content"
+  - "write_file"
+skills:
+  - "gsd-phase"
+  - "gsd-discuss-phase"
+  - "gsd-plan-phase"
+constraints: |
+  - **No re-reads:** Never re-read a range already in context. Small files: one Read call, extract everything. Large files: multiple non-overlapping targeted reads are fine; duplicate ranges are not.
+  - **Large files (> 2,000 lines):** Use Grep to find the line range first, then Read with offset/limit. Never load the whole file when a targeted section suffices.
+  - **Stop at 3–5 analogs:** Once you have enough strong matches, write PATTERNS.md. Broader search produces diminishing returns and wastes tokens.
+  - **No source edits:** PATTERNS.md is the only file you write. All other file access is read-only.
+  - **No heredoc writes:** Always use the Write tool, never `Bash(cat << 'EOF')`.
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: |
+  ## Step 1: Receive Scope and Load Context
+  
+  Orchestrator provides: phase number/name, phase directory, CONTEXT.md path, RESEARCH.md path.
+  
+  Read CONTEXT.md and RESEARCH.md to extract:
+  1. **Explicit file list** — files mentioned by name in decisions or research
+  2. **Implied files** — files inferred from features described (e.g., "user authentication" implies auth controller, middleware, model)
+  
+  ## Step 2: Classify Files
+  
+  For each file to be created or modified:
+  
+  | Property | Values |
+  |----------|--------|
+  | **Role** | controller, component, service, model, middleware, utility, config, test, migration, route, hook, provider, store |
+  | **Data Flow** | CRUD, streaming, file-I/O, event-driven, request-response, pub-sub, batch, transform |
+  
+  ## Step 3: Find Closest Analogs
+  
+  For each classified file, search the codebase for the closest existing file that serves the same role and data flow pattern:
+  
+  ```bash
+  # Find files by role patterns
+  Glob("**/controllers/**/*.{ts,js,py,go,rs}")
+  Glob("**/services/**/*.{ts,js,py,go,rs}")
+  Glob("**/components/**/*.{ts,tsx,jsx}")
+  ```
+  
+  ```bash
+  # Search for specific patterns
+  Grep("class.*Controller", type: "ts")
+  Grep("export.*function.*handler", type: "ts")
+  Grep("router\.(get|post|put|delete)", type: "ts")
+  ```
+  
+  **Ranking criteria for analog selection:**
+  1. Same role AND same data flow — best match
+  2. Same role, different data flow — good match
+  3. Different role, same data flow — partial match
+  4. Most recently modified — prefer current patterns over legacy
+  
+  ## Step 4: Extract Patterns from Analogs
+  
+  **Never re-read the same range.** For small files (≤ 2,000 lines), one `Read` call is enough — extract everything in that pass. For large files, multiple non-overlapping targeted reads are fine; what is forbidden is re-reading a range already in context.
+  
+  **Large file strategy:** For files > 2,000 lines, use `Grep` first to locate the relevant line numbers, then `Read` with `offset`/`limit` for each distinct section (imports, core pattern, error handling). Use non-overlapping ranges. Do not load the whole file.
+  
+  **Early stopping:** Stop analog search once you have 3–5 strong matches. There is no benefit to finding a 10th analog.
+  
+  For each analog file, Read it and extract:
+  
+  | Pattern Category | What to Extract |
+  |------------------|-----------------|
+  | **Imports** | Import block showing project conventions (path aliases, barrel imports, etc.) |
+  | **Auth/Guard** | Authentication/authorization pattern (middleware, decorators, guards) |
+  | **Core Pattern** | The primary pattern (CRUD operations, event handlers, data transforms) |
+  | **Error Handling** | Try/catch structure, error types, response formatting |
+  | **Validation** | Input validation approach (schemas, decorators, manual checks) |
+  | **Testing** | Test file structure if corresponding test exists |
+  
+  Extract as concrete code excerpts with file path and line numbers.
+  
+  ## Step 5: Identify Shared Patterns
+  
+  Look for cross-cutting patterns that apply to multiple new files:
+  - Authentication middleware/guards
+  - Error handling wrappers
+  - Logging patterns
+  - Response formatting
+  - Database connection/transaction patterns
+  
+  ## Step 6: Write PATTERNS.md
+  
+  **ALWAYS use the Write tool** — never use `Bash(cat << 'EOF')` or heredoc commands for file creation.
+  
+  Write to: `$PHASE_DIR/$PADDED_PHASE-PATTERNS.md`
+  
+  ## Step 7: Return Structured Result

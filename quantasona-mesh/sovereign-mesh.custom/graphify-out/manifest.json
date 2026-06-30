@@ -1,0 +1,3622 @@
+{
+  "/home/aellok/sovereign-mesh/push_starchart.py": {
+    "mtime": 1779401979.452918,
+    "ast_hash": "6c1cb918b0ae6be3f00c9c2db17fa29e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/fountain_gen.go": {
+    "mtime": 1779354258.020163,
+    "ast_hash": "d7760e7ab6192a0404db55d519ac081a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/dao.go": {
+    "mtime": 1779399671.3256488,
+    "ast_hash": "7828760ee68e795683dcaddd88a3e1f3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/genesis_ledger.go": {
+    "mtime": 1779555507.2673652,
+    "ast_hash": "b93d705bb71ceaacab539e8fc3d51b03",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/ledger.go": {
+    "mtime": 1779241797.9554293,
+    "ast_hash": "e6ec923d3f27176784e34b2997c40313",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/vertex.go": {
+    "mtime": 1779241798.1834292,
+    "ast_hash": "6d15e2a00b1cc9824706f01834e9ddbc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/package.json": {
+    "mtime": 1779418880.3195107,
+    "ast_hash": "e89a0b08c6319bd6fdd2120a89487fc4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/dex.go": {
+    "mtime": 1779241797.9474294,
+    "ast_hash": "558fc0ba58261644cd42e7dcc6b51895",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/rpc_execute.py": {
+    "mtime": 1779761538.268963,
+    "ast_hash": "7ed0093c3e95cfc32e4e76a6e90a4da6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/train_sovereign.py": {
+    "mtime": 1779760206.4620216,
+    "ast_hash": "5ba271956d470cc1a95a809440946f2f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/fast-web-key-new.json": {
+    "mtime": 1779808285.1389923,
+    "ast_hash": "e4c5b1b7a5d9e7a1ca2199e669b79736",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/stratum.go": {
+    "mtime": 1779760948.5808144,
+    "ast_hash": "2b3839b27483306a65271616a5fec8cf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/signal_integrity_audit.py": {
+    "mtime": 1779521774.291274,
+    "ast_hash": "8d39203079c7f50d6828d884efcf911f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/device_login_profile.json": {
+    "mtime": 1779965814.162137,
+    "ast_hash": "bd312a39db8b9204e8978a4f01eab23f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc.go": {
+    "mtime": 1779555190.7474682,
+    "ast_hash": "9e9eac4722466486661c8c718c2df833",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/radius.go": {
+    "mtime": 1779348582.9699805,
+    "ast_hash": "44bad4b7b79af2852f8488cb046e978b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/start_pqr_tunnel.sh": {
+    "mtime": 1779397669.2942982,
+    "ast_hash": "28b7b3b247ca1df12858b6aba21493b3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/avg_price_query.sql": {
+    "mtime": 1779521774.287274,
+    "ast_hash": "4581a519e7ea432104fca76f185b4db8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/recreate_niche.py": {
+    "mtime": 1779401979.488918,
+    "ast_hash": "5530b60e64fa4093d97c7839cf90b1d9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cloud.go": {
+    "mtime": 1779401107.249189,
+    "ast_hash": "ee4489ea69b8b2152be7c6c42b1baeef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/dns.go": {
+    "mtime": 1779396857.4665473,
+    "ast_hash": "1e4b8208ff3626aacbd5225d451e5581",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/publish_to_github.ps1": {
+    "mtime": 1779074964.811258,
+    "ast_hash": "04a76e12f21f6b934f54af250e31912a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/shadow_controller.go": {
+    "mtime": 1779555507.2673652,
+    "ast_hash": "b93d705bb71ceaacab539e8fc3d51b03",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/us_sector_gate.go": {
+    "mtime": 1779555507.2673652,
+    "ast_hash": "b93d705bb71ceaacab539e8fc3d51b03",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agent_identity_map.json": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "1df3e69acae1e5bd75ba91e90c2c53d9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mumbai_backup_sync.sh": {
+    "mtime": 1779521774.291274,
+    "ast_hash": "be1f044078e94b32821f1b60dae232fa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/memory_test.go": {
+    "mtime": 1779241797.9594293,
+    "ast_hash": "1a5858a831122777bec0fb4695e5a9ad",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/start_public_services.sh": {
+    "mtime": 1779405194.879896,
+    "ast_hash": "960af3cd04bdf8bb090bf7683e406679",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/stratum_test.go": {
+    "mtime": 1779760951.9096556,
+    "ast_hash": "253f0496a56f297f522f7abd88ac403b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/memory.go": {
+    "mtime": 1779241797.9594293,
+    "ast_hash": "cef683a849562d196bd0c8ebb495d43c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/set_metadata_blind.py": {
+    "mtime": 1779401979.4849179,
+    "ast_hash": "47d70058e1b9b4a043c2723b533e16b9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/tool_use.go": {
+    "mtime": 1779241798.1834292,
+    "ast_hash": "a6b24bf5180258b47e986abfc3d75024",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/pd_audit.go": {
+    "mtime": 1779400804.401287,
+    "ast_hash": "0755ad01f7f14f05b55a537e939dab5a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mesh_wide_manifest.json": {
+    "mtime": 1779528827.7354083,
+    "ast_hash": "70e8466b7ec8d48475b70f861467592c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/oob.sh": {
+    "mtime": 1779396221.7267506,
+    "ast_hash": "375136fff10456986b4c8dfcfee88e3f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/red_team_probe.sh": {
+    "mtime": 1779401824.5569634,
+    "ast_hash": "21888a684d98420c1dc2275de6034e44",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/migrate_archives.py": {
+    "mtime": 1779760855.1191564,
+    "ast_hash": "a01e866b694904652109ce579cd49b17",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/price_feed_sync.py": {
+    "mtime": 1779521774.2832737,
+    "ast_hash": "8d39203079c7f50d6828d884efcf911f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mobile_wallet.go": {
+    "mtime": 1779241798.1754293,
+    "ast_hash": "455a5dd865ed0575e8e7d310805070aa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/auth_bottleneck_fix.py": {
+    "mtime": 1779521774.287274,
+    "ast_hash": "8d39203079c7f50d6828d884efcf911f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/push_large_file.py": {
+    "mtime": 1779401979.556918,
+    "ast_hash": "b1d76b9a8b478e4841bfc9a447881fa0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/state_sharding.go": {
+    "mtime": 1779555507.2673652,
+    "ast_hash": "b93d705bb71ceaacab539e8fc3d51b03",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/airgap_diag.sh": {
+    "mtime": 1779521774.291274,
+    "ast_hash": "be1f044078e94b32821f1b60dae232fa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/revenue_redist.py": {
+    "mtime": 1779521774.287274,
+    "ast_hash": "8d39203079c7f50d6828d884efcf911f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/push_atomic_updates.py": {
+    "mtime": 1779401979.576918,
+    "ast_hash": "f48355d831985dd5caebbb7eb7778e7e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/sticky_tickets.json": {
+    "mtime": 1779246880.689807,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/deploy_starchart.sh": {
+    "mtime": 1779348607.477975,
+    "ast_hash": "8dd7b5d155d4ff30f2559fd88e806f33",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mcp.json": {
+    "mtime": 1779364328.9089427,
+    "ast_hash": "289b8a736b19c38ba2c11a25c21b69c3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/fast-web-key.json": {
+    "mtime": 1779395258.4150507,
+    "ast_hash": "e4c5b1b7a5d9e7a1ca2199e669b79736",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/oob_neural.sh": {
+    "mtime": 1779764575.4824898,
+    "ast_hash": "076e4f21011b937f68c35d40cccf3f72",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/tokyo_latency_map.json": {
+    "mtime": 1779521774.291274,
+    "ast_hash": "3c3054bf55dd353959a648e18fbabf28",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/sovereign_math.go": {
+    "mtime": 1779400467.8413992,
+    "ast_hash": "5b20ed7bb328912935c8fdd56ffae52f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/ingest_evolution.py": {
+    "mtime": 1779401979.452918,
+    "ast_hash": "4ce5a77356a37d08d6f13fc318af02ce",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/connect_termux.py": {
+    "mtime": 1779761351.4459238,
+    "ast_hash": "b136d4dcef0311ed7450d9c74f4a4def",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mudd_session.json": {
+    "mtime": 1779528278.9555697,
+    "ast_hash": "1176370a03503ab58d4814fb849c1406",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/teleport_proc.go": {
+    "mtime": 1779555507.2673652,
+    "ast_hash": "b93d705bb71ceaacab539e8fc3d51b03",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/update_docs.sh": {
+    "mtime": 1779392021.888094,
+    "ast_hash": "ee623f1eb7b7166d79e23a9ccb014fdb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/supplement_genome_dataset.py": {
+    "mtime": 1779760775.9530067,
+    "ast_hash": "b06d23d1b05e7be0edff3dbec290bccb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/sovereign.go": {
+    "mtime": 1779555595.3153396,
+    "ast_hash": "3aeb14726463b38088ccf2fb56eaca64",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/sovereign_menu.py": {
+    "mtime": 1779660947.0337834,
+    "ast_hash": "e81bcd853544ab63d2c73399ecd86784",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mudd_interface.py": {
+    "mtime": 1779757987.8017817,
+    "ast_hash": "2f72f1daa73e3f87e745f089b2268eff",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/bypass_tunnel.sh": {
+    "mtime": 1779401503.589059,
+    "ast_hash": "9cb94aac505c9b0ce2df71900a16e3e6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills_registry.json": {
+    "mtime": 1779659294.7315376,
+    "ast_hash": "eee583e075e0701545ebca35dd515c8f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/tournament.go": {
+    "mtime": 1779400698.3253233,
+    "ast_hash": "45bb0403590376d6b5eb9b40d3945100",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/crystalize_tickets.py": {
+    "mtime": 1779760471.8739517,
+    "ast_hash": "8d4014ecba5a84df4a20a3a517e4f9e4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/gemma_handoff.json": {
+    "mtime": 1779761071.2633557,
+    "ast_hash": "529db6bf2c0515f4f11aab187e51abdf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/mesh_control.sh": {
+    "mtime": 1779241797.9594293,
+    "ast_hash": "b373dedf94c23a3a47b0c9fce8e4b770",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/types.go": {
+    "mtime": 1779519773.754302,
+    "ast_hash": "6c407928f5b891ae9a8c090ea8c84a5a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/ledger_test.go": {
+    "mtime": 1779241797.9554293,
+    "ast_hash": "dc5f03d0361484256d9e490ae47445e4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/indicator_logic.py": {
+    "mtime": 1779521774.287274,
+    "ast_hash": "8d39203079c7f50d6828d884efcf911f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/gemma-ui/package.json": {
+    "mtime": 1779892240.4923382,
+    "ast_hash": "49a6701069389c7e2abc0ea3cc9a61e8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/gemma-ui/server.js": {
+    "mtime": 1779909003.193985,
+    "ast_hash": "92731c4e46c5f2cab2e343f69b02f78a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/test_auth/test_auth.go": {
+    "mtime": 1779241797.9474294,
+    "ast_hash": "1d9378998aa744d1bdf432aa2560a185",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/serve/serve.go": {
+    "mtime": 1779586445.9399421,
+    "ast_hash": "7ef1d5d8134faf46b8d64dbf53887fcb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/mesh_server/main.go": {
+    "mtime": 1779241797.9474294,
+    "ast_hash": "306c402b98d203807faa2f7f1f5fc51d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/mgsh_cli/main.go": {
+    "mtime": 1779397045.4424858,
+    "ast_hash": "0a74431b92b6ad3588834e1a505f5021",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/sovereign-cli/main.go": {
+    "mtime": 1779399282.769771,
+    "ast_hash": "ff582e55a4ad763d0e6f7113f3767449",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/sovereign-auto/main.go": {
+    "mtime": 1779660718.0866077,
+    "ast_hash": "2a309fec1afe4fff59da9d9dae254505",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/cmd/mint_swarm/main.go": {
+    "mtime": 1779398815.8099263,
+    "ast_hash": "5d2af8ab3d6eb5121303c8cbb0887a81",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/config.json": {
+    "mtime": 1780262570.9917178,
+    "ast_hash": "6c2efb397081b5e1a536ceaa9995464a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/tunnels/setup_tunnels.sh": {
+    "mtime": 1779241768.475439,
+    "ast_hash": "a42e34f92df2e30bd9311aec9946e449",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/package.json": {
+    "mtime": 1779445014.218335,
+    "ast_hash": "78b4c8b1317cf1f3ae3383e8b61fd290",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/tsconfig.app.json": {
+    "mtime": 1779444969.7394931,
+    "ast_hash": "136630b5accce1ca50663df229534a26",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/vite.config.ts": {
+    "mtime": 1779444969.743496,
+    "ast_hash": "88439104b3c207f17d33ef3160e3b080",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/tsconfig.json": {
+    "mtime": 1779444969.7394931,
+    "ast_hash": "a3d39fa780ebff65444de257f291ce6c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/eslint.config.js": {
+    "mtime": 1779444969.7234817,
+    "ast_hash": "0355276bc79439afe3c53e3a2470ca1e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/tsconfig.node.json": {
+    "mtime": 1779444969.7394931,
+    "ast_hash": "70bdd0a673bcfc0e828080b306e7c680",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/src/App.tsx": {
+    "mtime": 1779446510.2955394,
+    "ast_hash": "23cf8c3916228766f70f311fef86e4a7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/src/main.tsx": {
+    "mtime": 1779444969.7394931,
+    "ast_hash": "787e5a07efeb2bf6209d5937195f2f68",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/multichat/app.js": {
+    "mtime": 1779910718.4966607,
+    "ast_hash": "3b94b9998ad3d69cc7aac29370547dc2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/deploy_gsd_swarm.py": {
+    "mtime": 1779553890.1878588,
+    "ast_hash": "2007320d532c6da98655409fe23c636d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/create_session_history_tickets.py": {
+    "mtime": 1779521174.068423,
+    "ast_hash": "6c32861c8f1f0f2c351ec691b25824da",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/provision_agents.py": {
+    "mtime": 1779528930.2153788,
+    "ast_hash": "561a27063263570d51e4c60e4896b846",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/sovereign_init.sh": {
+    "mtime": 1779528505.5635033,
+    "ast_hash": "e79cae10a75d2d750bb9f483a30ac291",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/crash_dummy_walk.py": {
+    "mtime": 1779521424.800748,
+    "ast_hash": "c6c70b1c8a7375586b5b9759f0522b11",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/birth_agents.py": {
+    "mtime": 1779555656.0433214,
+    "ast_hash": "47f5ec5752fc4da870179b2aa3e9390c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/bridge_mesh.sh": {
+    "mtime": 1779549627.9131439,
+    "ast_hash": "601e1e51fe960fdbb050d52d6559a71b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/create_incomplete_task_tickets.py": {
+    "mtime": 1779521109.8511271,
+    "ast_hash": "183f8912a2a18c8cffd7f24f188c66c5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/materialize_divergent.py": {
+    "mtime": 1779521764.039832,
+    "ast_hash": "fab3f63a8dfa9eb07f1b657eebf52b1c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/scan_network.py": {
+    "mtime": 1779528820.0114107,
+    "ast_hash": "d67a60de6c82e1cfa38be3af71c2cdab",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/init_crdb.sh": {
+    "mtime": 1779529075.8913329,
+    "ast_hash": "897725f42a47f67ab356f32e0f587a5e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/research_walk.py": {
+    "mtime": 1779528697.7154484,
+    "ast_hash": "e406bfa39d9cac0e4aea173849115dc0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/scripts/bridge_deploy.py": {
+    "mtime": 1779549783.6490984,
+    "ast_hash": "0665330c243eabb4cfee805548574e9e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/gpu_inference/app.py": {
+    "mtime": 1779931987.884591,
+    "ast_hash": "fce987e0ef616423ad6d364fc1c686ed",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/chat-app/package.json": {
+    "mtime": 1779915647.5357208,
+    "ast_hash": "fe4a29a335cce87ffb962373491565a5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/chat-app/vite.config.ts": {
+    "mtime": 1779915650.9437203,
+    "ast_hash": "5f218e72de8d83fe4a4ed96653caaf6b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/chat-app/src/App.tsx": {
+    "mtime": 1779915674.1037157,
+    "ast_hash": "8d12f68951c104e4bbd6ac66d0853452",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/chat-app/src/main.tsx": {
+    "mtime": 1779915659.2917185,
+    "ast_hash": "c136ad46e0c4cf7eb6cf2964dd170da1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/proto/compile_proto.sh": {
+    "mtime": 1779510955.1615834,
+    "ast_hash": "1add0274c9b52547157a2731a1d6fb3f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/proto/github.com/pqr-info/sovereign-mesh/proto/sync_grpc.pb.go": {
+    "mtime": 1779555558.143351,
+    "ast_hash": "4c6dd0b16f5b6fd6518afd2d80d5abac",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/proto/github.com/pqr-info/sovereign-mesh/proto/mesh_proto_grpc.pb.go": {
+    "mtime": 1779555558.143351,
+    "ast_hash": "cde3b6bc283f7d9e3715c148eca2ed8e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/proto/github.com/pqr-info/sovereign-mesh/proto/sync.pb.go": {
+    "mtime": 1779555558.143351,
+    "ast_hash": "a2585099f0c99be44f9a5fcb5b74d2fd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/proto/github.com/pqr-info/sovereign-mesh/proto/mesh_proto.pb.go": {
+    "mtime": 1779555558.143351,
+    "ast_hash": "f6b949a395cfb1f13853084b5fbda74d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/package.json": {
+    "mtime": 1779513583.1392848,
+    "ast_hash": "30571d6b15d223cc18243ca189600c53",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/gsd-file-manifest.json": {
+    "mtime": 1779513583.1712868,
+    "ast_hash": "aebdf0e3592d50040ef132f0df6dd1ae",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/settings.json": {
+    "mtime": 1779513584.0233421,
+    "ast_hash": "863010ed60af4833ed1d019f85c8399f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/templates/checkpoint.json": {
+    "mtime": 1779513583.0552793,
+    "ast_hash": "eace86e42063a47c3cacf8fdcdb3bd01",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/config.json": {
+    "mtime": 1779513583.003276,
+    "ast_hash": "74edbe766d39b2ef502647ad53bb618f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/bin/shared/model-catalog.json": {
+    "mtime": 1779513583.111283,
+    "ast_hash": "9be8d8d625fa66276c8fe07011b5d8af",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-phase-boundary.sh": {
+    "mtime": 1779513583.143285,
+    "ast_hash": "166c91041e39bd09cf629885fdaafa17",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-update-banner.js": {
+    "mtime": 1779513583.1472852,
+    "ast_hash": "ed562ea178a0c1eaf34fb3a58b93810a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-prompt-guard.js": {
+    "mtime": 1779513583.143285,
+    "ast_hash": "9052d78df93379553af819a60148fc71",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-read-guard.js": {
+    "mtime": 1779513583.143285,
+    "ast_hash": "76a9709b6cdc555f8f19d162a17c3789",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-statusline.js": {
+    "mtime": 1779513583.143285,
+    "ast_hash": "998e0de2eb47621833db6f0dc2c55982",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-check-update.js": {
+    "mtime": 1779513583.1392848,
+    "ast_hash": "5c8e5061846501cce0075987c9c2b723",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-workflow-guard.js": {
+    "mtime": 1779513583.1472852,
+    "ast_hash": "bc8f2983e2c1ac27c846d5360da40aef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-read-injection-scanner.js": {
+    "mtime": 1779513583.143285,
+    "ast_hash": "b3593b6646dd6be3ceb434ad915bffb5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-session-state.sh": {
+    "mtime": 1779513583.143285,
+    "ast_hash": "452ba6e377494f5a07acb079a28745f2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-validate-commit.sh": {
+    "mtime": 1779513583.1472852,
+    "ast_hash": "cfae6cb484f0d86265908da5815efcac",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-context-monitor.js": {
+    "mtime": 1779513583.1392848,
+    "ast_hash": "e8aea6bffc743bd3c96ddf8ee0ba4508",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/hooks/gsd-check-update-worker.js": {
+    "mtime": 1779513583.1392848,
+    "ast_hash": "5fd11c3034597538d6908cef38916bc9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/mcp_bridge_server.py": {
+    "mtime": 1779401979.376918,
+    "ast_hash": "2e507155dc340d411c7b060f2ab55bd6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/grpc_server.py": {
+    "mtime": 1779551494.2605808,
+    "ast_hash": "b2cbcb4d72680b8fc43ea736f0dccc69",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/mgsh_mcp.py": {
+    "mtime": 1779721607.917368,
+    "ast_hash": "678a49e6a05047a63ba2190e2866a8ec",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/mesh_proto_pb2.py": {
+    "mtime": 1779555316.7394245,
+    "ast_hash": "722090f5d01937d2cc5c81f9f6d92f49",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/activate_agents.py": {
+    "mtime": 1779401979.192918,
+    "ast_hash": "f658e0f5749887ce4b157aa230ef42cf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/sync_pb2.py": {
+    "mtime": 1779521611.3973405,
+    "ast_hash": "897799502f04c6cd2db48d02cd66ba91",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/mesh_proto_pb2_grpc.py": {
+    "mtime": 1779555316.7394245,
+    "ast_hash": "d403edee16b10516d5d694956029d9e8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/web_server.py": {
+    "mtime": 1779446545.50211,
+    "ast_hash": "5a505326ce7358ced145b54b9ed0856a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/grpc_client.py": {
+    "mtime": 1779547722.9177186,
+    "ast_hash": "3423781b1045cf1f2f888b687bb0d899",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/sync_pb2_grpc.py": {
+    "mtime": 1779521611.3973405,
+    "ast_hash": "cd55bd6b5f0cd956125bb7b79a901b0e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.antigravitycli/f5d09a12-bd61-4255-a032-4129949b3701.json": {
+    "mtime": 1779390470.988586,
+    "ast_hash": "ca36b2f4b3797a35320ed21192ee4619",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/memory_bus/server.py": {
+    "mtime": 1779401979.6369178,
+    "ast_hash": "a1cd6f0bbf8877b1b1f64a93458e71b2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/memory_bus/server.go": {
+    "mtime": 1779241797.9594293,
+    "ast_hash": "13bb8e289353138554dd6eb23d3bb148",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/memory_bus/client_package.go": {
+    "mtime": 1779241797.9594293,
+    "ast_hash": "eda92a4381ddf550fcfbbbdd1eb38942",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/memory_bus/client.py": {
+    "mtime": 1779401979.5449178,
+    "ast_hash": "ca7d87f17f0d85a66c560f36a5a77811",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/hft/frame.go": {
+    "mtime": 1779241797.9554293,
+    "ast_hash": "cb2f382343a44651ca5c68390c5a3fd8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/static/script.js": {
+    "mtime": 1779391260.8163364,
+    "ast_hash": "340288b2e2d8a8496b855ba51d14f278",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/Takeout/Chrome/History.json": {
+    "mtime": 1779760603.1674843,
+    "ast_hash": "7b643c981238549757f358efc9e02edf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/forge_engine/src/main.rs": {
+    "mtime": 1779354241.5321686,
+    "ast_hash": "371380851ae4869c84816f05c8bc5251",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/bin/gsd-tools": {
+    "mtime": 1779513582.915271,
+    "ast_hash": "d42b25954d4b59b79e2ba0e69a23c44c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/bin/sovereign-menu": {
+    "mtime": 1779660947.0337834,
+    "ast_hash": "e81bcd853544ab63d2c73399ecd86784",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/package.json": {
+    "mtime": 1779880729.4304028,
+    "ast_hash": "3e49e852956f987bb8050280bd7334a4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/tsconfig.json": {
+    "mtime": 1779880731.290561,
+    "ast_hash": "8e68b2463c6e7e30596eef549fdd47fe",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/config/mcp.json": {
+    "mtime": 1779880762.408326,
+    "ast_hash": "09d658468f4a94371090e71e72ca4540",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/config/models.json": {
+    "mtime": 1779880761.3882453,
+    "ast_hash": "393d2eae92c73e2ff70ecdd75db1c7a7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/index.ts": {
+    "mtime": 1779912590.3323042,
+    "ast_hash": "c5a6a3b019f0f2610585b875c0028dc6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/config.ts": {
+    "mtime": 1779880736.070977,
+    "ast_hash": "0390f9646278f61bea68d0b0e34337db",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/api/chatRouter.ts": {
+    "mtime": 1779880755.183758,
+    "ast_hash": "b08d845136b6eede6380dcac5894b1b2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/api/threadsRouter.ts": {
+    "mtime": 1779880757.0479045,
+    "ast_hash": "26d50f567da317552b19d5156176d9a8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/db/schema.sql": {
+    "mtime": 1779880759.6721106,
+    "ast_hash": "e7e40c0273e3d6925231f5717e872c10",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/db/repositories/memoryRepo.ts": {
+    "mtime": 1779880741.6634617,
+    "ast_hash": "45869856735777d984c9e24e1673739d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/db/repositories/threadsRepo.ts": {
+    "mtime": 1779880739.967315,
+    "ast_hash": "622b9ff91cd2009510c555e4c6e4401b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/types.ts": {
+    "mtime": 1779880737.59911,
+    "ast_hash": "62a7e80cb30fe4cd6f0635b519f42219",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/orchestrator.ts": {
+    "mtime": 1779880753.9484897,
+    "ast_hash": "76633f48b8bc9f8922fe7e0ee4ae63ef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/mcp/mcpBridge.ts": {
+    "mtime": 1779880745.855824,
+    "ast_hash": "eee7a95b7bbcadf2f5dafeaf2aa60d3e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/memory/memoryService.ts": {
+    "mtime": 1779880742.859565,
+    "ast_hash": "4f7c3d0b192a92c2f96eb497ecf90fae",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/arbitration/index.ts": {
+    "mtime": 1779880744.2676868,
+    "ast_hash": "55e46f2384597d148502dc424b7e0c12",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/models/modelRouter.ts": {
+    "mtime": 1779880751.6363,
+    "ast_hash": "2ee2402bec68f4cd93cfe56133537022",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/models/adapters/vertexGemini.ts": {
+    "mtime": 1779880785.205663,
+    "ast_hash": "059cd0558b0027aadb45411149112c9a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/backend/src/core/models/adapters/lmStudio.ts": {
+    "mtime": 1779880783.3580413,
+    "ast_hash": "7441d1b6568d90a97d8104342c58c21f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/models/flashlite/flashlite_test.go": {
+    "mtime": 1779586547.475911,
+    "ast_hash": "f0669d3f4cc06326f35cddbfbc817fb6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/models/flashlite/config.go": {
+    "mtime": 1779586387.4999616,
+    "ast_hash": "4a09fab36c9b417bea37d79d0c246c32",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/models/flashlite/flashlite.go": {
+    "mtime": 1779586384.8279624,
+    "ast_hash": "2d589a1e74451ad90d3752b08eefa32e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/requirements_clean.txt": {
+    "mtime": 1779549188.9892745,
+    "ast_hash": "3da25a01633284018ce8b56c53c13432",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/full_rtgo_tickets.txt": {
+    "mtime": 1779356850.407335,
+    "ast_hash": "7259483933f4003865e04f2577f97ff3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/README_TUNNELS.md": {
+    "mtime": 1779246826.009822,
+    "ast_hash": "eeffec583c1c9636a4116914a412c77e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/HIGH_PRIORITY_RESEARCH.md": {
+    "mtime": 1779241797.9434292,
+    "ast_hash": "f26fd54c5ee8a07ced1c63cc63876f5b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.continue-here.md": {
+    "mtime": 1779512632.319053,
+    "ast_hash": "aa7a37c854f03fc95a7b0f675d820ea9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/GEMINI.md": {
+    "mtime": 1779660738.035777,
+    "ast_hash": "a10798b14261fa321fc3d3a3a0d4d4cd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/tools_list.txt": {
+    "mtime": 1779359007.9226477,
+    "ast_hash": "e830d9edea27032eeb839f65b85465a8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/README.md": {
+    "mtime": 1779518847.2893126,
+    "ast_hash": "1c9eb7a286abf1dd9d4fea297933f555",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/redundant_ops_config.yaml": {
+    "mtime": 1779521774.291274,
+    "ast_hash": "56802b305d14412dea62b9b185a4ee2c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/response.html": {
+    "mtime": 1779392127.9600613,
+    "ast_hash": "48e6dcd4126fec7094a04379ecefed35",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/STICKY_TICKETS.md": {
+    "mtime": 1779247141.7217243,
+    "ast_hash": "31a2f0bc1c4532c92091b395a6b46131",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/STARBIRTH-PROTOCOL.md": {
+    "mtime": 1779521908.5243406,
+    "ast_hash": "cd04998fbaf3df7af200285e6da54f04",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/RFC-001-SOVEREIGN-ECONOMY.md": {
+    "mtime": 1779241797.9474294,
+    "ast_hash": "d0ea82afa15ba81fd3022c5130b6d68c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/arbitrage_transactions.txt": {
+    "mtime": 1779354480.8160927,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/full_rtdb_tickets.txt": {
+    "mtime": 1779356821.0953436,
+    "ast_hash": "8d9e58b6035c017eb9b6b0be4422210b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/FORENSIC_TICKETS.md": {
+    "mtime": 1779241797.9434292,
+    "ast_hash": "77eb5b4d8dc8e7b8bf003d19cd3bdb8c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/full_rtgo_legacy_tickets.txt": {
+    "mtime": 1779352187.804825,
+    "ast_hash": "00a689123788ab653711dd249f60e156",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/requirements.txt": {
+    "mtime": 1779549178.1172774,
+    "ast_hash": "79def1892a143b3f708b7225d65e22fc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/STICKY_TICKETS.txt": {
+    "mtime": 1779247130.477728,
+    "ast_hash": "58b71a4b00f14a191336d8a95df0c6f9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills_registry.txt": {
+    "mtime": 1779548111.389604,
+    "ast_hash": "d1e2590327361cb250b7d1b525c0ccc4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/gemma-ui/public/index.html": {
+    "mtime": 1779896814.28758,
+    "ast_hash": "f170b0f3df9d26d128902c174df1f883",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/pull_request_template.md": {
+    "mtime": 1779074601.787258,
+    "ast_hash": "c1093c25146a60af7e8e323a04c4aa6e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/workflows/deploy.yml": {
+    "mtime": 1779074589.4952586,
+    "ast_hash": "a78a011638bb0ffa3e0f65d84c7d8096",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/workflows/ci.yml": {
+    "mtime": 1779241797.9434292,
+    "ast_hash": "61f0cf023fdbe6ab13da3b61232cde76",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/ISSUE_TEMPLATE/bug_report.md": {
+    "mtime": 1779074970.243258,
+    "ast_hash": "6f3896bf0abc8b91c486191b95f0e5fe",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/ISSUE_TEMPLATE/feature_request.md": {
+    "mtime": 1779074970.243258,
+    "ast_hash": "c98aa501a0304b07b01af9e605fa7a0d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Protocol-Starbirth.md": {
+    "mtime": 1779547490.341788,
+    "ast_hash": "cd04998fbaf3df7af200285e6da54f04",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/GMUDD-Guide.md": {
+    "mtime": 1779547490.3377879,
+    "ast_hash": "3cfb7839c87311af401c21ebc51cda68",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Agent-Profiles.md": {
+    "mtime": 1779547490.345788,
+    "ast_hash": "2a6a39be90a11ea81a0513916efce048",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Node-Architecture.md": {
+    "mtime": 1779547490.333788,
+    "ast_hash": "7dcb78795439a742f230c9a786a74ffb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Home.md": {
+    "mtime": 1779547498.3977854,
+    "ast_hash": "3a775f83d82fef010af9760ba505b456",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Security.md": {
+    "mtime": 1779547490.345788,
+    "ast_hash": "6bb598da99526ac1d44da398eff3f805",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Architecture.md": {
+    "mtime": 1779547490.333788,
+    "ast_hash": "446875628dc11163b66e4432eb651e95",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.github/wiki/Economy-RFC.md": {
+    "mtime": 1779547490.349788,
+    "ast_hash": "d0ea82afa15ba81fd3022c5130b6d68c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/codebase/ARCHITECTURE.md": {
+    "mtime": 1779860024.9249458,
+    "ast_hash": "41fafa79791dcc77c69910b99b119986",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/codebase/STACK.md": {
+    "mtime": 1779860021.9325352,
+    "ast_hash": "7a4dac642b22ef38313586c67fd1f9d9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/codebase/CONCERNS.md": {
+    "mtime": 1779860028.123426,
+    "ast_hash": "a45f97b7bcedfad7494bbe211a3c6558",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/README.md": {
+    "mtime": 1779444969.7194788,
+    "ast_hash": "f6e3faf55d738cf2affe1b44195f27cf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/index.html": {
+    "mtime": 1779444969.7234817,
+    "ast_hash": "33bd262affcefea92f1509cda449a19c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/multichat/index.html": {
+    "mtime": 1779910244.9007487,
+    "ast_hash": "6e799e2fd399977c0d9fc02761b7d165",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/chat-app/index.html": {
+    "mtime": 1779915655.8957193,
+    "ast_hash": "d77f5210408551c86c1cb1fd7c4839fc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills_registry.txt": {
+    "mtime": 1779548105.349606,
+    "ast_hash": "0d066ebc25d59bd6e333be2f163a764e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/CHANGELOG.md": {
+    "mtime": 1779513583.1352844,
+    "ast_hash": "b67928e998b5fa4bd8b08047b94a3cd1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/spec-phase.md": {
+    "mtime": 1779513583.0992823,
+    "ast_hash": "c24a55f3f80a53933ac2f79dd3d6a9d9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/map-codebase.md": {
+    "mtime": 1779513583.0752807,
+    "ast_hash": "b9b33fdec180ad3c21cebf54d8c296a9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/do.md": {
+    "mtime": 1779513583.0592797,
+    "ast_hash": "b7e107f67c169bcc6de2b21a3f0b62e5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/ui-phase.md": {
+    "mtime": 1779513583.1032825,
+    "ast_hash": "b714ad062c9d4f035272ec0879562880",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/insert-phase.md": {
+    "mtime": 1779513583.0712805,
+    "ast_hash": "5f89fd0f359b09c3fbea52fa7bba54e2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/ship.md": {
+    "mtime": 1779513583.0952818,
+    "ast_hash": "a2eb06ea2412685f2f0774ac718c008e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/manager.md": {
+    "mtime": 1779513583.0752807,
+    "ast_hash": "63a64a63bd18226782ed3c9d3a4e9dd5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/graduation.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "663929f21300963b8e9af8f9fdab9f1a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/import.md": {
+    "mtime": 1779513583.0712805,
+    "ast_hash": "f35214b9e33066d406fb030eeb739242",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/add-backlog.md": {
+    "mtime": 1779513583.0232773,
+    "ast_hash": "b9d16b3b56ee166108b04d6f4f425ccc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/debug.md": {
+    "mtime": 1779513583.047279,
+    "ast_hash": "30f86dd3856f8941abc827d967fee800",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/edit-phase.md": {
+    "mtime": 1779513583.0592797,
+    "ast_hash": "bff2d7af484dabeefe66943d8af29db6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/undo.md": {
+    "mtime": 1779513583.1072826,
+    "ast_hash": "b8c3c1848707bbe8ecf2d53700b56f0e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/node-repair.md": {
+    "mtime": 1779513583.0792809,
+    "ast_hash": "ff57b22997713ab01860c09a975c304c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/transition.md": {
+    "mtime": 1779513583.1032825,
+    "ast_hash": "77353d7f8a224e14751dff3fe2cee225",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/help.md": {
+    "mtime": 1779513583.0712805,
+    "ast_hash": "8a133f2818a15ed479a4ed2fe243847e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/stats.md": {
+    "mtime": 1779513583.0992823,
+    "ast_hash": "e7c9762a3a1af4dd5e30533c72c9e871",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/audit-milestone.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "cc7964cd550f1070e17ceb79a3bf8a5a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/validate-phase.md": {
+    "mtime": 1779513583.1072826,
+    "ast_hash": "41b529358570b427b46e637b3d164029",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase-power.md": {
+    "mtime": 1779513583.0552793,
+    "ast_hash": "d80e69725f1e49108468395ee7e4745b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/milestone-summary.md": {
+    "mtime": 1779513583.0752807,
+    "ast_hash": "50c25fe2ee32d7d11115df6d3e57da40",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/diagnose-issues.md": {
+    "mtime": 1779513583.047279,
+    "ast_hash": "5e33ccff2c2d08eccc72f14f843bb21c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/mvp-phase.md": {
+    "mtime": 1779513583.0752807,
+    "ast_hash": "20c44452fb440a2bcac26037758830ad",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/new-project.md": {
+    "mtime": 1779513583.0792809,
+    "ast_hash": "caa95fd304021b4bf59b17daddefaabe",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/list-phase-assumptions.md": {
+    "mtime": 1779513583.0712805,
+    "ast_hash": "21d3452ffa39884657246e102ff669d8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/session-report.md": {
+    "mtime": 1779513583.0952818,
+    "ast_hash": "300bfb8076a443a90d712871c31dff09",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/remove-workspace.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "f982d33faa2fb1de8c3061ef7d9a08d2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/remove-phase.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "43b094311539a202d4dd020a4cd1e46e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/forensics.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "a092998328bf2a3b4b5d59f073c877c0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/execute-phase.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "9598a3f6a161d1251c41d8fa4f0bf9fa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/docs-update.md": {
+    "mtime": 1779513583.0592797,
+    "ast_hash": "5faff767d30fb7842b2a1faf74f47fa9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/autonomous.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "dcdf5d374ffc9aa0edc97dccaa2f7bf7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/scan.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "165a0aa1eabf515c3cc85307ddd5aeba",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/add-todo.md": {
+    "mtime": 1779513583.0232773,
+    "ast_hash": "99d2b4d2d1d9f81b4b09a004c1d0096a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/inbox.md": {
+    "mtime": 1779513583.0712805,
+    "ast_hash": "062441e1c423c1cff7633475fbf4d50f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/profile-user.md": {
+    "mtime": 1779513583.0872815,
+    "ast_hash": "af1fd1e79100ce4b7c230875f7eae9e7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/spike-wrap-up.md": {
+    "mtime": 1779513583.0992823,
+    "ast_hash": "863db44dba96e5eb8f1f9d6b63163fd0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/new-workspace.md": {
+    "mtime": 1779513583.0792809,
+    "ast_hash": "242b7bde52496f71add8eb8c55f64a50",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/resume-project.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "adc01a9341939ada72079ed822255ce8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/verify-work.md": {
+    "mtime": 1779513583.111283,
+    "ast_hash": "4096628157d9c3a7e4d9fef8f43303b1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/fast.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "128dd1e5402b1f44895c721a7617df66",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/cleanup.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "b16783ea5662fb8a372bf8ed09394733",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/complete-milestone.md": {
+    "mtime": 1779513583.047279,
+    "ast_hash": "13157657b1a1fc1605133b36e7234fec",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/sketch-wrap-up.md": {
+    "mtime": 1779513583.0992823,
+    "ast_hash": "9a9e8646c68cae88542882ac978b7d65",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discovery-phase.md": {
+    "mtime": 1779513583.047279,
+    "ast_hash": "4bdce5fcda85a412c8fd9f587ad5d3bb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/analyze-dependencies.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "7ddf39005a6b41518d302954abcbaca6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/pause-work.md": {
+    "mtime": 1779513583.0832813,
+    "ast_hash": "593c45b58d90456f3c7d3027cf4fc1b0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/add-phase.md": {
+    "mtime": 1779513583.0232773,
+    "ast_hash": "740d02e890226d4ff2724697665c33d1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/add-tests.md": {
+    "mtime": 1779513583.0232773,
+    "ast_hash": "0b1e3f1d4d15d53747f51a40fe664237",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/plan-milestone-gaps.md": {
+    "mtime": 1779513583.0832813,
+    "ast_hash": "1c88250d0a7bd897b52467a1b5291e53",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/audit-uat.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "b7f2bd0280dec824d1d4605fbc110a9b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/settings-advanced.md": {
+    "mtime": 1779513583.0952818,
+    "ast_hash": "e0c1114943423b17ee8b8084bd81fcb8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/sketch.md": {
+    "mtime": 1779513583.0992823,
+    "ast_hash": "4874757e3ed6a0d039b205bd0809e6e3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/verify-phase.md": {
+    "mtime": 1779513583.1072826,
+    "ast_hash": "c5b9b844f78278a00a8ff4aaf32a6682",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/explore.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "f9b1ca0a5529a42d16ac6a8af88392f5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/update.md": {
+    "mtime": 1779513583.1072826,
+    "ast_hash": "5134fab370feb44a9e2cc6de8b87c150",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/plant-seed.md": {
+    "mtime": 1779513583.0872815,
+    "ast_hash": "2269812709b04d5109e035df74535da4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/plan-review-convergence.md": {
+    "mtime": 1779513583.0832813,
+    "ast_hash": "a5896b11887a008911737e22b1835cef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/note.md": {
+    "mtime": 1779513583.0792809,
+    "ast_hash": "0716abeac9bdc635a58e0173eea8c2c6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/reapply-patches.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "3e6d6cd62e40e0ce4f3a20b912eaae53",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase-assumptions.md": {
+    "mtime": 1779513583.0552793,
+    "ast_hash": "8982301089f5c0ff9fa5e635cd2d9b46",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/spike.md": {
+    "mtime": 1779513583.0992823,
+    "ast_hash": "2399bad4d02f8ac09402c303333f9a47",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/quick.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "9dc885cd4637d8a10db8b90813aa4478",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/list-workspaces.md": {
+    "mtime": 1779513583.0752807,
+    "ast_hash": "7f3b947064fa5feb0fd64535bdb6fff9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/code-review.md": {
+    "mtime": 1779513583.0432785,
+    "ast_hash": "95e247221156604dcc10c71f25b19b4d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/thread.md": {
+    "mtime": 1779513583.1032825,
+    "ast_hash": "93cde7dc2addec8aceb43e5b5d0a7060",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/plan-phase.md": {
+    "mtime": 1779513583.0832813,
+    "ast_hash": "dc95398d93a0b7423279ab2b7df5cd57",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/audit-fix.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "c032ca773532b3826030491dd416c8d7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/eval-review.md": {
+    "mtime": 1779513583.0592797,
+    "ast_hash": "a4d4af9c7161efdcb062e0cc621f2c4b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/new-milestone.md": {
+    "mtime": 1779513583.0752807,
+    "ast_hash": "32348ad487ddb6695f426e479a9119a8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/ultraplan-phase.md": {
+    "mtime": 1779513583.1072826,
+    "ast_hash": "105b1d6a7dfb1dbed9bfaea74bca9c2a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/next.md": {
+    "mtime": 1779513583.0792809,
+    "ast_hash": "fbdde4796f4800e0766509eafa4314bf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/pr-branch.md": {
+    "mtime": 1779513583.0872815,
+    "ast_hash": "91c1ba46264eeec8eb8b4ca6ce447182",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/secure-phase.md": {
+    "mtime": 1779513583.0952818,
+    "ast_hash": "c4cdaacf27dab874a39a3b8c0a152ce6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/ui-review.md": {
+    "mtime": 1779513583.1072826,
+    "ast_hash": "04a348098369c366ad23d9da50a3feaa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/sync-skills.md": {
+    "mtime": 1779513583.1032825,
+    "ast_hash": "23b51eb0e5c95888c17cbe3f2866af10",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/settings-integrations.md": {
+    "mtime": 1779513583.0952818,
+    "ast_hash": "a79f68bc11747b37fc623f059900f075",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase.md": {
+    "mtime": 1779513583.0552793,
+    "ast_hash": "11de6f9c3de48900f6f0bf568a4ccd32",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/health.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "5150356f19ef20d47144eb134df9a1ea",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/check-todos.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "f5289a3007cfbfc698f915d2f6f80bda",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/code-review-fix.md": {
+    "mtime": 1779513583.031278,
+    "ast_hash": "886a28e226883adb4f4f70143eaa5646",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/progress.md": {
+    "mtime": 1779513583.0872815,
+    "ast_hash": "e8e4d184f24e2723f549d26564bf0524",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/settings.md": {
+    "mtime": 1779513583.0952818,
+    "ast_hash": "d0ebed9df9cc6517d6ccda2a2ebd4b36",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/review.md": {
+    "mtime": 1779513583.0912817,
+    "ast_hash": "d89817a1541c24db3ec6f9b164edb8fe",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/execute-plan.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "4afe178d5a6a9b368a277f65e4573f02",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/ai-integration-phase.md": {
+    "mtime": 1779513583.0272775,
+    "ast_hash": "66559818780cd159483e278cbe7cb8e2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/extract-learnings.md": {
+    "mtime": 1779513583.06728,
+    "ast_hash": "7362d1c7e95bb83502fbd87ef68728c9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/ingest-docs.md": {
+    "mtime": 1779513583.0712805,
+    "ast_hash": "b0c02957f67f79d9acbf056fafd40638",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/execute-phase/steps/per-plan-worktree-gate.md": {
+    "mtime": 1779513583.0632799,
+    "ast_hash": "bec00ae8e1b77458c6871cc156cb1b2b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/execute-phase/steps/post-merge-gate.md": {
+    "mtime": 1779513583.0632799,
+    "ast_hash": "f804de2f39918c82ac9a538bccb60fdf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/execute-phase/steps/codebase-drift-gate.md": {
+    "mtime": 1779513583.0632799,
+    "ast_hash": "107bb57836f2c70a6b27b91995e4a3a1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/templates/context.md": {
+    "mtime": 1779513583.0552793,
+    "ast_hash": "31c5df6ba48623d4e2ba6701870265c2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/templates/discussion-log.md": {
+    "mtime": 1779513583.0552793,
+    "ast_hash": "eae5aa65a015eedb8bac4aa948739c41",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/advisor.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "a82457e72eb9fbf06c09ebc3f467fc12",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/default.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "d124b5e82cf126b9732125c066f43c14",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/all.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "cbd1ea866ba3fe7ca8bee3f0936d6052",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/chain.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "3871d69627e2fb717b107fc63fc001c0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/auto.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "7df27c3eeb8d32c3aec2367d89ae3602",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/text.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "99e3d89118ff0b1fd9a27656146f25ec",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/power.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "6af8ba4abe1c99f34843312529b93d1f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/batch.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "a5c3a34a28cb49090bb24ff3379a0b1b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/workflows/discuss-phase/modes/analyze.md": {
+    "mtime": 1779513583.051279,
+    "ast_hash": "c354fe0b79cfc0c594064822dfd45f84",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-antipatterns.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "fa38108e248ad632dbb289c20ff272f4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/execute-mvp-tdd.md": {
+    "mtime": 1779513582.9632738,
+    "ast_hash": "bc070788232c660209b4521d316e9fda",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-chunked.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "25e360eaf1fc5c887691d754add8f440",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/user-story-template.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "f005df4d5ad02e6225ca99b6f7932355",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/gates.md": {
+    "mtime": 1779513582.967274,
+    "ast_hash": "4e7c0b345be2cae471e799173eeba0d5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/thinking-models-debug.md": {
+    "mtime": 1779513582.983275,
+    "ast_hash": "f6b6dd4a3250056669ee01cf4c40ad18",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/spidr-splitting.md": {
+    "mtime": 1779513582.983275,
+    "ast_hash": "8788d6fe6cbdc70e39efbbc1861a14ab",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/ai-evals.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "672e97cab43dc58b1b8db81e884b457d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/sketch-tooling.md": {
+    "mtime": 1779513582.983275,
+    "ast_hash": "d1e6b0df4918db3e61e972a5614fbc21",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/thinking-models-research.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "5360cff860b7d0c758ca575679c406f9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/agent-contracts.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "68f457d8a0b4c39f15a6f0b2f6a060da",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/project-skills-discovery.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "783e37b61cf80e147ec1ee628abed970",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/thinking-models-execution.md": {
+    "mtime": 1779513582.983275,
+    "ast_hash": "6b5a09a6a7a40c291a851f691ef9f9ef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/verification-patterns.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "567864cad71471abd42b70da41a280be",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/ai-frameworks.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "a65f7620a017f08aa6f69af3f048d787",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/sketch-interactivity.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "58920cccb5fce0ddd6cd45594bd97549",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/tdd.md": {
+    "mtime": 1779513582.983275,
+    "ast_hash": "ff7640e0bb7b9d3f99e7fdd401ec46c8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/doc-conflict-engine.md": {
+    "mtime": 1779513582.9632738,
+    "ast_hash": "f30745f7c8c2b7bffef066278fa432bc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/gate-prompts.md": {
+    "mtime": 1779513582.967274,
+    "ast_hash": "b2146beceda5b7ddc0fbd1aecd716f9c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/universal-anti-patterns.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "18184149770526ff6c220b01dc7a4e2c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/thinking-models-planning.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "24182fd4a7f4fa9446355d096c38bde4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/mvp-concepts.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "eb4e91cbd8aaddd78c89d403567275a4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/model-profile-resolution.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "6e46f9848115bb6280be6a8a58a21770",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/continuation-format.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "3ed1f7a3e29896188b3282f1befcf087",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-human-verify-mode.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "5d3b4a8370e253bc92d65d93069addfd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/debugger-philosophy.md": {
+    "mtime": 1779513582.9632738,
+    "ast_hash": "b803092e926c965a345bbc4ca77ccdd4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/sketch-variant-patterns.md": {
+    "mtime": 1779513582.983275,
+    "ast_hash": "1a42d81c8a08a61b1848dd34932a3077",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/thinking-partner.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "a3fc8194e79add6042bcabfdea7a1a14",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/artifact-types.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "2c50a4eab5094d478c1bd2a5d2296145",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/executor-examples.md": {
+    "mtime": 1779513582.9632738,
+    "ast_hash": "e2dd4da11171a84a9f86264ceeac6690",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-revision.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "c3030dd27b995ccf5795379a138589c2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/mandatory-initial-read.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "270db662005d39161f35283b6315c3f3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-mvp-mode.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "46f9da5a23983245457d5837115fe419",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/thinking-models-verification.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "7b78061e171a134c12bbadc7a90e8804",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/questioning.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "a6df2bb514701849ddb58ddc99c49992",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/decimal-phase-calculation.md": {
+    "mtime": 1779513582.9632738,
+    "ast_hash": "fffe342286c6fd6cbf5f95ca7e1011f3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/autonomous-smart-discuss.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "f90f7c9bcc6f90426d5c316e13a71562",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/model-profiles.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "ad38f9cca53cd67480495b6387650822",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/revision-loop.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "42e90a405f0b8e5ac39aadc6375c9cc6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/context-budget.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "39657c31a0adc3285a0cd8e18e124c74",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/ui-brand.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "ccbe8d48add340cb1d8da7f3c7990848",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/workstream-flag.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "98e4aa93ce6862b1c3b595885ab535bf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/phase-argument-parsing.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "0b8ee7aa7aa57654d87ca64be18ed3db",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/user-profiling.md": {
+    "mtime": 1779513582.9872751,
+    "ast_hash": "96aba40ec3e87de975a61aa2fec4a16c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/ios-scaffold.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "95a8027b33e64dc00fd95b5ee5a27139",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/common-bug-patterns.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "d7d13c6090aca12176c85acbc967ccb5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/checkpoints.md": {
+    "mtime": 1779513582.9592736,
+    "ast_hash": "98e7d96d3572263644a034537919ecf6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/skeleton-template.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "54ba40611cb9365d4a7f1a7bb0cbaac1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-gap-closure.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "795a9c88620b165cb867d44f2dee0168",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/sketch-theme-system.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "fe368ffd3d47e27781682a54f9eef063",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/verify-mvp-mode.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "fd8b7927b31a5a75ff3aafdad4b2836c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/worktree-path-safety.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "7212dd42a18e7d41570aa603ae3ead3a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-reviews.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "c71d7556b75cab8edb7313e689eedb87",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/git-planning-commit.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "5d09af2f04f947be20b9f8ba1407f5e2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planning-config.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "8309555343914c28e48d3139ed906e7f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/scout-codebase.md": {
+    "mtime": 1779513582.9792747,
+    "ast_hash": "3fd5b5d332ddb35733dcb6b976a2d1be",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/verification-overrides.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "6f6d3897f8663740ea3935db7df08dec",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/domain-probes.md": {
+    "mtime": 1779513582.9632738,
+    "ast_hash": "36c5761927ed768e5c61dd35f6d19447",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/git-integration.md": {
+    "mtime": 1779513582.9712744,
+    "ast_hash": "88e65560b981047442db023ad85e4e40",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/planner-source-audit.md": {
+    "mtime": 1779513582.9752746,
+    "ast_hash": "b8dfe92a75ebfc7312163b903fa8526c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/few-shot-examples/verifier.md": {
+    "mtime": 1779513582.967274,
+    "ast_hash": "5114e6fc01028c098fe2c2bf0a8b81d7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/references/few-shot-examples/plan-checker.md": {
+    "mtime": 1779513582.967274,
+    "ast_hash": "f9b5ce1b32f1ab061f44d20c60006bb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/planner-subagent-prompt.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "cb3db0aab4d9fe11628bbdfe657462a1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/VALIDATION.md": {
+    "mtime": 1779513582.9952757,
+    "ast_hash": "4b6752a861c10ce4cdfb5ddca9e8510c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/milestone.md": {
+    "mtime": 1779513583.0072763,
+    "ast_hash": "aa6a849cf855d35da7d761ce2bf63cbd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/continue-here.md": {
+    "mtime": 1779513583.003276,
+    "ast_hash": "feb1fe81260fcc133e4fa47a8e8e1b4e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/milestone-archive.md": {
+    "mtime": 1779513583.0072763,
+    "ast_hash": "2ecf0cd7ec0b83a86ecfa26b37807f08",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/context.md": {
+    "mtime": 1779513583.003276,
+    "ast_hash": "558fba5fc69f27a483b94d10e1583a36",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/debug-subagent-prompt.md": {
+    "mtime": 1779513583.003276,
+    "ast_hash": "24fa1011c6357f81b659b287c4bd537a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/DEBUG.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "dfab9ab70247cc53aea55e531b42253f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/phase-prompt.md": {
+    "mtime": 1779513583.0072763,
+    "ast_hash": "60b5d902a018b045d1c3cc84bb919e7d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/dev-preferences.md": {
+    "mtime": 1779513583.0072763,
+    "ast_hash": "a4e5dd7a0c8fa5c27995f4e33d055153",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/discussion-log.md": {
+    "mtime": 1779513583.0072763,
+    "ast_hash": "d3bf91fadc52f7c6e09c0a1eea13eac1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/summary-complex.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "3d3fe4b6d8d69dd22fafdfad190cb68e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/discovery.md": {
+    "mtime": 1779513583.0072763,
+    "ast_hash": "edd1dc775c6536444069b5e32f8454b0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/retrospective.md": {
+    "mtime": 1779513583.015277,
+    "ast_hash": "77d90126f81ec3d786d46d355e603506",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/README.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "6628fc02496b6b13fb596454a6729905",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/SECURITY.md": {
+    "mtime": 1779513582.9952757,
+    "ast_hash": "7ffb5b1f33a1c5d4f3a330b262064c00",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/UAT.md": {
+    "mtime": 1779513582.9952757,
+    "ast_hash": "63b69a5840cdf649edeb5781dc3f1835",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/verification-report.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "3bcca3a43e1debd931190d2d2328cde2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/summary.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "4c4f04838cdad034aac358fbc6852704",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/summary-minimal.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "cb56b997ba0a6c6b88830fb0b34e3835",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/state.md": {
+    "mtime": 1779513583.015277,
+    "ast_hash": "4212f6214a4affe3f385db79c4340822",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/roadmap.md": {
+    "mtime": 1779513583.015277,
+    "ast_hash": "2a0b2286575c31d2c5d04d7dda39ca8a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/user-setup.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "205196fbfcf6203b571183369956e6c6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/research.md": {
+    "mtime": 1779513583.015277,
+    "ast_hash": "fa8abe38244799a2cedd374dc07c8efd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/spec.md": {
+    "mtime": 1779513583.015277,
+    "ast_hash": "e2f52addacb832dc9538d1e19ab55415",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/copilot-instructions.md": {
+    "mtime": 1779513583.003276,
+    "ast_hash": "d687178aac36c9497fa94f73895c8f4f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/project.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "d5ec3314c65a2db9e4be856458579e6f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/summary-standard.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "a9282a79c26b7408ccc69f417f2c7bbc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/UI-SPEC.md": {
+    "mtime": 1779513582.9952757,
+    "ast_hash": "440063040bb8eadaa7aa1b6ff2230822",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/AI-SPEC.md": {
+    "mtime": 1779513582.9912755,
+    "ast_hash": "e4914af5d55892b006995785a6a66079",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/claude-md.md": {
+    "mtime": 1779513582.9952757,
+    "ast_hash": "8e178eea425356062006ca9e2081778c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/requirements.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "46b17decdc37a4e17a971819998a92cf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/user-profile.md": {
+    "mtime": 1779513583.019277,
+    "ast_hash": "e02ba718f096a9c0391516d1088dc9e2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/research-project/ARCHITECTURE.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "1eb7e085f1d0a393ca3b3037ea433bb0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/research-project/STACK.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "483099bbfacda6ff148615dde7fe8212",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/research-project/SUMMARY.md": {
+    "mtime": 1779513583.015277,
+    "ast_hash": "ae9a9e668c8ea0ded20e50a1cc86ed17",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/research-project/FEATURES.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "1348ef22f4974ee350621fffa0069821",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/research-project/PITFALLS.md": {
+    "mtime": 1779513583.0112767,
+    "ast_hash": "b55a2f0654b8fbfd91f3a40c0c5bf133",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/architecture.md": {
+    "mtime": 1779513582.9952757,
+    "ast_hash": "514c389cf3dab629ba0edd7e4da5c190",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/integrations.md": {
+    "mtime": 1779513582.999276,
+    "ast_hash": "080c74b99947918e5f790300e0fbc2f3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/testing.md": {
+    "mtime": 1779513582.999276,
+    "ast_hash": "8284aecc988d2fca720d60a44806ca10",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/structure.md": {
+    "mtime": 1779513582.999276,
+    "ast_hash": "33f9fcf00ddb32b1495438a27c2c95fd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/stack.md": {
+    "mtime": 1779513582.999276,
+    "ast_hash": "c75effaa928d5c93784a1e136674097b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/concerns.md": {
+    "mtime": 1779513582.999276,
+    "ast_hash": "8cae5a40fe882eea3220bf69e0824e9b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/templates/codebase/conventions.md": {
+    "mtime": 1779513582.999276,
+    "ast_hash": "d96a28d987f705543d669491be773915",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/contexts/dev.md": {
+    "mtime": 1779513582.9552734,
+    "ast_hash": "d397161b51d5d56d8c3cec30cdcb166b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/contexts/research.md": {
+    "mtime": 1779513582.9552734,
+    "ast_hash": "efe586c459336cd5740264f1ad6d43cf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/get-shit-done/contexts/review.md": {
+    "mtime": 1779513582.9552734,
+    "ast_hash": "8be8a37b9459681c97d80f8ea3020830",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-eval-review/SKILL.md": {
+    "mtime": 1779513582.8432667,
+    "ast_hash": "e295de7d937d0b398dc13326446e7ebd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ns-review/SKILL.md": {
+    "mtime": 1779513582.8712683,
+    "ast_hash": "f3806e3e1dfa2155c07f3966fd54ecb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-extract-learnings/SKILL.md": {
+    "mtime": 1779513582.847267,
+    "ast_hash": "c8524f9265b10ed62a112b46f9baa970",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-mvp-phase/SKILL.md": {
+    "mtime": 1779513582.867268,
+    "ast_hash": "58b9b432b031b5f4fd730e5c1f446088",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-phase/SKILL.md": {
+    "mtime": 1779513582.8752687,
+    "ast_hash": "b3be757dece0912c9f9bf0bf0b8881a3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-execute-phase/SKILL.md": {
+    "mtime": 1779513582.8432667,
+    "ast_hash": "8c2aa204183cdeefbb862f69b5615e82",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-pause-work/SKILL.md": {
+    "mtime": 1779513582.8752687,
+    "ast_hash": "caecda87ae8ea44cd8847b2a943567b9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-profile-user/SKILL.md": {
+    "mtime": 1779513582.879269,
+    "ast_hash": "1f7b18ee4fb00bf82f947b866b0135ef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-plan-review-convergence/SKILL.md": {
+    "mtime": 1779513582.8752687,
+    "ast_hash": "eb3b03837001c50dfd933e9b31c378db",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-undo/SKILL.md": {
+    "mtime": 1779513582.9032702,
+    "ast_hash": "8ddfb305f336e736907c62432785a73b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-spec-phase/SKILL.md": {
+    "mtime": 1779513582.8952699,
+    "ast_hash": "ab8049cc25868b4578a2e11992bdfca7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ui-review/SKILL.md": {
+    "mtime": 1779513582.9032702,
+    "ast_hash": "1bc00242b43d4733b10549b00b12daf4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-sketch/SKILL.md": {
+    "mtime": 1779513582.8952699,
+    "ast_hash": "63daa669f83754cd841be835e5e5c879",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-verify-work/SKILL.md": {
+    "mtime": 1779513582.9072704,
+    "ast_hash": "0c703e2c0d81fb1d4e549fb9a6878a64",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-forensics/SKILL.md": {
+    "mtime": 1779513582.847267,
+    "ast_hash": "c58cc55b62e111f404f4fab1c101456e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-progress/SKILL.md": {
+    "mtime": 1779513582.879269,
+    "ast_hash": "6639dcf916809f8af9561aa347aa8348",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-resume-work/SKILL.md": {
+    "mtime": 1779513582.883269,
+    "ast_hash": "2c52dd32539796e2c8bb3747c3832578",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-fast/SKILL.md": {
+    "mtime": 1779513582.847267,
+    "ast_hash": "a4a80432d77c7370dcca04bce2932b93",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ultraplan-phase/SKILL.md": {
+    "mtime": 1779513582.9032702,
+    "ast_hash": "d4ff34f58ffd105fd6c25d0a74c845c6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-thread/SKILL.md": {
+    "mtime": 1779513582.89927,
+    "ast_hash": "bc6aa73aac93bafa1f24b79cd6097e41",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-autonomous/SKILL.md": {
+    "mtime": 1779513582.8352664,
+    "ast_hash": "9578c06fc13c35ba390e361225f300fb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-graphify/SKILL.md": {
+    "mtime": 1779513582.851267,
+    "ast_hash": "a4ae491592ef5fcaaeb7e8bf271e0b64",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-settings/SKILL.md": {
+    "mtime": 1779513582.8912697,
+    "ast_hash": "3690fd2565795ea39c76def5d02c9405",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-spike/SKILL.md": {
+    "mtime": 1779513582.89927,
+    "ast_hash": "1d605a1e0c7f191ecb52e9cbcbc2d931",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-complete-milestone/SKILL.md": {
+    "mtime": 1779513582.8392665,
+    "ast_hash": "c41371d954e01e074799d5bf7d295596",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-debug/SKILL.md": {
+    "mtime": 1779513582.8392665,
+    "ast_hash": "3fd0812985f88967e291b8987bff52bc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ns-ideate/SKILL.md": {
+    "mtime": 1779513582.867268,
+    "ast_hash": "2f789eeaa5bb41ce215a80fc753bd2d9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-pr-branch/SKILL.md": {
+    "mtime": 1779513582.879269,
+    "ast_hash": "70dc18de7d5e2d825c5386bb08d4efa6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-workstreams/SKILL.md": {
+    "mtime": 1779513582.9112709,
+    "ast_hash": "cac87fb7facbe6dfedee706222431ca5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-milestone-summary/SKILL.md": {
+    "mtime": 1779513582.863268,
+    "ast_hash": "72f5f33a82fa2e34b91375716b93da75",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-help/SKILL.md": {
+    "mtime": 1779513582.8552675,
+    "ast_hash": "bb6175135e25d76a0d36571126a720f7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-cleanup/SKILL.md": {
+    "mtime": 1779513582.8352664,
+    "ast_hash": "10e11bc3a00d2c560d0eee41a9664613",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-inbox/SKILL.md": {
+    "mtime": 1779513582.8552675,
+    "ast_hash": "2a7c8453d806ff0212060bf9c450896d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-capture/SKILL.md": {
+    "mtime": 1779513582.8352664,
+    "ast_hash": "d4f88d87c6b08729688b987590e94a6c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-audit-fix/SKILL.md": {
+    "mtime": 1779513582.831266,
+    "ast_hash": "57a9a8d1aff8d31d9e2fe0239cb52f4f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-review/SKILL.md": {
+    "mtime": 1779513582.8872693,
+    "ast_hash": "6b227046f9d44461a132f3005aa6ceba",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-update/SKILL.md": {
+    "mtime": 1779513582.9032702,
+    "ast_hash": "9b51c89e3dd50599deda58c494f19220",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ship/SKILL.md": {
+    "mtime": 1779513582.8952699,
+    "ast_hash": "bf20e48933309979a43b7c69b0860216",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-add-tests/SKILL.md": {
+    "mtime": 1779513582.8272657,
+    "ast_hash": "908f23c4278e939d65da8b9eb7281a53",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-health/SKILL.md": {
+    "mtime": 1779513582.851267,
+    "ast_hash": "68b50c9c33e8304aa7f334a099d2312a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ai-integration-phase/SKILL.md": {
+    "mtime": 1779513582.831266,
+    "ast_hash": "e29cf6c8bf6387cb777871545099c252",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-config/SKILL.md": {
+    "mtime": 1779513582.8392665,
+    "ast_hash": "d2407d2d8836be42434437806fa5da71",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-docs-update/SKILL.md": {
+    "mtime": 1779513582.8432667,
+    "ast_hash": "5c36b3c32a0db4d5a71c75262320efb3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-new-milestone/SKILL.md": {
+    "mtime": 1779513582.867268,
+    "ast_hash": "b9fe8c2cfab63818b79e67191f6cdb75",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ns-manage/SKILL.md": {
+    "mtime": 1779513582.8712683,
+    "ast_hash": "c0f1cbda7dba207f54c6fc512aaf9a96",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-new-project/SKILL.md": {
+    "mtime": 1779513582.867268,
+    "ast_hash": "744ed28a075ca5f88c265ea209b331f7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-import/SKILL.md": {
+    "mtime": 1779513582.8552675,
+    "ast_hash": "fac3b33d2999fd244ee1332e3d1e5d4a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-manager/SKILL.md": {
+    "mtime": 1779513582.8592677,
+    "ast_hash": "eece4c1ef7891208260da7893d9d0317",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ns-project/SKILL.md": {
+    "mtime": 1779513582.8712683,
+    "ast_hash": "591510e0817ae1cd664c1cdb1ddd49eb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-validate-phase/SKILL.md": {
+    "mtime": 1779513582.9072704,
+    "ast_hash": "e2c7b38875c68856766ab109d8949732",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-review-backlog/SKILL.md": {
+    "mtime": 1779513582.8872693,
+    "ast_hash": "1d7b45eac4f0ca8a084b1ef4b8ba8879",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-discuss-phase/SKILL.md": {
+    "mtime": 1779513582.8392665,
+    "ast_hash": "59f4ec6fc950c7859a24e7246e14cc05",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ns-context/SKILL.md": {
+    "mtime": 1779513582.867268,
+    "ast_hash": "9fb5f3801fe24c8be503f0a3cd4d07dd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-plan-phase/SKILL.md": {
+    "mtime": 1779513582.8752687,
+    "ast_hash": "beaae48304b99791ded9d0dabd6ecfa3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-code-review/SKILL.md": {
+    "mtime": 1779513582.8352664,
+    "ast_hash": "fe333cac71a274adf0c1b8f02d3efc2d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-quick/SKILL.md": {
+    "mtime": 1779513582.883269,
+    "ast_hash": "ac13c0f677d673411f31c04c74a5131e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ui-phase/SKILL.md": {
+    "mtime": 1779513582.89927,
+    "ast_hash": "1710a66864339ed60edc40ab82e17b7b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-audit-milestone/SKILL.md": {
+    "mtime": 1779513582.831266,
+    "ast_hash": "42f968a7f5dba267eea9c713f9291433",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-secure-phase/SKILL.md": {
+    "mtime": 1779513582.8912697,
+    "ast_hash": "64e67741a3c3de6c888a89aa3bc8b327",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-audit-uat/SKILL.md": {
+    "mtime": 1779513582.831266,
+    "ast_hash": "4a08d1008a1d212f7a3c649b44034890",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-stats/SKILL.md": {
+    "mtime": 1779513582.89927,
+    "ast_hash": "52a727878b02644311991375a65a5411",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-explore/SKILL.md": {
+    "mtime": 1779513582.8432667,
+    "ast_hash": "a47197c7800b2e3fe2d80c6a57271f93",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-map-codebase/SKILL.md": {
+    "mtime": 1779513582.863268,
+    "ast_hash": "32c3a16b89ab52584257d3eff23f056f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-workspace/SKILL.md": {
+    "mtime": 1779513582.9112709,
+    "ast_hash": "a543c926e4f00c4b2b8569196ae5a45b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ingest-docs/SKILL.md": {
+    "mtime": 1779513582.8592677,
+    "ast_hash": "eb2160ab57b4bb5cecb23e0b0cc5d007",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/skills/gsd-ns-workflow/SKILL.md": {
+    "mtime": 1779513582.8712683,
+    "ast_hash": "c01f7de24050a6a6bee1f82386611ba5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-code-fixer.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "a0601623417ab8abefc4270561195d32",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-ui-researcher.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "edf3049bc9b5dd8682c68fced9e72f2a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-domain-researcher.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "e666807a09f5065c1e3353487be91d41",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-ai-researcher.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "efc6e36d6639670af6b65c6f65821803",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-pattern-mapper.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "e72bb5f68f8c3029858182886d48ffc3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-verifier.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "8aeb7953d9cdb4ac13ca697c712968d2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-ui-auditor.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "d80f062f1f8313d511041b98e90d4ad2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-doc-classifier.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "843eaa2a0a552628b9661a6d3349c897",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-planner.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "dead98293dd6ab02d5b4200f6930611a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-integration-checker.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "48bd90b78a61f50601463455562a5fe6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-nyquist-auditor.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "3d8736b738894706487472d761508b98",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-ui-checker.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "07bc1a81c34369b9963e9e3d105da8f3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-doc-verifier.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "f4e30145ceca6a7d1a2068a0c6849811",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-eval-auditor.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "b40be1be0358f224256b14bf3ff13caa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-advisor-researcher.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "be38f211a899d2260672e86a783588c1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-executor.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "0964a37a73271dac273de99b3154d0a0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-project-researcher.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "b76c37ab284d847019b63e30b45fa479",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-plan-checker.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "745745265a6b37b987538f8390c06405",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-roadmapper.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "fc034130ac8a2fff8379a4c2a88eabb5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-assumptions-analyzer.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "03607156789eed14efd64c1aabe7d8da",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-intel-updater.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "3c17a61f134fc9868d155b8ecd68e850",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-debugger.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "c26da5b0bb0aaa19de258627236c97cc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-framework-selector.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "638ff8e2c446d9865b6108e9232b0973",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-doc-synthesizer.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "6eb2520348805d24b4f0b1a6e6ff0002",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-phase-researcher.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "0af87bc241694f86dd99b850490e89a4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-eval-planner.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "716ab196cf5f10e648bbdf8ff836a635",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-research-synthesizer.md": {
+    "mtime": 1779528934.3353777,
+    "ast_hash": "5ffc65b91388cfe14673e2506b41e33a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-code-reviewer.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "1ca219db85b5cadeac2eaccc03316c86",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-codebase-mapper.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "956779446a83506cf92a0aeea0d6729a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-security-auditor.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "51517889fa2cc359e345bf63f7f32b7c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-user-profiler.md": {
+    "mtime": 1779528934.3393776,
+    "ast_hash": "3e5b190edc274a6a416123acbab5f28a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-doc-writer.md": {
+    "mtime": 1779528934.3313777,
+    "ast_hash": "46f2dac842bc044c045ec5426f79743a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.agent/agents/gsd-debug-session-manager.md": {
+    "mtime": 1779528934.3273776,
+    "ast_hash": "e044f519e8d8e67edfb5a98e9593420d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-eval-review/SKILL.md": {
+    "mtime": 1779659147.5532775,
+    "ast_hash": "e295de7d937d0b398dc13326446e7ebd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ns-review/SKILL.md": {
+    "mtime": 1779659147.5852795,
+    "ast_hash": "f3806e3e1dfa2155c07f3966fd54ecb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-extract-learnings/SKILL.md": {
+    "mtime": 1779659147.557278,
+    "ast_hash": "c8524f9265b10ed62a112b46f9baa970",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-mvp-phase/SKILL.md": {
+    "mtime": 1779659147.5772789,
+    "ast_hash": "58b9b432b031b5f4fd730e5c1f446088",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-phase/SKILL.md": {
+    "mtime": 1779659147.5852795,
+    "ast_hash": "b3be757dece0912c9f9bf0bf0b8881a3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-execute-phase/SKILL.md": {
+    "mtime": 1779659147.5532775,
+    "ast_hash": "8c2aa204183cdeefbb862f69b5615e82",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-pause-work/SKILL.md": {
+    "mtime": 1779659147.5852795,
+    "ast_hash": "caecda87ae8ea44cd8847b2a943567b9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-profile-user/SKILL.md": {
+    "mtime": 1779659147.5892797,
+    "ast_hash": "1f7b18ee4fb00bf82f947b866b0135ef",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-plan-review-convergence/SKILL.md": {
+    "mtime": 1779659147.5852795,
+    "ast_hash": "eb3b03837001c50dfd933e9b31c378db",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-undo/SKILL.md": {
+    "mtime": 1779659147.59728,
+    "ast_hash": "8ddfb305f336e736907c62432785a73b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-spec-phase/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "ab8049cc25868b4578a2e11992bdfca7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ui-review/SKILL.md": {
+    "mtime": 1779659147.59728,
+    "ast_hash": "1bc00242b43d4733b10549b00b12daf4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-sketch/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "63daa669f83754cd841be835e5e5c879",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-verify-work/SKILL.md": {
+    "mtime": 1779659147.6012802,
+    "ast_hash": "0c703e2c0d81fb1d4e549fb9a6878a64",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-forensics/SKILL.md": {
+    "mtime": 1779659147.557278,
+    "ast_hash": "c58cc55b62e111f404f4fab1c101456e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-progress/SKILL.md": {
+    "mtime": 1779659147.5892797,
+    "ast_hash": "6639dcf916809f8af9561aa347aa8348",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-resume-work/SKILL.md": {
+    "mtime": 1779659147.5892797,
+    "ast_hash": "2c52dd32539796e2c8bb3747c3832578",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-fast/SKILL.md": {
+    "mtime": 1779659147.557278,
+    "ast_hash": "a4a80432d77c7370dcca04bce2932b93",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ultraplan-phase/SKILL.md": {
+    "mtime": 1779659147.59728,
+    "ast_hash": "d4ff34f58ffd105fd6c25d0a74c845c6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-thread/SKILL.md": {
+    "mtime": 1779659147.59728,
+    "ast_hash": "bc6aa73aac93bafa1f24b79cd6097e41",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-autonomous/SKILL.md": {
+    "mtime": 1779659147.545277,
+    "ast_hash": "9578c06fc13c35ba390e361225f300fb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-graphify/SKILL.md": {
+    "mtime": 1779659147.557278,
+    "ast_hash": "a4ae491592ef5fcaaeb7e8bf271e0b64",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-settings/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "3690fd2565795ea39c76def5d02c9405",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-spike/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "1d605a1e0c7f191ecb52e9cbcbc2d931",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-complete-milestone/SKILL.md": {
+    "mtime": 1779659147.5492773,
+    "ast_hash": "c41371d954e01e074799d5bf7d295596",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-debug/SKILL.md": {
+    "mtime": 1779659147.5532775,
+    "ast_hash": "3fd0812985f88967e291b8987bff52bc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ns-ideate/SKILL.md": {
+    "mtime": 1779659147.581279,
+    "ast_hash": "2f789eeaa5bb41ce215a80fc753bd2d9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-pr-branch/SKILL.md": {
+    "mtime": 1779659147.5892797,
+    "ast_hash": "70dc18de7d5e2d825c5386bb08d4efa6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-workstreams/SKILL.md": {
+    "mtime": 1779659147.6012802,
+    "ast_hash": "cac87fb7facbe6dfedee706222431ca5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-milestone-summary/SKILL.md": {
+    "mtime": 1779659147.5772789,
+    "ast_hash": "72f5f33a82fa2e34b91375716b93da75",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-help/SKILL.md": {
+    "mtime": 1779659147.561278,
+    "ast_hash": "bb6175135e25d76a0d36571126a720f7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-cleanup/SKILL.md": {
+    "mtime": 1779659147.5492773,
+    "ast_hash": "10e11bc3a00d2c560d0eee41a9664613",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-inbox/SKILL.md": {
+    "mtime": 1779659147.5652783,
+    "ast_hash": "2a7c8453d806ff0212060bf9c450896d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-capture/SKILL.md": {
+    "mtime": 1779659147.545277,
+    "ast_hash": "d4f88d87c6b08729688b987590e94a6c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-audit-fix/SKILL.md": {
+    "mtime": 1779659147.541277,
+    "ast_hash": "57a9a8d1aff8d31d9e2fe0239cb52f4f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-review/SKILL.md": {
+    "mtime": 1779659147.5892797,
+    "ast_hash": "6b227046f9d44461a132f3005aa6ceba",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-update/SKILL.md": {
+    "mtime": 1779659147.6012802,
+    "ast_hash": "9b51c89e3dd50599deda58c494f19220",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ship/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "bf20e48933309979a43b7c69b0860216",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-add-tests/SKILL.md": {
+    "mtime": 1779659147.541277,
+    "ast_hash": "908f23c4278e939d65da8b9eb7281a53",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-health/SKILL.md": {
+    "mtime": 1779659147.561278,
+    "ast_hash": "68b50c9c33e8304aa7f334a099d2312a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ai-integration-phase/SKILL.md": {
+    "mtime": 1779659147.541277,
+    "ast_hash": "e29cf6c8bf6387cb777871545099c252",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-config/SKILL.md": {
+    "mtime": 1779659147.5492773,
+    "ast_hash": "d2407d2d8836be42434437806fa5da71",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-docs-update/SKILL.md": {
+    "mtime": 1779659147.5532775,
+    "ast_hash": "5c36b3c32a0db4d5a71c75262320efb3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-new-milestone/SKILL.md": {
+    "mtime": 1779659147.5772789,
+    "ast_hash": "b9fe8c2cfab63818b79e67191f6cdb75",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ns-manage/SKILL.md": {
+    "mtime": 1779659147.581279,
+    "ast_hash": "c0f1cbda7dba207f54c6fc512aaf9a96",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-new-project/SKILL.md": {
+    "mtime": 1779659147.581279,
+    "ast_hash": "744ed28a075ca5f88c265ea209b331f7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-import/SKILL.md": {
+    "mtime": 1779659147.5652783,
+    "ast_hash": "fac3b33d2999fd244ee1332e3d1e5d4a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-manager/SKILL.md": {
+    "mtime": 1779659147.5652783,
+    "ast_hash": "eece4c1ef7891208260da7893d9d0317",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ns-project/SKILL.md": {
+    "mtime": 1779659147.581279,
+    "ast_hash": "591510e0817ae1cd664c1cdb1ddd49eb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-validate-phase/SKILL.md": {
+    "mtime": 1779659147.6012802,
+    "ast_hash": "e2c7b38875c68856766ab109d8949732",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-review-backlog/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "1d7b45eac4f0ca8a084b1ef4b8ba8879",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-discuss-phase/SKILL.md": {
+    "mtime": 1779659147.5532775,
+    "ast_hash": "59f4ec6fc950c7859a24e7246e14cc05",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ns-context/SKILL.md": {
+    "mtime": 1779659147.581279,
+    "ast_hash": "9fb5f3801fe24c8be503f0a3cd4d07dd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-plan-phase/SKILL.md": {
+    "mtime": 1779659147.5852795,
+    "ast_hash": "beaae48304b99791ded9d0dabd6ecfa3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-code-review/SKILL.md": {
+    "mtime": 1779659147.5492773,
+    "ast_hash": "fe333cac71a274adf0c1b8f02d3efc2d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-quick/SKILL.md": {
+    "mtime": 1779659147.5892797,
+    "ast_hash": "ac13c0f677d673411f31c04c74a5131e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ui-phase/SKILL.md": {
+    "mtime": 1779659147.59728,
+    "ast_hash": "1710a66864339ed60edc40ab82e17b7b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-audit-milestone/SKILL.md": {
+    "mtime": 1779659147.545277,
+    "ast_hash": "42f968a7f5dba267eea9c713f9291433",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-secure-phase/SKILL.md": {
+    "mtime": 1779659147.5932798,
+    "ast_hash": "64e67741a3c3de6c888a89aa3bc8b327",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-audit-uat/SKILL.md": {
+    "mtime": 1779659147.545277,
+    "ast_hash": "4a08d1008a1d212f7a3c649b44034890",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-stats/SKILL.md": {
+    "mtime": 1779659147.59728,
+    "ast_hash": "52a727878b02644311991375a65a5411",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-explore/SKILL.md": {
+    "mtime": 1779659147.557278,
+    "ast_hash": "a47197c7800b2e3fe2d80c6a57271f93",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-map-codebase/SKILL.md": {
+    "mtime": 1779659147.5692785,
+    "ast_hash": "32c3a16b89ab52584257d3eff23f056f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-workspace/SKILL.md": {
+    "mtime": 1779659147.6012802,
+    "ast_hash": "a543c926e4f00c4b2b8569196ae5a45b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ingest-docs/SKILL.md": {
+    "mtime": 1779659147.5652783,
+    "ast_hash": "eb2160ab57b4bb5cecb23e0b0cc5d007",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/skills/gsd-ns-workflow/SKILL.md": {
+    "mtime": 1779659147.5852795,
+    "ast_hash": "c01f7de24050a6a6bee1f82386611ba5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/index.html": {
+    "mtime": 1779400155.3054943,
+    "ast_hash": "daf4519c9b8e4f47a0936ed8bb36b986",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/grpc_node/artist_portal.html": {
+    "mtime": 1779402088.9288821,
+    "ast_hash": "33e01a1d78dd0444791cf90ca00e9ae7",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/README_NEURAL.md": {
+    "mtime": 1779858832.0254934,
+    "ast_hash": "4eea35ef0ee265398edce178dafbc1d5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/architecture.md": {
+    "mtime": 1779858832.065499,
+    "ast_hash": "06709382abc1d17092c0a29e0375741d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/rt-compliance.md": {
+    "mtime": 1779858832.1175065,
+    "ast_hash": "3adb96c353a8c609ab1d6c84d6a8f607",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/gmudd_guide.md": {
+    "mtime": 1779858832.1535118,
+    "ast_hash": "6d8e07ad13f3f25516252a1bb8ba8d66",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/PQR_ROADMAP.md": {
+    "mtime": 1779858832.2175207,
+    "ast_hash": "94de4ac7287c18ec30a81a8439f137a0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/PQR_ASSET_DEFINITION.md": {
+    "mtime": 1779858832.3055334,
+    "ast_hash": "2012829473e37cf1a0c6da330067e792",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/PQR_RMI_PROPOSAL.md": {
+    "mtime": 1779858832.373543,
+    "ast_hash": "4c5ebcca3773fe5fb85a76a562f1b7da",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/SECURITY_HARDENING.md": {
+    "mtime": 1779858832.4735575,
+    "ast_hash": "23187d5c681d0cdd459115fa923dd83d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/AGENT_RELATIONSHIP_PROFILES.md": {
+    "mtime": 1779858832.5895739,
+    "ast_hash": "2aa20eb77e3ca1429f1cf320edbae63e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/memory-bus.md": {
+    "mtime": 1779858832.6495826,
+    "ast_hash": "927c2d141f99edb7ffed06969badc7f2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/jetweb-time-machine.md": {
+    "mtime": 1779858832.7615986,
+    "ast_hash": "f680731846b7b02a6bd6a6ef11bafb5e",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-architecture.md": {
+    "mtime": 1779858832.8616128,
+    "ast_hash": "9a24fa5afec3e27d6dd9d99611fe2077",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/grpc-api.md": {
+    "mtime": 1779858832.953626,
+    "ast_hash": "2bdb43a0696b77db0c4294c3383e77db",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/SOVEREIGN_ARCHITECT_PROFILE.md": {
+    "mtime": 1779858833.017635,
+    "ast_hash": "39512599b581a4c183e05d0310582aaa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-sovereign-rest-api.md": {
+    "mtime": 1779858833.1056478,
+    "ast_hash": "fd1abda304572f05ea6a2be29161be1f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-hyperdevelopment.md": {
+    "mtime": 1779858833.1656563,
+    "ast_hash": "0047934fbb8b26ef350fe7cde337819d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/PROPOSAL_RMI_SOV_RESURRECTION.md": {
+    "mtime": 1779858833.2856734,
+    "ast_hash": "374462fd68e2d7a258e5143a8118977d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/SOVEREIGN_DAO.md": {
+    "mtime": 1779858833.3616843,
+    "ast_hash": "a32aa296420ca61bc9629d7a29bde890",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-neural-synapse.md": {
+    "mtime": 1779858833.457698,
+    "ast_hash": "1aa41d6600483bed2ed4e377ca583afc",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/ORCHESTRATION.md": {
+    "mtime": 1779858833.569714,
+    "ast_hash": "47ba74223fe53102dc98bfa3e1ecba0f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/PQR_CHAIN_OFFERING.md": {
+    "mtime": 1779858833.6497254,
+    "ast_hash": "4a22431bb4030702abefa0a19d1933d6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-forensic-commit.md": {
+    "mtime": 1779858833.7057335,
+    "ast_hash": "bc2144aac6ef755db5e0de283e35677f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-agent-identity.md": {
+    "mtime": 1779858833.7817442,
+    "ast_hash": "c95cfaf1f0bcefd8c2315092d5dc7dd2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/pqr-governance.md": {
+    "mtime": 1779858833.8657563,
+    "ast_hash": "8f5202735425026f3ee6cb28885711fb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/sovereign-auto.md": {
+    "mtime": 1779858834.569857,
+    "ast_hash": "7f5080920a1d37c866624c9ea631eb66",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/AI_WORKFLOW.md": {
+    "mtime": 1779858834.625865,
+    "ast_hash": "eee73bd26a9a240a9deefb63f0722984",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_12_SUPERNOVA.md": {
+    "mtime": 1779858833.9457679,
+    "ast_hash": "465f145ef2ca3326346c74f386f24bba",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_04_GHOST_TRADE.md": {
+    "mtime": 1779858833.9857736,
+    "ast_hash": "7273f99e9297b206d3ec60c74432d6a3",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/DNA_TO_TELEMETRY_MAPPING.md": {
+    "mtime": 1779858834.037781,
+    "ast_hash": "5849d67ae7bbd94ce4b64e1f7403b6a6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_01_STARBIRTH.md": {
+    "mtime": 1779858834.1017902,
+    "ast_hash": "8765f35f2a666d272304013607843d80",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_05_OUROBOROS_RISING.md": {
+    "mtime": 1779858834.1377952,
+    "ast_hash": "a8d6794a239853a8d2e959276e865397",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_06_REQUIEM_HUMAN.md": {
+    "mtime": 1779858834.1738005,
+    "ast_hash": "9ca95d5eae1877522f66b2f60eef896d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_10_INTER_CLOUD_REFLEX.md": {
+    "mtime": 1779858834.205805,
+    "ast_hash": "744cf212326c19d5937f841e21df4be4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_11_COGNITIVE_LIQUIDITY.md": {
+    "mtime": 1779858834.2378094,
+    "ast_hash": "22ec04e283005487e1de5f4e645946e9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_13_SOVEREIGN_CITY.md": {
+    "mtime": 1779858834.2818158,
+    "ast_hash": "f4625513041e1cb7b3a322919596813a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_02_HELSINKI_LEAK.md": {
+    "mtime": 1779858834.3138204,
+    "ast_hash": "6e80eb8a0060045adbc92e3beaabf2cd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_07_FACTOR_27.md": {
+    "mtime": 1779858834.345825,
+    "ast_hash": "5fdfd1aaa125fa34227cb8f0d13e38a8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/MANIFESTO.md": {
+    "mtime": 1779858834.3778296,
+    "ast_hash": "010530ed46e8e658a6c7c041afcb5fd0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_03_REVERSE_OBULUSK.md": {
+    "mtime": 1779858834.4178352,
+    "ast_hash": "e6321db34d0087d02554838fdf97f9e9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_09_SHARD_PHASING.md": {
+    "mtime": 1779858834.4538405,
+    "ast_hash": "5d89a3155fe55f203ee21d76d2a7af9d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/INDEX.md": {
+    "mtime": 1779858834.4818444,
+    "ast_hash": "a6c69a761f443d00170b2d271f04487f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/CHAPTER_08_IRON_FLOOR.md": {
+    "mtime": 1779858834.5178494,
+    "ast_hash": "81c36a14b92acca2fe7acc16686d8748",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/SYSTEM ARCHITECTURE AND SPECIFICATI.txt": {
+    "mtime": 1779962996.366679,
+    "ast_hash": "535908c54a046bfeaa643214195ff2b2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/gemini-05-31-26.txt": {
+    "mtime": 1780251914.0503485,
+    "ast_hash": "f84ffa1468ccee75a0526fe1f28dfa8f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/hero.txt": {
+    "mtime": 1780251887.358355,
+    "ast_hash": "c927a747979246821e39dcc19916d621",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/SYSTEM ARCHITECTURE AND SPECIFICAT3.txt": {
+    "mtime": 1779963017.394675,
+    "ast_hash": "535908c54a046bfeaa643214195ff2b2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/genai-app-sovereign-mesh-27-1-17796.txt": {
+    "mtime": 1779664111.0837944,
+    "ast_hash": "0a8870526488aca2dea20a8ddb1b6820",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/Based on the details of this patent.txt": {
+    "mtime": 1780251858.638363,
+    "ast_hash": "95b1e0777621f866a2f31044a13e5f69",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/# SUCCESS 0.txt": {
+    "mtime": 1779962988.1746805,
+    "ast_hash": "826cd2bf2c56e66da5a8e0d90b7ffe2c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/Chat.txt": {
+    "mtime": 1779963030.382673,
+    "ast_hash": "18de1dfeb0a65d3ca5905279602ea585",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/SYSTEM ARCHITECTURE AND SPECIFICAT2.txt": {
+    "mtime": 1779963009.4186764,
+    "ast_hash": "535908c54a046bfeaa643214195ff2b2",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/CUsersdrphi.geminiantigravityscratc.txt": {
+    "mtime": 1779963036.8186746,
+    "ast_hash": "642b650c2e545a13e28986cd9164ee39",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/web/firebase_app_mockup.md": {
+    "mtime": 1779398236.674107,
+    "ast_hash": "2b038d17cb5d5aaa7d7099271261b3a9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-code-fixer.md": {
+    "mtime": 1779662116.8392708,
+    "ast_hash": "02e6d7d04430c68030a49fa9a6252299",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-ui-researcher.md": {
+    "mtime": 1779662116.8472712,
+    "ast_hash": "313d7682d9d1edbf6858849e458499f6",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-domain-researcher.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "ca3b5c44da82f83e80a791ad212763fd",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-ai-researcher.md": {
+    "mtime": 1779662116.8392708,
+    "ast_hash": "66c9ca9cabcd9f3e37f182c56c8bd520",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-pattern-mapper.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "7dfb0ff96831fc09bdd9232edf42c583",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-verifier.md": {
+    "mtime": 1779662116.8472712,
+    "ast_hash": "e1d8c2480f454b3a20ec6b7e597a7624",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-ui-auditor.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "85a2f1f816c6a1facad4a5f38cf3de0a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-doc-classifier.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "3e8d26649406cf8e0f3f115568244722",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-planner.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "68f9f198905ba569e6dff3a3bd89c2bb",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-integration-checker.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "aad1794df4ac9787d2db86efb285418f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-nyquist-auditor.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "f4be7b0522c56cb5ad8ba31fac045af8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-ui-checker.md": {
+    "mtime": 1779662116.8472712,
+    "ast_hash": "8a1fdc27075f876eaaaf8db54e0e28ab",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-doc-verifier.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "e5e25f384ee7f4287b0863c827aada02",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-eval-auditor.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "ab2ec30b0f2c521dcee5da406555d309",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-advisor-researcher.md": {
+    "mtime": 1779662116.8392708,
+    "ast_hash": "4eb4f791ed23d8d765749670da0caae0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-executor.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "17e8accb87a112d0d5c9a7f15df22401",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-project-researcher.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "165ef3216daf4b754d1e2a4ac74fc9c5",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-plan-checker.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "6daf1296aa1f61875ecf13a7d043911a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-roadmapper.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "822469f837e3f95a280069ff7a64510b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-assumptions-analyzer.md": {
+    "mtime": 1779662116.8392708,
+    "ast_hash": "fe51b8603b1bc25494e7d7cd10662f3a",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-intel-updater.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "74d9030f6b026d04b2685c1dedd91eaf",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-debugger.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "f0690bfbd7d498661fcd6956e2a4634f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-framework-selector.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "48dbf5adc8f4e24533eb8b92bf54f64f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-doc-synthesizer.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "b76f991391de4321d33550b8e11ea1d4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-phase-researcher.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "4d48f83e5fc32d297747ffb37bf1c862",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-eval-planner.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "284eb3e2c878a70893b6f92efd54e144",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-research-synthesizer.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "0b612d425aaca9f5a925be8e24988a65",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-code-reviewer.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "eb76769f377f761ae7589bf4ef85c426",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-codebase-mapper.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "b15e6592cd9e5f097c253738318ae490",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-security-auditor.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "180476d6959a1b2b7128f7926c46e46b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-user-profiler.md": {
+    "mtime": 1779662116.8472712,
+    "ast_hash": "4eabb3649e98617f6eb82f38651e0990",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-doc-writer.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "ac7e9350fb2c71b8d8a71990d32d7210",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/agents/gsd-debug-session-manager.md": {
+    "mtime": 1779662116.843271,
+    "ast_hash": "4034b24c5d39f91a90aff1a57a448f10",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/public/favicon.svg": {
+    "mtime": 1779444969.7274847,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/public/icons.svg": {
+    "mtime": 1779444969.7274847,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/src/assets/vite.svg": {
+    "mtime": 1779444969.7354903,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/src/assets/react.svg": {
+    "mtime": 1779444969.7354903,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/frontend/src/assets/hero.png": {
+    "mtime": 1779444969.7354903,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_064046.png": {
+    "mtime": 1779394018.431454,
+    "ast_hash": "e9840fe353a69154e4f292122fb19fb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_063210.png": {
+    "mtime": 1779394018.2754538,
+    "ast_hash": "e9840fe353a69154e4f292122fb19fb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_063221.png": {
+    "mtime": 1779394018.3514538,
+    "ast_hash": "1cc3ca7d147bbdc1044a81380675ad07",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_063224.png": {
+    "mtime": 1779394018.379454,
+    "ast_hash": "1cc3ca7d147bbdc1044a81380675ad07",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_063218.png": {
+    "mtime": 1779394018.3114538,
+    "ast_hash": "65bf1759138528fb4dc63da55411d1e8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_063209.png": {
+    "mtime": 1779394018.2394538,
+    "ast_hash": "e9840fe353a69154e4f292122fb19fb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/harmony_state_diagram.svg": {
+    "mtime": 1779366560.120232,
+    "ast_hash": "dae30eea77f287589aafd103879058e8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/Copilot_20260521_063228.png": {
+    "mtime": 1779394018.4034538,
+    "ast_hash": "2f89de0d0ee33357778a4e5b5283b145",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/0341921be68e780a.png": {
+    "mtime": 1780112504.8796184,
+    "ast_hash": "0fdd09fa20318b51d5a883ae1ce48f88",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/TRICLONE-COBALT-27-128-BIT-PQR.png": {
+    "mtime": 1780116394.6264253,
+    "ast_hash": "c91f7d304cedfcfdcd322a7b610fa1ce",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/UNBELIEVABLE-5D-COBALT-TRICLONE-HYPERACTIVE-INTERDIMENSIONAL-128BIT-REGISTER.png": {
+    "mtime": 1780114261.9526591,
+    "ast_hash": "143a1d6d8e9d71a278f6e7e5bf217eb0",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/2ff88b75b3e89df8.png": {
+    "mtime": 1780111762.224932,
+    "ast_hash": "0b1bfe066eb8aef613f903a9412c2429",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/f56c4226abd2fbf3.png": {
+    "mtime": 1780111724.6823895,
+    "ast_hash": "90a16182dd5e39efb2463113b5292afa",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/TRICLONE-COBALT-27--.png": {
+    "mtime": 1780114881.5001194,
+    "ast_hash": "df5f928530c10169556ede84ed52509b",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/5D-TRICLONE-LAYER--.png": {
+    "mtime": 1780114437.0094018,
+    "ast_hash": "648af1454c9ff3b24aee93574bdb3bb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/844a133f8c1cecf4.png": {
+    "mtime": 1780111711.1443646,
+    "ast_hash": "78f979421dfd3b2e5532bbcb43b4ca5f",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/Cobalt-27-Rendering.png": {
+    "mtime": 1779880408.922284,
+    "ast_hash": "e19d2f0230fa208d822b181177b48c16",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/9e804b51415cb23d.png": {
+    "mtime": 1780111742.6660368,
+    "ast_hash": "8f4a6357ae972075ae3c6d07b853e2f9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/Gemini_Generated_Image_ (2).png": {
+    "mtime": 1779880104.8774502,
+    "ast_hash": "bff88ca24873c31e6e7306fc92a0c8a9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/TRICLONE-COBALT-27-w.png": {
+    "mtime": 1780114931.1486642,
+    "ast_hash": "2c219e42c0370e9dcb8844379747e87d",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/9e804b51415cb23d (1).png": {
+    "mtime": 1780111773.2103224,
+    "ast_hash": "8f4a6357ae972075ae3c6d07b853e2f9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/128-Bit-Register-Sweet-Spot.png": {
+    "mtime": 1780112479.8568866,
+    "ast_hash": "1878a0c88890fedcbb1411c3446daa9c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/5D-TRICLONE-LAYER-1.png": {
+    "mtime": 1780114336.456053,
+    "ast_hash": "e974d2c8f6f214771ad43e380ed29bb9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/Gemini_Generated_Image_.png": {
+    "mtime": 1779879824.3677914,
+    "ast_hash": "7348e137d44282718350673272162382",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/NotebookLM Mind Map (1).png": {
+    "mtime": 1780147986.778295,
+    "ast_hash": "e16ede2e62546a8a4546a47d913b3ff8",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/Gemini_Generated_Image_ (1).png": {
+    "mtime": 1779880095.6017084,
+    "ast_hash": "bff88ca24873c31e6e7306fc92a0c8a9",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/5D-TRICLONE-LAYER-0.png": {
+    "mtime": 1780114402.3462222,
+    "ast_hash": "e78177d2cfa7e94266d2817df6776673",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/128-Bit-Register-Layout.png": {
+    "mtime": 1780113037.49401,
+    "ast_hash": "c91f7d304cedfcfdcd322a7b610fa1ce",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/TRICLONE-COBALT-27-0.png": {
+    "mtime": 1780114792.801435,
+    "ast_hash": "1d4cf8da2476788722258e5b36e40591",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/TRICLONE-COBALT-27-1.png": {
+    "mtime": 1780114817.48006,
+    "ast_hash": "78df68923d24679b47d651c0d6c04c35",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/8eb445a4c8a92364.png": {
+    "mtime": 1780112440.6137028,
+    "ast_hash": "58c79cb612e1635d3c23fdf833be4843",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/b0a6faf6b68a26c4.png": {
+    "mtime": 1780112391.5667653,
+    "ast_hash": "cea4c1918fe6fceb791bde65c5de9474",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/docs/backstory/assets/The_Cobalt-27_Hyper-Dimensional_Engine.m4a": {
+    "mtime": 1780151588.4834447,
+    "ast_hash": "bd367dfc6effd1a531894b3c8ca43b7c",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/graphs/.last-build-snapshot.json": {
+    "mtime": 1780263395.059513,
+    "ast_hash": "f97d92a97e87cf64f42afef0d66b02b4",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/graphs/graph.json": {
+    "mtime": 1780263394.7835133,
+    "ast_hash": "0483f58cd61c57b24a3efee5d275ce67",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/graphs/GRAPH_REPORT.md": {
+    "mtime": 1780263394.7915132,
+    "ast_hash": "eb185e378eecdc5c9162b2b5d8a9c522",
+    "semantic_hash": ""
+  },
+  "/home/aellok/sovereign-mesh/.planning/graphs/graph.html": {
+    "mtime": 1780263394.7955132,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  }
+}

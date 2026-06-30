@@ -1,0 +1,42 @@
+.TH SOVEREIGN-CLI 1 "May 2026" "v1.0" "Sovereign Mesh Manual"
+.SH NAME
+sovereign-cli \- Native management interface for the Sovereign Mesh
+.SH SYNOPSIS
+.B sovereign-cli
+.I command
+[\fIargs\fR...]
+.SH DESCRIPTION
+.B sovereign-cli
+is a native Go-based command-line interface used to interact with the Sovereign Mesh gRPC Control Bus. It provides low-level access to mesh synchronization, neural training orchestration, and citizen registration.
+.SH COMMANDS
+.TP
+\fBping\fR
+Verify connectivity to the local Mesh Engine. Returns the server status and identity.
+.TP
+\fBstrike\fR \fIticket_id\fR \fIpayload\fR
+Execute a mesh strike mutation. Requires a forensic PQR ticket ID and a logic payload to be reconciled across the mesh.
+.TP
+\fBtrain\fR \fImodel_name\fR \fIcluster_id\fR
+Initiate a neural training session for the specified agent model on a designated node cluster.
+.TP
+\fBregister\fR \fIusername\fR \fIburn\fR
+Register a new citizen in the mesh. Requires a unique username and a CBC burn amount to establish initial TrustScore.
+.SH ENVIRONMENT
+.TP
+\fBSNAPSHOT_BUCKET\fR
+The Google Cloud Storage bucket used for persisting mesh snapshots.
+.TP
+\fBRADIUS_SECRET\fR
+The secret used for RADIUS-based accounting and authentication audits.
+.SH FILES
+.TP
+\fImudd_session.json\fR
+Stores the active MUDD session state and current room position.
+.SH EXAMPLES
+.B sovereign-cli ping
+.PP
+.B sovereign-cli strike TICKET-001 "FORCE_HEAL_SEGMENT_38"
+.SH SEE ALSO
+\fBgmudd\fR(1), \fBmesh_control.sh\fR(1)
+.SH AUTHOR
+Sovereign Mesh Core Developers

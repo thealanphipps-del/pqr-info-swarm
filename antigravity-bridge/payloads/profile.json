@@ -1,0 +1,122 @@
+{
+  "Progress": null,
+  "Attachments": true,
+  "VerifiableCredentials": {
+    "docsId": "317c0968-b2b3-4584-9100-efae11742e6a",
+    "userCredentials": []
+  },
+  "NextSteps": null,
+  "Certifications": null,
+  "Lists": null,
+  "XP": {
+    "xp": {
+      "docsId": "317c0968-b2b3-4584-9100-efae11742e6a",
+      "totalXp": 0,
+      "currentLevel": 1,
+      "currentLevelLow": 0,
+      "currentLevelHigh": 1799,
+      "currentLevelPointsEarned": 0,
+      "nextLevel": 2,
+      "pointsUntilNextLevel": 1800,
+      "achievementCategories": {
+        "Unknown": 0,
+        "Modules": 0,
+        "Courses": 0,
+        "Qna": 0,
+        "Challenges": 0,
+        "Events": 0,
+        "LearningPaths": 0,
+        "Plans": 0,
+        "Special": 0
+      }
+    },
+    "achievements": []
+  },
+  "Q&A": {
+    "docsId": "317c0968-b2b3-4584-9100-efae11742e6a",
+    "questions": [],
+    "answers": [],
+    "comments": []
+  },
+  "TechProfile": {
+    "email": "thealanphipps@outlook.com",
+    "locale": "en-us",
+    "country": "US",
+    "contactPointTopicSetting": "OptInExplicit",
+    "isInstructor": false,
+    "isChallengeAdmin": false,
+    "isQnaModerator": false,
+    "source": "docs",
+    "authenticationModes": [
+      {
+        "id": "0003BFFEA9EAA118",
+        "type": "MSA",
+        "tenantId": "9188040d-6c67-4c5b-b112-36a304b66dad",
+        "upn": "thealanphipps@outlook.com",
+        "oid": "00000000-0000-0000-934b-ae8493ed83ab",
+        "dateAcceptedPrivacyNotice": "2026-05-11T13:56:21.0418578+00:00",
+        "dateAdded": "2026-05-11T13:56:21.0418578+00:00"
+      }
+    ],
+    "transcriptSettings": {
+      "publicLink": {
+        "showModules": true,
+        "showLegalName": true,
+        "showMCID": true,
+        "showContactEmail": true
+      },
+      "print": {
+        "showModules": true,
+        "showLegalName": true,
+        "showMCID": true,
+        "showContactEmail": true
+      }
+    },
+    "certificationSettings": {
+      "print": {
+        "showLegalName": true,
+        "showMCID": true,
+        "showContactEmail": true
+      }
+    },
+    "qnaEmailPreferences": {
+      "allEmail": true,
+      "autoFollowAsked": true,
+      "autoFollowAnswered": true,
+      "autoFollowCommented": true,
+      "autoFollowTagged": false,
+      "emailEventSettings": {
+        "newMention": "instant",
+        "newModeration": "instant",
+        "answerPosted": "instant",
+        "answerAccepted": "instant",
+        "answerRecommended": "instant",
+        "commentPosted": "instant",
+        "newPrivateMessage": "instant",
+        "questionUpdated": "off",
+        "questionPosted": "off",
+        "unansweredQuestions": "off",
+        "newFollower": "off",
+        "answerUpdated": "off"
+      }
+    },
+    "sharingId": "767EC79BA263E783",
+    "legalName": {
+      "first": "Alan",
+      "middle": "Wayne",
+      "last": "Phipps"
+    },
+    "userId": "317c0968-b2b3-4584-9100-efae11742e6a",
+    "userName": "AlanPhipps-1909",
+    "displayName": "Alan Phipps",
+    "isPrivate": false,
+    "affiliations": [],
+    "followerCount": 0,
+    "followingCount": 0,
+    "answersAccepted": 0,
+    "reputationPoints": 0,
+    "createdOn": "5/11/2026 1:56:21 PM"
+  },
+  "SkillAssessment": null,
+  "Assessments": null
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "sovereign-native-tools": {
+      "command": "/home/aellok/sovereign-mesh/.venv/bin/python3",
+      "args": [
+        "/home/aellok/sovereign-mesh/grpc_node/mgsh_mcp.py"
+      ]
+    }
+  }
+}

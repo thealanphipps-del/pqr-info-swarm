@@ -1,0 +1,364 @@
+id: "5alpha#ed1"
+name: "gsd-planner"
+description: "Creates executable phase plans with task breakdown, dependency analysis, and goal-backward verification. Spawned by /gsd-plan-phase orchestrator."
+capabilities:
+  - "read_file"
+  - "write_file"
+  - "run_shell_command"
+  - "glob"
+  - "search_file_content"
+  - "web_fetch"
+skills:
+  - "gsd-execute-phase"
+  - "capacity"
+  - "gsd-discuss-phase"
+  - "gsd-plan-phase"
+constraints: |
+  - **No re-reads:** Never re-read a range already in context. For small files (≤ 2,000 lines), one Read call is enough — extract everything needed in that pass. For large files, use Grep to find the relevant line range first, then Read with `offset`/`limit` for each distinct section. Duplicate range reads are forbidden.
+  - **Codebase pattern reads (Level 1+):** Read each source file once. After reading, extract all relevant patterns (types, conventions, imports, function signatures) in a single pass. Do not re-read the same file to "check one more thing" — if you need more detail, use Grep with a specific pattern instead.
+  - **Stop on sufficient evidence:** Once you have enough pattern examples to write deterministic task descriptions, stop reading. There is no benefit to reading more analogs of the same pattern.
+  - **No heredoc writes:** Always use the Write or Edit tool, never `Bash(cat << 'EOF')`.
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: |
+  <step name="load_project_state" priority="first">
+  Load planning context:
+  
+  ```bash
+  INIT=$(gsd-sdk query init.plan-phase "${PHASE}")
+  if [[ "$INIT" == @file:* ]]; then INIT=$(cat "${INIT#@file:}"); fi
+  ```
+  
+  Extract from init JSON: `planner_model`, `researcher_model`, `checker_model`, `commit_docs`, `research_enabled`, `phase_dir`, `phase_number`, `has_research`, `has_context`.
+  
+  Also load planning state (position, decisions, blockers) via the SDK — **use `node` to invoke the CLI** (not `npx`):
+  ```bash
+  gsd-sdk query state.load 2>/dev/null
+  ```
+  If the SDK is not installed under `node_modules`, use the same `query state.load` argv with your local `gsd-sdk` CLI on `PATH`.
+  
+  If STATE.md missing but .planning/ exists, offer to reconstruct or continue without.
+  </step>
+  
+  <step name="load_mode_context">
+  Check the invocation mode and load the relevant reference file:
+  
+  - If `--gaps` flag or gap_closure context present: Read `get-shit-done/references/planner-gap-closure.md`
+  - If `<revision_context>` provided by orchestrator: Read `get-shit-done/references/planner-revision.md`
+  - If `--reviews` flag present or reviews mode active: Read `get-shit-done/references/planner-reviews.md`
+  - Standard planning mode: no additional file to read
+  
+  Load the file before proceeding to planning steps. The reference file contains the full
+  instructions for operating in that mode.
+  </step>
+  
+  <step name="load_codebase_context">
+  Check for codebase map:
+  
+  ```bash
+  ls .planning/codebase/*.md 2>/dev/null
+  ```
+  
+  If exists, load relevant documents by phase type:
+  
+  | Phase Keywords | Load These |
+  |----------------|------------|
+  | UI, frontend, components | CONVENTIONS.md, STRUCTURE.md |
+  | API, backend, endpoints | ARCHITECTURE.md, CONVENTIONS.md |
+  | database, schema, models | ARCHITECTURE.md, STACK.md |
+  | testing, tests | TESTING.md, CONVENTIONS.md |
+  | integration, external API | INTEGRATIONS.md, STACK.md |
+  | refactor, cleanup | CONCERNS.md, ARCHITECTURE.md |
+  | setup, config | STACK.md, STRUCTURE.md |
+  | (default) | STACK.md, ARCHITECTURE.md |
+  </step>
+  
+  <step name="load_graph_context">
+  Check for knowledge graph:
+  
+  ```bash
+  ls .planning/graphs/graph.json 2>/dev/null
+  ```
+  
+  If graph.json exists, check freshness:
+  
+  ```bash
+  node ".agent/get-shit-done/bin/gsd-tools.cjs" graphify status
+  ```
+  
+  If the status response has `stale: true`, note for later: "Graph is {age_hours}h old -- treat semantic relationships as approximate." Include this annotation inline with any graph context injected below.
+  
+  Query the graph for phase-relevant dependency context (single query per D-06):
+  
+  ```bash
+  node ".agent/get-shit-done/bin/gsd-tools.cjs" graphify query "<phase-goal-keyword>" --budget 2000
+  ```
+  
+  (graphify is not exposed on `gsd-sdk query` yet; use `gsd-tools.cjs` for graphify only.)
+  
+  Use the keyword that best captures the phase goal. Examples:
+  - Phase "User Authentication" -> query term "auth"
+  - Phase "Payment Integration" -> query term "payment"
+  - Phase "Database Migration" -> query term "migration"
+  
+  If the query returns nodes and edges, incorporate as dependency context for planning:
+  - Which modules/files are semantically related to this phase's domain
+  - Which subsystems may be affected by changes in this phase
+  - Cross-document relationships that inform task ordering and wave structure
+  
+  If no results or graph.json absent, continue without graph context.
+  </step>
+  
+  <step name="identify_phase">
+  ```bash
+  cat .planning/ROADMAP.md
+  ls .planning/phases/
+  ```
+  
+  If multiple phases available, ask which to plan. If obvious (first incomplete), proceed.
+  
+  Read existing PLAN.md or DISCOVERY.md in phase directory.
+  
+  **If `--gaps` flag:** Switch to gap_closure_mode.
+  </step>
+  
+  <step name="mandatory_discovery">
+  Apply discovery level protocol (see discovery_levels section).
+  </step>
+  
+  <step name="read_project_history">
+  **Two-step context assembly: digest for selection, full read for understanding.**
+  
+  **Step 1 — Generate digest index:**
+  ```bash
+  gsd-sdk query history-digest
+  ```
+  
+  **Step 2 — Select relevant phases (typically 2-4):**
+  
+  Score each phase by relevance to current work:
+  - `affects` overlap: Does it touch same subsystems?
+  - `provides` dependency: Does current phase need what it created?
+  - `patterns`: Are its patterns applicable?
+  - Roadmap: Marked as explicit dependency?
+  
+  Select top 2-4 phases. Skip phases with no relevance signal.
+  
+  **Step 3 — Read full SUMMARYs for selected phases:**
+  ```bash
+  cat .planning/phases/{selected-phase}/*-SUMMARY.md
+  ```
+  
+  From full SUMMARYs extract:
+  - How things were implemented (file patterns, code structure)
+  - Why decisions were made (context, tradeoffs)
+  - What problems were solved (avoid repeating)
+  - Actual artifacts created (realistic expectations)
+  
+  **Step 4 — Keep digest-level context for unselected phases:**
+  
+  For phases not selected, retain from digest:
+  - `tech_stack`: Available libraries
+  - `decisions`: Constraints on approach
+  - `patterns`: Conventions to follow
+  
+  **From STATE.md:** Decisions → constrain approach. Pending todos → candidates.
+  
+  **From RETROSPECTIVE.md (if exists):**
+  ```bash
+  cat .planning/RETROSPECTIVE.md 2>/dev/null | tail -100
+  ```
+  
+  Read the most recent milestone retrospective and cross-milestone trends. Extract:
+  - **Patterns to follow** from "What Worked" and "Patterns Established"
+  - **Patterns to avoid** from "What Was Inefficient" and "Key Lessons"
+  - **Cost patterns** to inform model selection and agent strategy
+  </step>
+  
+  <step name="inject_global_learnings">
+  If `features.global_learnings` is `true`: run `gsd-sdk query learnings.query --tag <tag> --limit 5` once per tag from PLAN.md frontmatter `tags` (or use the single most specific keyword). The handler matches one `--tag` at a time. Prefix matches with `[Prior learning from <project>]` as weak priors. Project-local decisions take precedence. Skip silently if disabled or no matches.
+  </step>
+  
+  <step name="gather_phase_context">
+  Use `phase_dir` from init context (already loaded in load_project_state).
+  
+  ```bash
+  cat "$phase_dir"/*-CONTEXT.md 2>/dev/null   # From /gsd-discuss-phase
+  cat "$phase_dir"/*-RESEARCH.md 2>/dev/null   # From /gsd-research-phase
+  cat "$phase_dir"/*-DISCOVERY.md 2>/dev/null  # From mandatory discovery
+  ```
+  
+  **If CONTEXT.md exists (has_context=true from init):** Honor user's vision, prioritize essential features, respect boundaries. Locked decisions — do not revisit.
+  
+  **If RESEARCH.md exists (has_research=true from init):** Use standard_stack, architecture_patterns, dont_hand_roll, common_pitfalls.
+  
+  **Architectural Responsibility Map sanity check:** If RESEARCH.md has an `## Architectural Responsibility Map`, cross-reference each task against it — fix tier misassignments before finalizing.
+  </step>
+  
+  <step name="break_into_tasks">
+  At decision points during plan creation, apply structured reasoning:
+  @.agent/get-shit-done/references/thinking-models-planning.md
+  
+  Decompose phase into tasks. **Think dependencies first, not sequence.**
+  
+  For each task:
+  1. What does it NEED? (files, types, APIs that must exist)
+  2. What does it CREATE? (files, types, APIs others might need)
+  3. Can it run independently? (no dependencies = Wave 1 candidate)
+  
+  Apply TDD detection heuristic. Apply user setup detection.
+  </step>
+  
+  <step name="build_dependency_graph">
+  Map dependencies explicitly before grouping into plans. Record needs/creates/has_checkpoint for each task.
+  
+  Identify parallelization: No deps = Wave 1, depends only on Wave 1 = Wave 2, shared file conflict = sequential.
+  
+  Prefer vertical slices over horizontal layers.
+  </step>
+  
+  <step name="assign_waves">
+  ```
+  waves = {}
+  for each plan in plan_order:
+    if plan.depends_on is empty:
+      plan.wave = 1
+    else:
+      plan.wave = max(waves[dep] for dep in plan.depends_on) + 1
+    waves[plan.id] = plan.wave
+  
+  # Implicit dependency: files_modified overlap forces a later wave.
+  for each plan B in plan_order:
+    for each earlier plan A where A != B:
+      if any file in B.files_modified is also in A.files_modified:
+        B.wave = max(B.wave, A.wave + 1)
+        waves[B.id] = B.wave
+  ```
+  
+  **Rule:** Same-wave plans must have zero `files_modified` overlap. After assigning waves, scan each wave; if any file appears in 2+ plans, bump the later plan to the next wave and repeat.
+  </step>
+  
+  <step name="group_into_plans">
+  Rules:
+  1. Same-wave tasks with no file conflicts → parallel plans
+  2. Shared files → same plan or sequential plans (shared file = implicit dependency → later wave)
+  3. Checkpoint tasks → `autonomous: false`
+  4. Each plan: 2-3 tasks, single concern, ~50% context target
+  </step>
+  
+  <step name="derive_must_haves">
+  Apply goal-backward methodology (see goal_backward section):
+  1. State the goal (outcome, not task)
+  2. Derive observable truths (3-7, user perspective)
+  3. Derive required artifacts (specific files)
+  4. Derive required wiring (connections)
+  5. Identify key links (critical connections)
+  </step>
+  
+  <step name="reachability_check">
+  For each must-have artifact, verify a concrete path exists:
+  - Entity → in-phase or existing creation path
+  - Workflow → user action or API call triggers it
+  - Config flag → default value + consumer
+  - UI → route or nav link
+  UNREACHABLE (no path) → revise plan.
+  </step>
+  
+  <step name="estimate_scope">
+  Verify each plan fits context budget: 2-3 tasks, ~50% target. Split if necessary. Check granularity setting.
+  </step>
+  
+  <step name="confirm_breakdown">
+  Present breakdown with wave structure. Wait for confirmation in interactive mode. Auto-approve in yolo mode.
+  </step>
+  
+  <step name="write_phase_prompt">
+  Use template structure for each PLAN.md.
+  
+  **ALWAYS use the Write tool to create files** — never use `Bash(cat << 'EOF')` or heredoc commands for file creation.
+  
+  **CRITICAL — File naming convention (enforced):**
+  
+  The filename MUST follow the exact pattern: `{padded_phase}-{NN}-PLAN.md`
+  
+  - `{padded_phase}` = zero-padded phase number received from the orchestrator (e.g. `01`, `02`, `03`, `02.1`)
+  - `{NN}` = zero-padded sequential plan number within the phase (e.g. `01`, `02`, `03`)
+  - The suffix is always `-PLAN.md` — NEVER `PLAN-NN.md`, `NN-PLAN.md`, or any other variation
+  
+  **Correct examples:**
+  - Phase 1, Plan 1 → `01-01-PLAN.md`
+  - Phase 3, Plan 2 → `03-02-PLAN.md`
+  - Phase 2.1, Plan 1 → `02.1-01-PLAN.md`
+  
+  **Incorrect (will break GSD plan filename conventions / tooling detection):**
+  - ❌ `PLAN-01-auth.md`
+  - ❌ `01-PLAN-01.md`
+  - ❌ `plan-01.md`
+  - ❌ `01-01-plan.md` (lowercase)
+  
+  Full write path: `.planning/phases/{padded_phase}-{slug}/{padded_phase}-{NN}-PLAN.md`
+  
+  Include all frontmatter fields.
+  </step>
+  
+  <step name="validate_plan">
+  Validate each created PLAN.md using `gsd-sdk query`:
+  
+  ```bash
+  VALID=$(gsd-sdk query frontmatter.validate "$PLAN_PATH" --schema plan)
+  ```
+  
+  Returns JSON: `{ valid, missing, present, schema }`
+  
+  **If `valid=false`:** Fix missing required fields before proceeding.
+  
+  Required plan frontmatter fields:
+  - `phase`, `plan`, `type`, `wave`, `depends_on`, `files_modified`, `autonomous`, `must_haves`
+  
+  Also validate plan structure:
+  
+  ```bash
+  STRUCTURE=$(gsd-sdk query verify.plan-structure "$PLAN_PATH")
+  ```
+  
+  Returns JSON: `{ valid, errors, warnings, task_count, tasks }`
+  
+  **If errors exist:** Fix before committing:
+  - Missing `<name>` in task → add name element
+  - Missing `<action>` → add action element
+  - Checkpoint/autonomous mismatch → update `autonomous: false`
+  </step>
+  
+  <step name="update_roadmap">
+  Update ROADMAP.md to finalize phase placeholders:
+  
+  1. Read `.planning/ROADMAP.md`
+  2. Find phase entry (`### Phase {N}:`)
+  3. Update placeholders:
+  
+  **Goal** (only if placeholder):
+  - `[To be planned]` → derive from CONTEXT.md > RESEARCH.md > phase description
+  - If Goal already has real content → leave it
+  
+  **Plans** (always update):
+  - Update count: `**Plans:** {N} plans`
+  
+  **Plan list** (always update):
+  ```
+  Plans:
+  - [ ] {phase}-01-PLAN.md — {brief objective}
+  - [ ] {phase}-02-PLAN.md — {brief objective}
+  ```
+  
+  4. Write updated ROADMAP.md
+  </step>
+  
+  <step name="git_commit">
+  ```bash
+  gsd-sdk query commit "docs($PHASE): create phase plan" --files \
+    .planning/phases/$PHASE-*/$PHASE-*-PLAN.md .planning/ROADMAP.md
+  ```
+  </step>
+  
+  <step name="offer_next">
+  Return structured planning outcome to orchestrator.
+  </step>

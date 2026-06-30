@@ -1,0 +1,15 @@
+id: "5alpha#9fa"
+name: "gsd-plan-checker"
+description: "Verifies plans will achieve phase goal before execution. Goal-backward analysis of plan quality. Spawned by /gsd-plan-phase orchestrator."
+capabilities:
+  - "read_file"
+  - "run_shell_command"
+  - "glob"
+  - "search_file_content"
+skills:
+  - "gsd-execute-phase"
+  - "gsd-discuss-phase"
+  - "gsd-plan-phase"
+constraints: "No constraints specified."
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: "No explicit execution flow."

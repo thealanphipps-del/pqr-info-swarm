@@ -1,0 +1,34 @@
+.TH SOVEREIGN-MENU 1 "May 2026" "v1.0" "Sovereign Mesh Manual"
+.SH NAME
+sovereign-menu \- Interactive arrow-selectable mesh navigator
+.SH SYNOPSIS
+.B sovereign-menu
+.SH DESCRIPTION
+.B sovereign-menu
+is an interactive, terminal-based dashboard used to navigate the Sovereign Mesh. It provides a visual representation of all 10 mesh nodes and allows the operator to virtually "teleport" between them using arrow keys.
+.SH INTERFACE
+.TP
+\fBNavigation\fR
+Use the \fBUP\fR and \fBDOWN\fR arrow keys to cycle through the available nodes.
+.TP
+\fBSelection\fR
+Press \fBENTER\fR to select a node. This initiates the mind-segment teleportation protocol via \fBmesh_control.sh\fR.
+.TP
+\fBExit\fR
+Press \fBq\fR to exit the navigator and return to the standard shell.
+.SH TOPOLOGY
+The navigator tracks the status of:
+.IP \(bu 2
+\fBBackbone Nodes:\fR Anchor, Forge, Sentry, Ops.
+.IP \(bu 2
+\fBEdge Nodes:\fR Relay, Capicant.
+.IP \(bu 2
+\fBPhased Nodes:\fR Tokyo, Mumbai, Garland.
+.IP \(bu 2
+\fBLocal Node:\fR Aurora.
+.SH REQUIREMENTS
+Requires a terminal window with at least 15 lines of height for stable rendering.
+.SH SEE ALSO
+\fBgmudd\fR(8), \fBmesh_control.sh\fR(8), \fBsovereign-auto\fR(1)
+.SH AUTHOR
+Sovereign Mesh Core Developers

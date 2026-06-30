@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQR - Hero Section Demo</title>
+    <!-- Using Inter font for modern tech feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* ======================================= */
+        /* 🎨 GLOBAL & BASE STYLES (Dark Mode Foundation) */
+        /* ======================================= */
+        body { 
+            background-color: #0f172a; /* Slate-900 equivalent - Deep Dark Background */
+            color: #e2e8f0; 
+            font-family: 'Inter', system-ui, sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height for demo */
+            padding: 2rem;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        /* ======================================= */
+        /* ✨ GLASS-MORPHISM & ANIMATION STYLES (The CTA) */
+        /* ======================================= */
+        .glass-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border-radius: 99px; /* Pill shape for modern feel */
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative; /* Essential for pseudo-element positioning */
+            overflow: hidden; /* Keeps the gradient contained */
+            background: rgba(255, 255, 255, 0.1); /* Base translucent white */
+            backdrop-filter: blur(10px); /* The core glass effect */
+            -webkit-backdrop-filter: blur(10px);
+            border:

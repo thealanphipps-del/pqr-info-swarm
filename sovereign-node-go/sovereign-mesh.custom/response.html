@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sovereign V10.0 | Autonomous Bridge</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div>V10.0 SINGULARITY | S25_FE</div>
+        <div class="lock">ASSET LOCK: $814.68</div>
+    </div>
+    <div class="dashboard">
+        <div class="code-view">
+            <div style="color:var(--accent); margin-bottom:10px;">// SYSTEM STATUS &amp; TRADING TICK</div>
+            <pre id="sys-status">Initializing Forensic Hub Sync...</pre>
+        </div>
+        <div class="bridge-view">
+            <div class="terminal" id="term">
+                [BRIDGE] Autonomous Gemini Hooks Active.<br>
+                [BRIDGE] Command execution routed to Termux bash.<br>
+                Ready for input...
+            </div>
+            <div class="input-zone">
+                <input type="text" id="cmd" placeholder="Enter bash command or system directive..." onkeydown="if(event.key==='Enter') executeBridge()">
+                <button onclick="executeBridge()">EXECUTE</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

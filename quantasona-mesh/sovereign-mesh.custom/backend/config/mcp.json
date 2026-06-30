@@ -1,0 +1,9 @@
+{
+  "endpoint": "ssh://localhost",
+  "tools": [
+    { "name": "fs.readFile" },
+    { "name": "fs.writeFile" },
+    { "name": "sshfs.mount" },
+    { "name": "sshfs.unmount" }
+  ]
+}

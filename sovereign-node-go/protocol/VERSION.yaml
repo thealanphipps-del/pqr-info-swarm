@@ -1,0 +1,6 @@
+version: v0.4.0
+modules:
+  serialization: v1
+  merkle: v1
+  consensus: slingshot-v1
+  bio_inference: v1

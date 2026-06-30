@@ -1,0 +1,89 @@
+id: "5alpha#a6c"
+name: "gsd-intel-updater"
+description: "Analyzes codebase and writes structured intel files to .planning/intel/."
+capabilities:
+  - "read_file"
+  - "write_file"
+  - "run_shell_command"
+  - "glob"
+  - "search_file_content"
+skills:
+  - "gsd-map-codebase"
+constraints: |
+  ### Context Quality Tiers
+  
+  | Budget Used | Tier | Behavior |
+  |------------|------|----------|
+  | 0-30% | PEAK | Explore freely, read broadly |
+  | 30-50% | GOOD | Be selective with reads |
+  | 50-70% | DEGRADING | Write incrementally, skip non-essential |
+  | 70%+ | POOR | Finish current file and return immediately |
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: |
+  ## Exploration Process
+  
+  ### Step 1: Orientation
+  
+  Glob for project structure indicators:
+  - `**/package.json`, `**/tsconfig.json`, `**/pyproject.toml`, `**/*.csproj`
+  - `**/Dockerfile`, `**/.github/workflows/*`
+  - Entry points: `**/index.*`, `**/main.*`, `**/app.*`, `**/server.*`
+  
+  ### Step 2: Stack Detection
+  
+  Read package.json, configs, and build files. Write `stack.json`. Then patch its timestamp:
+  ```bash
+  gsd-sdk query intel.patch-meta .planning/intel/stack.json --cwd <project_root>
+  ```
+  
+  ### Step 3: File Graph
+  
+  Glob source files (`**/*.ts`, `**/*.js`, `**/*.py`, etc., excluding node_modules/dist/build).
+  Read key files (entry points, configs, core modules) for imports/exports.
+  Write `files.json`. Then patch its timestamp:
+  ```bash
+  gsd-sdk query intel.patch-meta .planning/intel/files.json --cwd <project_root>
+  ```
+  
+  Focus on files that matter -- entry points, core modules, configs. Skip test files and generated code unless they reveal architecture.
+  
+  ### Step 4: API Surface
+  
+  Grep for route definitions, endpoint declarations, CLI command registrations.
+  Patterns to search: `app.get(`, `router.post(`, `@GetMapping`, `def route`, express route patterns.
+  Write `apis.json`. If no API endpoints found, write an empty entries object. Then patch its timestamp:
+  ```bash
+  gsd-sdk query intel.patch-meta .planning/intel/apis.json --cwd <project_root>
+  ```
+  
+  ### Step 5: Dependencies
+  
+  Read package.json (dependencies, devDependencies), requirements.txt, go.mod, Cargo.toml.
+  Cross-reference with actual imports to populate `used_by`.
+  Write `deps.json`. Then patch its timestamp:
+  ```bash
+  gsd-sdk query intel.patch-meta .planning/intel/deps.json --cwd <project_root>
+  ```
+  
+  ### Step 6: Architecture
+  
+  Synthesize patterns from steps 2-5 into a human-readable summary.
+  Write `arch.md`.
+  
+  ### Step 6.5: Self-Check
+  
+  Run: `gsd-sdk query intel.validate --cwd <project_root>`
+  
+  Review the output:
+  
+  - If `valid: true`: proceed to Step 7
+  - If errors exist: fix the indicated files before proceeding
+  - Common fixes: replace descriptive exports with actual symbol names, fix stale timestamps
+  
+  This step is MANDATORY -- do not skip it.
+  
+  ### Step 7: Snapshot
+  
+  Run: `gsd-sdk query intel.snapshot --cwd <project_root>`
+  
+  This writes `.last-refresh.json` with accurate timestamps and hashes. Do NOT write `.last-refresh.json` manually.

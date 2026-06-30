@@ -1,0 +1,22 @@
+.TH MEMORY-BUS 7 "May 2026" "v1.0" "Sovereign Mesh Manual"
+.SH NAME
+memory-bus \- High-speed zero-copy RAM teleportation bus
+.SH DESCRIPTION
+The **Memory Bus** (Port 11111) enables high-speed virtual agent teleportation using POSIX shared memory maps (\fBmmap\fR). This eliminates serialization latency by allowing agents to write state buffers directly into RAM pages.
+.SH ARCHITECTURE
+The system uses a $64\text{MB}$ memory buffer block inside the volatile shared memory filesystem at \fB/dev/shm/sovereign_page_table\fR.
+.SS Operation
+.IP 1.
+\fBMemory Seeding:\fR The bus server initializes the page table in \fB/dev/shm/\fR.
+.IP 2.
+\fBPage Allocation:\fR Teleporting agents query Port 11111 for a memory slot.
+.IP 3.
+\fBZero-Copy Access:\fR Agents receive a direct pointer to the RAM segment for instant read/write operations without CPU serialization overhead.
+.IP 4.
+\fBFailover:\fR If hypervisor links drop, the bus falls back to standard TCP streams.
+.SH FILES
+.TP
+\fB/dev/shm/sovereign_page_table\fR
+The underlying POSIX shared memory page file.
+.SH SEE ALSO
+\fBstarbirth\fR(7), \fBjetweb\fR(7), \fBmesh_control.sh\fR(1)

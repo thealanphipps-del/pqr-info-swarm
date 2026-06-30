@@ -1,0 +1,14 @@
+mgsh-30d-cron*
+mgsh-7way-execute*
+mgsh-algo-core*
+mgsh-auth*
+mgsh-cli*
+mgsh-cli.go
+mgsh-cosmic-watch*
+mgsh-formula-solve*
+mgsh-gate99-provision*
+mgsh-jubilee-watch*
+mgsh-minimax-solve*
+mgsh-ouroboros-heal*
+mgsh-roadmap-verify*
+mgsh-srr-monitor*

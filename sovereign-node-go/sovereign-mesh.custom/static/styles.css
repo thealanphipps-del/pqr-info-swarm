@@ -1,0 +1,125 @@
+/* styles.css – UI for Sovereign Mesh HUD */
+:root {
+  --bg: #010409;
+  --panel: #0d1117;
+  --accent: #8957e5;
+  --green: #238636;
+  --text: #c9d1d9;
+  --border: #30363d;
+  --font: 'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.lock {
+  color: var(--green);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+.code-view {
+  background: var(--bg);
+  color: #39ff14;
+  padding: 15px;
+  font-size: 12px;
+  overflow-y: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.code-view pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.bridge-view {
+  display: flex;
+  flex-direction: column;
+  background: #000;
+}
+
+.terminal {
+  flex: 1;
+  padding: 15px;
+  font-size: 11px;
+  color: #58a6ff;
+  overflow-y: auto;
+  line-height: 1.4;
+}
+
+.input-zone {
+  display: flex;
+  padding: 10px;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  gap: 8px;
+}
+
+input[type="text"] {
+  flex: 1;
+  background: #010409;
+  border: 1px solid var(--border);
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  outline: none;
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 11px;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #a179ff;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid var(--panel);
+  border-top: 2px solid var(--accent);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

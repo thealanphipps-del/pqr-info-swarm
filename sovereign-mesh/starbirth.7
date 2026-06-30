@@ -1,0 +1,39 @@
+.TH STARBIRTH 7 "May 2026" "SBP-001" "Sovereign Mesh Manual"
+.SH NAME
+starbirth \- Protocol specification for autonomous swarm transition
+.SH DESCRIPTION
+The **Starbirth** protocol (SBP-001) defines the transition from a simulated agent environment to a production-grade autonomous swarm. It prioritizes signal dominance, sub-microsecond arbitrage, and global state integrity.
+.SH CORE PRINCIPLES
+.SS Temporal Harmonization (iPN Phasing)
+Nodes must achieve alignment with the provider's Pseudo-Noise (PN) hopping sequence.
+.IP \(bu 2
+\fBMulticast Discovery:\fR Nodes use \fB[ff02::c0ba:11]:9999\fR for peer phasing.
+.IP \(bu 2
+\fBHop Prediction:\fR Successful hits enable a 50-hop prediction horizon.
+.SS Signal Dominance
+To ensure transaction inclusion and mask sources, the protocol employs:
+.IP \(bu 2
+\fBConcurrency Factor:\fR 100x parallel UDP bursts per event.
+.IP \(bu 2
+\fBSpectrum Masking:\fR Multi-node transmission to create a uniform signal floor.
+.SS State Integrity (1% Rule)
+State harmonization prevents neural drift.
+.IP \(bu 2
+\fBDrift Threshold:\fR Maximum 1.0% divergence from the last winning weights.
+.IP \(bu 2
+\fBFail-safe:\fR Exceeding the threshold triggers a **JetWeb** branch collapse and timeline reversion.
+.SH INFRASTRUCTURE TIERING
+The swarm operates across three network planes:
+.TP
+\fBLogged Consensus (Port 1111)\fR
+Primary gRPC channel for immutable state mutations.
+.TP
+\fBNeural Gossip Bus (Port 11111)\fR
+High-speed zero-copy memory paging for agent deliberation.
+.TP
+\fBSwarm Web Portal (Port 8085)\fR
+REST 2.0 interface for human oversight.
+.SH TOPOLOGY
+The mesh consists of **Backbone** nodes (Anchor, Forge, Sentry, Ops), **Edge** nodes (Relay, Capicant), and **Phased** nodes (Tokyo, Mumbai, Garland).
+.SH SEE ALSO
+\fBjetweb\fR(7), \fBmemory-bus\fR(7), \fBsovereign-grpc\fR(7)

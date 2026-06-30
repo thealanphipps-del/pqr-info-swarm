@@ -1,0 +1,53 @@
+.TH GMUDD 8 "May 2026" "v2.0" "Sovereign Mesh Manual"
+.SH NAME
+gmudd \- Global MUDD interface for Swarm Mesh orchestration
+.SH SYNOPSIS
+.B gmudd
+.SH DESCRIPTION
+.B gmudd
+(Global Multi-User Dungeon Dashboard) is the primary interactive management interface for the Sovereign Mesh. It provides a color-coded, terminal-based dashboard for node exploration, agent management, and forensic ticketing.
+.SH INTERFACE
+The dashboard presents a numbered menu for various swarm operations:
+.TP
+\fB1. Look Around\fR
+Diagnostic audit of the current node state and divergent files.
+.TP
+\fB2. Move\fR
+Virtually teleport the agent mind to a directly connected tunnel exit node.
+.TP
+\fB3. gRPC Control Ping\fR
+Verify connectivity to the mesh control plane (Port 1111).
+.TP
+\fB4. Audit Swarm Ancestry\fR
+Trace the active agent's pedigree back to Agent 0.
+.TP
+\fB5. Query Swarm Immutable Ledger\fR
+Read the cryptographic blockchain ledger of state mutations.
+.TP
+\fB6. Read Protocol Grimoire\fR
+Access internal documentation and protocol specifications.
+.TP
+\fB9. Create Incomplete Task Tickets\fR
+Scans the repository for unchecked tasks (- [ ]) and generates PQR tickets.
+.TP
+\fB14. Mesh Divergence Audit\fR
+Identifies state deviations and unique files across all mesh nodes.
+.TP
+\fB15. Reconcile Diff & Commit\fR
+Review uncommitted changes and perform forensic git commits.
+.TP
+\fB17. Virtualize Documentation\fR
+Materialize navigable rooms from embedded markdown definitions.
+.SH TICKETING
+GMUDD integrates directly with the PQR ticketing system, allowing for automated ticket generation from codebase TODOs and session history.
+.SH FILES
+.TP
+\fImudd_session.json\fR
+Stores persistent session state, including location, history, and flags.
+.TP
+\fIdocs/gmudd_guide.md\fR
+Source documentation for the interface guides.
+.SH SEE ALSO
+\fBsovereign-cli\fR(1), \fBmgsh-cli\fR(1), \fBstarbirth\fR(7)
+.SH AUTHOR
+Sovereign Mesh Core Developers

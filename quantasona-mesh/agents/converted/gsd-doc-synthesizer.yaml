@@ -1,0 +1,14 @@
+id: "5alpha#6fb"
+name: "gsd-doc-synthesizer"
+description: "Synthesizes classified planning docs into a single consolidated context. Applies precedence rules, detects cross-ref cycles, enforces LOCKED-vs-LOCKED hard-blocks, and writes INGEST-CONFLICTS.md with three buckets (auto-resolved, competing-variants, unresolved-blockers). Spawned by /gsd-ingest-docs."
+capabilities:
+  - "read_file"
+  - "write_file"
+  - "search_file_content"
+  - "glob"
+  - "run_shell_command"
+skills:
+  - "gsd-ingest-docs"
+constraints: "No constraints specified."
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: "No explicit execution flow."

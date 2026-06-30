@@ -1,0 +1,15 @@
+[
+  {
+    "id": "gemini-1.5-pro",
+    "provider": "vertex",
+    "weight": 1.0,
+    "tags": ["primary"]
+  },
+  {
+    "id": "lmstudio-local",
+    "provider": "lmstudio",
+    "endpoint": "http://localhost:1234/v1/chat/completions",
+    "weight": 0.8,
+    "tags": ["local"]
+  }
+]

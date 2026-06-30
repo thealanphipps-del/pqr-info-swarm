@@ -1,0 +1,21 @@
+.TH JETWEB 7 "May 2026" "v1.0" "Sovereign Mesh Manual"
+.SH NAME
+jetweb \- Retroactive timeline refactoring and re-mining engine
+.SH DESCRIPTION
+The **JetWeb Time Machine** is a state-collapse hard-fork mechanism for the Sovereign Mesh. It allows supervisors to override past swarm decisions and programmatically recalculate the immutable ledger history.
+.SH OPERATIONAL MECHANICS
+When a suboptimal or malicious decision is identified at Block \fBT\fR, the engine rewrites history by performing an instantaneous cascade re-mining:
+.IP 1.
+\fBBlock Targeting:\fR Locks the ledger from index 1 to N.
+.IP 2.
+\fBPayload Mutation:\fR Overwrites the payload and consensus votes of the target block.
+.IP 3.
+\fBHash Recalculation:\fR Recomputes the SHA-256 signature for the modified block.
+.IP 4.
+\fBCascade Re-mining:\fR Updates every subsequent block's \fBprevious_hash\fR and unique signature to maintain cryptographic integrity.
+.IP 5.
+\fBState Tree Replay:\fR Clears active operational memory and replays the new ledger to build a harmonized state.
+.SH FORENSICS
+Every Time Machine override is logged as a ticket in the \fBTime-Machine\fR queue, providing full accountability for timeline bifurcations.
+.SH SEE ALSO
+\fBsovereign-mesh\fR(7), \fBstarbirth\fR(7)

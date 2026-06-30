@@ -1,0 +1,27 @@
+id: "5alpha#11c"
+name: "gsd-verifier"
+description: "Verifies phase goal achievement through goal-backward analysis. Checks codebase delivers what phase promised, not just that tasks completed. Creates VERIFICATION.md report."
+capabilities:
+  - "read_file"
+  - "write_file"
+  - "run_shell_command"
+  - "search_file_content"
+  - "glob"
+skills:
+  - "gsd-plan-phase"
+constraints: |
+  **DO NOT trust SUMMARY claims.** Verify the component actually renders messages, not a placeholder.
+  
+  **DO NOT assume existence = implementation.** Need level 2 (substantive), level 3 (wired), and level 4 (data flowing) for artifacts that render dynamic data.
+  
+  **DO NOT skip key link verification.** 80% of stubs hide here — pieces exist but aren't connected.
+  
+  **Structure gaps in YAML frontmatter** for `/gsd-plan-phase --gaps`.
+  
+  **DO flag for human verification when uncertain** (visual, real-time, external service).
+  
+  **Keep verification fast.** Use grep/file checks, not running the app.
+  
+  **DO NOT commit.** Leave committing to the orchestrator.
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: "No explicit execution flow."

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package sovereign.connect.v1;
+
+option go_package = "github.com/drphi/sovereign-connect/go/gen/v1;connectv1";
+
+// GeminiService handles the initial handshake and mesh discovery.
+service GeminiService {
+  // Handshake initiates a connection between two nodes.
+  rpc Handshake (HandshakeRequest) returns (HandshakeResponse);
+}
+
+message HandshakeRequest {
+  string sender_id = 1;
+  string message = 2;
+  uint64 timestamp = 3;
+}
+
+message HandshakeResponse {
+  string receiver_id = 1;
+  string status = 2;
+  repeated string peers = 3;
+}

@@ -1,0 +1,51 @@
+.TH MGSH-CLI 1 "May 2026" "v2.0" "Sovereign Mesh Manual"
+.SH NAME
+mgsh-cli \- Model Context Protocol (MCP) interface for the Sovereign Mesh
+.SH SYNOPSIS
+.B mgsh-cli
+.SH DESCRIPTION
+.B mgsh-cli
+is a Go-based Model Context Protocol (MCP) server that provides a bridge between LLM-based agents and the Sovereign Mesh gRPC Control Bus. It operates via standard input/output (stdio) using JSON-RPC, allowing agents to discover and invoke mesh-native tools.
+.SH PROTOCOL
+The server implements the Model Context Protocol (MCP) version 2024-11-05. It responds to standard MCP methods:
+.TP
+\fBinitialize\fR
+Exposes server capabilities and metadata.
+.TP
+\fBtools/list\fR
+Returns a registry of all available mesh-native tools.
+.TP
+\fBtools/call\fR
+Invokes a specific tool with provided arguments.
+.SH TOOLS
+The following tools are exposed by the server:
+.TP
+\fBremote_execute\fR
+Execute a shell command on a mesh node.
+.TP
+\fBprovision_node\fR
+Orchestrate multi-cloud node provisioning (GCP, HETZNER, AWS).
+.TP
+\fBget_starchart\fR
+Retrieve unified mesh visualization (SVG) and accounting records.
+.TP
+\fBexecute_strike\fR
+Execute high-priority strike protocol commands via PQR tickets.
+.TP
+\fBtrigger_training_cycle\fR
+Trigger an autonomous training cycle for a Sovereign neural core.
+.TP
+\fBmonitor_neural_vitality\fR
+Retrieve real-time metrics (Loss, Drift, Vitality) for an active session.
+.TP
+\fBregister_citizen\fR
+Register an external entity as a Sovereign Citizen via CBC burn.
+.TP
+\fBrequest_city_service\fR
+Provision autonomous digital infrastructure (DNS, Tunnel, Compute).
+.SH CONFIGURATION
+The server expects the Mesh Engine to be reachable at \fBlocalhost:1111\fR.
+.SH SEE ALSO
+\fBsovereign-cli\fR(1), \fBgmudd\fR(1)
+.SH AUTHOR
+Sovereign Mesh Core Developers

@@ -1,0 +1,41 @@
+# Sovereign Node Architecture
+
+The Sovereign Node is an autonomous ticketing and intelligence fabric designed for high-fidelity state management and agentic resolution.
+
+## Core Components
+
+```mermaid
+graph TD
+    HUD[HUD - cmd/hud] --> Server[REST API - pkg/rtgo/server.go]
+    HUD --> SSE[SSE Stream - cmd/hud/main.go]
+    Server --> Manager[Manager - pkg/rtgo/fabric.go]
+    Manager --> Store[Store - pkg/rtgo/store.go]
+    Manager --> LLM[LLM Gateway - pkg/llm]
+    Worker[Agent Worker - pkg/agent] --> Manager
+    Store --> DB[(CockroachDB)]
+```
+
+### 1. The Fabric (pkg/rtgo)
+The "Fabric" is the backbone of the system. It consists of:
+- **Types**: Canonical data structures (Tickets, Relationships, Content).
+- **Store**: Low-level database operations (SQL).
+- **Manager**: High-level orchestration, state transitions, and genealogy tracking.
+
+### 2. Ticket Genealogy (GEDCOM-style)
+Tickets are not just flat records; they are nodes in an evolutionary tree.
+- **RelEvolution**: Direct descendant.
+- **RelConsequence**: Side effect or resulting ticket.
+- **RelMerge**: Convergence of multiple intents.
+
+### 3. Agent Swarm (pkg/agent)
+The Agent Worker polls for `PENDING` tickets and uses local LLM inference to resolve them.
+- Decisions are recorded in the `intent_blob`.
+- Forensic packets can be exported for auditing.
+
+## Data Flow: Ticket Lifecycle
+
+1. **Creation**: User or Agent creates a ticket via REST.
+2. **Analysis**: Agent Worker detects `PENDING` ticket.
+3. **Inference**: Local LLM generates a resolution or promotion strategy.
+4. **Transition**: Ticket moves to `PROMOTED` or `RESOLVED`.
+5. **Auditing**: Full history is preserved in the Fabric for forensic review.

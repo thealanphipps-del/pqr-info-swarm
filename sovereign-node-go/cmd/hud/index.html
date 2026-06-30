@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign HUD | Mortal Logic</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --accent: #58a6ff;
+            --neon: #39ff14;
+            --critical: #ff3e3e;
+            --warning: #f1e05a;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            background: var(--panel);
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--neon);
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon);
+            color: var(--neon);
+        }
+
+        main {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .ticket-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .ticket-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent);
+        }
+
+        .ticket-card.open::before { background: var(--neon); }
+        .ticket-card.closed::before { background: var(--border); }
+
+        .ticket-id {
+            font-family: monospace;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .ticket-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .ticket-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .label {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 100px;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ticket-card { animation: fadeIn 0.5s ease forwards; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Sovereign // Mortal Logic</div>
+        <div id="connection-status" class="status-badge">MESH SYNC: ACTIVE</div>
+    </header>
+
+    <main id="app">
+        <div id="ticket-container" class="ticket-grid">
+            <div class="empty-state">INITIALIZING NEURAL LINK...</div>
+        </div>
+    </main>
+
+    <script>
+        const container = document.getElementById('ticket-container');
+        const statusBadge = document.getElementById('connection-status');
+
+        function updateTickets(tickets) {
+            if (!tickets || tickets.length === 0) {
+                container.innerHTML = '<div class="empty-state">NO ACTIVE TICKETS IN QUEUE</div>';
+                return;
+            }
+
+            container.innerHTML = tickets.map(ticket => `
+                <div class="ticket-card ${ticket.status}">
+                    <div class="ticket-id">#${ticket.id}</div>
+                    <div class="ticket-title">${ticket.title}</div>
+                    <div class="ticket-meta">
+                        ${ticket.labels.map(l => `<span class="label">${l}</span>`).join('')}
+                        <span class="label" style="border-color: ${ticket.status === 'open' ? '#39ff14' : '#30363d'}">${ticket.status.toUpperCase()}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        const evtSource = new EventSource("/api/tickets/stream");
+
+        evtSource.onmessage = (event) => {
+            const tickets = JSON.parse(event.data);
+            updateTickets(tickets);
+            statusBadge.textContent = "MESH SYNC: UPDATED " + new Date().toLocaleTimeString();
+            statusBadge.style.borderColor = "#39ff14";
+            statusBadge.style.color = "#39ff14";
+        };
+
+        evtSource.onerror = (err) => {
+            console.error("EventSource failed:", err);
+            statusBadge.textContent = "MESH SYNC: OFFLINE";
+            statusBadge.style.borderColor = "#ff3e3e";
+            statusBadge.style.color = "#ff3e3e";
+        };
+    </script>
+</body>
+</html>

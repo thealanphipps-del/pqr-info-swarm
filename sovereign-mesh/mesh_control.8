@@ -1,0 +1,62 @@
+.TH MESH_CONTROL 8 "May 2026" "v2.0" "Sovereign Mesh Manual"
+.SH NAME
+mesh_control.sh \- Primary system orchestrator for the Sovereign Mesh
+.SH SYNOPSIS
+.B mesh_control.sh
+.I command
+.SH DESCRIPTION
+.B mesh_control.sh
+is the foundational orchestration script for the Sovereign Mesh. It manages the lifecycle of the gRPC Control Bus, the HighSpeed Memory Bus, and the Swarm Web Portal. It also provides advanced utilities for remote execution, consensus management, and state forensics.
+.SH COMMANDS
+.SS Lifecycle Management
+.TP
+\fBstart\fR
+Ignites the Mesh Infrastructure: gRPC (Port 1111), Memory Bus (Port 11111), and Web Server (Port 8085).
+.TP
+\fBstop\fR
+Gracefully terminates all background server processes.
+.TP
+\fBstatus\fR
+Displays the operational status of all mesh components and active network interfaces.
+.SS Development & Integration
+.TP
+\fBcompile\fR
+Re-compiles all Protobuf contracts for both Go and Python targets.
+.TP
+\fBclient\fR
+Executes internal connectivity and performance benchmarks.
+.SS Mesh Operations
+.TP
+\fBexec\fR \fIcommand\fR
+Executes a shell command remotely on a target node with automatic SSH failover.
+.TP
+\fBtravel\fR
+Virtually teleports the active agent mind via the Memory Bus.
+.TP
+\fBpedigree\fR
+Traces active agent ancestry back to Agent 0 using the 7-Layer Relational DB.
+.TP
+\fBpropose\fR
+Proposes a state mutation to the mesh under the 4/5 consensus protocol.
+.SS Forensic & State Management
+.TP
+\fBledger\fR
+Audits the multi-dimensional immutable blockchain ledger.
+.TP
+\fBtimemachine\fR
+Overrides retroactive agent decisions and triggers a timeline re-mining event.
+.TP
+\fBforensics\fR
+Audits decision parameters and voting traces at any point in the mesh history.
+.SH ENVIRONMENT
+.TP
+\fBMESH_ROOT\fR
+Path to the root directory of the Sovereign Mesh project.
+.SH FILES
+.TP
+\fI/tmp/grpc_server.log\fR
+Standard output and error logs for the gRPC engine.
+.SH SEE ALSO
+\fBsovereign-auto\fR(1), \fBgmudd\fR(1), \fBstarbirth\fR(7)
+.SH AUTHOR
+Sovereign Mesh Core Developers

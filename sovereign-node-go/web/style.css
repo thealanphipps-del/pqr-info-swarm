@@ -1,0 +1,652 @@
+/* ============================================================
+   Sovereign HUD v8.5 — REST 2.0 Interface Styles
+   ============================================================ */
+
+:root {
+    --bg-deep: #070710;
+    --bg-card: rgba(14, 14, 26, 0.82);
+    --accent-gold: #d4af37;
+    --accent-cyan: #00f3ff;
+    --accent-green: #00ff88;
+    --text-main: #e0e0e0;
+    --text-muted: #666680;
+    --border: rgba(212, 175, 55, 0.18);
+    --glass-blur: blur(14px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Animated mesh background */
+.mesh-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(0, 243, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+        linear-gradient(135deg, #070710 0%, #0d0d1a 100%);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(7, 7, 16, 0.9);
+    backdrop-filter: var(--glass-blur);
+    height: 58px;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.symbol {
+    font-size: 1.6rem;
+    color: var(--accent-gold);
+    animation: spin 12s linear infinite;
+}
+
+h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.accent {
+    color: var(--accent-gold);
+}
+
+.version {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--accent-cyan);
+    letter-spacing: 1px;
+    vertical-align: middle;
+    border: 1px solid var(--accent-cyan);
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 6px;
+    opacity: 0.7;
+}
+
+.system-status {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.label {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.online {
+    color: var(--accent-green);
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+main {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    height: calc(100vh - 58px);
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    backdrop-filter: var(--glass-blur);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    flex-shrink: 0;
+}
+
+h2 {
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+/* ── Swarm Visualizer ─────────────────────────────────────── */
+.swarm-visualizer {
+    overflow: hidden;
+}
+
+.hex-container {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hex-container:active {
+    cursor: grabbing;
+}
+
+.hex-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 8px;
+    width: 640px;
+    height: 640px;
+    padding: 16px;
+    transform-origin: center;
+    transition: transform 0.08s ease-out;
+}
+
+.hex {
+    aspect-ratio: 1;
+    width: 100%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: rgba(255, 255, 255, 0.025);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    position: relative;
+}
+
+.gate-label {
+    font-size: 0.4rem;
+    letter-spacing: 1px;
+    color: rgba(212, 175, 55, 0.5);
+    line-height: 1;
+}
+
+.hex:hover {
+    background: rgba(212, 175, 55, 0.18);
+    color: var(--accent-gold);
+    transform: scale(1.12);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    z-index: 5;
+}
+
+.hex.active {
+    background: rgba(0, 243, 255, 0.15);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 16px rgba(0, 243, 255, 0.3);
+}
+
+.hex.pulsing {
+    background: rgba(0, 243, 255, 0.08);
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
+}
+
+#resetView {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: var(--accent-gold);
+    font-size: 0.55rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+}
+
+#resetView:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* ── Ticket Panel (Tabbed) ───────────────────────────────── */
+.ticket-panel {
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+}
+
+.tab {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    padding: 4px 10px 6px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: var(--text-main);
+}
+
+.tab.active {
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
+}
+
+.tab-content {
+    display: none;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Audit Trail list */
+.ticket-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 4px;
+}
+
+.ticket-item {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 9px 11px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+}
+
+.ticket-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.ticket-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent-cyan);
+}
+
+.ticket-status {
+    font-size: 0.55rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    border: 1px solid;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.ticket-status.status-NEW { color: var(--accent-cyan); border-color: rgba(0, 243, 255, 0.3); }
+.ticket-status.status-PENDING { color: var(--accent-gold); border-color: rgba(212, 175, 55, 0.3); }
+.ticket-status.status-IN_PROGRESS { color: #3498db; border-color: rgba(52, 152, 219, 0.3); }
+.ticket-status.status-STALLED { color: #f1c40f; border-color: rgba(241, 196, 15, 0.3); }
+.ticket-status.status-STUCK { color: #e74c3c; border-color: rgba(231, 76, 60, 0.3); }
+.ticket-status.status-RESOLVED { color: #2ecc71; border-color: rgba(46, 204, 113, 0.3); }
+.ticket-status.status-PROMOTED { color: var(--accent-green); border-color: rgba(0, 255, 136, 0.3); }
+
+/* Priority Colors */
+.ticket-item.priority-10 { border-left: 3px solid var(--accent-green) !important; }
+.ticket-item.priority-20 { border-left: 3px solid var(--accent-cyan) !important; }
+.ticket-item.priority-30 { border-left: 3px solid #f39c12 !important; }
+.ticket-item.priority-40 { border-left: 3px solid #e74c3c !important; }
+
+.ticket-title {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket-meta {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.count {
+    background: var(--accent-gold);
+    color: var(--bg-deep);
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── GEDCOM Tree ─────────────────────────────────────────── */
+.gedcom-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.gedcom-toolbar button {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--accent-gold);
+    font-size: 0.6rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.gedcom-legend {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
+.dot.genesis {
+    background: #d4af37;
+}
+
+.dot.evolution {
+    background: #d4af37;
+}
+
+.dot.consequence {
+    background: #00f3ff;
+}
+
+.gedcom-tree-container {
+    flex: 1;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 8px;
+}
+
+#gedcomSvg {
+    display: block;
+    min-width: 100%;
+    min-height: 200px;
+}
+
+/* ── Create Form ─────────────────────────────────────────── */
+.create-form {
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 4px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-size: 0.6rem;
+    color: var(--accent-gold);
+    letter-spacing: 1.5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+
+.form-group textarea {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+}
+
+.save-btn {
+    background: var(--accent-gold);
+    color: var(--bg-deep);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: filter 0.2s, box-shadow 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.save-btn:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.create-result {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.create-result.success {
+    color: var(--accent-green);
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.create-result.error {
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+/* ── Forensic Logs ───────────────────────────────────────── */
+.forensic-logs {
+    height: 180px;
+    flex-shrink: 0;
+}
+
+.log-stream {
+    flex: 1;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-entry {
+    padding: 1px 0 1px 8px;
+    border-left: 2px solid rgba(0, 243, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Edit Modal ──────────────────────────────────────────── */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    max-width: 92vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* ── Scrollbars ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.25);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gold);
+}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pulse {
+    width: 7px;
+    height: 7px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-cyan);
+    animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}

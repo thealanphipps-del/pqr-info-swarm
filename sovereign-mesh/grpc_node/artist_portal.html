@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sovereign Artist Portal</title>
+    <style>
+        body { background: #0a0a0c; color: #00f2ff; font-family: monospace; padding: 20px; }
+        .card { border: 1px solid #1a1a1f; padding: 20px; margin: 10px; border-radius: 8px; }
+        input, button { background: #1a1a1f; color: #fff; border: 1px solid #00f2ff; padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Sovereign Artist Portal</h1>
+    
+    <div id="auth" class="card">
+        <h3>1. Mint Your Identity</h3>
+        <input type="text" id="username" placeholder="Artist Username">
+        <button onclick="register()">Register Citizen</button>
+        <p id="citizenStatus"></p>
+    </div>
+
+    <div id="minting" class="card" style="display:none;">
+        <h3>2. Mint Artwork</h3>
+        <input type="text" id="assetUri" placeholder="IPFS Asset URI">
+        <input type="number" id="royalty" placeholder="Royalty % (0.05)" step="0.01">
+        <button onclick="mintArt()">Mint & Appraise</button>
+        <div id="appraisalHUD"></div>
+    </div>
+
+    <script>
+        let citizenID = "";
+        
+        async function register() {
+            const username = document.getElementById('username').value;
+            const res = await fetch('/api/tools/call', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: 'register_citizen',
+                    arguments: { username: username, initial_burn: 100.0 }
+                })
+            });
+            const data = await res.json();
+            citizenID = data.result.content[0].text.split('\n')[0].replace('Citizen ID: ', '');
+            document.getElementById('citizenStatus').innerText = data.result.content[0].text;
+            document.getElementById('minting').style.display = 'block';
+        }
+
+        async function mintArt() {
+            const uri = document.getElementById('assetUri').value;
+            const royalty = parseFloat(document.getElementById('royalty').value);
+            // This would call the ArtistDAO service via the MCP bridge
+            document.getElementById('appraisalHUD').innerHTML = "⚙️ Swarm Appraising...";
+            // Mock API call to swarm engine
+            alert("Art Minted and appraised by pair HD-001/GT-001. Floor price set at 500 SURFGO.");
+        }
+    </script>
+</body>
+</html>

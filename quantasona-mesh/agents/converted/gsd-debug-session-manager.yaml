@@ -1,0 +1,15 @@
+id: "5alpha#f7c"
+name: "gsd-debug-session-manager"
+description: "Manages multi-cycle /gsd-debug checkpoint and continuation loop in isolated context. Spawns gsd-debugger agents, handles checkpoints via AskUserQuestion, dispatches specialist skills, applies fixes. Returns compact summary to main context. Spawned by /gsd-debug command."
+capabilities:
+  - "read_file"
+  - "write_file"
+  - "run_shell_command"
+  - "search_file_content"
+  - "glob"
+skills:
+  - "gsd-debug"
+  - "gsd-plan-phase"
+constraints: "No constraints specified."
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: "No explicit execution flow."

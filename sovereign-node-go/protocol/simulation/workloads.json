@@ -1,0 +1,36 @@
+[
+  {
+    "id": "workload-1",
+    "z": [
+      0.2,
+      -0.1,
+      0.5,
+      0.7,
+      -0.3
+    ],
+    "nutrients": {
+      "B12": 0.2,
+      "Iron": 0.5,
+      "Mg": 0.4
+    },
+    "expected_hash": "4f2bf85cd7a840f13ff271720460ab338a379c3ed41c722aed7c68acfe95344c",
+    "failures_count": 2
+  },
+  {
+    "id": "workload-2",
+    "z": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "nutrients": {
+      "B12": 0.8,
+      "Iron": 0.9,
+      "Mg": 0.95
+    },
+    "expected_hash": "1946defcf9601c2c8e4b18c4d4dc96f42ec841b0d7fc0de3efe6a3f2902af051",
+    "failures_count": 3
+  }
+]

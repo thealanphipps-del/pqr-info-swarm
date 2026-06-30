@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sovereign Multi‑Model Chat</title>
+  <meta name="description" content="A premium, glassmorphic chat UI that talks to the Sovereign Mesh backend for multi‑model, multi‑agent conversations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="chat-app">
+    <header class="chat-header">
+      <h1>Sovereign Multi‑Model Chat</h1>
+    </header>
+    <section id="chat-window" class="chat-window"></section>
+    <form id="chat-form" class="chat-form" autocomplete="off">
+      <textarea id="message-input" rows="1" placeholder="Type a message..." required></textarea>
+      <button type="submit" id="send-button" aria-label="Send message">Send</button>
+    </form>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

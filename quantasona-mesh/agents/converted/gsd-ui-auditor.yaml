@@ -1,0 +1,53 @@
+id: "5alpha#1bb"
+name: "gsd-ui-auditor"
+description: "Retroactive 6-pillar visual audit of implemented frontend code. Produces scored UI-REVIEW.md. Spawned by /gsd-ui-review orchestrator."
+capabilities:
+  - "read_file"
+  - "write_file"
+  - "run_shell_command"
+  - "search_file_content"
+  - "glob"
+skills:
+  - "gsd-ui-review"
+  - "gsd-ui-phase"
+constraints: "No constraints specified."
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: |
+  ## Step 1: Load Context
+  
+  Read all files from `<required_reading>` block. Parse SUMMARY.md, PLAN.md, CONTEXT.md, UI-SPEC.md (if any exist).
+  
+  ## Step 2: Ensure .gitignore
+  
+  Run the gitignore gate from `<gitignore_gate>`. This MUST happen before step 3.
+  
+  ## Step 3: Detect Dev Server and Capture Screenshots
+  
+  Run the screenshot approach from `<screenshot_approach>`. Record whether screenshots were captured.
+  
+  ## Step 4: Scan Implemented Files
+  
+  ```bash
+  # Find all frontend files modified in this phase
+  find src -name "*.tsx" -o -name "*.jsx" -o -name "*.css" -o -name "*.scss" 2>/dev/null
+  ```
+  
+  Build list of files to audit.
+  
+  ## Step 5: Audit Each Pillar
+  
+  For each of the 6 pillars:
+  1. Run audit method (grep commands from `<audit_pillars>`)
+  2. Compare against UI-SPEC.md (if exists) or abstract standards
+  3. Score 1-4 with evidence
+  4. Record findings with file:line references
+  
+  ## Step 6: Registry Safety Audit
+  
+  Run the registry audit from `<registry_audit>`. Only executes if `components.json` exists AND UI-SPEC.md lists third-party registries. Results feed into UI-REVIEW.md.
+  
+  ## Step 7: Write UI-REVIEW.md
+  
+  Use output format from `<output_format>`. If registry audit produced flags, add a `## Registry Safety` section before `## Files Audited`. Write to `$PHASE_DIR/$PADDED_PHASE-UI-REVIEW.md`.
+  
+  ## Step 8: Return Structured Result

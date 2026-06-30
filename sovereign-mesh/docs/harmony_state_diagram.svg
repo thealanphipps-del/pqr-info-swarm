@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1000" height="800" fill="#0a0a0c"/>
+  
+  <!-- Subtle Grid Lines -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1f" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="hubGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#00f2ff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00f2ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1000" height="800" fill="url(#grid)"/>
+
+  <!-- Connections (Factor 27 Flux) -->
+  <g stroke="#00f2ff" stroke-width="1.5" stroke-opacity="0.4" fill="none">
+    <path d="M 500 400 L 250 150"/>
+    <path d="M 500 400 L 750 150"/>
+    <path d="M 500 400 L 250 650"/>
+    <path d="M 500 400 L 750 650"/>
+    <path d="M 500 400 L 150 400"/>
+    <path d="M 500 400 L 850 400"/>
+    <circle cx="500" cy="400" r="300" stroke-dasharray="10 20" stroke-opacity="0.1"/>
+  </g>
+
+  <!-- Central Hub: Factor 27 -->
+  <g transform="translate(500, 400)">
+    <circle r="80" fill="url(#hubGradient)"/>
+    <path d="M -50 -50 L 50 50 M -50 50 L 50 -50" stroke="#00f2ff" stroke-width="2" filter="url(#glow)"/>
+    <circle r="40" fill="none" stroke="#ffd700" stroke-width="3" filter="url(#glow)"/>
+    <text y="5" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="24" font-weight="bold">F.27</text>
+  </g>
+
+  <!-- Cluster 1: The Intelligence Core (Top-Left) -->
+  <g transform="translate(250, 150)">
+    <rect x="-100" y="-60" width="200" height="120" rx="10" fill="#111" stroke="#00f2ff" stroke-width="2"/>
+    <text y="-25" text-anchor="middle" fill="#00f2ff" font-family="monospace" font-size="14" font-weight="bold">INTELLIGENCE CORE</text>
+    <text y="0" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">Pedigree Graph (7-Layer)</text>
+    <text y="20" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">Quorum-Gating (4/5)</text>
+  </g>
+
+  <!-- Cluster 2: The Truth Layer (Top-Right) -->
+  <g transform="translate(750, 150)">
+    <rect x="-100" y="-60" width="200" height="120" rx="10" fill="#111" stroke="#ffd700" stroke-width="2"/>
+    <text y="-25" text-anchor="middle" fill="#ffd700" font-family="monospace" font-size="14" font-weight="bold">THE TRUTH LAYER</text>
+    <text y="0" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">Requiem-Consessus</text>
+    <text y="20" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">Jetweb Time Machine</text>
+  </g>
+
+  <!-- Cluster 3: The Physical Plane (Bottom-Left) -->
+  <g transform="translate(250, 650)">
+    <rect x="-100" y="-60" width="200" height="120" rx="10" fill="#111" stroke="#ff00ff" stroke-width="2"/>
+    <text y="-25" text-anchor="middle" fill="#ff00ff" font-family="monospace" font-size="14" font-weight="bold">THE PHYSICAL PLANE</text>
+    <text y="0" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">Native Tool-Use (XDP)</text>
+    <text y="20" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">MGSH Zero-Day Execution</text>
+  </g>
+
+  <!-- Cluster 4: The Economic Engine (Bottom-Right) -->
+  <g transform="translate(750, 650)">
+    <rect x="-100" y="-60" width="200" height="120" rx="10" fill="#111" stroke="#00ff00" stroke-width="2"/>
+    <text y="-25" text-anchor="middle" fill="#00ff00" font-family="monospace" font-size="14" font-weight="bold">ECONOMIC ENGINE</text>
+    <text y="0" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">SURFGO Scarcity (27M)</text>
+    <text y="20" text-anchor="middle" fill="#ccc" font-family="monospace" font-size="12">Helsinki-Nuremberg Arb</text>
+  </g>
+
+  <!-- External Nodes -->
+  <g fill="#555" font-family="monospace" font-size="10">
+    <text x="150" y="400" text-anchor="middle">0.mh (ANCHOR)</text>
+    <text x="850" y="400" text-anchor="middle">39.mh (SENTRY)</text>
+    <text x="500" y="70" text-anchor="middle">CLOUDFLARE TUNNEL</text>
+    <text x="500" y="740" text-anchor="middle">RADIUS AAAA AUDIT</text>
+  </g>
+
+  <!-- Flow Arrows -->
+  <g stroke="#00f2ff" stroke-width="2" fill="none">
+    <path d="M 500 320 Q 500 250 350 150" marker-end="url(#arrow)"/>
+    <path d="M 500 480 Q 500 550 650 650" marker-end="url(#arrow)"/>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Sovereign Mesh Database & Telemetry logs
+agent_pedigree.db
+*.log
+/tmp/
+sovereign_page_table
+/dev/shm/sovereign_page_table
+
+# Environments & OS files
+.venv
+venv/
+ENV/
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# GCP Provisioning & Ops Deployment Scripts (sensitive)
+deploy_to_gcp.sh
+gcp_deploy_prep.sh
+gcp_startup.sh
+gcp_remote_launch*
+*gcp*
+*.sh.old
+
+
+# Credentials, Keys, Tokens and Session profiles (sensitive)
+.cloudflare_token
+fast-web-key.json
+fast-web-key-new.json
+device_login_profile.json
+mudd_session.json
+*.token
+*.key
+*key.json
+certs/
+.agent/
+.antigravitycli/
+
+# Dependency directories
+node_modules/
+
+# Large data and backups
+cockroach-data/
+Takeout/
+
+# Rust build artifacts
+target/
+
+# Compiled Binaries & Executables
+mgsh_cli
+amln-sen/amln
+mesh_server_bin
+mint_swarm
+mesh_server_new
+sovereign-cli
+mesh_server
+sovereign-auto
+
+# Model Checkpoints
+checkpoints/
+*.pt

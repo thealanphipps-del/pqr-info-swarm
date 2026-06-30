@@ -1,0 +1,55 @@
+{
+    "timestamp": "",
+    "nodes": {
+        "0.MH": {
+            "ip": "46.224.84.64",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "38.MH": {
+            "ip": "62.238.2.240",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "39.MH": {
+            "ip": "204.168.138.60",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "40.MH": {
+            "ip": "10.128.0.2",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "50.MH": {
+            "ip": "136.113.240.237",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "201.MH": {
+            "ip": "89.167.91.81",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "7.MH": {
+            "ip": "35.243.111.42",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "8.MH": {
+            "ip": "34.93.120.15",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "9.MH": {
+            "ip": "34.123.50.201",
+            "interfaces": [],
+            "open_ports": []
+        },
+        "AURORA": {
+            "ip": "127.0.0.1",
+            "interfaces": [],
+            "open_ports": []
+        }
+    }
+}

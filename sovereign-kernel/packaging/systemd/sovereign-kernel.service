@@ -1,0 +1,26 @@
+[Unit]
+Description=Sovereign OS Continuity Kernel (OS-SPARK)
+Documentation=https://github.com/os-spark
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/sovereign-kernel
+ExecStart=/opt/sovereign-kernel/sovereign-kernel
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+# Load HashiCorp Vault secrets if present
+EnvironmentFile=-/etc/sovereign-kernel/vault.env
+
+# Kernel Hardening
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

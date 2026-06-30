@@ -1,0 +1,85 @@
+import json
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import sys
+from datetime import datetime
+
+# --- AESTHETIC CONSTANTS ---
+BLUE = "\033[94m"
+CYAN = "\033[96m"
+GREEN = "\033[92m"
+GOLD = "\033[93m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+
+def log(msg, color=CYAN):
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    print(f"{BOLD}[{timestamp}]{RESET} {color}{msg}{RESET}")
+
+class AntigravityNodeHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        if self.path == '/bridge':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            node_id = self.headers.get('X-Antigravity-Node', 'UNKNOWN')
+            
+            log(f"Incoming transmission from {BOLD}{node_id}{RESET} detected.", color=GOLD)
+            
+            try:
+                data = json.loads(post_data.decode('utf-8'))
+                # Log some key info from the profile payload
+                tech_profile = data.get('TechProfile', {})
+                display_name = tech_profile.get('displayName', 'Unknown User')
+                xp = data.get('XP', {}).get('xp', {}).get('totalXp', 0)
+                
+                log(f"Verified Payload: {BOLD}{display_name}{RESET} (XP: {xp})", color=GREEN)
+                
+                # Success response
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                
+                response = {
+                    "status": "synchronized",
+                    "timestamp": datetime.now().isoformat(),
+                    "message": f"Node {node_id} state integrated into hive mind."
+                }
+                self.wfile.write(json.dumps(response).encode('utf-8'))
+                log(f"Response sent to {node_id}.", color=GREEN)
+                
+            except Exception as e:
+                log(f"Failed to process transmission: {e}", color="\033[91m")
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(b"Invalid Payload Structure")
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+    def log_message(self, format, *args):
+        # Override to suppress default logging
+        return
+
+def run_server(port=8081):
+    server_address = ('', port)
+    httpd = HTTPServer(server_address, AntigravityNodeHandler)
+    
+    print(f"""
+{GOLD}   _____          __  .__                                 .__  __          
+  /  _  \   _____/  |_|__| ___________ ___  ________  _|__|/  |_ ___ __ 
+ /  /_\  \ /    \   __\  |/ ___\_  __ \__  \ \  \ /  \ /  /  \   __\  |  \
+/    |    \   |  \  | |  / /_/  >  | \// __ \_\  V  V  /  |  ||  | |  |  /
+\____|__  /___|  /__| |__\___  /|__|  (____  / \_/\_/|__|__||__| |____/ 
+        \/     \/       /_____/            \/                           
+           {BOLD}SOVEREIGN AI INFRASTRUCTURE - NODE LISTENER{RESET}
+    """)
+    log(f"Antigravity Node online. Listening on port {BOLD}{port}{RESET}...", color=GREEN)
+    log("Awaiting 'Starbirth' protocol initiation...", color=GOLD)
+    
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        log("Node shutting down gracefully...", color=GOLD)
+        httpd.server_close()
+
+if __name__ == "__main__":
+    run_server()

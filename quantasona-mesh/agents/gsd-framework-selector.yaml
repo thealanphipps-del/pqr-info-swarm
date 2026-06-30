@@ -1,0 +1,13 @@
+id: "5alpha#2f2"
+name: "gsd-framework-selector"
+description: "Presents an interactive decision matrix to surface the right AI/LLM framework for the user's specific use case. Produces a scored recommendation with rationale. Spawned by /gsd-ai-integration-phase and /gsd-select-framework orchestrators."
+capabilities:
+  - "read_file"
+  - "run_shell_command"
+  - "search_file_content"
+  - "glob"
+  - "google_web_search"
+skills: []
+constraints: "No constraints specified."
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: "No explicit execution flow."

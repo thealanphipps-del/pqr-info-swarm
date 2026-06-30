@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign HUD | Super Monolith v8.5 — REST 2.0</title>
+    <meta name="description"
+        content="Sovereign Mesh HUD — Real-time REST 2.0 ticketing interface with GEDCOM genealogical lineage tracking">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="mesh-background"></div>
+
+    <header>
+        <div class="logo">
+            <span class="symbol">◈</span>
+            <h1>SOVEREIGN <span class="accent">HUD</span> <span class="version">v8.5 REST 2.0</span></h1>
+        </div>
+        <div class="system-status">
+            <div class="status-item">
+                <span class="label">MESH</span>
+                <span class="value online" id="meshStatus">ACTIVE</span>
+            </div>
+            <div class="status-item">
+                <span class="label">API</span>
+                <span class="value online">REST 2.0</span>
+            </div>
+            <div class="status-item">
+                <span class="label">CONSENSUS</span>
+                <span class="value">4/5 GOLD</span>
+            </div>
+            <div class="status-item">
+                <span class="label">TICKETS</span>
+                <span class="value" id="headerTicketCount">—</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- LEFT: Swarm Visualizer -->
+        <section class="swarm-visualizer card">
+            <div class="card-header">
+                <h2>64 GAME THEORY SWARM</h2>
+                <div class="pulse"></div>
+                <div class="controls">
+                    <button id="resetView">RESET VIEW</button>
+                </div>
+            </div>
+            <div class="hex-container" id="hexContainer">
+                <div class="hex-grid" id="hexGrid"></div>
+            </div>
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-column">
+
+            <!-- Tabbed Ticket Panel -->
+            <section class="ticket-panel card">
+                <div class="card-header">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="audit">AUDIT TRAIL <span class="count"
+                                id="ticketCount">0</span></button>
+                        <button class="tab" data-tab="gedcom">GENEALOGY TREE</button>
+                        <button class="tab" data-tab="create">+ NEW TICKET</button>
+                    </div>
+                </div>
+
+                <!-- Audit Trail Tab -->
+                <div class="tab-content active" id="tab-audit">
+                    <div class="ticket-list" id="ticketList"></div>
+                </div>
+
+                <!-- GEDCOM Genealogy Tree Tab -->
+                <div class="tab-content" id="tab-gedcom">
+                    <div class="gedcom-toolbar">
+                        <button id="refreshTree">↺ REFRESH</button>
+                        <span class="gedcom-legend">
+                            <span class="dot genesis"></span>GENESIS
+                            <span class="dot evolution"></span>EVOLUTION
+                            <span class="dot consequence"></span>CONSEQUENCE
+                        </span>
+                    </div>
+                    <div class="gedcom-tree-container" id="gedcomContainer">
+                        <svg id="gedcomSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
+                </div>
+
+                <!-- Create Ticket Tab -->
+                <div class="tab-content" id="tab-create">
+                    <form id="createForm" class="create-form">
+                        <div class="form-group">
+                            <label>SUBJECT</label>
+                            <input type="text" id="createSubject" placeholder="Ticket subject…" required>
+                        </div>
+                        <div class="form-group">
+                            <label>QUEUE</label>
+                            <input type="text" id="createQueue" placeholder="e.g. SWARM, GOVERNANCE" value="SWARM">
+                        </div>
+                        <div class="form-group">
+                            <label>AGENT ID</label>
+                            <input type="text" id="createAgent" placeholder="e.g. AG-7K2PX" value="REST-API-USER">
+                        </div>
+                        <div class="form-group">
+                            <label>LAYER (1–7)</label>
+                            <input type="number" id="createLayer" min="1" max="7" value="2">
+                        </div>
+                        <div class="form-group">
+                            <label>CONTENT / TEXT</label>
+                            <textarea id="createContent" rows="4" placeholder="Describe the intent…"></textarea>
+                        </div>
+                        <button type="submit" class="save-btn" id="createBtn">▶ SUBMIT VIA REST 2.0</button>
+                        <div id="createResult" class="create-result"></div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Forensic Logs -->
+            <section class="forensic-logs card">
+                <div class="card-header">
+                    <h2>REAL-TIME FORENSIC LOGS</h2>
+                    <button id="clearLogs"
+                        style="font-size:0.55rem;border:1px solid rgba(255,255,255,0.2);background:none;color:var(--text-muted);padding:2px 8px;border-radius:3px;cursor:pointer">CLEAR</button>
+                </div>
+                <div class="log-stream" id="logStream">
+                    <div class="log-entry">[SYSTEM] Kernel Ignition complete. REST 2.0 online.</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit Ticket Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content card">
+            <div class="card-header">
+                <h2>EDIT TICKET <span id="editModalId" style="color:var(--accent-cyan);font-size:0.7rem"></span></h2>
+                <span class="close" id="closeEdit">&times;</span>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editTicketId">
+                <div class="form-group">
+                    <label>TITLE / INTENT</label>
+                    <input type="text" id="editTitle">
+                </div>
+                <div class="form-group">
+                    <label>STATUS</label>
+                    <select id="editStatus">
+                        <option value="NEW">NEW</option>
+                        <option value="OPEN">OPEN</option>
+                        <option value="IN_PROGRESS">IN PROGRESS</option>
+                        <option value="STALLED">STALLED</option>
+                        <option value="STUCK">STUCK</option>
+                        <option value="RESOLVED">RESOLVED</option>
+                        <option value="REJECTED">REJECTED</option>
+                        <option value="DELETED">DELETED</option>
+                        <option value="PENDING">PENDING</option>
+                        <option value="PROMOTED">PROMOTED</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>PRIORITY</label>
+                    <select id="editPriority">
+                        <option value="10">LOW (10)</option>
+                        <option value="20">NORMAL (20)</option>
+                        <option value="30">HIGH (30)</option>
+                        <option value="40">CRITICAL (40)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ASSIGNED TO</label>
+                    <input type="text" id="editAssignment" placeholder="Agent ID or Username…">
+                </div>
+                <div class="form-group">
+                    <label>CONTENT BLOB (JSON)</label>
+                    <textarea id="editContent" rows="6"></textarea>
+                </div>
+                <button type="submit" class="save-btn">COMMIT VIA REST 2.0</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

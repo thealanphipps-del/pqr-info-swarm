@@ -1,0 +1,90 @@
+import json
+import http.client
+import os
+import sys
+from datetime import datetime
+
+# --- AESTHETIC CONSTANTS ---
+BLUE = "\033[94m"
+CYAN = "\033[96m"
+GREEN = "\033[92m"
+GOLD = "\033[93m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+
+def log(msg, color=CYAN):
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    print(f"{BOLD}[{timestamp}]{RESET} {color}{msg}{RESET}")
+
+def banner():
+    print(f"""
+{GOLD}   _____          __  .__                                 .__  __          
+  /  _  \   _____/  |_|__| ___________ ___  ________  _|__|/  |_ ___ __ 
+ /  /_\  \ /    \   __\  |/ ___\_  __ \__  \ \  \ /  \ /  /  \   __\  |  \
+/    |    \   |  \  | |  / /_/  >  | \// __ \_\  V  V  /  |  ||  | |  |  /
+\____|__  /___|  /__| |__\___  /|__|  (____  / \_/\_/|__|__||__| |____/ 
+        \/     \/       /_____/            \/                           
+           {BOLD}SOVEREIGN AI INFRASTRUCTURE - JSON BRIDGE CLIENT{RESET}
+    """)
+
+def send_payload():
+    banner()
+    
+    # Load config
+    try:
+        with open("config.json", "r") as f:
+            config = json.load(f)
+    except FileNotFoundError:
+        log("Error: config.json not found.", color="\033[91m")
+        return
+
+    server_ip = config.get("server_ip", "127.0.0.1")
+    server_port = config.get("server_port", 8081)
+    payload_path = config.get("payload_path", "payloads/profile.json")
+    node_id = config.get("node_id", "UNKNOWN-NODE")
+
+    log(f"Initializing connection from {BOLD}{node_id}{RESET}...")
+    log(f"Target Server: {BOLD}{server_ip}:{server_port}{RESET}")
+
+    # Load payload
+    if not os.path.exists(payload_path):
+        log(f"Error: Payload file '{payload_path}' not found.", color="\033[91m")
+        return
+
+    with open(payload_path, "r") as f:
+        payload_data = json.load(f)
+    
+    log(f"Payload loaded: {BOLD}{os.path.basename(payload_path)}{RESET} ({len(json.dumps(payload_data))} bytes)")
+
+    # Send via HTTP POST
+    try:
+        conn = http.client.HTTPConnection(server_ip, server_port, timeout=10)
+        headers = {
+            'Content-Type': 'application/json',
+            'X-Antigravity-Node': node_id,
+            'X-Protocol-Version': '1.0'
+        }
+        
+        log(f"Executing {BOLD}Event Horizon{RESET} protocol handshake...")
+        conn.request("POST", "/bridge", json.dumps(payload_data), headers)
+        
+        response = conn.getresponse()
+        data = response.read().decode()
+        
+        if response.status == 200:
+            log(f"Handshake Successful! Status: {response.status} {response.reason}", color=GREEN)
+            log(f"Server Response: {BOLD}{data}{RESET}", color=GREEN)
+        else:
+            log(f"Handshake failed. Status: {response.status} {response.reason}", color="\033[91m")
+            log(f"Detail: {data}", color="\033[91m")
+            
+        conn.close()
+    except Exception as e:
+        log(f"Critical connection error: {e}", color="\033[91m")
+
+if __name__ == "__main__":
+    try:
+        send_payload()
+    except KeyboardInterrupt:
+        print("\nAborted.")
+        sys.exit(0)

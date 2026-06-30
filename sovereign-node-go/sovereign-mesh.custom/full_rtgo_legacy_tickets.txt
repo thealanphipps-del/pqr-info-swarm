@@ -1,0 +1,6 @@
+      id      |  parent_id   |         title         | status 
+--------------+--------------+-----------------------+--------
+ 20260417-023 | 20260417-022 | MESH_INTEGRITY_STRIKE | ACTIVE
+ 20260417-024 | 20260417-023 | FK_SOCAT_REPAIR       | CLOSED
+(2 rows)
+

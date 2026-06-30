@@ -1,0 +1,47 @@
+.TH AI-WORKFLOW 7 "May 2026" "v1.0" "Sovereign Mesh Manual"
+.SH NAME
+ai-workflow \- Dual AI operational modes of the Sovereign Mesh
+.SH DESCRIPTION
+The **Sovereign Mesh** supports two primary AI workflows designed to provide a balance between cloud-augmented reasoning and private, local autonomy.
+.SH WORKFLOW A: CLOUD-AUGMENTED (WITH GEMINI-CLI)
+This workflow is the default mode for high-level orchestration, utilizing cloud-based models and large context windows.
+.SS Components
+.IP \(bu 2
+\fBBrain:\fR Gemini Pro / Flash.
+.IP \(bu 2
+\fBInterface:\fR \fBgemini-cli\fR.
+.IP \(bu 2
+\fBDelegation:\fR Invokes specialized cloud sub-agents.
+.SH WORKFLOW B: SOVEREIGN-LOCAL (WITHOUT GEMINI-CLI)
+This workflow is designed for private, air-gapped, or low-latency environments, running entirely on the local mesh infrastructure.
+.SS Components
+.IP \(bu 2
+\fBBrain:\fR Local Gemma / CodeGemma models.
+.IP \(bu 2
+\fBInterface:\fR \fBgemma-ui\fR (IDE) and \fBsovereign-auto\fR (CLI).
+.IP \(bu 2
+\fBMemory:\fR Permanent recall via CockroachDB \fBagentic_memories\fR.
+.IP \(bu 2
+\fBTools:\fR Native MCP suite (Port 1111).
+.SS Operational Features
+.TP
+\fB/backup\fR
+Gemma can consult the cloud Mothership for complex queries while remaining the final local arbiter.
+.TP
+\fBPerfect Recall\fR
+Memories are automatically injected into the system prompt on every cycle.
+.SH COMPARISON
+.TS
+tab(|);
+L | L | L.
+Feature | Workflow A | Workflow B
+_
+Model | Gemini Cloud | Local Gemma
+Privacy | Cloud | 100% Local
+Memory | Session | Permanent
+Latency | Network | Sub-second
+.TE
+.SH SEE ALSO
+\fBsovereign-auto\fR(1), \fBgmudd\fR(8), \fBstarbirth\fR(7)
+.SH AUTHOR
+Sovereign Mesh Core Developers

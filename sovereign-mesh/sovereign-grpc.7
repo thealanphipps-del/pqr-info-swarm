@@ -1,0 +1,30 @@
+.TH SOVEREIGN-GRPC 7 "May 2026" "v2.0" "Sovereign Mesh Manual"
+.SH NAME
+sovereign-grpc \- Remote execution and swarm synchronization API
+.SH DESCRIPTION
+The **Sovereign gRPC** plane (Port 1111) governs bidirectional remote execution, pedigree traversal, and majority-based state mutations across the mesh.
+.SH SERVICE SPECIFICATIONS
+The \fBsync.proto\fR schema defines the following core RPC endpoints:
+.TP
+\fBPing\fR
+Verifies node connectivity and calculates network latency.
+.TP
+\fBTracePedigree\fR
+Traverses the 7-layer relational ancestry of an active agent.
+.TP
+\fBProposeSwarmMutation\fR
+Submits a state change for 4/5 majority consensus evaluation.
+.TP
+\fBQuerySwarmLedger\fR
+Performs cryptographic audits on the blockchain ledger.
+.TP
+\fBTimeTravelOverride\fR
+Invokes the **JetWeb** engine for retroactive timeline refactoring.
+.SH RESILIENCE & FAILOVER
+To ensure operational survival, the execution dialer implements an automatic \fBSSH Fallback\fR. If Port 1111 is unreachable or times out, the system automatically triggers a POSIX SSH pipe to Port 22 to maintain terminal supervision.
+.SH FILES
+.TP
+\fIproto/sync.proto\fR
+The foundational Protobuf schema for the gRPC plane.
+.SH SEE ALSO
+\fBsovereign-cli\fR(1), \fBmgsh-cli\fR(1), \fBstarbirth\fR(7)

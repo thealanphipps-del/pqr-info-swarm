@@ -1,0 +1,1 @@
+Get-ScheduledTask | Where-Object { $_.TaskName -like "*firewall*" -or $_.TaskName -like "*wsl*" -or $_.TaskName -like "*sovereign*" } | Select-Object TaskName, TaskPath, State | Format-Table -AutoSize

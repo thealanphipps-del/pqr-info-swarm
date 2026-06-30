@@ -1,0 +1,13 @@
+{
+    "node_id": "AURORA-R9-SERVER",
+    "local_port": 8081,
+    "remote_nodes": [
+        {
+            "id": "LAPTOP-TRAINING-AGENT",
+            "ip": "192.168.12.201",
+            "port": 8081
+        }
+    ],
+    "payload_path": "payloads/profile.json",
+    "sync_interval": 30
+}

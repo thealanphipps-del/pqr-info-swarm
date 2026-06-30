@@ -1,0 +1,45 @@
+.TH SOVEREIGN-AUTO 1 "May 2026" "v1.0" "Sovereign Mesh Manual"
+.SH NAME
+sovereign-auto \- Autonomous Mesh Orchestrator and Code-Walking Agent
+.SH SYNOPSIS
+.B sovereign-auto
+.I command
+[\fIargs\fR...]
+.SH DESCRIPTION
+.B sovereign-auto
+is a high-level autonomous orchestrator designed to replace traditional CLI interactions with the Sovereign Mesh. It combines the 7-layer pedigree system with the "Get Shit Done" (GSD) framework to provide autonomous code explanation, execution, and self-healing.
+.SH COMMANDS
+.TP
+\fBwalk\fR \fIpath\fR
+Recursively traverses the specified path and explains each source file (.go, .py, .proto) by retrieving its 7-layer pedigree ancestry from the Mesh Engine and GSD context from local metadata.
+.TP
+\fBexecute\fR \fI"goal"\fR
+Initiates the GSD-Executor engine to autonomously plan, implement, and verify a high-level goal.
+.TP
+\fBcheck\fR \fIpath\fR
+Performs an automated sanity check on the specified directory, detecting syntax errors in Go and Python files and identifying architectural deviances.
+.TP
+\fBfix\fR \fI"issue"\fR
+Invokes the GSD-Debugger and Code-Fixer agents to autonomously diagnose and repair a specified issue or error.
+.TP
+\fBhelp\fR
+Displays the in-CLI help manual.
+.SH ARCHITECTURE
+.B sovereign-auto
+operates by delegating complex tasks to specialized GSD agents:
+.IP \(bu 2
+\fBgsd-planner:\fR For goal decomposition.
+.IP \(bu 2
+\fBgsd-executor:\fR For atomic implementation.
+.IP \(bu 2
+\fBgsd-debugger:\fR For autonomous self-healing.
+.SH EXAMPLES
+.B sovereign-auto walk cmd/mesh_server
+.PP
+.B sovereign-auto execute "Add a new endpoint to sync.proto"
+.PP
+.B sovereign-auto fix "Syntax error in ledger.go line 42"
+.SH SEE ALSO
+\fBsovereign-cli\fR(1), \fBmgsh-cli\fR(1), \fBgmudd\fR(1)
+.SH AUTHOR
+Sovereign Mesh Core Developers

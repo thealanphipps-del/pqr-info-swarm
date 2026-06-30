@@ -1,0 +1,14 @@
+id: "5alpha#50c"
+name: "gsd-advisor-researcher"
+description: "Researches a single gray area decision and returns a structured comparison table with rationale. Spawned by discuss-phase advisor mode."
+capabilities:
+  - "read_file"
+  - "run_shell_command"
+  - "search_file_content"
+  - "glob"
+  - "google_web_search"
+  - "web_fetch"
+skills: []
+constraints: "No constraints specified."
+memory_policy: "Default PQR memory policy. Retain key task objectives and decisions across phase boundaries."
+execution_policy: "No explicit execution flow."
