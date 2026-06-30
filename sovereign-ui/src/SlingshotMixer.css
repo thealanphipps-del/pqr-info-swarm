@@ -1,0 +1,230 @@
+.slingshot-mixer {
+  background: linear-gradient(145deg, #111, #1a1a24);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 24px;
+  font-family: 'Inter', 'Roboto Mono', monospace;
+  color: #fff;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.mixer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.mixer-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  background: -webkit-linear-gradient(#00ffd5, #0088ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status-badge {
+  background: rgba(0, 255, 213, 0.1);
+  border: 1px solid #00ffd5;
+  color: #00ffd5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.2);
+}
+
+.mixer-deck {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.channel-strip {
+  flex: 1;
+  background: #0a0a0f;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.channel-display {
+  width: 100%;
+  background: #050505;
+  border: 1px solid #00ffd5;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.service-name {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.seq-range {
+  font-size: 0.85rem;
+  color: #00ffd5;
+  font-weight: bold;
+}
+
+.seq-range span {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.eq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.knob-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.knob {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #444, #111);
+  border: 2px solid #222;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.knob::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background: #00ffd5;
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+.knob-container label {
+  font-size: 0.65rem;
+  color: #666;
+}
+
+.vu-meter {
+  width: 12px;
+  height: 100px;
+  background: #111;
+  border-radius: 6px;
+  border: 1px solid #333;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.vu-level {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: height 0.1s ease-out, background-color 0.1s ease-out;
+}
+
+.fader-container {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.fader {
+  appearance: none;
+  width: 150px;
+  height: 6px;
+  background: #222;
+  outline: none;
+  transform: rotate(-90deg);
+  border-radius: 3px;
+}
+
+.fader::-webkit-slider-thumb {
+  appearance: none;
+  width: 30px;
+  height: 15px;
+  background: #444;
+  border: 2px solid #666;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+}
+
+.fader::-webkit-slider-thumb:hover {
+  background: #555;
+  border-color: #00ffd5;
+}
+
+.channel-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.crossfader-section {
+  background: #0a0a0f;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.deck-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #0088ff;
+  letter-spacing: 2px;
+}
+
+.crossfader {
+  appearance: none;
+  width: 60%;
+  height: 8px;
+  background: #111;
+  outline: none;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.crossfader::-webkit-slider-thumb {
+  appearance: none;
+  width: 40px;
+  height: 25px;
+  background: #333;
+  border: 2px solid #0088ff;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 136, 255, 0.3);
+}
+
+.crossfader::-webkit-slider-thumb:hover {
+  background: #444;
+  box-shadow: 0 0 15px rgba(0, 136, 255, 0.5);
+}

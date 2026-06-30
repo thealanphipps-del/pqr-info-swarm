@@ -53,4 +53,4 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240624140628-dc46fd24d27d // indirect
 )
 
-replace github.com/pqr-info/sovereign-mesh/proto => ./proto/github.com/pqr-info/sovereign-mesh/proto
+replace github.com/pqr-info/sovereign-mesh/proto => ./proto

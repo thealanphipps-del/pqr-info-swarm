@@ -46,4 +46,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/drphi/sovereign-connect => ../Sovereign_Connect
+replace github.com/drphi/sovereign-connect => ../sovereign-connect

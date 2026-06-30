@@ -2,24 +2,11 @@ go 1.26
 
 use (
 	.
-	./antigravity-bridge/sovereign-mesh.custom
-	./antigravity-bridge/sovereign-mesh.custom/amln-sen
-	./antigravity-bridge/sovereign-mesh.custom/proto
-	./antigravity-bridge/sovereign-mesh.custom/proto/github.com/pqr-info/sovereign-mesh/proto
-	./quantasona-mesh/sovereign-mesh.custom
-	./quantasona-mesh/sovereign-mesh.custom/amln-sen
-	./quantasona-mesh/sovereign-mesh.custom/proto
-	./quantasona-mesh/sovereign-mesh.custom/proto/github.com/pqr-info/sovereign-mesh/proto
 	./sovereign-connect
 	./sovereign-kernel
 	./sovereign-mesh
 	./sovereign-mesh/amln-sen
 	./sovereign-mesh/proto
-	./sovereign-mesh/proto/github.com/pqr-info/sovereign-mesh/proto
 	./sovereign-node-go
 	./sovereign-node-go/metaprogramming-go/metaprogramming-go-master
-	./sovereign-node-go/sovereign-mesh.custom
-	./sovereign-node-go/sovereign-mesh.custom/amln-sen
-	./sovereign-node-go/sovereign-mesh.custom/proto
-	./sovereign-node-go/sovereign-mesh.custom/proto/github.com/pqr-info/sovereign-mesh/proto
 )
