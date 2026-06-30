@@ -1,0 +1,92 @@
+[
+  {
+    "sigmaId": "biomarker/anon_56e7a57d20001293",
+    "semanticWeight": 0.11227690617912874,
+    "confidence": 0.9360163947047537,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_542393be537dbef7",
+    "semanticWeight": 0.08920663716660633,
+    "confidence": 0.9395217213754332,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_af3fa76e2a9303da",
+    "semanticWeight": 0.029927545949576875,
+    "confidence": 0.8701182657057267,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_89ab7eecbfb3f0f7",
+    "semanticWeight": -0.005569538518651707,
+    "confidence": 0.9223491383045026,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_500977e41f25cffe",
+    "semanticWeight": 0.018800308828927574,
+    "confidence": 0.896981111641069,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_ccca85c990342108",
+    "semanticWeight": -0.04699945980998959,
+    "confidence": 0.9194257202533316,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_062311adc2219e99",
+    "semanticWeight": -0.017298928057581386,
+    "confidence": 0.9630501540387048,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_c0ad091f74bce723",
+    "semanticWeight": -0.003873969637832403,
+    "confidence": 0.8633342145636926,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_499618a5cdf70e98",
+    "semanticWeight": -0.012671167530115416,
+    "confidence": 0.8691563706829459,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_05624ba53b73f867",
+    "semanticWeight": 0.07961073896419125,
+    "confidence": 0.9319499884376834,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "non-cellphone-condenser-16kHz"
+  }
+]

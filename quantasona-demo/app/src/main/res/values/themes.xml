@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.SovereignMesh" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/mesh_primary</item>
+        <item name="colorPrimaryContainer">@color/mesh_primary_dark</item>
+
+        <!-- Backgrounds -->
+        <item name="android:colorBackground">@color/mesh_background_light</item>
+        <item name="colorSurface">@color/mesh_surface_light</item>
+
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/mesh_text_primary</item>
+        <item name="android:textColorSecondary">@color/mesh_text_secondary</item>
+
+        <!-- Buttons -->
+        <item name="colorSecondary">@color/mesh_accent</item>
+
+        <!-- Disable action bar -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+</resources>

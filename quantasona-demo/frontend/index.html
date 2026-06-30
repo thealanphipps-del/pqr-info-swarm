@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantasona Patent Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Feather Icons for lightweight iconography -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background decorative elements -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <main class="dashboard-grid">
+            <!-- Sidebar / Upload Area -->
+            <aside class="glass-panel sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i data-feather="cpu" class="logo-icon"></i>
+                        <h1>Quantasona</h1>
+                    </div>
+                    <p class="subtitle">Patent Intelligence</p>
+                </div>
+
+                <div class="upload-section">
+                    <h2>Document Upload</h2>
+                    <div class="drop-zone" id="dropZone">
+                        <i data-feather="upload-cloud" class="upload-icon"></i>
+                        <p>Drag & drop patent text file</p>
+                        <span class="or">or</span>
+                        <button class="btn-primary" id="browseBtn">Browse Files</button>
+                        <input type="file" id="fileInput" accept=".txt,.md,.json" hidden>
+                    </div>
+
+                    <div class="file-status hidden" id="fileStatus">
+                        <div class="file-info">
+                            <i data-feather="file-text"></i>
+                            <span id="fileName">patent.txt</span>
+                        </div>
+                        <button class="icon-btn" id="removeFileBtn" title="Remove file">
+                            <i data-feather="x"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="patent-context hidden" id="patentContextSection">
+                    <div class="context-header">
+                        <h3>Extracted Content</h3>
+                        <span class="badge" id="tokenCount">0 tokens</span>
+                    </div>
+                    <div class="context-preview" id="contextPreview">
+                        <!-- Preview text will be injected here -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <section class="glass-panel chat-container">
+                <header class="chat-header">
+                    <div class="chat-title">
+                        <h2>LLM Assistant</h2>
+                        <span class="status-indicator online"></span>
+                    </div>
+                    <button class="icon-btn" id="clearChatBtn" title="Clear chat">
+                        <i data-feather="trash-2"></i>
+                    </button>
+                </header>
+
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message system">
+                        <div class="avatar"><i data-feather="monitor"></i></div>
+                        <div class="message-content">
+                            Welcome to Quantasona Patent Intelligence. Please upload a patent document on the left, then ask me anything about its claims, background, or legal scope.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <form id="chatForm" class="input-form">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Ask about the patent... (Press Enter to send)" 
+                            rows="1"
+                        ></textarea>
+                        <button type="submit" class="btn-primary send-btn" id="sendBtn">
+                            <i data-feather="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

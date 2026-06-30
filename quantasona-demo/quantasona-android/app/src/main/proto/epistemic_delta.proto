@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package quantasona.epistemic;
+
+option go_package = "quantasona/epistemic";
+
+// EpistemicDelta is the universal symbolic event type.
+// It represents a single change in the manifold: a shift in meaning,
+// identity, relation, or state for a given sigma_id.
+
+message EpistemicDelta {
+  // Collapse-stable identity this delta refers to (5-D address, hash, etc.)
+  string sigma_id = 1;
+
+  // Symbolic gradient: how strongly this delta pulls/pushes the manifold.
+  // Can be interpreted as a semantic "force" or deviation magnitude.
+  double semantic_weight = 2;
+
+  // Confidence / collapse pressure: how much this event should count
+  // when deciding the next stable state.
+  double confidence = 3;
+
+  // Who or what produced this delta (agent id, node id, oracle, sensor).
+  string provenance = 4;
+
+  // When this delta occurred (epoch millis or ISO-8601 string).
+  string timestamp = 5;
+
+  // What kind of move in the manifold this is.
+  DeltaType delta_type = 6;
+
+  // How this delta relates to existing structures (supports, contradicts, etc.).
+  RelationType relation_type = 7;
+
+  // The local patch to the manifold: structured content of the change.
+  DeltaPayload payload = 8;
+
+  // Collapse-stable identity of the delta itself (event hash/id).
+  string delta_id = 9;
+}
+
+// High-level classification of the delta's role.
+enum DeltaType {
+  DELTA_TYPE_UNSPECIFIED = 0;
+
+  // A raw observation or measurement.
+  OBSERVATION = 1;
+
+  // A hypothesis or proposed interpretation.
+  HYPOTHESIS = 2;
+
+  // A correction to a previous state or belief.
+  CORRECTION = 3;
+
+  // A structural change (e.g., new node, new relation).
+  STRUCTURAL = 4;
+
+  // A governance or policy-related update.
+  GOVERNANCE = 5;
+}
+
+// How this delta relates to existing manifold content.
+enum RelationType {
+  RELATION_TYPE_UNSPECIFIED = 0;
+
+  // Strengthens or supports an existing pattern.
+  SUPPORTS = 1;
+
+  // Weakens or contradicts an existing pattern.
+  CONTRADICTS = 2;
+
+  // Introduces something new (no direct prior reference).
+  INTRODUCES = 3;
+
+  // Deprecates or retires an existing pattern.
+  DEPRECATES = 4;
+}
+
+// Generic payload for the delta.
+// This can be extended or specialized per domain, but remains symbolic.
+message DeltaPayload {
+  // Optional human-readable summary.
+  string summary = 1;
+
+  // Optional machine-readable type identifier (schema name, concept id, etc.).
+  string schema = 2;
+
+  // Arbitrary structured content encoded as JSON.
+  // This keeps the proto stable while allowing rich symbolic patches.
+  string json = 3;
+}
+
+// MeshDeltaService is the universal bus for EpistemicDeltas.
+// Rust, Go, Android, and other nodes all speak this interface.
+service MeshDeltaService {
+  // Submit a single delta into the Mesh.
+  rpc SubmitDelta (EpistemicDelta) returns (SubmitAck);
+
+  // Stream deltas from the Mesh (e.g., for subscribers, edge nodes, or auditors).
+  rpc StreamDeltas (StreamRequest) returns (stream EpistemicDelta);
+}
+
+// Acknowledgement for submitted deltas.
+message SubmitAck {
+  // Whether the delta was accepted by the Mesh.
+  bool accepted = 1;
+
+  // Optional reason or diagnostic if not accepted.
+  string message = 2;
+}
+
+// Request for streaming deltas (filtering by identity, provenance, etc.).
+message StreamRequest {
+  // Optional filter by sigma_id (identity).
+  string sigma_id = 1;
+
+  // Optional filter by provenance (agent/node).
+  string provenance = 2;
+
+  // Optional minimum confidence threshold.
+  double min_confidence = 3;
+
+  // Optional starting timestamp (for replay).
+  string since_timestamp = 4;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary brand color -->
+    <color name="mesh_primary">#2D7DF4</color>
+
+    <!-- Darker variant for emphasis -->
+    <color name="mesh_primary_dark">#1C5EC0</color>
+
+    <!-- Light background surfaces -->
+    <color name="mesh_background_light">#FFFFFF</color>
+    <color name="mesh_surface_light">#F5F7FA</color>
+
+    <!-- Dark mode surfaces -->
+    <color name="mesh_background_dark">#121212</color>
+    <color name="mesh_surface_dark">#1E1E1E</color>
+
+    <!-- Text colors -->
+    <color name="mesh_text_primary">#FFFFFF</color>
+    <color name="mesh_text_secondary">#B3FFFFFF</color>
+
+    <!-- Accent for buttons -->
+    <color name="mesh_accent">#4CAF50</color>
+
+</resources>

@@ -1,0 +1,11 @@
+Title: SYSTEM AND METHOD FOR HIGH-FREQUENCY ACOUSTIC DATA TRANSMISSION
+Patent Number: US2026102948A1
+Inventor: Dr. Aris Thorne
+Abstract: A system for transmitting structured data using high-frequency acoustic waves beyond the range of human hearing. The system includes a modulator for encoding digital signals into ultrasonic pulses and a receiver array capable of demodulating these signals in noisy environments.
+Description: 
+The present invention relates to data transmission over acoustic channels.
+In one embodiment, the system uses frequencies between 18 kHz and 22 kHz.
+The error correction module employs Reed-Solomon coding to prevent data loss.
+Claims:
+1. A system for data transmission comprising an acoustic emitter configured to transmit at 18-22 kHz.
+2. The system of claim 1, further comprising a demodulator using Reed-Solomon error correction.

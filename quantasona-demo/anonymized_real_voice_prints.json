@@ -1,0 +1,38 @@
+[
+  {
+    "sigmaId": "biomarker/anon_5cb7b4e3b59872a5",
+    "semanticWeight": -26.72050666809082,
+    "confidence": 0.95,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "real-historical-audio-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_c7d1ed049b9ceebe",
+    "semanticWeight": -28.505617141723633,
+    "confidence": 0.95,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "real-historical-audio-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_8a573220ac877efc",
+    "semanticWeight": -28.508790969848633,
+    "confidence": 0.95,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "real-historical-audio-16kHz"
+  },
+  {
+    "sigmaId": "biomarker/anon_b5885f2e82b4d57a",
+    "semanticWeight": -28.50370216369629,
+    "confidence": 0.95,
+    "provenance": "anonymous-clinical-interview-001",
+    "deltaType": "OBSERVATION",
+    "relationType": "INTRODUCES",
+    "sourceMic": "real-historical-audio-16kHz"
+  }
+]

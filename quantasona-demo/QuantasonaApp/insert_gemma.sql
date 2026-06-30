@@ -1,0 +1,93 @@
+INSERT INTO system_manifest (key, value, updated_at) VALUES (
+  'gemma_config',
+  '{
+    "model_config": {
+      "model": "google/gemma-4-e4b",
+      "quantization": "Q4_K_M",
+      "backend": {
+        "type": "cuda",
+        "fallback": "directml",
+        "gpu_layers": "auto",
+        "cpu_threads": 3
+      },
+      "context": {
+        "max_context_tokens": 8192,
+        "overflow_strategy": "truncate_middle"
+      },
+      "sampling": {
+        "temperature": 1.0,
+        "top_k": 64,
+        "top_p": 0.95,
+        "min_p": 0.05,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "structured_output": false
+      },
+      "memory": {
+        "enable_gpu_offload": true,
+        "pagefile_recommended_min_gb": 16,
+        "pagefile_recommended_max_gb": 32
+      }
+    },
+    "server_config": {
+      "server": {
+        "enabled": true,
+        "auto_start": true,
+        "host": "127.0.0.1",
+        "port": 4111,
+        "protocol": "http",
+        "api_path": "/v1/chat/completions",
+        "allowed_origins": ["http://localhost", "http://127.0.0.1"],
+        "max_concurrent_requests": 8
+      },
+      "binding": {
+        "default_model": "google/gemma-4-e4b",
+        "allow_model_override": true
+      },
+      "logging": {
+        "enabled": true,
+        "level": "info",
+        "log_requests": true,
+        "log_responses": false
+      }
+    },
+    "brain_agent_config": {
+      "llm": {
+        "name": "gemma-4-e4b",
+        "provider": "lmstudio",
+        "endpoint": "http://127.0.0.1:4111/v1/chat/completions",
+        "transport": "http",
+        "timeout_seconds": 120
+      },
+      "inference": {
+        "sampling": {
+          "temperature": 1.0,
+          "top_k": 64,
+          "top_p": 0.95,
+          "min_p": 0.05,
+          "repeat_penalty": 1.1
+        },
+        "context": {
+          "max_tokens": 8192,
+          "overflow_strategy": "truncate_middle"
+        }
+      },
+      "agent_mode": {
+        "enabled": true,
+        "system_prompt": "You are in brain agent mode. You plan, reason, and decompose tasks into capability-aligned steps. You must respect the capability registry and manifests as sources of truth.",
+        "planning_enabled": true,
+        "reflection_enabled": true
+      },
+      "capabilities": {
+        "registry_source": "cockroachdb.system_manifest",
+        "manifest_files": [
+          "C:/Users/theal/QuantasonaApp/manifest.json",
+          "C:/Users/theal/.stealth/workspaces/paritytech-polkadot-sdk-minimal-template-master/manifest.json"
+        ],
+        "allow_unverified_capabilities": false
+      }
+    }
+  }'::JSONB,
+  CURRENT_TIMESTAMP
+) ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = CURRENT_TIMESTAMP;

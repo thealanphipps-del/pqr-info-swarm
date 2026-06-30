@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "environment": {
+    "os": "windows",
+    "hostname": "quantasona-node",
+    "workspace_root": "C:/Users/theal",
+    "wsl_enabled": true
+  },
+
+  "llm": {
+    "provider": "lmstudio",
+    "model": "google/gemma-4-e4b",
+    "quantization": "Q4_K_M",
+    "endpoint": "http://127.0.0.1:4111/v1/chat/completions",
+    "backend": {
+      "type": "cuda",
+      "fallback": "directml",
+      "cpu_threads": 3,
+      "gpu_layers": "auto"
+    },
+    "sampling": {
+      "temperature": 1.0,
+      "top_k": 64,
+      "top_p": 0.95,
+      "min_p": 0.05,
+      "repeat_penalty": 1.1
+    },
+    "context": {
+      "max_tokens": 8192,
+      "overflow_strategy": "truncate_middle"
+    }
+  },
+
+  "lmstudio_server": {
+    "enabled": true,
+    "auto_start": true,
+    "host": "127.0.0.1",
+    "port": 4111,
+    "api_path": "/v1/chat/completions",
+    "default_model": "google/gemma-4-e4b",
+    "allowed_origins": ["http://localhost", "http://127.0.0.1"]
+  },
+
+  "agent": {
+    "mode": "brain",
+    "system_prompt": "You are in brain agent mode. You plan, reason, and decompose tasks into capability-aligned steps. You must respect the capability registry and manifests as sources of truth.",
+    "planning_enabled": true,
+    "reflection_enabled": true,
+    "capability_registry_source": "cockroachdb.system_manifest",
+    "manifest_files": [
+      "C:/Users/theal/QuantasonaApp/manifest.json",
+      "C:/Users/theal/.stealth/workspaces/paritytech-polkadot-sdk-minimal-template-master/manifest.json"
+    ],
+    "allow_unverified_capabilities": false
+  },
+
+  "network_topology": {
+    "ports": {
+      "swend": 1111,
+      "mesh": 11111,
+      "vault": 8200,
+      "cockroachdb": 26257,
+      "lmstudio": 4111
+    },
+    "peers": [],
+    "protocols": ["grpc", "http"]
+  },
+
+  "capabilities": {
+    "grpc_services": [
+      "FileSystemService",
+      "ProcessService",
+      "MeshAdmin",
+      "SwendControl",
+      "SubstrateMemory",
+      "VaultAgent"
+    ],
+    "natural_language_map": {
+      "read file": "FileSystemService.ReadFile",
+      "write file": "FileSystemService.WriteFile",
+      "list directory": "FileSystemService.ListDirectory",
+      "list processes": "ProcessService.ListProcesses",
+      "kill process": "ProcessService.KillProcess",
+      "check mesh status": "MeshAdmin.GetStatus",
+      "start swend": "SwendControl.StartDaemon",
+      "stop swend": "SwendControl.StopDaemon"
+    }
+  }
+}

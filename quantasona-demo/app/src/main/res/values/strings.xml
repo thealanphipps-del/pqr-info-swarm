@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">Sovereign Mesh</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Join the Sovereign Mesh</string>
+    <string name="onboarding_hint_device_name">Enter device name</string>
+    <string name="onboarding_join_button">Join Mesh</string>
+    <string name="onboarding_error_empty_name">Please enter a name</string>
+
+    <!-- Connected Screen -->
+    <string name="connected_title">Connected to Sovereign Mesh</string>
+    <string name="connected_worker_running">Worker Running</string>
+    <string name="connected_worker_stopped">Worker Stopped</string>
+    <string name="connected_stop_worker">Stop Worker</string>
+    <string name="connected_restart_worker">Restart Worker</string>
+
+    <!-- Notification -->
+    <string name="notification_title">Sovereign Mesh Worker</string>
+    <string name="notification_text">Running background inference tasks</string>
+
+</resources>
