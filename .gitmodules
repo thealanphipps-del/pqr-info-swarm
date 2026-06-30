@@ -1,0 +1,3 @@
+[submodule "sovereign_mesh"]
+	path = sovereign_mesh
+	url = /home/aellok/sovereign_mesh
