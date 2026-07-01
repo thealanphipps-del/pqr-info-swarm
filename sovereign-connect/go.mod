@@ -1,6 +1,6 @@
 module github.com/drphi/sovereign-connect
 
-go 1.22.3
+go 1.22
 
 require google.golang.org/grpc v1.81.0
 

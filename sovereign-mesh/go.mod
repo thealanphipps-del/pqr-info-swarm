@@ -1,6 +1,6 @@
 module github.com/pqr-info/sovereign-mesh
 
-go 1.26 // Minimum required version for eBPF and generated protobuf compatibility
+go 1.22 // Minimum required version for eBPF and generated protobuf compatibility
 
 require (
 	cloud.google.com/go/aiplatform v1.68.0

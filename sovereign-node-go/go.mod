@@ -1,6 +1,6 @@
 module sovereign-node-go
 
-go 1.25.0
+go 1.22
 
 require (
 	github.com/drphi/sovereign-connect v0.0.0
