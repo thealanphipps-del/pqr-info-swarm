@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="github.com/thealanphipps-del/pqr" tests="0" failures="0" errors="0" id="0" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00">
+		<system-out><![CDATA[testing: warning: no tests to run]]></system-out>
+	</testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/cmd/ast_scanner" tests="0" failures="0" errors="0" id="1" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/cmd/pqr" tests="0" failures="0" errors="0" id="2" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/cmd/seed_user" tests="0" failures="0" errors="0" id="3" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/internal/domain" tests="0" failures="0" errors="0" id="4" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/internal/infrastructure/auth" tests="0" failures="0" errors="0" id="5" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/internal/infrastructure/db" tests="0" failures="0" errors="0" id="6" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/internal/infrastructure/grpc" tests="0" failures="0" errors="0" id="7" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/internal/service" tests="0" failures="0" errors="0" id="8" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+	<testsuite name="github.com/thealanphipps-del/pqr/pqr-extension/node_modules/flatted/golang/pkg/flatted" tests="0" failures="0" errors="0" id="9" hostname="ted" time="0.000" timestamp="2026-06-30T08:03:43-05:00"></testsuite>
+</testsuites>

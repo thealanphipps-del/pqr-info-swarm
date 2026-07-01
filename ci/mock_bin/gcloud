@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "[MOCK GCLOUD] Execution: gcloud $@"
+if [[ "$*" == *"run deploy"* ]]; then
+    echo "Deploying to mocked service..."
+elif [[ "$*" == *"run services describe"* ]]; then
+    echo "https://mock-service-url.run.app"
+fi
+exit 0

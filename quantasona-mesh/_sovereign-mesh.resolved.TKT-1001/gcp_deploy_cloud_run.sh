@@ -39,24 +39,16 @@ echo ""
 # --- PHASE 1: BUILD ARTIFACT ---
 echo -e "${GOLD}[PHASE 1] Building Artifact...${RESET}"
 # Ensure we are in the root of the monorepo
-cd "$(dirname "$0")/../../.." || exit 1
+cd /home/aellok/pqr-info-swarm || exit 1
 
-# Build the docker container natively
-docker build -t "${FULL_IMAGE_URI}" -f Dockerfile .
-echo -e "${GREEN}[OK] Docker build complete.${RESET}"
+# APIs should already be enabled for this project
+
+# Build and push the container natively in GCP Cloud Build (bypassing local Docker)
+gcloud builds submit --tag "${FULL_IMAGE_URI}" . --project="${PROJECT_ID}"
+echo -e "${GREEN}[OK] Cloud Build complete and image pushed to Artifact Registry.${RESET}"
 
 # --- PHASE 2: DEPLOY MANIFEST ---
-echo -e "${GOLD}[PHASE 2] Pushing Artifact & Deploying to Cloud Run...${RESET}"
-
-# Enable necessary APIs
-gcloud services enable run.googleapis.com artifactregistry.googleapis.com --project="${PROJECT_ID}" --quiet
-
-# Authenticate Docker to GCP Artifact Registry
-gcloud auth configure-docker "${REGION}-docker.pkg.dev" --quiet
-
-# Push the newly built image
-docker push "${FULL_IMAGE_URI}"
-echo -e "${GREEN}[OK] Image pushed to Artifact Registry.${RESET}"
+echo -e "${GOLD}[PHASE 2] Deploying to Cloud Run...${RESET}"
 
 # Configure GPU flags only if count > 0
 GPU_ARGS=""

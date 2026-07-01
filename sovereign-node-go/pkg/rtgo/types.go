@@ -23,6 +23,7 @@ const (
 	StatusNew        = "NEW"
 	StatusOpen       = "OPEN"
 	StatusPending    = "PENDING"
+	StatusHITLRequired = "HITL_REQUIRED"
 	StatusInProgress = "IN_PROGRESS"
 	StatusStalled    = "STALLED"
 	StatusStuck      = "STUCK"

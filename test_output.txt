@@ -1,0 +1,10 @@
+FAIL	github.com/thealanphipps-del/pqr [build failed]
+FAIL	github.com/thealanphipps-del/pqr/cmd/pqr [build failed]
+?   	github.com/thealanphipps-del/pqr/cmd/seed_user	[no test files]
+?   	github.com/thealanphipps-del/pqr/internal/domain	[no test files]
+?   	github.com/thealanphipps-del/pqr/internal/infrastructure/auth	[no test files]
+?   	github.com/thealanphipps-del/pqr/internal/infrastructure/db	[no test files]
+?   	github.com/thealanphipps-del/pqr/internal/infrastructure/grpc	[no test files]
+?   	github.com/thealanphipps-del/pqr/internal/service	[no test files]
+?   	github.com/thealanphipps-del/pqr/pqr-extension/node_modules/flatted/golang/pkg/flatted	[no test files]
+FAIL

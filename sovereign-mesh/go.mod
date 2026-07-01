@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go/aiplatform v1.68.0
 	cloud.google.com/go/storage v1.43.0
 	github.com/go-rod/rod v0.116.2
+	github.com/google/uuid v1.6.0
 	github.com/pqr-info/sovereign-mesh/proto v0.0.0-00010101000000-000000000000
 	golang.org/x/telemetry v0.0.0-20260508192327-42602be52be6
 	google.golang.org/api v0.187.0
@@ -27,7 +28,6 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.5 // indirect
 	github.com/ysmood/fetchup v0.2.3 // indirect

@@ -1,0 +1,2954 @@
+{
+    "modules": [
+        {
+            "module_path": "github.com/thealanphipps-del/pqr",
+            "directory": ".",
+            "dependencies": [
+                {
+                    "name": "github.com/crewjam/saml",
+                    "version": "v0.5.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gin-gonic/gin",
+                    "version": "v1.9.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/uuid",
+                    "version": "v1.6.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/vault/api",
+                    "version": "v1.23.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/lib/pq",
+                    "version": "v1.10.9",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/grpc",
+                    "version": "v1.67.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/beevik/etree",
+                    "version": "v1.6.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/bytedance/sonic",
+                    "version": "v1.9.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/cenkalti/backoff/v4",
+                    "version": "v4.3.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/chenzhuoyu/base64x",
+                    "version": "v0.0.0-20221115062448-fe3a3abad311",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gabriel-vasile/mimetype",
+                    "version": "v1.4.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gin-contrib/sse",
+                    "version": "v0.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-jose/go-jose/v4",
+                    "version": "v4.1.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/locales",
+                    "version": "v0.14.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/universal-translator",
+                    "version": "v0.18.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/validator/v10",
+                    "version": "v10.14.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/goccy/go-json",
+                    "version": "v0.10.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/errwrap",
+                    "version": "v1.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-cleanhttp",
+                    "version": "v0.5.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-multierror",
+                    "version": "v1.1.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-retryablehttp",
+                    "version": "v0.7.8",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-rootcerts",
+                    "version": "v1.0.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-secure-stdlib/parseutil",
+                    "version": "v0.2.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-secure-stdlib/strutil",
+                    "version": "v0.1.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/go-sockaddr",
+                    "version": "v1.0.7",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/hashicorp/hcl",
+                    "version": "v1.0.1-vault-7",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/jonboulle/clockwork",
+                    "version": "v0.5.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/json-iterator/go",
+                    "version": "v1.1.12",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/klauspost/cpuid/v2",
+                    "version": "v2.2.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/kr/text",
+                    "version": "v0.2.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/leodido/go-urn",
+                    "version": "v1.2.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/mattermost/xml-roundtrip-validator",
+                    "version": "v0.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/mattn/go-isatty",
+                    "version": "v0.0.20",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/mitchellh/go-homedir",
+                    "version": "v1.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/mitchellh/mapstructure",
+                    "version": "v1.5.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/modern-go/concurrent",
+                    "version": "v0.0.0-20180306012644-bacd9c7ef1dd",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/modern-go/reflect2",
+                    "version": "v1.0.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/pelletier/go-toml/v2",
+                    "version": "v2.0.8",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/russellhaering/goxmldsig",
+                    "version": "v1.6.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ryanuber/go-glob",
+                    "version": "v1.0.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/twitchyliquid64/golang-asm",
+                    "version": "v0.15.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ugorji/go/codec",
+                    "version": "v1.2.11",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/arch",
+                    "version": "v0.3.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/crypto",
+                    "version": "v0.48.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/net",
+                    "version": "v0.51.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sys",
+                    "version": "v0.42.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/text",
+                    "version": "v0.34.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/time",
+                    "version": "v0.12.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/genproto/googleapis/rpc",
+                    "version": "v0.0.0-20260226221140-a57be14db171",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/protobuf",
+                    "version": "v1.36.11",
+                    "type": "external"
+                },
+                {
+                    "name": "gopkg.in/yaml.v3",
+                    "version": "v3.0.1",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 0
+        },
+        {
+            "module_path": "quantasona-demo/backend",
+            "directory": "quantasona-demo/backend",
+            "dependencies": [],
+            "usage_count": 1
+        },
+        {
+            "module_path": "github.com/drphi/sovereign-connect",
+            "directory": "sovereign-connect",
+            "dependencies": [
+                {
+                    "name": "google.golang.org/grpc",
+                    "version": "v1.81.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/net",
+                    "version": "v0.51.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sys",
+                    "version": "v0.42.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/text",
+                    "version": "v0.34.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/genproto/googleapis/rpc",
+                    "version": "v0.0.0-20260226221140-a57be14db171",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/protobuf",
+                    "version": "v1.36.11",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 3
+        },
+        {
+            "module_path": "sovereign-kernel",
+            "directory": "sovereign-kernel",
+            "dependencies": [
+                {
+                    "name": "github.com/gorilla/websocket",
+                    "version": "v1.5.3",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 0
+        },
+        {
+            "module_path": "github.com/pqr-info/sovereign-mesh",
+            "directory": "sovereign-mesh",
+            "dependencies": [
+                {
+                    "name": "cloud.google.com/go/aiplatform",
+                    "version": "v1.68.0",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go/storage",
+                    "version": "v1.43.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-rod/rod",
+                    "version": "v0.116.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/uuid",
+                    "version": "v1.6.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/pqr-info/sovereign-mesh/proto",
+                    "version": "v0.0.0-00010101000000-000000000000",
+                    "type": "internal"
+                },
+                {
+                    "name": "golang.org/x/telemetry",
+                    "version": "v0.0.0-20260508192327-42602be52be6",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/api",
+                    "version": "v0.187.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/grpc",
+                    "version": "v1.64.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/protobuf",
+                    "version": "v1.34.2",
+                    "type": "external"
+                },
+                {
+                    "name": "layeh.com/radius",
+                    "version": "v0.0.0-20231213012653-1006025d24f8",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go",
+                    "version": "v0.115.0",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go/auth",
+                    "version": "v0.6.1",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go/auth/oauth2adapt",
+                    "version": "v0.2.2",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go/compute/metadata",
+                    "version": "v0.3.0",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go/iam",
+                    "version": "v1.1.8",
+                    "type": "external"
+                },
+                {
+                    "name": "cloud.google.com/go/longrunning",
+                    "version": "v0.5.7",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/felixge/httpsnoop",
+                    "version": "v1.0.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-logr/logr",
+                    "version": "v1.4.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-logr/stdr",
+                    "version": "v1.2.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/golang/groupcache",
+                    "version": "v0.0.0-20210331224755-41bb18bfe9da",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/golang/protobuf",
+                    "version": "v1.5.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/s2a-go",
+                    "version": "v0.1.7",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/googleapis/enterprise-certificate-proxy",
+                    "version": "v0.3.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/googleapis/gax-go/v2",
+                    "version": "v2.12.5",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ysmood/fetchup",
+                    "version": "v0.2.3",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ysmood/goob",
+                    "version": "v0.4.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ysmood/got",
+                    "version": "v0.40.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ysmood/gson",
+                    "version": "v0.7.3",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ysmood/leakless",
+                    "version": "v0.9.0",
+                    "type": "external"
+                },
+                {
+                    "name": "go.opencensus.io",
+                    "version": "v0.24.0",
+                    "type": "external"
+                },
+                {
+                    "name": "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc",
+                    "version": "v0.49.0",
+                    "type": "external"
+                },
+                {
+                    "name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+                    "version": "v0.49.0",
+                    "type": "external"
+                },
+                {
+                    "name": "go.opentelemetry.io/otel",
+                    "version": "v1.24.0",
+                    "type": "external"
+                },
+                {
+                    "name": "go.opentelemetry.io/otel/metric",
+                    "version": "v1.24.0",
+                    "type": "external"
+                },
+                {
+                    "name": "go.opentelemetry.io/otel/trace",
+                    "version": "v1.24.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/crypto",
+                    "version": "v0.24.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/net",
+                    "version": "v0.26.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/oauth2",
+                    "version": "v0.21.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sync",
+                    "version": "v0.20.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sys",
+                    "version": "v0.44.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/text",
+                    "version": "v0.16.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/time",
+                    "version": "v0.5.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/genproto",
+                    "version": "v0.0.0-20240624140628-dc46fd24d27d",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/genproto/googleapis/api",
+                    "version": "v0.0.0-20240617180043-68d350f18fd4",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/genproto/googleapis/rpc",
+                    "version": "v0.0.0-20240624140628-dc46fd24d27d",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 54
+        },
+        {
+            "module_path": "amln-sen",
+            "directory": "sovereign-mesh/amln-sen",
+            "dependencies": [
+                {
+                    "name": "github.com/gin-gonic/gin",
+                    "version": "v1.9.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/uuid",
+                    "version": "v1.4.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/bytedance/sonic",
+                    "version": "v1.9.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/chenzhuoyu/base64x",
+                    "version": "v0.0.0-20221115062448-fe3a3abad311",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gabriel-vasile/mimetype",
+                    "version": "v1.4.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gin-contrib/sse",
+                    "version": "v0.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/locales",
+                    "version": "v0.14.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/universal-translator",
+                    "version": "v0.18.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/validator/v10",
+                    "version": "v10.14.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/goccy/go-json",
+                    "version": "v0.10.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/json-iterator/go",
+                    "version": "v1.1.12",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/klauspost/cpuid/v2",
+                    "version": "v2.2.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/leodido/go-urn",
+                    "version": "v1.2.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/mattn/go-isatty",
+                    "version": "v0.0.19",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/modern-go/concurrent",
+                    "version": "v0.0.0-20180306012644-bacd9c7ef1dd",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/modern-go/reflect2",
+                    "version": "v1.0.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/pelletier/go-toml/v2",
+                    "version": "v2.0.8",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/twitchyliquid64/golang-asm",
+                    "version": "v0.15.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ugorji/go/codec",
+                    "version": "v1.2.11",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/arch",
+                    "version": "v0.3.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/crypto",
+                    "version": "v0.9.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/net",
+                    "version": "v0.10.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sys",
+                    "version": "v0.8.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/text",
+                    "version": "v0.9.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/protobuf",
+                    "version": "v1.30.0",
+                    "type": "external"
+                },
+                {
+                    "name": "gopkg.in/yaml.v3",
+                    "version": "v3.0.1",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 195
+        },
+        {
+            "module_path": "github.com/pqr-info/sovereign-mesh/proto",
+            "directory": "sovereign-mesh/proto",
+            "dependencies": [],
+            "usage_count": 39
+        },
+        {
+            "module_path": "sovereign-node-go",
+            "directory": "sovereign-node-go",
+            "dependencies": [
+                {
+                    "name": "github.com/drphi/sovereign-connect",
+                    "version": "v0.0.0",
+                    "type": "internal"
+                },
+                {
+                    "name": "github.com/gin-gonic/gin",
+                    "version": "v1.10.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/go-github/v60",
+                    "version": "v60.0.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/uuid",
+                    "version": "v1.6.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/lib/pq",
+                    "version": "v1.12.3",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/grpc",
+                    "version": "v1.81.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/bytedance/gopkg",
+                    "version": "v0.1.3",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/bytedance/sonic",
+                    "version": "v1.15.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/bytedance/sonic/loader",
+                    "version": "v0.5.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/cloudwego/base64x",
+                    "version": "v0.1.6",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gabriel-vasile/mimetype",
+                    "version": "v1.4.12",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gin-contrib/sse",
+                    "version": "v1.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/locales",
+                    "version": "v0.14.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/universal-translator",
+                    "version": "v0.18.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/go-playground/validator/v10",
+                    "version": "v10.30.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/goccy/go-json",
+                    "version": "v0.10.5",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/google/go-querystring",
+                    "version": "v1.1.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/json-iterator/go",
+                    "version": "v1.1.12",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/klauspost/cpuid/v2",
+                    "version": "v2.3.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/kr/pretty",
+                    "version": "v0.3.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/leodido/go-urn",
+                    "version": "v1.4.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/mattn/go-isatty",
+                    "version": "v0.0.20",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/modern-go/concurrent",
+                    "version": "v0.0.0-20180306012644-bacd9c7ef1dd",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/modern-go/reflect2",
+                    "version": "v1.0.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/pelletier/go-toml/v2",
+                    "version": "v2.2.4",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/rogpeppe/go-internal",
+                    "version": "v1.10.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/stretchr/testify",
+                    "version": "v1.11.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/twitchyliquid64/golang-asm",
+                    "version": "v0.15.1",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/ugorji/go/codec",
+                    "version": "v1.3.1",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/arch",
+                    "version": "v0.22.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/crypto",
+                    "version": "v0.51.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/net",
+                    "version": "v0.54.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sys",
+                    "version": "v0.44.0",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/text",
+                    "version": "v0.37.0",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/genproto/googleapis/rpc",
+                    "version": "v0.0.0-20260226221140-a57be14db171",
+                    "type": "external"
+                },
+                {
+                    "name": "google.golang.org/protobuf",
+                    "version": "v1.36.11",
+                    "type": "external"
+                },
+                {
+                    "name": "gopkg.in/check.v1",
+                    "version": "v1.0.0-20201130134442-10cb98267c6c",
+                    "type": "external"
+                },
+                {
+                    "name": "gopkg.in/yaml.v3",
+                    "version": "v3.0.1",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 39
+        },
+        {
+            "module_path": "github.com/hlubek/metaprogramming-go",
+            "directory": "sovereign-node-go/metaprogramming-go/metaprogramming-go-master",
+            "dependencies": [
+                {
+                    "name": "github.com/Masterminds/squirrel",
+                    "version": "v1.5.2",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/dave/jennifer",
+                    "version": "v1.5.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/fergusstrange/embedded-postgres",
+                    "version": "v1.15.0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/gofrs/uuid",
+                    "version": "v4.2.0+incompatible",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/lib/pq",
+                    "version": "v1.10.4",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/tools",
+                    "version": "v0.1.9",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/lann/builder",
+                    "version": "v0.0.0-20180802200727-47ae307949d0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/lann/ps",
+                    "version": "v0.0.0-20150810152359-62de8c46ede0",
+                    "type": "external"
+                },
+                {
+                    "name": "github.com/xi2/xz",
+                    "version": "v0.0.0-20171230120015-48954b6210f8",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/mod",
+                    "version": "v0.5.1",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/sys",
+                    "version": "v0.0.0-20220307203707-22a9840ba4d7",
+                    "type": "external"
+                },
+                {
+                    "name": "golang.org/x/xerrors",
+                    "version": "v0.0.0-20200804184101-5ec99f83aff1",
+                    "type": "external"
+                }
+            ],
+            "usage_count": 3
+        }
+    ],
+    "critical_inter_service_links": [
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "./quantasona-demo/backend/llm_context_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "./quantasona-demo/backend/server.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "./quantasona-demo/backend/llm_context.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "quantasona-demo/backend",
+            "imported_package": "quantasona-demo/backend",
+            "file": "./quantasona-demo/backend/cmd/backend/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/types.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/arbitrage.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/crypto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/rtgo-client/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/models/flashlite",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/cmd/serve/serve.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh",
+            "file": "./quantasona-mesh/_sovereign-mesh.resolved.TKT-1001/cmd/mesh_server/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./sovereign-mesh/types.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./sovereign-mesh/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./sovereign-mesh/arbitrage.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/tcr.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/tcr.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/api.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/api.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/stitcher.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/tsre/stitcher.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./sovereign-mesh/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-mesh/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./sovereign-mesh/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/crypto",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-mesh/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./sovereign-mesh/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./sovereign-mesh/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./sovereign-mesh/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-mesh/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./sovereign-mesh/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-mesh/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-mesh/amln-sen/cmd/rtgo-client/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-mesh/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/models/flashlite",
+            "file": "./sovereign-mesh/cmd/serve/serve.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh",
+            "file": "./sovereign-mesh/cmd/mesh_server/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/types.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/arbitrage.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/crypto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/rtgo-client/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/models/flashlite",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/cmd/serve/serve.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh",
+            "file": "./antigravity-bridge/_sovereign-mesh.resolved.TKT-1001/cmd/mesh_server/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/types.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/arbitrage.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/crypto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/rtgo-client/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/models/flashlite",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/serve/serve.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh",
+            "file": "./sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/mesh_server/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/github",
+            "file": "./sovereign-node-go/scripts/test_lattice/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/mesh",
+            "file": "./sovereign-node-go/scripts/test_lattice/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/scripts/test_lattice/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/github",
+            "file": "./sovereign-node-go/scripts/test_godhead/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/mesh",
+            "file": "./sovereign-node-go/scripts/test_godhead/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/scripts/test_godhead/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/mesh",
+            "file": "./sovereign-node-go/scripts/simulate_p2p/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/audio",
+            "file": "./sovereign-node-go/scripts/spec_simulator/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/protocol",
+            "file": "./sovereign-node-go/scripts/spec_simulator/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/hlubek/metaprogramming-go",
+            "imported_package": "github.com/hlubek/metaprogramming-go/domain",
+            "file": "./sovereign-node-go/metaprogramming-go/metaprogramming-go-master/cmd/example/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/hlubek/metaprogramming-go",
+            "imported_package": "github.com/hlubek/metaprogramming-go/repository",
+            "file": "./sovereign-node-go/metaprogramming-go/metaprogramming-go-master/cmd/example/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/hlubek/metaprogramming-go",
+            "imported_package": "github.com/hlubek/metaprogramming-go/domain",
+            "file": "./sovereign-node-go/metaprogramming-go/metaprogramming-go-master/repository/repository_product.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/agent",
+            "file": "./sovereign-node-go/cmd/build_agents/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/github",
+            "file": "./sovereign-node-go/cmd/build_agents/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/cmd/build_agents/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/github",
+            "file": "./sovereign-node-go/cmd/monolith/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/mesh",
+            "file": "./sovereign-node-go/cmd/monolith/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/cmd/monolith/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/agent",
+            "file": "./sovereign-node-go/cmd/hud/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/llm",
+            "file": "./sovereign-node-go/cmd/hud/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "./sovereign-node-go/cmd/hud/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/github",
+            "file": "./sovereign-node-go/cmd/verify_v71/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/cmd/verify_v71/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/mesh",
+            "file": "./sovereign-node-go/cmd/node/main.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/mesh",
+            "file": "./sovereign-node-go/cmd/node/connect_stub.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/llm",
+            "file": "./sovereign-node-go/pkg/rtgo/fabric.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/github",
+            "file": "./sovereign-node-go/pkg/tickets/tickets.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/pkg/mesh/governance.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "github.com/drphi/sovereign-connect",
+            "imported_package": "github.com/drphi/sovereign-connect/go",
+            "file": "./sovereign-node-go/pkg/mesh/mesh.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/pkg/mesh/lattice.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/pkg/mesh/strike.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/pkg/mesh/gup.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/tickets",
+            "file": "./sovereign-node-go/pkg/agent/agent.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/audio",
+            "file": "./sovereign-node-go/pkg/agent/worker.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/llm",
+            "file": "./sovereign-node-go/pkg/agent/worker.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/protocol",
+            "file": "./sovereign-node-go/pkg/agent/worker.go"
+        },
+        {
+            "source_module": "github.com/thealanphipps-del/pqr",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "./sovereign-node-go/pkg/agent/worker.go"
+        },
+        {
+            "source_module": "quantasona-demo/backend",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "quantasona-demo/backend/llm_context_test.go"
+        },
+        {
+            "source_module": "quantasona-demo/backend",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "quantasona-demo/backend/server.go"
+        },
+        {
+            "source_module": "quantasona-demo/backend",
+            "target_module": "sovereign-node-go",
+            "imported_package": "sovereign-node-go/pkg/rtgo",
+            "file": "quantasona-demo/backend/llm_context.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/radius.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/sovereign.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/tool_use.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/grpc.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/tsre/tcr.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/tsre/engine.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/tsre/api.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/tsre/stitcher.go"
+        },
+        {
+            "source_module": "github.com/pqr-info/sovereign-mesh",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-mesh/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/types.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/radius.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/sovereign.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/tool_use.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/grpc.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/addressing",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/arbitrage.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/smoke_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/crypto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sen_engine.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/hde.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/prm.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/ltms.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/stmb.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/sel.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/cognition/amln_memory_test.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/governance",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/api/rest.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/consensus.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/slingshot.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/internal/routing/gossip.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/api",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/cognition",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/routing",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/types",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/amln/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "amln-sen",
+            "imported_package": "amln-sen/internal/pqr",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/amln-sen/cmd/rtgo-client/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh/proto",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/proto",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/test_auth/test_auth.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh/models/flashlite",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/serve/serve.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/pqr-info/sovereign-mesh",
+            "imported_package": "github.com/pqr-info/sovereign-mesh",
+            "file": "sovereign-node-go/_sovereign-mesh.resolved.TKT-1001/cmd/mesh_server/main.go"
+        },
+        {
+            "source_module": "sovereign-node-go",
+            "target_module": "github.com/drphi/sovereign-connect",
+            "imported_package": "github.com/drphi/sovereign-connect/go",
+            "file": "sovereign-node-go/pkg/mesh/mesh.go"
+        }
+    ]
+}

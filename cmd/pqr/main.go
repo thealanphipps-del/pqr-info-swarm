@@ -43,8 +43,6 @@ func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 
-	// Start dynamic model discovery for LM Studio Array
-	aiService.StartModelDiscovery(ctx)
 
 	// 3. Initialize Schema with timeout
 	initCtx, cancelInit := context.WithTimeout(context.Background(), 30*time.Second)

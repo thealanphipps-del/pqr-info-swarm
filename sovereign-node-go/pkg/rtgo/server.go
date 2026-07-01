@@ -31,6 +31,10 @@ func NewServer(mgr *Manager) *Server {
 		api.GET("/ticket/:id/forensic", s.handleExportTicket)
 		api.GET("/search/semantic", s.handleSemanticSearch)
 		api.GET("/health", s.handleHealth)
+
+		// Human-in-the-Loop Replay Determination Endpoints
+		api.POST("/hitl/replay/:id", s.handleHITLRequestReplay)
+		api.POST("/hitl/resolve/:id", s.handleHITLResolveReplay)
 	}
 
 	return s
@@ -216,6 +220,39 @@ func (s *Server) handleHealth(c *gin.Context) {
 		"service": "Sovereign Node Go HUD",
 		"version": "v8.5-RTGO",
 	})
+}
+
+func (s *Server) handleHITLRequestReplay(c *gin.Context) {
+	idStr := c.Param("id")
+	err := s.Manager.UpdateTicket(c.Request.Context(), idStr, "", StatusHITLRequired, PriorityCritical, "")
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Sequence buffered for Human-In-The-Loop Replay Determination", "status": StatusHITLRequired})
+}
+
+func (s *Server) handleHITLResolveReplay(c *gin.Context) {
+	idStr := c.Param("id")
+	var req struct {
+		Action string `json:"action"` // "APPROVE" or "REJECT"
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	newStatus := StatusResolved
+	if req.Action == "REJECT" {
+		newStatus = StatusDeleted
+	}
+
+	err := s.Manager.UpdateTicket(c.Request.Context(), idStr, "", newStatus, PriorityNormal, "")
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("HITL Replay Determination: %s", req.Action), "status": newStatus})
 }
 
 func (s *Server) Run(addr string) error {

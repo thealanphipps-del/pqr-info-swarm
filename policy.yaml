@@ -1,0 +1,6 @@
+name: projects/model-loader-495607-m2/policies/compute.vmExternalIpAccess
+spec:
+  rules:
+  - values:
+      allowedValues:
+      - projects/model-loader-495607-m2/zones/us-central1-c/instances/sovereign-free-node
