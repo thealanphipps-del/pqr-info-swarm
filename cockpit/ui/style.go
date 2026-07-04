@@ -14,6 +14,7 @@ type Styles struct {
 	TimelinePane lipgloss.Style
 	ChatPane    lipgloss.Style
 	CommandPane lipgloss.Style
+	TelemetryPane lipgloss.Style
 }
 
 func NewStyles(cfg config.TenantConfig) Styles {
@@ -41,5 +42,6 @@ func NewStyles(cfg config.TenantConfig) Styles {
 		TimelinePane: border,
 		ChatPane:    border,
 		CommandPane: border,
+		TelemetryPane: border,
 	}
 }

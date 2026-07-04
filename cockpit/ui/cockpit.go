@@ -49,6 +49,7 @@ type CockpitModel struct {
 	timeline TimelinePaneModel
 	chat     ChatPaneModel
 	command  CommandPaneModel
+	telemetry TelemetryPaneModel
 }
 
 func NewCockpitModel(cfg config.TenantConfig) CockpitModel {
@@ -63,6 +64,7 @@ func NewCockpitModel(cfg config.TenantConfig) CockpitModel {
 		timeline: NewTimelinePaneModel(),
 		chat:     NewChatPaneModel(),
 		command:  NewCommandPaneModel(),
+		telemetry: NewTelemetryPaneModel(),
 	}
 }
 
@@ -124,6 +126,9 @@ func (m CockpitModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	m.command, newCmds = updateCommand(m.command, msg, nil, m.client)
 	if len(newCmds) > 0 { cmds = append(cmds, newCmds...) }
 
+	m.telemetry, newCmds = updateTelemetry(m.telemetry, msg, nil)
+	if len(newCmds) > 0 { cmds = append(cmds, newCmds...) }
+
 	return m, tea.Batch(cmds...)
 }
 
@@ -136,16 +141,23 @@ func (m CockpitModel) View() string {
 		m.styles.TimelinePane.Render(m.timeline.View()),
 	)
 
-	bottom := lipgloss.JoinHorizontal(
+	middle := lipgloss.JoinHorizontal(
 		lipgloss.Top,
 		m.styles.ChatPane.Render(m.chat.View()),
+		m.styles.TelemetryPane.Render(m.telemetry.View()),
+	)
+
+	bottom := lipgloss.JoinHorizontal(
+		lipgloss.Top,
 		m.styles.CommandPane.Render(m.command.View()),
+		lipgloss.NewStyle().Render(""), // placeholder for future pane
 	)
 
 	body := lipgloss.JoinVertical(
 		lipgloss.Left,
 		header,
 		top,
+		middle,
 		bottom,
 	)
 

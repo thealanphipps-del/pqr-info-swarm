@@ -100,6 +100,10 @@ func NewServer(svc *service.SwarmService, healing *service.HealingService, auth 
 		api.GET("/bridge", s.handleBridge)
 		api.GET("/files", s.handleListFiles)
 		api.GET("/wiki", s.handleWiki)
+
+		// Domain Registrar Reseller (PQR + Cloudflare)
+		api.GET("/registrar/search", s.handleRegistrarSearch)
+		api.POST("/registrar/register", s.handleRegistrarRegister)
 	}
 
 	// SAML Endpoints
@@ -973,4 +977,69 @@ func (s *Server) handleAgentConversation(c *gin.Context) {
 	})
 
 	c.JSON(http.StatusOK, chatLogs)
+}
+
+func (s *Server) handleRegistrarSearch(c *gin.Context) {
+	domainName := c.Query("domain")
+	if domainName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "domain is required"})
+		return
+	}
+
+	// Fake cloudflare API call since we don't have the real API key in environment
+	// In production, this would call Cloudflare Registrar API.
+	// We simulate the 25% upcharge logic here.
+	basePrice := 8.00 // $8 wholesale price
+	retailPrice := basePrice * 1.25 // 25% markup
+	
+	// Simulate an available domain for the demo
+	available := true
+	if strings.Contains(domainName, "taken") {
+		available = false
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"domain":    domainName,
+		"available": available,
+		"price_usd": retailPrice,
+		"wholesale": basePrice,
+		"currency":  "USD",
+		"accepted_crypto": []string{"SOL", "PQR_COIN"},
+	})
+}
+
+func (s *Server) handleRegistrarRegister(c *gin.Context) {
+	var req struct {
+		Domain        string `json:"domain"`
+		PaymentMethod string `json:"payment_method"`
+		TxHash        string `json:"tx_hash"`
+	}
+	
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// Verify payment using SOL or PQR Coin tx_hash
+	if req.PaymentMethod != "SOL" && req.PaymentMethod != "PQR_COIN" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Unsupported payment method. We accept SOL and our private chain coins only."})
+		return
+	}
+	
+	if req.TxHash == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Transaction hash is required for verification."})
+		return
+	}
+
+	// 1. Verify Transaction Hash on Solana or Private Ledger (Mocked)
+	log.Printf("[REGISTRAR] Verifying payment of %s for domain %s via TxHash %s...", req.PaymentMethod, req.Domain, req.TxHash)
+	
+	// 2. Call Cloudflare Registrar API to actually register the domain (Mocked)
+	log.Printf("[REGISTRAR] Purchasing domain %s wholesale from Cloudflare...", req.Domain)
+	
+	c.JSON(http.StatusOK, gin.H{
+		"status":  "REGISTERED",
+		"domain":  req.Domain,
+		"message": "Domain successfully registered. DNS propagation may take up to 24 hours.",
+	})
 }

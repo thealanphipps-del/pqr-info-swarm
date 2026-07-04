@@ -11,6 +11,7 @@ type TicketRepository interface {
 	CreateTicket(ctx context.Context, ticket *FabricTicket, content *FabricContent) error
 	GetByID(ctx context.Context, id uuid.UUID) (*FabricTicket, *FabricContent, error)
 	Update(ctx context.Context, id uuid.UUID, status string, title string) error
+	UpdateIteration(ctx context.Context, id uuid.UUID, iteration int, escalation int, status string) error
 	Link(ctx context.Context, parentID, childID uuid.UUID, relType RelationshipType) error
 	ListRecent(ctx context.Context, limit int) ([]FabricTicket, error)
 	GetAuditTrail(ctx context.Context, id uuid.UUID) ([]AuditEntry, error)

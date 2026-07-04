@@ -63,7 +63,7 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 		return err
 	}
 
-	if ticket.Status == "COMPLETED" || ticket.Status == "STALLED" {
+	if ticket.Status == "COMPLETED" || ticket.Status == "STUCK" {
 		return nil
 	}
 
@@ -86,11 +86,11 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 		ticket.EscalationLevel = 4
 		model = "Gemini Pro"
 	case ticket.Iteration >= 12:
-		ticket.Status = "STALLED"
-		log.Printf("Ticket %s STALLED after 11 iterations. Flagging for HUMAN INTERVENTION.", ticketID)
+		ticket.Status = "STUCK"
+		log.Printf("Ticket %s STUCK after 11 iterations. Flagging for HUMAN INTERVENTION.", ticketID)
 	}
 
-	if ticket.Status != "STALLED" {
+	if ticket.Status != "STUCK" {
 		log.Printf("Iteration %d: Escalating Ticket %s to Level %d using %s", ticket.Iteration, ticketID, ticket.EscalationLevel, model)
 		
 		// 1. Call the LLM to generate a resolution
@@ -123,7 +123,7 @@ func (h *HealingService) ProcessHealingLoop(ctx context.Context, ticketID uuid.U
 		h.repo.AddAudit(ctx, entry)
 	}
 
-	return h.repo.Update(ctx, ticket.ID, ticket.Status, "")
+	return h.repo.UpdateIteration(ctx, ticket.ID, ticket.Iteration, ticket.EscalationLevel, ticket.Status)
 }
 
 // MarkResolved finalizes a ticket and adds it to the evolutionary knowledge base

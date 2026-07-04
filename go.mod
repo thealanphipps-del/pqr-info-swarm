@@ -3,11 +3,15 @@ module github.com/thealanphipps-del/pqr
 go 1.25.0
 
 require (
+	github.com/charmbracelet/bubbles v0.16.1
+	github.com/charmbracelet/bubbletea v0.24.1
+	github.com/charmbracelet/lipgloss v0.7.1
 	github.com/crewjam/saml v0.5.1
 	github.com/gin-gonic/gin v1.9.1
 	github.com/google/uuid v1.6.0
 	github.com/hashicorp/vault/api v1.23.0
 	github.com/lib/pq v1.10.9
+	golang.org/x/sys v0.42.0
 	google.golang.org/grpc v1.81.1
 	google.golang.org/protobuf v1.36.11
 )
@@ -18,9 +22,6 @@ require (
 	github.com/beevik/etree v1.5.0 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
-	github.com/charmbracelet/bubbles v0.16.1 // indirect
-	github.com/charmbracelet/bubbletea v0.24.1 // indirect
-	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
@@ -66,7 +67,6 @@ require (
 	golang.org/x/crypto v0.48.0 // indirect
 	golang.org/x/net v0.51.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.42.0 // indirect
 	golang.org/x/term v0.40.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
