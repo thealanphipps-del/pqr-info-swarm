@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+if ! /data/data/com.termux/files/usr/bin/timeout 5 /data/data/com.termux/files/usr/bin/ssh -i /data/data/com.termux/files/home/.ssh/id_rsa -o ConnectTimeout=3 root@204.168.138.60 'echo 1' >/dev/null 2>&1; then
+    echo "[$(/data/data/com.termux/files/usr/bin/date)] GSH_MESH: AIRGAP_DETECTED_BY_GDIAG | TRIGGERING_GAR" >> /data/data/com.termux/files/home/Sovereign_Node_Go/logs/forensic_timeline.log
+    /data/data/com.termux/files/home/Sovereign_Node_Go/bin/GAR
+fi

@@ -1,0 +1,2 @@
+ssh_dispatch_run_fatal: Connection to 204.168.138.60 port 22: Software caused connection abort
+/data/data/com.termux/files/usr/bin/scp: Connection closed

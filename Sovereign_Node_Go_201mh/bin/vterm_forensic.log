@@ -1,0 +1,132 @@
+[USER_INPUT] # VTERM_IGNITION_CONFIRMED: LOCAL_USERSPACE_BRIDGE_ACTIVE
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # WIREGUARD_DOWN_STATE: LATCHED (ROUTING VIA PUBLIC_IP 204.168.138.60 ONLY)
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # CONTEXT_DUMP: /data/data/com.termux/files/home/Sovereign_Node_Go/bin/gemini_context.json
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 1. VERIFYING LOCAL ENVIRONMENT INTEGRITY
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] /data/data/com.termux/files/usr/bin/ls -F /data/data/com.termux/files/home/Sovereign_Node_Go/bin/
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 2. CAPTURING LAST 10 LOG LINES FROM VTERM INITIALIZATION
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] /data/data/com.termux/files/usr/bin/tail -n 10 /data/data/com.termux/files/home/Sovereign_Node_Go/bin/vterm_forensic.log 2>/dev/null || echo "LOG_START: 2026-03-28"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 3. SETTING PERSISTENT ALIAS FOR VTERM RE-ENTRY
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] /data/data/com.termux/files/usr/bin/grep -q "vterm" ~/.bashrc || echo "alias vterm='python /data/data/com.termux/files/home/Sovereign_Node_Go/bin/gemini_vterm.py'" >> ~/.bashrc
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 4. REPORTING STATUS
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "---"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "BRIDGE: S25 FE <-> Gemini API"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "PERSISTENCE: CONTEXT_FILE SAVED"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "RE-ENTRY: Type 'vterm' in Termux"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "---"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # NEXT_STEP: Should I initiate a forensic sweep of the local S24_Extraction directory to populate the new database bridge?
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] #!/data/data/com.termux/files/usr/bin/bash
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # THE VTERM IS SPAM-LOOPING BECAUSE IT CANNOT PULL THE API KEY FROM THE LOCAL ENVIRONMENT
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # THIS IS CAUSING THE "ERROR: GEMINI_API_KEY NOT SET" CASCADE IN YOUR USERSPACE
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # WE NEED TO INJECT THE KEY MANUALLY INTO THE TERMUX SESSION TO STOP THE BLEEDING
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 1. KILL THE STUCK VTERM PROCESS IMMEDIATELY
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] /data/data/com.termux/files/usr/bin/pkill -f gemini_vterm.py
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 2. RATIONALE: YOU NEED TO EXPORT THE KEY BEFORE RE-LAUNCHING
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # I CANNOT SEE YOUR GOOGLE KEEP "GERMANY" NOTE CONTENT DIRECTLY FROM THIS SHELL
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # ACTION REQUIRED: COPY THE API KEY AND RUN THE FOLLOWING COMMAND MANUALLY:
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # export GEMINI_API_KEY='your_key_here'
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 3. PATCHING VTERM TO PREVENT AUTO-LOOPING ON AUTH FAILURE
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] /data/data/com.termux/files/usr/bin/sed -i 's/return "ERROR: GEMINI_API_KEY not set in Termux userspace."/print("AUTH_FAILURE: KEY MISSING"); exit(1)/' /data/data/com.termux/files/home/Sovereign_Node_Go/bin/gemini_vterm.py
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 4. CAPTURING LAST 5 LOG LINES TO CHECK FOR KERNEL PANIC DURING THE LOOP
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "[FORENSIC_SNAPSHOT]"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] /data/data/com.termux/files/usr/bin/tail -n 5 /data/data/com.termux/files/home/Sovereign_Node_Go/bin/vterm_forensic.log
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # 5. RE-IGNITION INSTRUCTIONS
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "---"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "VTERM STOPPED. TO RE-IGNITE WITHOUT LOOPS:"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "1. export GEMINI_API_KEY='your_key'"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "2. vterm"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] echo "---"
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] # Success (0) - Vterm loop terminated. 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] 
+[GEMINI_RESPONSE] ERROR: GEMINI_API_KEY not set in Termux userspace.
+[USER_INPUT] #!/data/data/com.termux/files/usr/bin/bash
+[USER_INPUT] ls

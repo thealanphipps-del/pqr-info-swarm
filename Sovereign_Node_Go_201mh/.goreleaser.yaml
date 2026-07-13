@@ -1,0 +1,23 @@
+version: 2
+project_name: sovereign-mesh-node
+
+builds:
+  - id: mesh-core
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - android
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/sovereign-node/singularity_main.go
+    binary: mesh-node
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+# Disable parallel builds to fix the RT-801 race condition
+build:
+  parallelism: 1

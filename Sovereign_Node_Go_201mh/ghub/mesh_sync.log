@@ -1,0 +1,5 @@
+[_] Initializing Mesh Recovery...
+[SUCCESS] Mesh Recovered. Ports: 8080, 8888, 1080, 5432, 4450
+/data/data/com.termux/files/home/Sovereign_Node_Go/bin/mesh_sync.sh: line 18: /data/data/com.termux/files/home/Sovereign_Node_Go/bin/hud: No such file or directory
+[DIRECTOR] DNS Active on 5353
+[DIRECTOR] LDAP Auth Bridge Active on 1389

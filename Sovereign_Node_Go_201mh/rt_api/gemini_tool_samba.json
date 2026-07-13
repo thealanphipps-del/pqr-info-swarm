@@ -1,0 +1,13 @@
+{
+  "name": "samba_project_access",
+  "description": "Read or Write files to the Sovereign Mesh project Samba share.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": {"type": "string", "description": "Absolute path within share (e.g. bin/main.go)"},
+      "data": {"type": "string", "description": "Content for write operations. Leave empty for read."},
+      "write": {"type": "boolean", "description": "True for writing, False for reading."}
+    },
+    "required": ["path", "write"]
+  }
+}

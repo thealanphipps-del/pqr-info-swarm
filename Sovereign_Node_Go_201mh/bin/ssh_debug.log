@@ -1,0 +1,18 @@
+debug1: OpenSSH_10.2p1, OpenSSL 3.6.1 27 Jan 2026
+debug1: Reading configuration data /data/data/com.termux/files/home/.ssh/config
+debug1: /data/data/com.termux/files/home/.ssh/config line 2: Applying options for 10.0.*
+debug1: /data/data/com.termux/files/home/.ssh/config line 15: Applying options for 10.0.*
+debug1: Reading configuration data /data/data/com.termux/files/usr/etc/ssh/ssh_config
+debug1: /data/data/com.termux/files/usr/etc/ssh/ssh_config line 20: include /data/data/com.termux/files/usr/etc/ssh/ssh_config.d/*.conf matched no files
+debug1: Authenticator provider $SSH_SK_PROVIDER did not resolve; disabling
+debug1: Executing proxy command: exec /data/data/com.termux/files/usr/bin/nc -x 127.0.0.1:8080 10.0.201.1 22
+debug1: loaded pubkey from /data/data/com.termux/files/home/.ssh/id_rsa: RSA SHA256:H2T9xf8aFUQtFT/8pqf5qU2tD/LUKu1mgKcLI27iuFw
+debug1: identity file /data/data/com.termux/files/home/.ssh/id_rsa type 0
+debug1: no identity pubkey loaded from /data/data/com.termux/files/home/.ssh/id_rsa
+debug1: loaded pubkey from /data/data/com.termux/files/home/.ssh/id_rsa: RSA SHA256:H2T9xf8aFUQtFT/8pqf5qU2tD/LUKu1mgKcLI27iuFw
+debug1: identity file /data/data/com.termux/files/home/.ssh/id_rsa type 0
+debug1: no identity pubkey loaded from /data/data/com.termux/files/home/.ssh/id_rsa
+debug1: Local version string SSH-2.0-OpenSSH_10.2
+Connection timed out during banner exchange
+Connection to UNKNOWN port 65535 timed out
+Ncat: TIMEOUT.

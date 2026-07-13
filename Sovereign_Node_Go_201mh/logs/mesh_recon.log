@@ -1,0 +1,10 @@
+--- [1/2] FLUSHING STALE MESH FORWARDS ---
+--- [2/2] RE-IGNITING MASTER MESH BRIDGE ---
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:8083.
+Ncat: 0 bytes sent, 0 bytes received in 0.04 seconds.
+GATEWAY_ALIAS:8083_ACTIVE
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:8081.
+Ncat: 0 bytes sent, 0 bytes received in 0.04 seconds.
+PEER_ALIAS:8081_ACTIVE

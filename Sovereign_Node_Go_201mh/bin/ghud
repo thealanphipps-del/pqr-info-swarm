@@ -1,0 +1,16 @@
+#!/data/data/com.termux/files/usr/bin/bash
+termux-gui-init
+termux-gui-view --id "forensic_dash" --type "vertical"
+termux-gui-text --text "GSH-MESH FORENSIC HUD: FEB 17" --size 20 --bold
+termux-gui-button --text "PLAY VOICE (1:59 PM)" --id "btn_voice"
+termux-gui-button --text "VIEW QUITMAN PHOTOS" --id "btn_photos"
+termux-gui-button --text "SHOW GPS TIMELINE" --id "btn_map"
+
+while true; do
+    event=$(termux-gui-get-event)
+    if [[ "$event" == *"btn_voice"* ]]; then
+        /data/data/com.termux/files/usr/bin/am start -a android.intent.action.VIEW -d "file:///data/data/com.termux/files/home/downloads/Takeout/My Activity/Assistant/2026-02-17_13_59.mp3" -t "audio/*"
+    elif [[ "$event" == *"btn_photos"* ]]; then
+        /data/data/com.termux/files/usr/bin/am start -a android.intent.action.VIEW -d "file:///data/data/com.termux/files/home/downloads/Takeout/Google Photos/Photos from 2026/" -t "vnd.android.cursor.dir/image"
+    fi
+done

@@ -1,0 +1,22 @@
+2026-04-02T18:35:36.782296+00:00 ubuntu-4gb-hel1-5 sshd[1374197]: Failed password for invalid user admin from 80.66.66.70 port 27366 ssh2
+2026-04-02T18:35:38.043541+00:00 ubuntu-4gb-hel1-5 sshd[1374197]: Connection reset by invalid user admin 80.66.66.70 port 27366 [preauth]
+2026-04-02T18:35:41.383025+00:00 ubuntu-4gb-hel1-5 sshd[1374202]: Invalid user client from 80.66.66.70 port 27368
+2026-04-02T18:35:41.441893+00:00 ubuntu-4gb-hel1-5 sshd[1374202]: pam_unix(sshd:auth): check pass; user unknown
+2026-04-02T18:35:41.442163+00:00 ubuntu-4gb-hel1-5 sshd[1374202]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.66.66.70 
+2026-04-02T18:35:43.549681+00:00 ubuntu-4gb-hel1-5 sshd[1374202]: Failed password for invalid user client from 80.66.66.70 port 27368 ssh2
+2026-04-02T18:35:44.973963+00:00 ubuntu-4gb-hel1-5 sshd[1374202]: Connection reset by invalid user client 80.66.66.70 port 27368 [preauth]
+2026-04-02T18:35:45.391106+00:00 ubuntu-4gb-hel1-5 sshd[1374209]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.66.66.70  user=root
+2026-04-02T18:35:47.047879+00:00 ubuntu-4gb-hel1-5 sshd[1374209]: Failed password for root from 80.66.66.70 port 17490 ssh2
+2026-04-02T18:35:48.291397+00:00 ubuntu-4gb-hel1-5 sshd[1374209]: Connection reset by authenticating user root 80.66.66.70 port 17490 [preauth]
+2026-04-02T18:35:49.293697+00:00 ubuntu-4gb-hel1-5 sshd[1374213]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.66.66.70  user=root
+2026-04-02T18:35:51.833476+00:00 ubuntu-4gb-hel1-5 sshd[1374213]: Failed password for root from 80.66.66.70 port 17492 ssh2
+2026-04-02T18:35:52.229187+00:00 ubuntu-4gb-hel1-5 sshd[1374213]: Connection reset by authenticating user root 80.66.66.70 port 17492 [preauth]
+2026-04-02T18:35:52.657033+00:00 ubuntu-4gb-hel1-5 sshd[1374220]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=80.66.66.70  user=root
+2026-04-02T18:35:53.774380+00:00 ubuntu-4gb-hel1-5 sshd[1374221]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=190.153.249.99  user=root
+2026-04-02T18:35:54.609342+00:00 ubuntu-4gb-hel1-5 sshd[1374220]: Failed password for root from 80.66.66.70 port 19634 ssh2
+2026-04-02T18:35:55.559571+00:00 ubuntu-4gb-hel1-5 sshd[1374220]: Connection reset by authenticating user root 80.66.66.70 port 19634 [preauth]
+2026-04-02T18:35:55.862739+00:00 ubuntu-4gb-hel1-5 sshd[1374221]: Failed password for root from 190.153.249.99 port 38983 ssh2
+2026-04-02T18:35:56.882343+00:00 ubuntu-4gb-hel1-5 sshd[1374221]: Received disconnect from 190.153.249.99 port 38983:11: Bye Bye [preauth]
+2026-04-02T18:35:56.882552+00:00 ubuntu-4gb-hel1-5 sshd[1374221]: Disconnected from authenticating user root 190.153.249.99 port 38983 [preauth]
+2026-04-02T18:36:06.960524+00:00 ubuntu-4gb-hel1-5 sshd[1374240]: Accepted publickey for root from 172.59.193.146 port 25031 ssh2: RSA SHA256:H2T9xf8aFUQtFT/8pqf5qU2tD/LUKu1mgKcLI27iuFw
+2026-04-02T18:36:06.962293+00:00 ubuntu-4gb-hel1-5 sshd[1374240]: pam_unix(sshd:session): session opened for user root(uid=0) by root(uid=0)

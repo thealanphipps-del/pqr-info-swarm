@@ -1,0 +1,10 @@
+{
+  "node_id": "S25_FE_PRIMARY",
+  "mesh_role": "Controller",
+  "mcp_port": 8080,
+  "hud_port": 8888,
+  "socks_port": 1080,
+  "rtdb_port": 5432,
+  "smb_port": 4450,
+  "airgap_logic": "STICKY_CLOSED"
+}

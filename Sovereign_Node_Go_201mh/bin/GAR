@@ -1,0 +1,23 @@
+#!/data/data/com.termux/files/usr/bin/bash
+echo "[$(/data/data/com.termux/files/usr/bin/date)] GSH_MESH: GAR_INITIATED | SEVERING_DEAD_PIPES" >> /data/data/com.termux/files/home/Sovereign_Node_Go/logs/forensic_timeline.log
+
+# Annihilate zombie pipes and locked ports
+/data/data/com.termux/files/usr/bin/pkill -9 -f gemini_strike_pipe 2>/dev/null
+/data/data/com.termux/files/usr/bin/fuser -k 8080/tcp 2>/dev/null
+/data/data/com.termux/files/usr/bin/rm /data/data/com.termux/files/home/.gemini_strike_pipe 2>/dev/null
+
+# Re-forge atomic pipe
+/data/data/com.termux/files/usr/bin/mkfifo /data/data/com.termux/files/home/.gemini_strike_pipe
+
+# Re-ignite Whitelist Daemon (Translating 39.mh to Public IP natively)
+/data/data/com.termux/files/usr/bin/setsid /data/data/com.termux/files/usr/bin/bash -c "while true; do if CMD=\$(/data/data/com.termux/files/usr/bin/cat /data/data/com.termux/files/home/.gemini_strike_pipe); then SAFE_CMD=\$(echo \"\$CMD\" | /data/data/com.termux/files/usr/bin/sed 's/39\.mh/204.168.138.60/g' | /data/data/com.termux/files/usr/bin/grep -iE '^(ssh|echo|cat|script|cd|ls|tail|sync|pkill|rm|mkfifo|fuser|/data/data/com.termux/files/home/Sovereign_Node_Go/bin/GAR|/data/data/com.termux/files/home/Sovereign_Node_Go/bin/gdiag) '); if [ -n \"\$SAFE_CMD\" ]; then eval \"\$SAFE_CMD\" >> /data/data/com.termux/files/home/Sovereign_Node_Go/logs/agentic_loop.log 2>&1; fi; fi; done" &
+
+# Re-establish Jovian RTdb Tunnel
+/data/data/com.termux/files/usr/bin/ssh -i /data/data/com.termux/files/home/.ssh/id_rsa -L 8080:localhost:8080 root@204.168.138.60 -N -f
+
+# Verify Handshake
+if /data/data/com.termux/files/usr/bin/ssh -i /data/data/com.termux/files/home/.ssh/id_rsa -o ConnectTimeout=10 root@204.168.138.60 'echo "[$(date)] GSH_MESH: GAR_SUCCESS_RECOVERY" >> /etc/wireguard/api_parity.log'; then
+    echo "[$(/data/data/com.termux/files/usr/bin/date)] GSH_MESH: GAR_COMPLETE | MESH_RESTORED" >> /data/data/com.termux/files/home/Sovereign_Node_Go/logs/forensic_timeline.log
+else
+    echo "[$(/data/data/com.termux/files/usr/bin/date)] GSH_MESH: GAR_FAILED | HARD_AIRGAP_PERSISTS" >> /data/data/com.termux/files/home/Sovereign_Node_Go/logs/forensic_timeline.log
+fi

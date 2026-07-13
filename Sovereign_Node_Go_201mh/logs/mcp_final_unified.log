@@ -1,0 +1,5 @@
+[COMPILING_FULL_STACK]
+go: github.com/goreleaser/goreleaser-mcp@latest: module github.com/goreleaser/goreleaser-mcp: git ls-remote -q --end-of-options origin in /data/data/com.termux/files/home/go/pkg/mod/cache/vcs/c0c389220046a58e2468e2a42436a9106c3fb0397bd04cb45a9406225fa7c114: exit status 128:
+	fatal: could not read Username for 'https://github.com': terminal prompts disabled
+Confirm the import path was entered correctly.
+If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.

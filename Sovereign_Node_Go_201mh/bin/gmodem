@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/python3
+import os, sys, json, requests
+if len(sys.argv) < 3:
+    print("Usage: gmodem <prompt> <absolute_output_path>"); sys.exit(1)
+prompt, out_path = sys.argv[1], sys.argv[2]
+api_key = os.environ.get("GEMINI_API_KEY")
+if not api_key: print("[-] GEMINI_API_KEY missing"); sys.exit(1)
+url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+sys_p = "You are GMODEM. Output ONLY a raw python script in a ```python block. NO markdown outside the block. NO explanations."
+payload = {"contents": [{"parts": [{"text": f"{sys_p}\\n\\nUSER: {prompt}"}]}]}
+try:
+    print(f"[*] GMODEM Pulling payload to {out_path}...")
+    resp = requests.post(url, json=payload, timeout=30)
+    if resp.status_code != 200: print(f"[-] API Error {resp.status_code}: {resp.text}"); sys.exit(1)
+    text = resp.json()["candidates"][0]["content"]["parts"][0]["text"]

@@ -1,0 +1,166 @@
+--- INIT TICKET 20260406-RT-234-SYNC ---
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Apr  6 05:39:21 PM UTC 2026
+
+  System load:  0.01               Processes:             202
+  Usage of /:   51.6% of 37.23GB   Users logged in:       0
+  Memory usage: 36%                IPv4 address for eth0: 204.168.138.60
+  Swap usage:   0%                 IPv6 address for eth0: 2a01:4f9:c014:d18::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+55 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+7 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+*** System restart required ***
+You have mail.
+--- AUTH: MV7 MASTER SIGNER ---
+ERROR: MV7 Master Signer .gsh_vault/mv7_master.json missing
+--- CONNECT: POSTGRES RTDB ---
+--- LIVE READ: GODNS HUD METRICS ---
+Cache-Hit: 94.8%+
+Latency Savings: ~51ms
+psql: error: connection to server at "127.0.0.1", port 5432 failed: FATAL:  database "rtdb" does not exist
+--- INIT TICKET 20260406-RT-235-DB_VAULT_INIT ---
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Apr  6 05:41:08 PM UTC 2026
+
+  System load:  0.0                Processes:             199
+  Usage of /:   51.6% of 37.23GB   Users logged in:       0
+  Memory usage: 36%                IPv4 address for eth0: 204.168.138.60
+  Swap usage:   0%                 IPv6 address for eth0: 2a01:4f9:c014:d18::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+55 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+7 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+*** System restart required ***
+You have mail.
+CREATE TABLE
+INSERT 0 1
+--- CONNECT: POSTGRES RTDB ---
+ 20260406-RT-235-DB_VAULT_INIT | ACTIVE
+
+--- INIT TICKET 20260406-RT-236-PREFLIGHT ---
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Apr  6 05:42:28 PM UTC 2026
+
+  System load:  0.0                Processes:             203
+  Usage of /:   51.6% of 37.23GB   Users logged in:       0
+  Memory usage: 36%                IPv4 address for eth0: 204.168.138.60
+  Swap usage:   0%                 IPv6 address for eth0: 2a01:4f9:c014:d18::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+55 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+7 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+*** System restart required ***
+You have mail.
+INSERT 0 1
+--- STALLED TICKETS ---
+
+--- PRE-FLIGHT CHECK ---
+Cannot open /proc/net/unix: Permission denied
+Cannot open protocol file "/proc/net/tcp": Permission denied
+Port 8080 clear
+ERROR: Sovereign_Node_Go binary missing
+build_run.sh verified
+--- INIT TICKET 20260406-RT-237-COMPILE ---
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Apr  6 05:43:46 PM UTC 2026
+
+  System load:  0.0                Processes:             202
+  Usage of /:   51.7% of 37.23GB   Users logged in:       0
+  Memory usage: 36%                IPv4 address for eth0: 204.168.138.60
+  Swap usage:   0%                 IPv6 address for eth0: 2a01:4f9:c014:d18::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+55 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+7 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+*** System restart required ***
+You have mail.
+INSERT 0 1
+--- EXECUTE BUILD_RUN.SH ---
+./build_run.sh: line 4: cd: /home/donna.wilson.051/Sovereign_Mother_Go: No such file or directory
+ERROR: Sovereign_Node_Go binary compilation failed
+--- INIT TICKET 20260406-RT-238-PATCH_BUILD_SCRIPT ---
+INSERT 0 1
+--- INIT TICKET 20260406-RT-241 ---
+INSERT 0 1
+--- 202.MH SSH BRIDGE INIT ---
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+--- INIT TICKET 20260406-RT-243-SSH_PTY_FIX ---
+INSERT 0 1
+--- 202.MH SSH BRIDGE INIT (NON-INTERACTIVE) ---
+ssh: connect to host 192.168.1.202 port 22: Connection timed out
+--- INIT TICKET 20260406-RT-245-GMODEM_JOIN ---
+INSERT 0 1
+--- INIT TICKET 20260406-RT-246 ---
+INSERT 0 1
+[*] Phase 2: Remote RPC & Build Check on 202.mh
+ssh: connect to host 192.168.1.202 port 22: Connection timed out
+[*] Phase 3: Committing Sentinel Handshake to HUD

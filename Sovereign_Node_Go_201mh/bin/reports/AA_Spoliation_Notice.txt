@@ -1,0 +1,17 @@
+--- FORENSIC EVIDENCE REPORT: AA-SERVER-NUKE-20260401 ---
+SUBJECT: ace.aa.com (ACE American Insurance / American Airlines)
+DATE: 2026-04-01
+TIMELINE:
+11:00 AM - SUCCESSFUL SEND (Gmail) - Status: 250 OK
+12:30 PM - MX RECORD REMOVED - Status: NXDOMAIN
+01:45 PM - DEFERRED SEND (drphipps@live.com) - Status: 451 (Delayed)
+05:15 PM - TIMED OUT SEND (Alan@w-isp.net) - Status: Connection Refused
+
+DNS AUTHENTICITY:
+Primary Nameservers: ns1.aa.com / ns2.aa.com (Alive)
+Subdomain MX Record: NULL (Manual Deletion Confirmed)
+
+IP REPUTATION CHECK:
+Akamai Edge [23.222.241.134] - Origin: 503 Service Unavailable
+
+CONCLUSION: Intentional infrastructure decommissioning in response to claim notice.

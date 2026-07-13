@@ -1,0 +1,13 @@
+.TH MESH-IDENTITY 1 "2026-04-01" "v1.3" "Sovereign Mesh Manual"
+.SH NAME
+mesh-identity \- OS-level Isolation of Sharded Keys
+.SH SYNOPSIS
+.B germany/
+- u0_a203 (Root/S25FE OS)
+.B aellok/
+- Isolated Environment (ISP/Google Service Account)
+.SH DESCRIPTION
+Germany and Aellok MUST NOT share directory space. 
+Map keys to separate OS contexts to prevent cross-pollination.
+.SH SEE ALSO
+gman(1), genesis-keys(1)

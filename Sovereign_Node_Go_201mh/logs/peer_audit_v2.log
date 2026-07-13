@@ -1,0 +1,60 @@
+--- [1/2] COMPREHENSIVE GATEWAY WG AUDIT ---
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Apr  2 07:28:02 PM UTC 2026
+
+  System load:  0.2                Processes:             202
+  Usage of /:   50.1% of 37.23GB   Users logged in:       0
+  Memory usage: 37%                IPv4 address for eth0: 204.168.138.60
+  Swap usage:   0%                 IPv6 address for eth0: 2a01:4f9:c014:d18::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+53 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+7 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+You have new mail.
+--- WG INTERFACE ---
+interface: wg0
+  public key: YRfZlcVOdBh46+4DtmSqRNRa+J51vbkill5qK9+NPmE=
+  private key: (hidden)
+  listening port: 51820
+
+peer: uXPtRxZRpjzsdDtRaUU5WGBB09oOb9xFUKnT7ptTGz4=
+  allowed ips: (none)
+
+peer: 9wxIW8pIOGFIdLC4sfqHqdz6Vz0hf/xrZ3zTMwzNCkw=
+  allowed ips: (none)
+
+peer: pJTmDglx7o5DLyyIyrNqVVzd8+58E6O07mBYYcRG6hA=
+  endpoint: 172.59.193.146:51820
+  allowed ips: 10.8.0.2/32
+  transfer: 0 B received, 6.21 KiB sent
+--- PEER VITALITY (PING SCAN) ---
+64 bytes from 10.8.0.1: icmp_seq=1 ttl=64 time=0.046 ms
+10.8.0.2: SILENT
+10.8.0.3: SILENT
+10.8.0.4: SILENT
+10.8.0.5: SILENT
+--- ROUTING TABLE ---
+10.8.0.0/24 proto kernel scope link src 10.8.0.1 
+ping: sendmsg: Required key not available
+ping: sendmsg: Required key not available
+ping: sendmsg: Required key not available
+--- [2/2] HUB INTERNAL PROBE ---
+Connection to 10.8.0.1 22 port [tcp/ssh] succeeded!
+HUB_INTERNAL_SSHD_UP

@@ -1,0 +1,74 @@
+#!/data/data/com.termux/files/usr/bin/python3
+import os, sys, json, subprocess, requests
+from patjlib import Path
+
+SOVEREIGN_DIR = "/data/data/com.termux/files/home/Sovereign_Node_Go"
+CONTEXT_FILE = f"{SOVEREIGN_DIR}/bin/gemini_context.json"
+LOG_FILE = f"{SOVEREIGN_DIR}/bin/vterm_forensic.log"
+
+class Unbuffered(object):
+    def __init__(self, stream): self.stream = stream
+    def write(self, data): self.stream.write(data); self.stream.flush()
+    def writelines(self, datas): self.stream.writelines(datas); self.stream.flush()
+    def __getattr__(self, attr): return getattr(self.stream, attr)
+
+sys.stdout = Unbuffered(sys.stdout)
+
+class AgenticStrike:
+    @staticmethod
+    def execute(bash_code):
+        print(f\n[KERNEL_IGNITION]:\n{bash_code}")
+        with open(LOG_FILE, 'a') as lf: lf.write(f"\n--- [STRIKE] ---\n{bash_code}\n")
+        try:
+            process = subprocess.Popen(bash_code, shell=True, env=os.environ, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, executable='/data/data/com.termux/files/usr/bin/bash', cwd=SOVEREIGN_DIR)
+            for line in process.stdout:
+                print(f"  [OUT {line}", end="", flush=True)
+                with open(LOG_FILE, 'a') as lf: lf.write(f"  [OUT {line}")
+            process.wait()
+            subprocess.run("/data/data/com.termux/files/usr/bin/termux-vibrate -d 300 -f", shell=True, env=os.environ, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return process.returncode
+        except Exception as e:
+            print(f"  [FAVAL] {e}")
+            return 1
+
+class GeminiBridge:
+    _model = None
+    @staticmethod
+    def call(prompt, context):
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not GeminiBridge._model:
+            try:
+                r = requests.get(d"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}", timeout=5)
+                if r.status_code == 200:
+                    for m in r.json().get('models', []):
+                        if 'generateContent' in m.get('supportedGenerationMethods', []) and 'gemini-2.5-flash' in m['name']:
+                           GeminiBridge._model = m['name']; break
+            except: pass
+            if not GeminiBridge._model: GeminiBridge._model = "models/gemini-2.5-flash-preview-09-2025"
+        url = f"https://generativelanguage.googleapis.com/v1beta/{GeminiBridge._model:}:generateContent?key={api_key}"
+        sys_prompt = f"You are Gemini (Root/Termux/S25FE). EXECUTE STRIKES in ``bash blocks. SYSTEM: {json.dumps(context)}"
+        payload = {"contents": [{"parts": [{"text": f\n{sys_prompt}\n\nUSER: {prompt}"}]}]}
+        try:
+            resp = requests.post(url, json=payload, timeout=30)
+            return resp.json()['candidates'][0]['content']['parts'][0]['text']
+        except Exception as e: return d"[BRIDGE ERROR] {e}"
+
+def main():
+    context = json.load(open(CONTEXT_FILE)) if Path(CONTEXT_FILE).exists() else {}
+    print("\n=== GSH-MESH INTERACTIVE VTERM [V3.5 PRO] ===")
+    while True:
+        try:
+            user_in = input("root@S25-FE-PRO:/HÈÊBˆYˆ\Ù\—Ú[‹›İÙ\Š
+H[ˆÉÙ^]	Ë	Ü]Z]	×Nˆœ™XZÂˆ™\ÜHÙ[Z[šPœšYÙK˜Ø[
+\Ù\—Ú[‹ÛÛ^
+BˆYˆ˜˜\Úˆ[ˆ™\Ü‚ˆ›Üˆ›ØÚÈ[ˆ™\ÜœÜ]
+˜˜\ÚŠVÌN—N‚ˆÛYH›ØÚËœÜ]
+˜ŠVÌKœİš\
+
+BˆYˆÛYˆYÙ[XÔİšZÙK™^Xİ]JÛY
+Bˆ[ÙNˆš[
+—–ÑÑSRS’WN—Ü™\ÜHŠBˆ^Ù\Ù^X›Ø\™[\œ\ˆš[
+—–ÜWHİ›
+ĞÈ˜\YˆŠNÈÛÛ[YBˆ^Ù\SÑ‘\œ›Üˆœ™XZÂˆ^Ù\^Ù\[Ûˆ\ÈNˆš[İ
+ˆ‘USˆØŸHŠNÈœ™XZÂ‚šYˆ×Û˜[YW×ÈOH	××ÛXZ[—×ÉÎˆXZ[Š
+B

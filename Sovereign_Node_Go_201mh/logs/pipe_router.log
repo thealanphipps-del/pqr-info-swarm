@@ -1,0 +1,10 @@
+nohup: ignoring input
+2026/03/30 08:07:29 Sovereign Pipe Router Active...
+2026/03/30 08:07:29 Executing in proot namespace: echo 'Sovereign Bridge Active' > /data/data/com.termux/files/home/Sovereign_Node_Go/logs/namespace_test.log
+
+(B[m[1m[31mError: distribution '(B[m[33mdebian(B[m[1m[31m' is not installed.(B[m
+
+2026/03/30 08:08:31 Executing in proot namespace: echo 'Sovereign Bridge Active - Debian Rootfs' > /data/data/com.termux/files/home/Sovereign_Node_Go/logs/namespace_test.log
+
+(B[m[1m[31mError: distribution '(B[m[33mdebian(B[m[1m[31m' is not installed.(B[m
+

@@ -1,0 +1,11 @@
+mcp_server:
+  version: "2.0"
+  agent: "gemini-masterer"
+  service_account: "masterer@gemini-masterer.iam.gserviceaccount.com"
+  capabilities:
+    - code_generation
+    - autonomous_compilation
+    - mesh_deployment
+  triggers:
+    on_file_change: true
+    sync_on_quorum: true

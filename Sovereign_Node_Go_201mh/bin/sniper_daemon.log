@@ -1,0 +1,16 @@
+nohup: ignoring input
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_4d4eb0bedc17f349f8d3890f60f1a31d': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_c2e3dd9710a0f8aa78a5480de925947b': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_f808c546b227dfbd0655c9baf9844ce3': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_8dfc8ab300441ecd89af71ab544581de': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_c73836c1f02f991c3f657a0d1c1f09ef': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_5d0a0cca2fe7d7053878621fc5c7d235': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_8dfc8ab300441ecd89af71ab544581de': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_22fc8058c22688d999815d84a2bc5901': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_43f623373d889ba37c837894faf31040': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_c2e3dd9710a0f8aa78a5480de925947b': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_f808c546b227dfbd0655c9baf9844ce3': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_5d0a0cca2fe7d7053878621fc5c7d235': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_22fc8058c22688d999815d84a2bc5901': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_4d4eb0bedc17f349f8d3890f60f1a31d': No such file or directory
+mv: cannot stat '/data/data/com.termux/files/usr/tmp/sniper_lock_43f623373d889ba37c837894faf31040': No such file or directory

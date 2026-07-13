@@ -1,0 +1,5 @@
+nohup: ignoring input
+=== S25 FE LOCAL VIRTUAL TERMINAL IGNITION ===
+--- WIREGUARD DOWN STATE ACKNOWLEDGED ---
+
+root@S25-FE-VTERM:~# FATAL ERROR: [Errno 9] Bad file descriptor

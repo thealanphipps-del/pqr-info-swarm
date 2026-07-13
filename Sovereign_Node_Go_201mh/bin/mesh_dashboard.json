@@ -1,0 +1,28 @@
+{
+  "layout": {
+    "type": "LinearLayout",
+    "orientation": "vertical",
+    "padding": 12,
+    "children": [
+      {"type": "TextView", "text": "AELLOK SOVEREIGN MESH", "textSize": 16, "style": "bold"},
+      {
+        "type": "LinearLayout",
+        "orientation": "horizontal",
+        "marginTop": 10,
+        "marginBottom": 20,
+        "children": [
+          {"type": "TextView", "text": "✨ GEMINI", "id": "gemini_status", "textColor": "#00FF00", "weight": 1},
+          {"type": "TextView", "text": "🛡️ 0.mh", "id": "node_0", "textColor": "#888888", "weight": 1},
+          {"type": "TextView", "text": "☁️ 27.mh", "id": "node_27", "textColor": "#888888", "weight": 1},
+          {"type": "TextView", "text": "🗄️ 39.mh", "id": "node_39", "textColor": "#888888", "weight": 1},
+          {"type": "TextView", "text": "📱 S25", "id": "node_s25", "textColor": "#00FF00", "weight": 1}
+        ]
+      },
+      {"type": "TextView", "text": "FORENSIC LOG HEALTH:", "textSize": 14, "style": "bold"},
+      {"type": "TextView", "text": "Loading...", "id": "log_healer", "marginTop": 5},
+      {"type": "TextView", "text": "Loading...", "id": "log_sensor", "marginTop": 5},
+      {"type": "TextView", "text": "Loading...", "id": "log_forensic", "marginTop": 5},
+      {"type": "TextView", "text": "Loading...", "id": "log_gmudd", "marginTop": 5}
+    ]
+  }
+}

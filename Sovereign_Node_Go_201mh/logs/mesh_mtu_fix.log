@@ -1,0 +1,7 @@
+--- FLUSHING STALE SSH AGENTS ---
+--- APPLYING MTU/BUFFER WORKAROUND ---
+--- SOCKS IGNITION (S25 FE CONTROLLER) ---
+--- VERIFYING SOCKET OWNER ---
+Cannot open /proc/net/unix: Permission denied
+Cannot open protocol file "/proc/net/tcp": Permission denied
+PORT 8080 STILL VACANT

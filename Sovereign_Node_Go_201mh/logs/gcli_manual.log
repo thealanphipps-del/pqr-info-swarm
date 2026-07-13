@@ -1,0 +1,6 @@
+nohup: ignoring input
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/Sovereign_Node_Go/bin/gcli_agent.py", line 15, in <module>
+    input_data = sys.stdin.read().strip()
+                 ~~~~~~~~~~~~~~^^
+OSError: [Errno 9] Bad file descriptor

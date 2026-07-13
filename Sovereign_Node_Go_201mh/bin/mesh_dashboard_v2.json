@@ -1,0 +1,33 @@
+{
+  "layout": {
+    "type": "LinearLayout",
+    "orientation": "vertical",
+    "padding": 12,
+    "children": [
+      {
+        "type": "LinearLayout",
+        "orientation": "horizontal",
+        "children": [
+          {"type": "TextView", "text": "✨", "id": "gemini_icon", "textSize": 24, "textColor": "#00FF00"},
+          {"type": "TextView", "text": " SOVEREIGN MESH HUD", "textSize": 18, "style": "bold", "weight": 1}
+        ]
+      },
+      {
+        "type": "LinearLayout",
+        "orientation": "horizontal",
+        "marginTop": 15,
+        "children": [
+          {"type": "TextView", "text": "🛡️ 0.mh", "id": "node_0", "textSize": 14, "weight": 1, "gravity": "center"},
+          {"type": "TextView", "text": "☁️ 27.mh", "id": "node_27", "textSize": 14, "weight": 1, "gravity": "center"},
+          {"type": "TextView", "text": "🗄️ 39.mh", "id": "node_39", "textSize": 14, "weight": 1, "gravity": "center"},
+          {"type": "TextView", "text": "📱 S25", "id": "node_s25", "textSize": 14, "weight": 1, "gravity": "center"}
+        ]
+      },
+      {"type": "TextView", "text": "--------------------------------", "marginTop": 10},
+      {"type": "TextView", "text": "FORENSIC LOG REGISTRY", "style": "bold", "marginTop": 5},
+      {"type": "ScrollView", "layout_height": "wrap_content", "children": [
+        {"type": "LinearLayout", "id": "log_list", "orientation": "vertical"}
+      ]}
+    ]
+  }
+}

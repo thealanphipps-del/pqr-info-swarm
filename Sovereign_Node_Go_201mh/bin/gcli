@@ -1,0 +1,16 @@
+#!/data/data/com.termux/files/usr/bin/bash
+BIN="/data/data/com.termux/files/home/Sovereign_Node_Go/bin"
+show_menu() {
+    clear
+    echo "--- GCLI v5.3 (FIXED) ---"
+    echo "1) SZ (Send) | 2) RZ (Receive) | 3) GHUD | 4) API CHAT | 5) EXIT"
+    read -p "Selection: " c
+    case $c in
+        1) mapfile -t F < <(find "$BIN/.." -maxdepth 2 -type f); for i in "${!F[@]}"; do echo "[$i] ${F[$i]}"; done; read -p "Idx: " idx; /data/data/com.termux/files/usr/bin/sz "${F[$idx]}" ;;
+        2) cd ~ && /data/data/com.termux/files/usr/bin/rz ;;
+        3) /data/data/com.termux/files/usr/bin/python "$BIN/ghud" ;;
+        4) echo "CHAT: 'SEND' to transmit"; P=""; while read -r l; do [[ "$l" == "EXIT" ]] && break; [[ "$l" == "SEND" ]] && { echo -e "$P" | $BIN/gcli_agent.py; P=""; } || P="$P\n$l"; done; show_menu ;;
+        5) exit 0 ;;
+    esac
+}
+[ -t 0 ] && show_menu || /data/data/com.termux/files/usr/bin/python "$BIN/gcli_agent.py"

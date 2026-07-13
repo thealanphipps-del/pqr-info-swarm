@@ -1,0 +1,55 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+GCLI_ROOT="/data/data/com.termux/files/home/Sovereign_Node_Go"
+HOME_DIR="/data/data/com.termux/files/home"
+DOTENV="$GCLI_ROOT/.env"
+
+# Load API Key from .env
+if [ -f "$DOTENV" ]; then
+    # Parse API key and Export to Environment
+    GEMINI_API_KEY=$(grep "GEMINI_API_KEY" "$DOTENV" | cut -d'=' -f2 | tr -d '"')
+    export GEMINI_API_KEY
+fi
+
+function show_bbs_menu() {
+    clear
+    echo "========================================"
+    echo "   GSH-MESH GEMINI CLI v4.5 (BBS)       "
+    echo "   API AUTH: ${GEMINI_API_KEY:0:4}****"
+    echo "========================================"
+    echo " 1) DOWNLOAD (sz) - Send file to User"
+    echo " 2) UPLOAD (rz)   - Receive from User"
+    echo " 3) MESH CONTROL  - Daemons & Tunnels"
+    echo " 4) INTERACTIVE   - Gemini Pipe"
+    echo " 5) EXIT"
+    echo "========================================"
+    read -p "Selection: " choice
+    case $choice in
+        1) 
+           mapfile -t FLIST < <(find "$GCLI_ROOT" -maxdepth 2 -type f)
+           for i in "${!FLIST[@]}"; do printf "[%d] %s\n" "$i" "${FLIST[$i]}"; done
+           read -p "Download Index: " idx
+           if [[ -f "${FLIST[$idx]}" ]]; then
+               /data/data/com.termux/files/usr/bin/sz "${FLIST[$idx]}"
+           fi
+           ;;
+        2) 
+           cd "$HOME_DIR"
+           echo "Status: Awaiting RZ Upload to $HOME_DIR..."
+           /data/data/com.termux/files/usr/bin/rz
+           ;;
+        3) ghud --mesh ;;
+        4) 
+           echo "Pipe Active. Send 'EXIT' to escape."
+           while read -r line; do
+               [[ "$line" == "EXIT" ]] && break
+               echo "$line" >> "$GCLI_ROOT/logs/gcli_pipe.log"
+               echo ">> ACK: $line"
+           done
+           show_bbs_menu
+           ;;
+        5) exit 0 ;;
+    esac
+}
+
+show_bbs_menu

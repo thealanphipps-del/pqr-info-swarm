@@ -1,0 +1,60 @@
+--- START FORENSIC LOG Wed Apr  1 17:59:29 CDT 2026 ---
+Server:		1.1.1.1
+Address:	1.1.1.1#53
+
+Non-authoritative answer:
+ace.aa.com	canonical name = ace.aa.com.edgekey.net.
+ace.aa.com.edgekey.net	canonical name = e99812.dscx.akamaiedge.net.
+Name:	e99812.dscx.akamaiedge.net
+Address: 23.222.241.147
+Name:	e99812.dscx.akamaiedge.net
+Address: 23.222.241.134
+Name:	e99812.dscx.akamaiedge.net
+Address: 2600:1404:6400:4e::17c0:dfa8
+Name:	e99812.dscx.akamaiedge.net
+Address: 2600:1404:6400:4e::17c0:dfac
+
+ace.aa.com.edgekey.net.
+e99812.dscx.akamaiedge.net.
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Got more than one port specification: 25 443. QUITTING.
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connection to 2600:1404:6400:4e::17c0:dfac failed: TIMEOUT.
+Ncat: Trying next address...
+Ncat: Connection to 2600:1404:6400:4e::17c0:dfa8 failed: TIMEOUT.
+Ncat: Trying next address...
+Ncat: Connection to 23.64.115.206 failed: TIMEOUT.
+Ncat: Trying next address...
+Ncat: Connection to 23.64.115.209 failed: TIMEOUT.
+Ncat: Trying next address...
+Ncat: TIMEOUT.
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connected to [2600:1404:6400:4e::17c0:dfac]:443.
+Ncat: 0 bytes sent, 0 bytes received in 0.14 seconds.
+[HTTP ORIGIN CHECK]
+HTTP/2 200 
+x-request-id: f22ad549-57a7-4a69-bf0c-21be95f09b4c
+x-powered-by: Next.js
+content-type: text/html; charset=utf-8
+x-envoy-upstream-service-time: 32
+server: istio-envoy
+content-length: 1
+date: Wed, 01 Apr 2026 23:01:04 GMT
+x-frame-options: SAMEORIGIN
+pragma: no-cache
+cache-control: no-store
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000 ; includeSubDomains
+set-cookie: _abck=33398A92E3D0E5A0EE53B8E273E803BF~-1~YAAQ7GrJF4ryZ0KdAQAAumdHSw9vPXigulvaxFEYezh8TODgi2NG44zBOAT3RKErFyZij/W0VbIYty2i0LkeJrXK8N86L8bM2zknGLLucZWj1FxxIg8gimxB9GwXDZRfUEfXt5q8PurUi51xrpxz+pOWv/t6h5kxaRGUhmOz+cZnswNQ50RqjdM5XV2NDIjXOH+jVFRj1fRp9QFMqgq3U1T/cJ+D2JWmPr3EnqTXdzDEHRAUXfYdmEFiMMh40z8gXxoaccUKP+gFM8OmS8XsjUpSL+jUG26NBuaR4yjKr/r8b80qBI3mhPtFyLVoVMiy5E5IZaPzAMhVUvPf0nxiLGJwgM6OxQKsnNwTKAq058y3EVBWf8ICSZkaruxihAbMOi8EdFxYwo4reGGMe/BNdOt3sGm7Ul4pSbAXqHI0DaYc1qxcTUGoNImzjwqJ2kLDuQ==~-1~-1~-1~-1~-1; Domain=.aa.com; Path=/; Expires=Thu, 01 Apr 2027 23:01:04 GMT; Max-Age=31536000; SameSite=None; Secure
+set-cookie: bm_sz=EB3B85367C20EA88902A3C421099FF5B~YAAQ7GrJF4vyZ0KdAQAAumdHSx/roywbKIg81CD/Z517LF7TIYwFaIU0VFZXO86jLQRrSayz2I8zxN6esDUiKG+P3nMk/e0Dozi0RdsAp5vUkkWmjdQg4J1tKrgWituQbw9PkKysxHZRSZZIOzLNlzhdjRXL0ailNsxQjtO1hqT0R5Kx0WWQXGI72w+tQif3+9/gbjcy6du2KaQhn43LXmnw7Y0ROmpSE7N1++qUTzAh4B3ECW3UQybTM7i2ZiDXh/knMP/DFvP7Sl3GQiDjGfhnwh0Sz3ZpPrYkHpGlJaRElGhoibXPN90z5if2aWKFJHT1Jglryno7SNxC5LFkYNScZF7fjpojddfuzVwTBC6mMmjA5Mf95Ue/44cgM216cGGaLqrRYVLgRSjVJg==~4408372~4601156; Domain=.aa.com; Path=/; Expires=Thu, 02 Apr 2026 03:01:03 GMT; Max-Age=14399; SameSite=None; Secure
+
+--- W-ISP.NET OUTBOUND LOG Wed Apr  1 18:12:02 CDT 2026 ---
+--- FORENSIC SPOLIATION RECORD Wed Apr  1 18:14:27 CDT 2026 ---
+[MXTOOLBOX_MONITOR_URL]: https://mxtoolbox.com/domain/ace.aa.com/
+[GROUT_NAMESPACE_LOCKED Wed Apr  1 18:47:18 CDT 2026]
+[DOMAIN_ISOLATION_CONFIRMED Wed Apr  1 19:20:49 CDT 2026]
+[TUNDRA_REMAP_SUCCESS Wed Apr  1 19:24:57 CDT 2026]
+TUNDRA == AAA_EVIDENCE
+[PROBE_START_9080 Wed Apr  1 19:32:34 CDT 2026]
+ssh: Could not resolve hostname 39.mh: No address associated with hostname
+Target: dns.surfgo.net -> DoT Bridge

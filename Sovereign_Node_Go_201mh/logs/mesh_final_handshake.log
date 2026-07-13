@@ -1,0 +1,5 @@
+--- [1/2] PEER SHELL HANDSHAKE (201.MH @ 8081) ---
+Connection timed out during banner exchange
+Connection to 127.0.0.1 port 8081 timed out
+PEER_SHELL_STILL_STALLED
+--- [2/2] RE-IGNITING MESH_HEALER BACKGROUND MONITOR ---

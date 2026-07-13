@@ -1,0 +1,25 @@
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+Terminated                 /data/data/com.termux/files/usr/bin/timeout 5 /data/data/com.termux/files/usr/bin/ssh -i /data/data/com.termux/files/home/.ssh/id_rsa -o ConnectTimeout=3 root@204.168.138.60 'echo 1' > /dev/null 2>&1
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+Could not request local forwarding.

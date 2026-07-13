@@ -1,0 +1,10 @@
+--- PATCHING SSH CONFIG ---
+--- VERIFYING CONFIG ---
+Host 10.0.* 10.8.*
+    ProxyCommand /data/data/com.termux/files/usr/bin/nc -x 127.0.0.1:8080 %h %p
+    User root
+    IdentityFile ~/.ssh/id_rsa
+--- RE-IGNITING MESH HEALER ---
+Ncat: TIMEOUT.
+Connection closed by UNKNOWN port 65535
+--- GMAN HISTORY UPDATE ---

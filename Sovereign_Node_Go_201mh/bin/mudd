@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# MUDD: Multi-Unit Data Delivery Decoder
+TARGET_FILE=$1
+echo "[*] MUDD: Waiting for Base64 Stream..."
+/data/data/com.termux/files/usr/bin/cat | /data/data/com.termux/files/usr/bin/base64 -d > "$TARGET_FILE"
+echo "[+] MUDD: Delivery Complete -> $TARGET_FILE"

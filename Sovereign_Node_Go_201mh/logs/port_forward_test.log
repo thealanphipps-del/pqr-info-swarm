@@ -1,0 +1,7 @@
+--- [1/3] PURGE PREVIOUS TUNNELS ---
+--- [2/3] IGNITE EXPLICIT PORT FORWARDS ---
+--- [3/3] TEST EXPLICIT FORWARD TO 201.MH ---
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:8081.
+Ncat: 0 bytes sent, 0 bytes received in 0.03 seconds.
+201.MH EXPLICIT MAP ACTIVE

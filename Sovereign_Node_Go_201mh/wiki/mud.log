@@ -1,0 +1,2 @@
+2026/03/28 10:42:48 Server starting and listening on :9111
+2026/03/28 10:42:48 Server failed to start: listen tcp :9111: bind: address already in use

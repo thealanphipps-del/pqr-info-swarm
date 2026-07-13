@@ -1,0 +1,34 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# GSH-MESH MASTER IGNITION - STICKY CONFIG
+
+# A. Mandatory Airgap Check
+if [ ! -f /data/data/com.termux/files/home/airgap.closed ]; then
+    echo "[-] FATAL: Airgap guard triggered. touch airgap.closed to proceed."
+    exit 1
+fi
+
+# B. Targetted GAR (Reboot Mesh without killing MCP on 8080)
+echo "[*] Refreshing Sovereign Mesh (Preserving 8080)..."
+/data/data/com.termux/files/usr/bin/fuser -k 1080/tcp 5432/tcp 4450/tcp 8888/tcp 2>/dev/null
+
+# Re-establish Tunnels (Excluding 8080)
+/data/data/com.termux/files/usr/bin/ssh -i /data/data/com.termux/files/home/.ssh/id_rsa \
+    -D 1080 \
+    -L 5432:127.0.0.1:5432 \
+    -L 4450:127.0.0.1:445 \
+    -L 8888:localhost:8888 \
+    root@204.168.138.60 -N -f
+
+# C. Set Mesh Environment
+export ALL_PROXY=socks5h://localhost:1080
+export PGHOST=127.0.0.1
+export PGPORT=5432
+
+# F. Ignite GHUB Remote
+/data/data/com.termux/files/usr/bin/pkill -9 ghubd 2>/dev/null
+/data/data/com.termux/files/home/Sovereign_Node_Go/bin/ghubd > /data/data/com.termux/files/home/Sovereign_Node_Go/logs/ghub.log 2>&1 &
+
+# D. Final Verification
+/data/data/com.termux/files/usr/bin/fuser 1080/tcp >/dev/null 2>&1 && echo "[+] L4 MESH: ACTIVE (1080)"
+/data/data/com.termux/files/usr/bin/fuser 8080/tcp >/dev/null 2>&1 && echo "[+] MCP BRIDGE: PERSISTENT (8080)"
+/data/data/com.termux/files/usr/bin/fuser 8888/tcp >/dev/null 2>&1 && echo "[+] SOVEREIGN HUD: ACTIVE (8888)"

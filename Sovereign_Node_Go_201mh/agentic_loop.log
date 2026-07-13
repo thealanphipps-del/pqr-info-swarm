@@ -1,0 +1,3 @@
+[*] Sovereign Agentic Loop Active (Mode: --mode=development)
+/data/data/com.termux/files/home/Sovereign_Node_Go/agentic_loop.sh: line 5: 30936 Killed                     sleep 60
+/data/data/com.termux/files/home/Sovereign_Node_Go/agentic_loop.sh: line 5: 31910 Killed                     sleep 60

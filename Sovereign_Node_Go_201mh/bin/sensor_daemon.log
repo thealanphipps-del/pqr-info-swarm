@@ -1,0 +1,1335 @@
+nohup: ignoring input
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+Exception in thread Thread-1 (display):
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/bin/termux-gui-view", line 46, in display
+    with Image.open(file) as img:
+         ~~~~~~~~~~^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/site-packages/PIL/Image.py", line 3579, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file <_io.BufferedReader name='/data/data/com.termux/files/home/Sovereign_Node_Go/bin/alpaca_mudd_multi_v2.json'>
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_battery': [Errno 2] No such file or directory: 'sys_battery'
+usage: termux-gui-view [-h] [-n N] [--return | --no-return]
+                       [--exit | --no-exit]
+                       file [file ...]
+termux-gui-view: error: argument file: can't open 'sys_wlan': [Errno 2] No such file or directory: 'sys_wlan'

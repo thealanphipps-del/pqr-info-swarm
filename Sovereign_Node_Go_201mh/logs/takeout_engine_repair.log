@@ -1,0 +1,38 @@
+--- [1/2] ENGINE & SCHEMA CALIBRATION ---
+ENGINE_LOCATED: /data/data/com.termux/files/home/Forensic_Hub_Sync/bots/schwab_parser.py
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-106-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Thu Apr  2 08:09:35 PM UTC 2026
+
+  System load:  0.06               Processes:             202
+  Usage of /:   50.1% of 37.23GB   Users logged in:       0
+  Memory usage: 37%                IPv4 address for eth0: 204.168.138.60
+  Swap usage:   0%                 IPv6 address for eth0: 2a01:4f9:c014:d18::1
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+53 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+7 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+You have new mail.
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  database "forensic_timeline" does not exist
+--- [2/2] INGEST & OFFWORLD LOOP (RECOVERY) ---
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  database "forensic_timeline" does not exist
+INGESTING: takeout-20260325T164633Z-3-001.zip
+Waiting for Schwab .csv exports...
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  database "forensic_timeline" does not exist
+SUCCESS: takeout-20260325T164633Z-3-001.zip -> OFFWORLDING

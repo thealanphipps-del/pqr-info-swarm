@@ -1,0 +1,12 @@
+{
+  "admin": "Alan Phipps",
+  "device": "S25 FE",
+  "kernel_uid": "10463",
+  "kernel_user": "u0_a463",
+  "network_state": "WIREGUARD_DOWN",
+  "nodes": {
+    "0.mh": "46.224.84.64",
+    "39.mh": "204.168.138.60"
+  },
+  "rules": "Absolute paths only, UID 10463 enforcement, STRIKE handshake"
+}

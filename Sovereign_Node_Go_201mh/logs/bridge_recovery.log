@@ -1,0 +1,10 @@
+--- [1/2] SYSTEM PURGE (LOCAL) ---
+--- [2/2] RE-IGNITING MESH BRIDGES WITH CLAMPED QoS ---
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:8083.
+Ncat: 0 bytes sent, 0 bytes received in 0.05 seconds.
+HUB_8083_RECOVERED
+Ncat: Version 7.99 ( https://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:8081.
+Ncat: 0 bytes sent, 0 bytes received in 0.03 seconds.
+PEER_8081_RECOVERED

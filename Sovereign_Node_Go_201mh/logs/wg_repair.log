@@ -1,0 +1,23 @@
+--- [1/3] HELSINKI (39.MH) WIREGUARD DIAGNOSTIC ---
+interface: wg0
+  public key: YRfZlcVOdBh46+4DtmSqRNRa+J51vbkill5qK9+NPmE=
+  private key: (hidden)
+  listening port: 51820
+
+peer: pJTmDglx7o5DLyyIyrNqVVzd8+58E6O07mBYYcRG6hA=
+  endpoint: 172.59.193.146:41751
+  allowed ips: 10.8.0.2/32
+  latest handshake: 1 day, 15 hours, 26 minutes, 37 seconds ago
+  transfer: 9.05 KiB received, 2.52 KiB sent
+
+peer: uXPtRxZRpjzsdDtRaUU5WGBB09oOb9xFUKnT7ptTGz4=
+  allowed ips: (none)
+
+peer: 9wxIW8pIOGFIdLC4sfqHqdz6Vz0hf/xrZ3zTMwzNCkw=
+  allowed ips: (none)
+4: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1420 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 10.8.0.1/24 scope global wg0
+       valid_lft forever preferred_lft forever
+--- [2/3] HELSINKI (39.MH) WIREGUARD RESTART ---
+--- [3/3] MESH INTERNAL VERIFICATION ---
+201.MH STILL DEAD
